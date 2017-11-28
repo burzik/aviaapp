@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "623015437725",
+    "firebase_url": "https://aviaapp-c9281.firebaseio.com",
+    "project_id": "aviaapp-c9281",
+    "storage_bucket": "aviaapp-c9281.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:623015437725:android:20e0177b2d1d4d1c",
+        "android_client_info": {
+          "package_name": "com.my.eduardarefjev.aviaapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "623015437725-cc7nocb3dg0hls11l9kigt8ikmklduhq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.my.eduardarefjev.aviaapp",
+            "certificate_hash": "f491866f5ce221d2aa43165eb391310074cc45a2"
+          }
+        },
+        {
+          "client_id": "623015437725-78sb7ll685qc2t0ub1i4tdgth5erv23f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBErkHaPnDW9C3uA_pUpMk6Z2yi2at7KOI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "623015437725-78sb7ll685qc2t0ub1i4tdgth5erv23f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

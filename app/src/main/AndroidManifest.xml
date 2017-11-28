@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.my.eduardarefjev.aviaapp">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.INFO" />
+
+                <category android:name="android.intent.category.EDIT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Login">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".StepEngineInfo">
+            <intent-filter>
+                <action android:name="android.intent.action.INFO" />
+
+                <category android:name="android.intent.category.EDIT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".StepStartInfo">
+            <intent-filter>
+                <action android:name="android.intent.action.INFO" />
+
+                <category android:name="android.intent.category.EDIT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".StepSmallGas">
+            <intent-filter>
+                <action android:name="android.intent.action.INFO" />
+
+                <category android:name="android.intent.category.EDIT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".StepClosingKVD5">
+            <intent-filter>
+                <action android:name="android.intent.action.INFO" />
+
+                <category android:name="android.intent.category.EDIT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".StepClosingKVD3">
+            <intent-filter>
+                <action android:name="android.intent.action.INFO" />
+
+                <category android:name="android.intent.category.EDIT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".StepNom">
+            <intent-filter>
+                <action android:name="android.intent.action.INFO" />
+
+                <category android:name="android.intent.category.EDIT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".StepMax">
+            <intent-filter>
+                <action android:name="android.intent.action.INFO" />
+
+                <category android:name="android.intent.category.EDIT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".StepClosingKVDKPV">
+            <intent-filter>
+                <action android:name="android.intent.action.INFO" />
+
+                <category android:name="android.intent.category.EDIT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".StepControlKND">
+            <intent-filter>
+                <action android:name="android.intent.action.INFO" />
+
+                <category android:name="android.intent.category.EDIT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".StepN85">
+            <intent-filter>
+                <action android:name="android.intent.action.INFO" />
+
+                <category android:name="android.intent.category.EDIT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Step085Nom">
+            <intent-filter>
+                <action android:name="android.intent.action.INFO" />
+
+                <category android:name="android.intent.category.EDIT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".StepN100">
+            <intent-filter>
+                <action android:name="android.intent.action.INFO" />
+
+                <category android:name="android.intent.category.EDIT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".StepPickUp">
+            <intent-filter>
+                <action android:name="android.intent.action.INFO" />
+
+                <category android:name="android.intent.category.EDIT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".StepSmallGas2">
+            <intent-filter>
+                <action android:name="android.intent.action.INFO" />
+
+                <category android:name="android.intent.category.EDIT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".StepFinish">
+            <intent-filter>
+                <action android:name="android.intent.action.INFO" />
+
+                <category android:name="android.intent.category.EDIT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Records">
+            <intent-filter>
+                <action android:name="android.intent.action.INFO" />
+
+                <category android:name="android.intent.category.EDIT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".CreateUser">
+            <intent-filter>
+                <action android:name="android.intent.action.INFO" />
+
+                <category android:name="android.intent.category.EDIT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ListOfUsers">
+            <intent-filter>
+                <action android:name="android.intent.action.INFO" />
+
+                <category android:name="android.intent.category.EDIT" />
+            </intent-filter>
+        </activity>
+
+    </application>
+</manifest>

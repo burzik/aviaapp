@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/LinearLabelEngMeasurement"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/label_eng_measurement"
+            android:padding="5dp"
+            android:textSize="10pt"
+            android:gravity="center"/>
+        <EditText
+            android:id="@+id/LinearLabelInpEngMeasurement"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/enter"
+            android:inputType="number"
+            android:paddingBottom="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:textSize="10pt"
+            android:gravity="center" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:weightSum="5">
+            <Button
+                android:id="@+id/LinearButtonBackStepN100"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center"
+                android:layout_gravity="start"
+                android:text="@string/button_back"
+                android:layout_weight="1" />
+            <TextView
+                android:id="@+id/LinearTextViewCenterStepN100"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="0sp"
+                android:gravity="center"
+                android:layout_weight="3"/>
+            <Button
+                android:id="@+id/LinearButtonNextStepN100"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center"
+                android:layout_gravity="end"
+                android:text="@string/button_next"
+                android:layout_weight="1" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>
