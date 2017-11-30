@@ -4,6 +4,16 @@
     android:layout_height="match_parent">
 
     <TextView
+        android:id="@+id/LinearHello"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Hello"
+        android:textSize="16pt"
+        android:gravity="center"
+        android:layout_marginTop="35dp"
+        />
+
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/label_menu"

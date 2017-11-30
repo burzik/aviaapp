@@ -7,7 +7,9 @@ package com.my.eduardarefjev.aviaapp;
 public class User {
     String firstName;
     String lastName;
-    //int privilages;
+    String email;
+    String privileges;
+    String uid;
 
     public User() {
     }

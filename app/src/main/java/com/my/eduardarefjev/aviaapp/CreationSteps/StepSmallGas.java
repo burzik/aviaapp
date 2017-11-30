@@ -1,4 +1,4 @@
-package com.my.eduardarefjev.aviaapp;
+package com.my.eduardarefjev.aviaapp.CreationSteps;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,31 +6,33 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
+import com.my.eduardarefjev.aviaapp.R;
+
 /**
- * Created by EduardArefjev on 23/10/2017.
+ * Created by EduardArefjev on 09/10/2017.
  */
 
-public class StepClosingKVD5 extends AppCompatActivity {
+public class StepSmallGas extends AppCompatActivity {
 
     private Button bNextStep;
 
     @Override
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.linear_step_closing_kvd_5);
+        setContentView(R.layout.linear_step_small_gas);
 
-        this.setTitle(R.string.label_turnover_kvd_v);
+        this.setTitle(R.string.label_small_gas);
 
         nextSecondStep();
     }
 
     public void nextSecondStep() {
-        bNextStep = (Button) findViewById(R.id.LinearButtonNextClosingKVD);
+        bNextStep = (Button) findViewById(R.id.LinearButtonNextSmallGas);
         bNextStep.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(StepClosingKVD5.this, StepN85.class);
+                Intent intent = new Intent(StepSmallGas.this, StepClosingKVD5.class);
                 startActivity(intent);
 
             }

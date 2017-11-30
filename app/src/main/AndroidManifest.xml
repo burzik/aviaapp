@@ -23,105 +23,105 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".StepEngineInfo">
+        <activity android:name=".CreationSteps.StepEngineInfo">
             <intent-filter>
                 <action android:name="android.intent.action.INFO" />
 
                 <category android:name="android.intent.category.EDIT" />
             </intent-filter>
         </activity>
-        <activity android:name=".StepStartInfo">
+        <activity android:name=".CreationSteps.StepStartInfo">
             <intent-filter>
                 <action android:name="android.intent.action.INFO" />
 
                 <category android:name="android.intent.category.EDIT" />
             </intent-filter>
         </activity>
-        <activity android:name=".StepSmallGas">
+        <activity android:name=".CreationSteps.StepSmallGas">
             <intent-filter>
                 <action android:name="android.intent.action.INFO" />
 
                 <category android:name="android.intent.category.EDIT" />
             </intent-filter>
         </activity>
-        <activity android:name=".StepClosingKVD5">
+        <activity android:name=".CreationSteps.StepClosingKVD5">
             <intent-filter>
                 <action android:name="android.intent.action.INFO" />
 
                 <category android:name="android.intent.category.EDIT" />
             </intent-filter>
         </activity>
-        <activity android:name=".StepClosingKVD3">
+        <activity android:name=".CreationSteps.StepClosingKVD3">
             <intent-filter>
                 <action android:name="android.intent.action.INFO" />
 
                 <category android:name="android.intent.category.EDIT" />
             </intent-filter>
         </activity>
-        <activity android:name=".StepNom">
+        <activity android:name=".CreationSteps.StepNom">
             <intent-filter>
                 <action android:name="android.intent.action.INFO" />
 
                 <category android:name="android.intent.category.EDIT" />
             </intent-filter>
         </activity>
-        <activity android:name=".StepMax">
+        <activity android:name=".CreationSteps.StepMax">
             <intent-filter>
                 <action android:name="android.intent.action.INFO" />
 
                 <category android:name="android.intent.category.EDIT" />
             </intent-filter>
         </activity>
-        <activity android:name=".StepClosingKVDKPV">
+        <activity android:name=".CreationSteps.StepClosingKVDKPV">
             <intent-filter>
                 <action android:name="android.intent.action.INFO" />
 
                 <category android:name="android.intent.category.EDIT" />
             </intent-filter>
         </activity>
-        <activity android:name=".StepControlKND">
+        <activity android:name=".CreationSteps.StepControlKND">
             <intent-filter>
                 <action android:name="android.intent.action.INFO" />
 
                 <category android:name="android.intent.category.EDIT" />
             </intent-filter>
         </activity>
-        <activity android:name=".StepN85">
+        <activity android:name=".CreationSteps.StepN85">
             <intent-filter>
                 <action android:name="android.intent.action.INFO" />
 
                 <category android:name="android.intent.category.EDIT" />
             </intent-filter>
         </activity>
-        <activity android:name=".Step085Nom">
+        <activity android:name=".CreationSteps.Step085Nom">
             <intent-filter>
                 <action android:name="android.intent.action.INFO" />
 
                 <category android:name="android.intent.category.EDIT" />
             </intent-filter>
         </activity>
-        <activity android:name=".StepN100">
+        <activity android:name=".CreationSteps.StepN100">
             <intent-filter>
                 <action android:name="android.intent.action.INFO" />
 
                 <category android:name="android.intent.category.EDIT" />
             </intent-filter>
         </activity>
-        <activity android:name=".StepPickUp">
+        <activity android:name=".CreationSteps.StepPickUp">
             <intent-filter>
                 <action android:name="android.intent.action.INFO" />
 
                 <category android:name="android.intent.category.EDIT" />
             </intent-filter>
         </activity>
-        <activity android:name=".StepSmallGas2">
+        <activity android:name=".CreationSteps.StepSmallGas2">
             <intent-filter>
                 <action android:name="android.intent.action.INFO" />
 
                 <category android:name="android.intent.category.EDIT" />
             </intent-filter>
         </activity>
-        <activity android:name=".StepFinish">
+        <activity android:name=".CreationSteps.StepFinish">
             <intent-filter>
                 <action android:name="android.intent.action.INFO" />
 

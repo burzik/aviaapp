@@ -135,11 +135,11 @@ public class CreateUser extends AppCompatActivity {
                     mDatabase.push().setValue(dataMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
-                            /*if(task.isSuccessful()){
+                            if(task.isSuccessful()){
                                 Toast.makeText(CreateUser.this, "NYA", Toast.LENGTH_LONG).show();
                             } else {
                                 Toast.makeText(CreateUser.this, "sad", Toast.LENGTH_LONG).show();
-                            }*/
+                            }
                         }
                     });
                 }

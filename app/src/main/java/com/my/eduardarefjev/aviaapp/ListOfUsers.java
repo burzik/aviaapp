@@ -39,7 +39,7 @@ public class ListOfUsers extends AppCompatActivity {
 
         this.setTitle("Users");
 
-        mDatabase = FirebaseDatabase.getInstance().getReference().child("User");
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("Users");
         mUserList = (ListView) findViewById(R.id.LinearListOfUsers);
         final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, mUsernames);
         mUserList.setAdapter(arrayAdapter);

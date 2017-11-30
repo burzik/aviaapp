@@ -20,11 +20,6 @@
         android:inputType="textPassword" />
 
     <Button
-        android:id="@+id/LinearSignUp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Sign up" />
-    <Button
         android:id="@+id/LinearSignIn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

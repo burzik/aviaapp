@@ -1,4 +1,4 @@
-package com.my.eduardarefjev.aviaapp;
+package com.my.eduardarefjev.aviaapp.CreationSteps;
 
 import java.util.Date;
 

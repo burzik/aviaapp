@@ -5,9 +5,19 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
-import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
+import com.my.eduardarefjev.aviaapp.CreationSteps.StepEngineInfo;
+
+import static com.my.eduardarefjev.aviaapp.FirebaseManager.mAuth;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -22,11 +32,45 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.linear_main_screen);
 
+        final TextView hello = (TextView) findViewById(R.id.LinearHello);
+        //String name = FirebaseManager.currentUser();
+        //hello.append(" name" + name);
+
         createNewRecord();
         showRecords();
         createUser();
         setPrivileges();
         settings();
+
+
+        //////TODO Add to FirebaseManager
+        mAuth = FirebaseAuth.getInstance();
+        FirebaseUser mUser = mAuth.getCurrentUser();
+        String userUid = "";
+        if (mUser != null) {
+            userUid = mUser.getUid();
+        }
+            //Query
+            DatabaseReference mDatabase;
+            mDatabase = FirebaseDatabase.getInstance().getReference().child("Users");
+            Query query = mDatabase.orderByChild("uid").equalTo(userUid);
+            query.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.exists()) {
+                        for (DataSnapshot issue : dataSnapshot.getChildren()) {
+                            User spacecraft1 = issue.getValue(User.class);
+                            hello.append(" " + spacecraft1.getLastName());
+                        }
+                    }
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+        //}
     }
 
     public void createNewRecord(){
@@ -34,7 +78,6 @@ public class MainActivity extends AppCompatActivity {
         bCreateRecord.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent intent = new Intent(MainActivity.this, StepEngineInfo.class);
                 startActivity(intent);
             }
@@ -46,7 +89,6 @@ public class MainActivity extends AppCompatActivity {
         bShowRecords.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent intent = new Intent(MainActivity.this, Records.class);
                 startActivity(intent);
             }
@@ -58,7 +100,6 @@ public class MainActivity extends AppCompatActivity {
         bCreateUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent intent = new Intent(MainActivity.this, CreateUser.class);
                 startActivity(intent);
             }
@@ -70,7 +111,6 @@ public class MainActivity extends AppCompatActivity {
         bSetPrivileges.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent intent = new Intent(MainActivity.this, ListOfUsers.class);
                 startActivity(intent);
             }
