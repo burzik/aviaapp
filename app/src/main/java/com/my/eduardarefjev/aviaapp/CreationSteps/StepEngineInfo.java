@@ -8,11 +8,15 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
+import android.text.format.DateFormat;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.my.eduardarefjev.aviaapp.R;
+
+import java.util.Date;
 
 /**
  * Created by EduardArefjev on 01/10/2017.
@@ -32,15 +36,13 @@ public class StepEngineInfo extends AppCompatActivity {
 
         nextSecondStep();
 
-        final EditText editText = (EditText) findViewById(R.id.LinearInpAtmPressure);
-        final EditText editText2 = (EditText) findViewById(R.id.LinearInpAtmTemperature);
+        TextView date = (TextView) findViewById(R.id.LinearDate);
+        Date currentTime = new Date();
+        date.append(" " + DateFormat.format("dd.MM.yyyy", currentTime).toString());
 
         //editText.getBackground().setColorFilter(Color.parseColor("#00ff00"), PorterDuff.Mode.DARKEN);
 
-        final Resources.Theme theme = this.getTheme();
-
-        CreationHelper.checkValue(editText2, 18, 24);
-        CreationHelper.checkValue(editText, 0, 10);
+        //final Resources.Theme theme = this.getTheme();
 
     }
 

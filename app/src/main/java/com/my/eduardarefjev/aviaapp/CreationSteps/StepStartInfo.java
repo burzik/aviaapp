@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 import com.my.eduardarefjev.aviaapp.FirebaseManager;
 import com.my.eduardarefjev.aviaapp.R;
@@ -23,7 +24,20 @@ public class StepStartInfo extends AppCompatActivity {
         setContentView(R.layout.linear_step_start_info);
 
         this.setTitle("Базовые данные 2");
-        String name = FirebaseManager.currentUser();
+        //String name = FirebaseManager.currentUser();
+
+        EditText eLimb = (EditText) findViewById(R.id.LinearLabelInpLimbArg);
+        CreationHelper.checkValue(eLimb, 18, 24);
+
+        EditText eLaunchingTVSU = (EditText) findViewById(R.id.LinearLabelInpLaunchingTVSU);
+        CreationHelper.checkValue(eLaunchingTVSU, 0, 31);
+        EditText eEngineCasting = (EditText) findViewById(R.id.LinearLabelInpEngineCasting);
+        CreationHelper.checkValue(eEngineCasting, 0, 550);
+        EditText eVSUDisconnection = (EditText) findViewById(R.id.LinearLabelInpVSUDisconnection);
+        CreationHelper.checkValue(eVSUDisconnection, 41.5, 44.5);
+        EditText eTEngine = (EditText) findViewById(R.id.LinearLabelInpTEngine);
+        CreationHelper.checkValue(eTEngine, 0, 50);
+
         nextSecondStep();
     }
 
@@ -38,5 +52,9 @@ public class StepStartInfo extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
     }
 }

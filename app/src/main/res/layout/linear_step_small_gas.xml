@@ -17,7 +17,7 @@
             android:padding="14dp"
             android:textSize="12pt"/>
         <TextView
-            android:id="@+id/LinearN11"
+            android:id="@+id/LinearLabelN1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/label_n1"
@@ -25,11 +25,11 @@
             android:textSize="10pt"
             android:gravity="center"/>
         <EditText
-            android:id="@+id/RelativeInpN1"
+            android:id="@+id/LinearInpN1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/enter"
-            android:inputType="number"
+            android:inputType="numberDecimal"
             android:paddingBottom="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
@@ -65,7 +65,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/enter"
-            android:inputType="text"
+            android:inputType="numberDecimal"
             android:paddingBottom="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
@@ -83,7 +83,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/enter"
-            android:inputType="number"
+            android:inputType="numberSigned"
             android:paddingBottom="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
@@ -277,6 +277,16 @@
             android:text="@string/label_closing_lantern"
             android:textSize="10pt"
             android:gravity="center"/>
+        <!--TODO SPINNER-->
+        <Spinner
+            android:id="@+id/LinearLabelInpSpinnerClosingLantern"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:textSize="10pt"
+            android:gravity="center" />
         <EditText
             android:id="@+id/LinearInpClosingLantern"
             android:layout_width="match_parent"
@@ -295,6 +305,16 @@
             android:text="@string/label_air_cond"
             android:textSize="10pt"
             android:gravity="center"/>
+        <!--TODO SPINNER-->
+        <Spinner
+            android:id="@+id/LinearLabelInpSpinnerAirCond"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:textSize="10pt"
+            android:gravity="center" />
         <EditText
             android:id="@+id/LinearInpAirCond"
             android:layout_width="match_parent"
@@ -318,7 +338,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/enter"
-            android:inputType="number"
+            android:inputType="numberDecimal"
             android:paddingBottom="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"

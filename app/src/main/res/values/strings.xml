@@ -159,6 +159,10 @@
         <item>Пользователь</item>
         <item>Админ</item>
     </string-array>
+    <string-array name="good_bad">
+        <item>Норма</item>
+        <item>Не норма</item>
+    </string-array>
 
     <!-- Edit text -->
     <string name="enter">enter</string>

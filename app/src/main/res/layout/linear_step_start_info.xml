@@ -83,7 +83,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/enter"
-            android:inputType="text"
+            android:inputType="number"
             android:paddingBottom="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
@@ -101,7 +101,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/enter"
-            android:inputType="number"
+            android:inputType="numberDecimal"
             android:paddingBottom="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
@@ -128,26 +128,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:weightSum="5">
-            <Button
-                android:id="@+id/LinearButtonBackSecondStep"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:gravity="center"
-                android:layout_gravity="start"
-                android:text="@string/button_back"
-                android:layout_weight="1"
-                />
-            <TextView
-                android:id="@+id/LinearTextViewCenterSecondStep"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:textSize="0sp"
-                android:gravity="center"
-                android:layout_weight="3"/>
+            android:orientation="vertical">
             <Button
                 android:id="@+id/LinearButtonNextSecondStep"
                 android:layout_width="wrap_content"
@@ -156,7 +137,6 @@
                 android:gravity="center"
                 android:layout_gravity="end"
                 android:text="@string/button_next"
-                android:layout_weight="1"
                 />
         </LinearLayout>
 
