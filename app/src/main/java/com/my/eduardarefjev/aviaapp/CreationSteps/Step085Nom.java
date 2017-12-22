@@ -18,8 +18,6 @@ import static java.lang.Double.MIN_VALUE;
 
 public class Step085Nom extends AppCompatActivity {
 
-    private Button bNextStep;
-
     @Override
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,7 +42,7 @@ public class Step085Nom extends AppCompatActivity {
     }
 
     public void nextSecondStep() {
-        bNextStep = (Button) findViewById(R.id.LinearButtonNextStep085Nom);
+        Button bNextStep = (Button) findViewById(R.id.LinearButtonNextStep085Nom);
         bNextStep.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
