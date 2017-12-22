@@ -13,6 +13,7 @@ import static java.lang.Double.MIN_VALUE;
 
 /**
  * Created by EduardArefjev on 29/10/2017.
+ *
  */
 
 public class Step085Nom extends AppCompatActivity {
