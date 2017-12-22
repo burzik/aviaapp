@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.my.eduardarefjev.aviaapp.FirebaseManager;
 import com.my.eduardarefjev.aviaapp.R;
 
 /**

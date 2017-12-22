@@ -9,7 +9,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
-import com.my.eduardarefjev.aviaapp.CreateUser;
 import com.my.eduardarefjev.aviaapp.R;
 
 /**

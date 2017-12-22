@@ -7,11 +7,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.my.eduardarefjev.aviaapp.MainActivity;
 import com.my.eduardarefjev.aviaapp.R;
 
 import static java.lang.Double.MAX_VALUE;
-import static java.lang.Double.MIN_VALUE;
 
 /**
  * Created by EduardArefjev on 22/12/2017.
