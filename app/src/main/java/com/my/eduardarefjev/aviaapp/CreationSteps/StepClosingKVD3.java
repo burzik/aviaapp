@@ -10,11 +10,10 @@ import com.my.eduardarefjev.aviaapp.R;
 
 /**
  * Created by EduardArefjev on 23/10/2017.
+ *
  */
 
 public class StepClosingKVD3 extends AppCompatActivity {
-
-    private Button bNextStep;
 
     @Override
     protected void onCreate (Bundle savedInstanceState) {
@@ -27,7 +26,7 @@ public class StepClosingKVD3 extends AppCompatActivity {
     }
 
     public void nextSecondStep() {
-        bNextStep = (Button) findViewById(R.id.LinearButtonNextClosingKVD3);
+        Button bNextStep = (Button) findViewById(R.id.LinearButtonNextClosingKVD3);
         bNextStep.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
