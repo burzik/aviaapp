@@ -21,21 +21,28 @@ public class CreationHelper {
             public void onFocusChange(View v, boolean hasFocus){
                 if (value.getText().toString().length() != 0 ) {
                     double dValue = Double.parseDouble(value.getText().toString());
+                    double leftVal = left;
+
                     if (dValue < left) {
                         value.getBackground().setColorFilter(Color.parseColor("#ff0000"), PorterDuff.Mode.DARKEN);
-                        //if (left == Double.MIN_VALUE){}
+                        if (left == -Double.MIN_VALUE){
+                            leftVal = 0;
+                        }
                         if (right == Double.MAX_VALUE){
-                            value.setError("критичное значение (" + left + "- ∞)");
+                            value.setError("критичное значение (" + leftVal + "- ∞)");
                         } else {
-                        value.setError("критичное значение (" + left + "-" + right + ")");
+                        value.setError("критичное значение (" + leftVal + "-" + right + ")");
                         }
                     }
                     else if (dValue > right) {
+                        if (left == -Double.MIN_VALUE){
+                            leftVal = 0;
+                        }
                         value.getBackground().setColorFilter(Color.parseColor("#ff0000"), PorterDuff.Mode.DARKEN);
                             if (right == Double.MAX_VALUE){
-                            value.setError("критичное значение (" + left + "- ∞)");
+                            value.setError("критичное значение (" + leftVal + "- ∞)");
                             } else {
-                            value.setError("критичное значение (" + left + "-" + right + ")");
+                            value.setError("критичное значение (" + leftVal + "-" + right + ")");
                             }
                         //value.setError("критичное значение (" + left + "-" + right + ")");
                     } else {
@@ -64,7 +71,7 @@ public class CreationHelper {
     }
 
     public static double calcControl(double temp, double nkvd){
-        double result = 0;
+        double result;
         result = nkvd*Math.sqrt((273+temp)/288);
         return result;
     }

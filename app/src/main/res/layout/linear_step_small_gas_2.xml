@@ -25,11 +25,11 @@
             android:textSize="10pt"
             android:gravity="center"/>
         <EditText
-            android:id="@+id/RelativeInpN1"
+            android:id="@+id/LinearInpN1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/enter"
-            android:inputType="number"
+            android:inputType="numberDecimal"
             android:paddingBottom="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
@@ -65,7 +65,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/enter"
-            android:inputType="text"
+            android:inputType="numberDecimal"
             android:paddingBottom="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
@@ -137,7 +137,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/enter"
-            android:inputType="number"
+            android:inputType="numberDecimal"
             android:paddingBottom="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
@@ -155,7 +155,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/enter"
-            android:inputType="number"
+            android:inputType="numberDecimal"
             android:paddingBottom="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
@@ -319,30 +319,10 @@
                 android:padding="5dp"
                 android:textSize="8pt"/>
         </RelativeLayout>
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:weightSum="5">
-            <Button
-                android:id="@+id/LinearButtonBackStepSmallGas2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:gravity="center"
-                android:layout_gravity="start"
-                android:text="@string/button_back"
-                android:layout_weight="1"
-                />
-            <TextView
-                android:id="@+id/LinearTextViewCenterStepSmallGas2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:textSize="0sp"
-                android:gravity="center"
-                android:layout_weight="3"/>
+            android:orientation="vertical">
             <Button
                 android:id="@+id/LinearButtonNextStepSmallGas2"
                 android:layout_width="wrap_content"
@@ -351,9 +331,7 @@
                 android:gravity="center"
                 android:layout_gravity="end"
                 android:text="@string/button_next"
-                android:layout_weight="1"
                 />
         </LinearLayout>
-
     </LinearLayout>
 </ScrollView>

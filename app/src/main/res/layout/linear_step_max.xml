@@ -16,11 +16,11 @@
             android:textSize="10pt"
             android:gravity="center"/>
         <EditText
-            android:id="@+id/RelativeInpN1"
+            android:id="@+id/LinearInpN1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/enter"
-            android:inputType="number"
+            android:inputType="numberDecimal"
             android:paddingBottom="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
@@ -35,11 +35,11 @@
             android:textSize="10pt"
             android:gravity="center"/>
         <EditText
-            android:id="@+id/RelativeInpN2_4"
+            android:id="@+id/LinearInpN2_4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/enter"
-            android:inputType="number"
+            android:inputType="numberDecimal"
             android:paddingBottom="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
@@ -75,7 +75,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/enter"
-            android:inputType="text"
+            android:inputType="numberDecimal"
             android:paddingBottom="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
@@ -177,17 +177,15 @@
             android:text="@string/label_turn_on"
             android:textSize="10pt"
             android:gravity="center"/>
-        <EditText
-            android:id="@+id/LinearInpKrTank"
+        <Spinner
+            android:id="@+id/RelativeSpinnerInpKrTank"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/enter"
-            android:inputType="number"
             android:paddingBottom="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:textSize="10pt"
-            android:gravity="center"/>
+            android:gravity="center" />
         <TextView
             android:id="@+id/LinearLabelSpace"
             android:layout_width="match_parent"
@@ -207,7 +205,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/enter"
-            android:inputType="number"
+            android:inputType="numberDecimal"
             android:paddingBottom="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
@@ -250,30 +248,10 @@
             android:layout_marginRight="20dp"
             android:textSize="10pt"
             android:gravity="center"/>
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:weightSum="5">
-            <Button
-                android:id="@+id/LinearButtonBackClosingKVD3Max"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:gravity="center"
-                android:layout_gravity="start"
-                android:text="@string/button_back"
-                android:layout_weight="1"
-                />
-            <TextView
-                android:id="@+id/LinearTextViewClosingKVD3Max"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:textSize="0sp"
-                android:gravity="center"
-                android:layout_weight="3"/>
+            android:orientation="vertical">
             <Button
                 android:id="@+id/LinearButtonNextClosingKVD3Max"
                 android:layout_width="wrap_content"
@@ -282,7 +260,6 @@
                 android:gravity="center"
                 android:layout_gravity="end"
                 android:text="@string/button_next"
-                android:layout_weight="1"
                 />
         </LinearLayout>
     </LinearLayout>

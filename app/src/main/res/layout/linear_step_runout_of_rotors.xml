@@ -7,16 +7,17 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <TextView
-            android:id="@+id/LinearLabelEngMeasurement"
+            android:id="@+id/LinearLabelRotorVD"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/label_eng_measurement"
+            android:text="@string/label_rotor_vd"
             android:padding="5dp"
             android:textSize="10pt"
             android:gravity="center"/>
         <EditText
-            android:id="@+id/LinearLabelInpEngMeasurement"
+            android:id="@+id/LinearLabelInpRotorVD"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/enter"
@@ -26,12 +27,32 @@
             android:layout_marginRight="20dp"
             android:textSize="10pt"
             android:gravity="center" />
+        <TextView
+            android:id="@+id/LinearLabelRotorND"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/label_rotor_nd"
+            android:padding="5dp"
+            android:textSize="10pt"
+            android:gravity="center"/>
+        <EditText
+            android:id="@+id/LinearLabelInpRotorND"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/enter"
+            android:inputType="number"
+            android:paddingBottom="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:textSize="10pt"
+            android:gravity="center" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
             <Button
-                android:id="@+id/LinearButtonNextStepN100"
+                android:id="@+id/LinearButtonNextRunOutOfRotors"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"

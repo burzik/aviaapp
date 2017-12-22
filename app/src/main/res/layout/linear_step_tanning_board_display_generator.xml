@@ -7,16 +7,17 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <TextView
-            android:id="@+id/LinearLabelEngMeasurement"
+            android:id="@+id/LinearLabelColdEngine"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/label_eng_measurement"
+            android:text="@string/label_cold_engine"
             android:padding="5dp"
             android:textSize="10pt"
             android:gravity="center"/>
         <EditText
-            android:id="@+id/LinearLabelInpEngMeasurement"
+            android:id="@+id/LinearLabelInpColdEngine"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/enter"
@@ -31,7 +32,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
             <Button
-                android:id="@+id/LinearButtonNextStepN100"
+                android:id="@+id/LinearButtonNextTanningBoardDisplayGenerator"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"

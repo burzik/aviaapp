@@ -40,10 +40,10 @@ public class StepEngineData {
     public float modeSmallGasPressureHT; //г бак
     public boolean modeSmallGasLightsClosure; //закрытие замков фонаря
     public boolean modeSmallGasConditioning; //включение кондиционирования
-    public int modeSmallGasCabin; //Pкабинsы
+    public float modeSmallGasCabin; //Pкабинsы
 
     //stage5
-    public int stage5ModeName; //прямой ход
+    public float stage5ModeName; //прямой ход
     public int stage5N1FlightTakeoff; //полет - взлет
     public int stage5N1TakeoffLanding; //взлет - посадка
     public int stage5N1FlightLanding; //полет - посадка
@@ -60,7 +60,7 @@ public class StepEngineData {
     //0.85 Nom
     public float mode85NomHPCSpeed; //n1
     public int mode85NomTemp;
-    public int mode85NomOilPressure;
+    public float mode85NomOilPressure;
     public int mode85NomOilTemp;
     public int mode85NomFuelPressure;
     public int mode85NomVibration;
@@ -71,7 +71,7 @@ public class StepEngineData {
     //Nom
     public float modeNomHPCSpeed; //n1
     public int modeNomTemp;
-    public int modeNomOilPressure;
+    public float modeNomOilPressure;
     public int modeNomOilTemp;
     public int modeNomFuelPressure;
     public int modeNomVibration;
@@ -91,7 +91,7 @@ public class StepEngineData {
     public float modeMaxHPCSpeed;
     public float modeMaxHPCSpeedN2;
     public int modeMaxTemp;
-    public int modeMaxOilPressure;
+    public float modeMaxOilPressure;
     public int modeMaxOilTemp;
     public int modeMaxFuelPressure;
     public int modeMaxVibration;

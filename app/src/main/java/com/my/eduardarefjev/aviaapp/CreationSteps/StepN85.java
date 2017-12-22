@@ -9,6 +9,9 @@ import android.widget.EditText;
 
 import com.my.eduardarefjev.aviaapp.R;
 
+import static java.lang.Double.MAX_VALUE;
+import static java.lang.Double.MIN_VALUE;
+
 /**
  * Created by EduardArefjev on 29/10/2017.
  */
@@ -31,15 +34,16 @@ public class StepN85 extends AppCompatActivity {
         EditText eFlightLanding = (EditText) findViewById(R.id.LinearLabelInpFlightLanding);
         CreationHelper.checkValue(eFlightLanding, 5, 10);
         EditText eLowPrc = (EditText) findViewById(R.id.LinearLabelInpLowPrc);
-        CreationHelper.checkValue(eLowPrc, 0, 70);
+        CreationHelper.checkValue(eLowPrc, 70, MAX_VALUE); //>70
         EditText eRelease = (EditText) findViewById(R.id.LinearLabelInpRelease);
         CreationHelper.checkValue(eRelease, 1.5, 2.5);
         EditText eCleaning = (EditText) findViewById(R.id.LinearLabelInpCleaning);
         CreationHelper.checkValue(eCleaning, 1.5, 2.5);
+
         EditText eLowPrc2 = (EditText) findViewById(R.id.LinearLabelInpLowPrc2);
-        CreationHelper.checkValue(eLowPrc2, 0, 60);
+        CreationHelper.checkValue(eLowPrc2, 60, MAX_VALUE);
         EditText eTmc = (EditText) findViewById(R.id.LinearLabelInpTmc);
-        CreationHelper.checkValue(eTmc, -100, -5);
+        CreationHelper.checkValue(eTmc, -5, MAX_VALUE);
         EditText eVGenerator = (EditText) findViewById(R.id.LinearLabelInpVGenerator);
         CreationHelper.checkValue(eVGenerator, 27, 29);
 
