@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/LinearLabelFirstName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/label_first_name"
+            android:padding="5dp"
+            android:textSize="10pt"
+            android:gravity="center"/>
+        <EditText
+            android:id="@+id/LinearLabelInpFirstName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/enter"
+            android:inputType="text"
+            android:paddingBottom="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:textSize="10pt"
+            android:gravity="center" />
+        <TextView
+            android:id="@+id/LinearLabelLastName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/label_last_name"
+            android:padding="5dp"
+            android:textSize="10pt"
+            android:gravity="center"/>
+        <EditText
+            android:id="@+id/LinearLabelInpLastName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/enter"
+            android:inputType="text"
+            android:paddingBottom="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:textSize="10pt"
+            android:gravity="center" />
+
+        <TextView
+            android:id="@+id/LinearLabelEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/label_email"
+            android:padding="5dp"
+            android:textSize="10pt"
+            android:gravity="center"/>
+        <EditText
+            android:id="@+id/LinearLabelInpEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/enter"
+            android:inputType="textEmailAddress"
+            android:paddingBottom="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:textSize="10pt"
+            android:gravity="center" />
+        <TextView
+            android:id="@+id/LinearLabelDefaultPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/label_default_password"
+            android:padding="5dp"
+            android:textSize="10pt"
+            android:gravity="center"/>
+        <EditText
+            android:id="@+id/LinearLabelInpPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/enter"
+            android:inputType="text"
+            android:paddingBottom="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:textSize="10pt"
+            android:gravity="center" />
+        <TextView
+            android:id="@+id/LinearLabelPrivileges"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/button_set_privileges"
+            android:padding="5dp"
+            android:textSize="10pt"
+            android:gravity="center"/>
+        <Spinner
+            android:id="@+id/LinearLabelInpSpinnerPrivileges"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:textSize="10pt"
+            android:gravity="center" />
+        <Button
+            android:id="@+id/LinearButtonCreateUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:layout_gravity="end"
+            android:text="Create"
+            android:layout_weight="1" />
+    </LinearLayout>
+</ScrollView>

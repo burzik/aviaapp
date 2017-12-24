@@ -123,6 +123,7 @@ public class CreateUser extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (!task.isSuccessful()) {
+
                     String ex = task.getException().toString();
                     Toast.makeText(CreateUser.this, "Registration Failed"+ex, Toast.LENGTH_LONG).show();
                 } else {
@@ -131,6 +132,7 @@ public class CreateUser extends AppCompatActivity {
                     assert mUser2 != null;
                     String sUID = mUser2.getUid();
                     mAuth2.signOut();
+
                     dataMap.put("uid", sUID);
                     mDatabase.push().setValue(dataMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override

@@ -17,12 +17,16 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import android.app.ListActivity;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 
 /**
  * Created by EduardArefjev on 03/11/2017.
  */
 
-public class ListOfUsers extends AppCompatActivity {
+public class ListOfUsers extends ListActivity {
 
     //private RecyclerView mUserList;
 
@@ -31,18 +35,32 @@ public class ListOfUsers extends AppCompatActivity {
     private ListView mUserList;
     private ArrayList<String> mUsernames = new ArrayList<>();
     //private ArrayList<User> mUsernames = new ArrayList<>();
+    private ArrayList<User> m_parts = new ArrayList<User>();
+    private Runnable viewParts;
+    private ListOfUsersViewHolder m_adapter;
 
     @Override
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.linear_list_of_users);
+        setContentView(R.layout.activity_main);
 
         this.setTitle("Users");
+
+        m_adapter = new ListOfUsersViewHolder(this, R.layout.activity_main, m_parts);
+
+        setListAdapter(m_adapter);
+        viewParts = new Runnable() {
+            public void run() {
+                handler.sendEmptyMessage(0);
+            }
+        };
+        Thread thread =  new Thread(null, viewParts, "MagentoBackground");
+        thread.start();
 
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Users");
         mUserList = (ListView) findViewById(R.id.LinearListOfUsers);
         final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, mUsernames);
-        mUserList.setAdapter(arrayAdapter);
+        //mUserList.setAdapter(arrayAdapter);
 
         mDatabase.addChildEventListener(new ChildEventListener() {
             @Override
@@ -52,7 +70,11 @@ public class ListOfUsers extends AppCompatActivity {
                 User spacecraft=dataSnapshot.getValue(User.class);
                 arrayAdapter.add(spacecraft.getFirstName());
                 arrayAdapter.notifyDataSetChanged();
-
+                m_adapter.add(spacecraft);
+                m_adapter.notifyDataSetChanged();
+                //m_parts.add("123");
+                //m_parts.add(new User("MyItemName #2", "123"));
+                //m_parts.notify();
                /* for (DataSnapshot ds : dataSnapshot.getChildren())
                 {
 
@@ -102,6 +124,25 @@ public class ListOfUsers extends AppCompatActivity {
 */
     }
 
+
+    private Handler handler = new Handler()
+    {
+
+
+        public void handleMessage(Message msg)
+        {
+            // create some objects
+            // here is where you could also request data from a server
+            // and then create objects from that data.
+            //m_parts.add(new User("MyItemName", "This is item #1", 0));
+            //m_parts.add(new User("MyItemName #2", "123"));
+
+            m_adapter = new ListOfUsersViewHolder(ListOfUsers.this, R.layout.activity_main, m_parts);
+
+            // display the list.
+            setListAdapter(m_adapter);
+        }
+    };
 
     public void nextSecondStep() {
         bNextStep = (Button) findViewById(R.id.LinearButtonNextFinish);
