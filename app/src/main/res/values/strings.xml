@@ -148,13 +148,14 @@
     <string name="label_azs_agd_gmk">АЗС \"АГД, ГМК\"</string>
     <string name="label_turn_on">ВКЛ</string>
 
-    <!--Пользователь-->
+    <!-- Ru Users -->
     <string name="label_first_name">Имя</string>
     <string name="label_last_name">Фамилия</string>
     <string name="label_email">Электронный адрес</string>
     <string name="label_default_password">Пароль</string>
     <string name="label_privilege">Привилегии</string>
 
+    <!-- Ru Arrays -->
     <string-array name="privileges">
         <item>Пользователь</item>
         <item>Админ</item>
@@ -174,6 +175,7 @@
     <string name="button_records">Записи</string>
     <string name="button_create_user">Создать пользователя</string>
     <string name="button_set_privileges">Изменить привелегии</string>
+    <string name="button_change">Изменить</string>
 
 
 

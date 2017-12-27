@@ -3,7 +3,7 @@ package com.my.eduardarefjev.aviaapp;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.support.annotation.LayoutRes;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,16 +11,23 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.ArrayList;
 
 /**
- * Created by EduardArefjev on 22/12/2017.
+ * HISTORY
+ * 	Date			Author				Comments
+ * 	22.12.2017		Eduard Arefjev 		Created viewholder for "ListOfUsers" screen
  */
+
 
 public class ListOfUsersViewHolder extends ArrayAdapter<User> {
 
     private ArrayList<User> objects;
     private Activity activity;
+    private DatabaseReference mDatabase;
 
     private class ViewHolder{
         TextView firstName;
@@ -73,10 +80,21 @@ public class ListOfUsersViewHolder extends ArrayAdapter<User> {
                 //Intent intent = new Intent(activity, DetailedUserInfo.class);
                 //intent.putExtra("position", position);
                 //activity.startActivity(intent);
+                mDatabase = FirebaseDatabase.getInstance().getReference().child("Users");
+
                 Intent intent = new Intent(getContext(), DetailedUserInfo.class);
                 intent.putExtra("position", position);
                 User i = objects.get(position);
                 intent.putExtra("firstname", i.getFirstName());
+                intent.putExtra("obj", objects);
+
+                Bundle extra = new Bundle();
+                extra.putSerializable("objects", objects);
+
+                //Intent intent = new Intent(getBaseContext(), ShowSpread.class);
+                intent.putExtra("extra", extra);
+
+                //intent.putExtra("qwe",objects);
                 getContext().startActivity(intent);
             }
         });

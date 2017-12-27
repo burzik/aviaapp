@@ -23,11 +23,12 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * Created by EduardArefjev on 29/10/2017.
- * Rec
+ * HISTORY
+ * 	Date			Author				Comments
+ * 	29.10.2017		Eduard Arefjev 		Created "UserCreation" screen
  */
 
-public class CreateUser extends AppCompatActivity {
+public class UserCreation extends AppCompatActivity {
 
     private DatabaseReference mDatabase;
     private FirebaseUser mUser2;
@@ -79,7 +80,7 @@ public class CreateUser extends AppCompatActivity {
         }
 
         //EA Create DropDown List
-        ArrayAdapter<String> myAdapter = new ArrayAdapter<>(CreateUser.this, android.R.layout.simple_spinner_dropdown_item, getResources().getStringArray(R.array.privileges));
+        ArrayAdapter<String> myAdapter = new ArrayAdapter<>(UserCreation.this, android.R.layout.simple_spinner_dropdown_item, getResources().getStringArray(R.array.privileges));
         myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerPrivileges.setAdapter(myAdapter);
 
@@ -125,9 +126,9 @@ public class CreateUser extends AppCompatActivity {
                 if (!task.isSuccessful()) {
 
                     String ex = task.getException().toString();
-                    Toast.makeText(CreateUser.this, "Registration Failed"+ex, Toast.LENGTH_LONG).show();
+                    Toast.makeText(UserCreation.this, "Registration Failed"+ex, Toast.LENGTH_LONG).show();
                 } else {
-                    Toast.makeText(CreateUser.this, "Registration successful", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(UserCreation.this, "Registration successful", Toast.LENGTH_SHORT).show();
                     mUser2 = mAuth2.getCurrentUser();
                     assert mUser2 != null;
                     String sUID = mUser2.getUid();
@@ -138,9 +139,9 @@ public class CreateUser extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if(task.isSuccessful()){
-                                Toast.makeText(CreateUser.this, "NYA", Toast.LENGTH_LONG).show();
+                                Toast.makeText(UserCreation.this, "NYA", Toast.LENGTH_LONG).show();
                             } else {
-                                Toast.makeText(CreateUser.this, "sad", Toast.LENGTH_LONG).show();
+                                Toast.makeText(UserCreation.this, "sad", Toast.LENGTH_LONG).show();
                             }
                         }
                     });

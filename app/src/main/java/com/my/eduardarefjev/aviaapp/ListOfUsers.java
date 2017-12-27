@@ -62,45 +62,8 @@ public class ListOfUsers extends ListActivity {
         final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, mUsernames);
         //mUserList.setAdapter(arrayAdapter);
 
-        mDatabase.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+        //updateAdapter();
 
-                //arrayAdapter.clear();
-                User spacecraft=dataSnapshot.getValue(User.class);
-                arrayAdapter.add(spacecraft.getFirstName());
-                arrayAdapter.notifyDataSetChanged();
-                m_adapter.add(spacecraft);
-                m_adapter.notifyDataSetChanged();
-                //m_parts.add("123");
-                //m_parts.add(new User("MyItemName #2", "123"));
-                //m_parts.notify();
-               /* for (DataSnapshot ds : dataSnapshot.getChildren())
-                {
-
-                }*/
-            }
-
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
 /*
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference().child("User");
@@ -124,6 +87,39 @@ public class ListOfUsers extends ListActivity {
 */
     }
 
+    private void updateAdapter(){
+        m_adapter.clear();
+        mDatabase.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+
+                User user=dataSnapshot.getValue(User.class);
+                m_adapter.add(user);
+                m_adapter.notifyDataSetChanged();
+
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
 
     private Handler handler = new Handler()
     {
@@ -140,6 +136,7 @@ public class ListOfUsers extends ListActivity {
             m_adapter = new ListOfUsersViewHolder(ListOfUsers.this, R.layout.activity_main, m_parts);
 
             // display the list.
+
             setListAdapter(m_adapter);
         }
     };
@@ -155,4 +152,13 @@ public class ListOfUsers extends ListActivity {
             }
         });
     }
+
+    @Override
+    protected void onResume() {
+        super.onStart();
+
+        updateAdapter();
+        int a = 1;
+        int b =2;
+        }
 }

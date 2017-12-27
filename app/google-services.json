@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "623015437725-iaras3h5p4q6fc6iiv2mtvtm6a7jdtg5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.my.eduardarefjev.aviaapp",
+            "certificate_hash": "3a7de87cfec08169bfd7863038b922788f2f5b72"
+          }
+        },
+        {
           "client_id": "623015437725-cc7nocb3dg0hls11l9kigt8ikmklduhq.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

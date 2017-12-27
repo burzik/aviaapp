@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
         bCreateUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, CreateUser.class);
+                Intent intent = new Intent(MainActivity.this, UserCreation.class);
                 startActivity(intent);
             }
         });
