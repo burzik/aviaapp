@@ -149,21 +149,21 @@
                 <category android:name="android.intent.category.EDIT" />
             </intent-filter>
         </activity>
-        <activity android:name=".UserCreation">
+        <activity android:name=".UserInformation.UserCreation">
             <intent-filter>
                 <action android:name="android.intent.action.INFO" />
 
                 <category android:name="android.intent.category.EDIT" />
             </intent-filter>
         </activity>
-        <activity android:name=".ListOfUsers">
+        <activity android:name=".UserInformation.ListOfUsers">
             <intent-filter>
                 <action android:name="android.intent.action.INFO" />
 
                 <category android:name="android.intent.category.EDIT" />
             </intent-filter>
         </activity>
-        <activity android:name=".DetailedUserInfo">
+        <activity android:name=".UserInformation.DetailedUserInfo">
             <intent-filter>
                 <action android:name="android.intent.action.INFO" />
 

@@ -1,18 +1,22 @@
-package com.my.eduardarefjev.aviaapp;
+package com.my.eduardarefjev.aviaapp.UserInformation;
 
 import android.os.Parcel;
 import android.os.Parcelable;
 
+
 /**
- * Created by EduardArefjev on 03/11/2017.
+ * HISTORY
+ * 	Date			Author				Comments
+ * 	03.11.2017		Eduard Arefjev 		Created "User" class, which store main information about users
+ * 	28.12.2017      Eduard Arefjev      Some minor refactoring
  */
 
 public class User implements Parcelable {
-    String email;
-    String firstName;
-    String lastName;
-    String privileges;
-    String uid;
+    private String email;
+    private String firstName;
+    private String lastName;
+    private String privileges;
+    private String uid;
 
     public User() {
     }
@@ -33,7 +37,7 @@ public class User implements Parcelable {
         return firstName;
     }
 
-    public void setFirstName(String firstName) {
+    void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
@@ -41,15 +45,15 @@ public class User implements Parcelable {
         return lastName;
     }
 
-    public void setLastName(String lastName) {
+    void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
-    public String getEmail() {
+    String getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
+    void setEmail(String email) {
         this.email = email;
     }
 
@@ -57,7 +61,7 @@ public class User implements Parcelable {
         return privileges;
     }
 
-    public void setPrivileges(String privileges) {
+    void setPrivileges(String privileges) {
         this.privileges = privileges;
     }
 

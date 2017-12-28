@@ -1,4 +1,4 @@
-package com.my.eduardarefjev.aviaapp;
+package com.my.eduardarefjev.aviaapp.UserInformation;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,9 +11,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-
-import org.w3c.dom.Text;
+import com.my.eduardarefjev.aviaapp.FirebaseManager;
+import com.my.eduardarefjev.aviaapp.R;
 
 import java.util.ArrayList;
 

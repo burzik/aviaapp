@@ -1,4 +1,4 @@
-package com.my.eduardarefjev.aviaapp;
+package com.my.eduardarefjev.aviaapp.UserInformation;
 
 import android.app.Activity;
 import android.content.Context;
@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.my.eduardarefjev.aviaapp.R;
 
 import java.util.ArrayList;
 
