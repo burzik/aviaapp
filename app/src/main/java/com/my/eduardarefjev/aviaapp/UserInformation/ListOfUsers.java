@@ -58,7 +58,7 @@ public class ListOfUsers extends ListActivity {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
 
-                User user=dataSnapshot.getValue(User.class);
+                User user = dataSnapshot.getValue(User.class);
                 m_adapter.add(user);
                 m_adapter.notifyDataSetChanged();
 
@@ -104,9 +104,6 @@ public class ListOfUsers extends ListActivity {
         bNextStep.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                //Intent intent = new Intent(StepFinish.this, MainActivity.class);
-                //startActivity(intent);
             }
         });
     }
