@@ -142,7 +142,7 @@
                 <category android:name="android.intent.category.EDIT" />
             </intent-filter>
         </activity>
-        <activity android:name=".Records">
+        <activity android:name=".CreationSteps.Records">
             <intent-filter>
                 <action android:name="android.intent.action.INFO" />
 
@@ -164,12 +164,18 @@
             </intent-filter>
         </activity>
         <activity android:name=".UserInformation.DetailedUserInfo">
+        <intent-filter>
+            <action android:name="android.intent.action.INFO" />
+
+            <category android:name="android.intent.category.EDIT" />
+        </intent-filter>
+    </activity>
+        <activity android:name=".CreationSteps.DetailedRecordInformation">
             <intent-filter>
                 <action android:name="android.intent.action.INFO" />
 
                 <category android:name="android.intent.category.EDIT" />
             </intent-filter>
         </activity>
-
     </application>
 </manifest>

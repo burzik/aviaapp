@@ -14,7 +14,7 @@ import java.util.Date;
 
 public class StepEngineData implements Parcelable{
 
-    public StepEngineData(){
+    StepEngineData(){
 
     }
 
