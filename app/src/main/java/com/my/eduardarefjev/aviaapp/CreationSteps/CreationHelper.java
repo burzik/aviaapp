@@ -3,23 +3,16 @@ package com.my.eduardarefjev.aviaapp.CreationSteps;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.os.Build;
-import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.my.eduardarefjev.aviaapp.UserInformation.User;
-import com.my.eduardarefjev.aviaapp.UserInformation.UserCreation;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -29,11 +22,15 @@ import java.util.Map;
  * 	Date			Author				Comments
  * 	29.11.2017		Eduard Arefjev 		Created to store base methods for creation
  * 	30.12.2017      Eduard Arefjev      Implemented new methods "createRecord" and "updateRecord"
+ * 	31.12.2017      Eduard Arefjev      Added new functions
  */
 
 public class CreationHelper {
 
     private static DatabaseReference mDatabase;
+    private static int counter = 0;
+    private static String idd;
+
 
     public static void checkValue(final EditText value, final double left, final double right){
         value.setOnFocusChangeListener(new View.OnFocusChangeListener() {
@@ -104,8 +101,47 @@ public class CreationHelper {
         return newPostRef.getKey();
     }
 
-    static void updateRecord(final String id, final StepEngineData user){
+    static void updateRecord(final String id, final StepEngineData engineData){
         mDatabase = FirebaseDatabase.getInstance().getReference().child("EngineLaunches").child(id);
-        mDatabase.setValue(user);
+        mDatabase.setValue(engineData);
+    }
+    public static String updateData(final String node, final int position, final StepEngineData user) {
+        mDatabase = FirebaseDatabase.getInstance().getReference().child(node);
+        counter = 0;
+
+        mDatabase.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+
+                if (position == counter) {
+                    idd = dataSnapshot.getKey();
+                    mDatabase = FirebaseDatabase.getInstance().getReference().child(node).child(idd);
+                    Map<String, Object> userNicknameUpdates = new HashMap<>();
+                    mDatabase.updateChildren(userNicknameUpdates);
+                }
+                counter++;
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    return idd;
     }
 }

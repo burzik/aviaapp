@@ -14,12 +14,14 @@ import com.my.eduardarefjev.aviaapp.R;
  * 	Date			Author				Comments
  * 	23.10.2017		Eduard Arefjev 		Created "StepControlKND" screen, one of steps
  * 	31.12.2017      Eduard Arefjev      Added writing data to FireBase and send to next view
+ * 	31.12.2017      Eduard Arefjev      Added UpdateUI function
  */
 
 public class StepControlKND extends AppCompatActivity {
 
     private StepEngineData engineData;
     String id;
+    String parentView;
 
     @Override
     protected void onCreate (Bundle savedInstanceState) {
@@ -29,9 +31,11 @@ public class StepControlKND extends AppCompatActivity {
 
         Intent intent = getIntent();
         id = intent.getStringExtra("recordId");
+        parentView = intent.getStringExtra("parentViewName");
         Bundle extra = getIntent().getBundleExtra("extra");
         engineData  = extra.getParcelable("objects");
 
+        updateUI();
         nextSecondStep();
     }
 
@@ -44,6 +48,7 @@ public class StepControlKND extends AppCompatActivity {
                 CreationHelper.updateRecord(id, engineData);
                 Intent intent = new Intent(StepControlKND.this, StepRunoutOfRotors.class);
                 intent.putExtra("recordId", id);
+                intent.putExtra("parentViewName", parentView);
                 Bundle extra = new Bundle();
                 extra.putParcelable("objects", engineData);
                 intent.putExtra("extra", extra);
@@ -72,5 +77,33 @@ public class StepControlKND extends AppCompatActivity {
         engineData.setModeKNDNKNDPLANE97(Float.valueOf(eNKNDPLANE97.getText().toString()));
         engineData.setModeKNDNKNDPLANE99(Float.valueOf(eNKNDPLANE99.getText().toString()));
         engineData.setModeKNDNKNDPLANE101(Float.valueOf(eNKNDPLANE101.getText().toString()));
+    }
+
+    public void updateUI(){
+        if(parentView.equals("DetailedRecordInformation")) {
+            EditText eNKVDPHY97 = (EditText) findViewById(R.id.LinearLabelInpNKVDPHY97);
+            EditText eNKVDPHY99 = (EditText) findViewById(R.id.LinearLabelInpNKVDPHY99);
+            EditText eNKVDPHY101 = (EditText) findViewById(R.id.LinearLabelInpNKVDPHY101);
+            EditText eNKNDPHY97 = (EditText) findViewById(R.id.LinearLabelInpNKNDPHY97);
+            EditText eNKNDPHY99 = (EditText) findViewById(R.id.LinearLabelInpNKNDPHY99);
+            EditText eNKNDPHY101 = (EditText) findViewById(R.id.LinearLabelInpNKNDPHY101);
+            EditText eNKNDPLANE97 = (EditText) findViewById(R.id.LinearLabelInpNKNDPLANE97);
+            EditText eNKNDPLANE99 = (EditText) findViewById(R.id.LinearLabelInpNKNDPLANE99);
+            EditText eNKNDPLANE101 = (EditText) findViewById(R.id.LinearLabelInpNKNDPLANE101);
+
+            eNKVDPHY97.setText(Float.toString(engineData.getModeKNDNKVDPHY97()));
+            eNKVDPHY99.setText(Float.toString(engineData.getModeKNDNKVDPHY99()));
+            eNKVDPHY101.setText(Float.toString(engineData.getModeKNDNKVDPHY101()));
+            eNKNDPHY97.setText(Float.toString(engineData.getModeKNDNKNDPHY97()));
+            eNKNDPHY99.setText(Float.toString(engineData.getModeKNDNKNDPHY99()));
+            eNKNDPHY101.setText(Float.toString(engineData.getModeKNDNKNDPHY101()));
+            eNKNDPLANE97.setText(Float.toString(engineData.getModeKNDNKNDPLANE97()));
+            eNKNDPLANE99.setText(Float.toString(engineData.getModeKNDNKNDPLANE99()));
+            eNKNDPLANE101.setText(Float.toString(engineData.getModeKNDNKNDPLANE101()));
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
     }
 }

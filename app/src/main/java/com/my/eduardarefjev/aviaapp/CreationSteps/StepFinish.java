@@ -15,12 +15,14 @@ import com.my.eduardarefjev.aviaapp.R;
  * 	Date			Author				Comments
  * 	23.10.2017		Eduard Arefjev 		Created "StepFinish" screen, one of steps
  * 	31.12.2017      Eduard Arefjev      Added writing data to FireBase and send to next view
+ * 	31.12.2017      Eduard Arefjev      Added UpdateUI function
  */
 
 public class StepFinish extends AppCompatActivity {
 
     private StepEngineData engineData;
     String id;
+    String parentView;
 
     @Override
     protected void onCreate (Bundle savedInstanceState) {
@@ -30,9 +32,11 @@ public class StepFinish extends AppCompatActivity {
 
         Intent intent = getIntent();
         id = intent.getStringExtra("recordId");
+        parentView = intent.getStringExtra("parentViewName");
         Bundle extra = getIntent().getBundleExtra("extra");
         engineData  = extra.getParcelable("objects");
 
+        updateUI();
         nextSecondStep();
     }
 
@@ -67,6 +71,27 @@ public class StepFinish extends AppCompatActivity {
         engineData.setModeWorkLaunchCount(Integer.valueOf(eEngineAI.getText().toString()));
         engineData.setModeWorkLaunchVSUCount(Integer.valueOf(eVSUSapphire.getText().toString()));
         engineData.setModeWorkN1Count(Integer.valueOf(eEngineA2I.getText().toString()));
+    }
 
+    public void updateUI(){
+        if(parentView.equals("DetailedRecordInformation")) {
+            EditText eCommon = (EditText) findViewById(R.id.LinearLabelInpCommon);
+            EditText eNominal = (EditText) findViewById(R.id.LinearLabelInpNominal);
+            EditText eN1StraightRunV2 = (EditText) findViewById(R.id.LinearLabelInpN1StraightRunV2);
+            EditText eEngineAI = (EditText) findViewById(R.id.LinearLabelInpEngineAI);
+            EditText eVSUSapphire = (EditText) findViewById(R.id.LinearLabelInpVSUSapphire);
+            EditText eEngineA2I = (EditText) findViewById(R.id.LinearLabelInpEngineA2I);
+
+            eCommon.setText(Float.toString(engineData.getModeWorkSum()));
+            eNominal.setText(Float.toString(engineData.getModeWorkNom()));
+            eN1StraightRunV2.setText(Float.toString(engineData.getModeWorkMax()));
+            eEngineAI.setText(Integer.toString(engineData.getModeWorkLaunchCount()));
+            eVSUSapphire.setText(Integer.toString(engineData.getModeWorkLaunchVSUCount()));
+            eEngineA2I.setText(Integer.toString(engineData.getModeWorkN1Count()));
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
     }
 }

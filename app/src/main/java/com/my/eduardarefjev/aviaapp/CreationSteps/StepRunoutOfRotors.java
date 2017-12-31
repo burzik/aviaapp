@@ -16,12 +16,14 @@ import static java.lang.Double.MAX_VALUE;
  * 	Date			Author				Comments
  * 	22.12.2017		Eduard Arefjev 		Created "StepRunoutOfRotors" screen, one of steps
  * 	31.12.2017      Eduard Arefjev      Added writing data to FireBase and send to next view
+ * 	31.12.2017      Eduard Arefjev      Added UpdateUI function
  */
 
 public class StepRunoutOfRotors extends AppCompatActivity {
 
     private StepEngineData engineData;
     String id;
+    String parentView;
 
     @Override
     protected void onCreate (Bundle savedInstanceState) {
@@ -31,6 +33,7 @@ public class StepRunoutOfRotors extends AppCompatActivity {
 
         Intent intent = getIntent();
         id = intent.getStringExtra("recordId");
+        parentView = intent.getStringExtra("parentViewName");
         Bundle extra = getIntent().getBundleExtra("extra");
         engineData  = extra.getParcelable("objects");
 
@@ -39,6 +42,7 @@ public class StepRunoutOfRotors extends AppCompatActivity {
         EditText eRotorND = (EditText) findViewById(R.id.LinearLabelInpRotorND);
         CreationHelper.checkValue(eRotorND, 25, MAX_VALUE);
 
+        updateUI();
         nextSecondStep();
     }
 
@@ -51,6 +55,7 @@ public class StepRunoutOfRotors extends AppCompatActivity {
                 CreationHelper.updateRecord(id, engineData);
                 Intent intent = new Intent(StepRunoutOfRotors.this, StepTanningBoardDisplayGenerator.class);
                 intent.putExtra("recordId", id);
+                intent.putExtra("parentViewName", parentView);
                 Bundle extra = new Bundle();
                 extra.putParcelable("objects", engineData);
                 intent.putExtra("extra", extra);
@@ -65,5 +70,19 @@ public class StepRunoutOfRotors extends AppCompatActivity {
 
         engineData.setModeRotorND(Integer.valueOf(eRotorND.getText().toString()));
         engineData.setModeRotorVD(Integer.valueOf(eRotorVD.getText().toString()));
+    }
+
+    public void updateUI(){
+        if(parentView.equals("DetailedRecordInformation")) {
+            EditText eRotorND = (EditText) findViewById(R.id.LinearLabelInpRotorND);
+            EditText eRotorVD = (EditText) findViewById(R.id.LinearLabelInpRotorVD);
+
+            eRotorND.setText(Integer.toString(engineData.getModeRotorND()));
+            eRotorVD.setText(Integer.toString(engineData.getModeRotorVD()));
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
     }
 }

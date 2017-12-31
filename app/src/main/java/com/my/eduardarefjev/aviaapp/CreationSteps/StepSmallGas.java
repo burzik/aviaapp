@@ -16,6 +16,7 @@ import com.my.eduardarefjev.aviaapp.R;
  * 	Date			Author				Comments
  * 	09.10.2017		Eduard Arefjev 		Created "StepSmallGas" screen, one of steps
  * 	30.12.2017      Eduard Arefjev      Added writing data to FireBase and send to next view
+ * 	31.12.2017      Eduard Arefjev      Added UpdateUI function
  */
 
 public class StepSmallGas extends AppCompatActivity {
@@ -24,6 +25,8 @@ public class StepSmallGas extends AppCompatActivity {
     private Spinner spinnerAirCond;
     private StepEngineData engineData;
     String id;
+    String parentView;
+    ArrayAdapter<String> myAdapter;
 
     @Override
     protected void onCreate (Bundle savedInstanceState) {
@@ -33,6 +36,7 @@ public class StepSmallGas extends AppCompatActivity {
 
         Intent intent = getIntent();
         id = intent.getStringExtra("recordId");
+        parentView = intent.getStringExtra("parentViewName");
         Bundle extra = getIntent().getBundleExtra("extra");
         engineData  = extra.getParcelable("objects");
 
@@ -76,7 +80,7 @@ public class StepSmallGas extends AppCompatActivity {
         spinnerClosingLantern = (Spinner) findViewById(R.id.LinearLabelInpSpinnerClosingLantern);
         spinnerAirCond = (Spinner) findViewById(R.id.LinearLabelInpSpinnerAirCond);
         //EA Create DropDown List
-        ArrayAdapter<String> myAdapter = new ArrayAdapter<>(StepSmallGas.this, android.R.layout.simple_spinner_dropdown_item, getResources().getStringArray(R.array.good_bad));
+        myAdapter = new ArrayAdapter<>(StepSmallGas.this, android.R.layout.simple_spinner_dropdown_item, getResources().getStringArray(R.array.good_bad));
         myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerClosingLantern.setAdapter(myAdapter);
         spinnerAirCond.setAdapter(myAdapter);
@@ -84,6 +88,7 @@ public class StepSmallGas extends AppCompatActivity {
         EditText ePCabin = (EditText) findViewById(R.id.LinearInpPCabin);
         CreationHelper.checkValue(ePCabin, 0.021, 0.041);
 
+        updateUI();
         nextSecondStep();
     }
 
@@ -96,6 +101,7 @@ public class StepSmallGas extends AppCompatActivity {
                 CreationHelper.updateRecord(id, engineData);
                 Intent intent = new Intent(StepSmallGas.this, StepClosingKVD5.class);
                 intent.putExtra("recordId", id);
+                intent.putExtra("parentViewName", parentView);
                 Bundle extra = new Bundle();
                 extra.putParcelable("objects", engineData);
                 intent.putExtra("extra", extra);
@@ -149,5 +155,53 @@ public class StepSmallGas extends AppCompatActivity {
         String airCond = spinnerAirCond.getSelectedItem().toString();
         engineData.setModeSmallGasConditioning(airCond.equals("Норма"));
         engineData.setModeSmallGasCabin(Float.valueOf(ePCabin.getText().toString()));
+    }
+
+    public void updateUI(){
+        if(parentView.equals("DetailedRecordInformation")) {
+            EditText eInpN1 = (EditText) findViewById(R.id.LinearInpN1);
+            EditText eTRC = (EditText) findViewById(R.id.LinearInpTRC);
+            EditText ePm = (EditText) findViewById(R.id.LinearInpPm);
+            EditText eTmC = (EditText) findViewById(R.id.LinearInpTmC);
+            EditText ePt = (EditText) findViewById(R.id.LinearInpPt);
+            EditText eEngineSqrt = (EditText) findViewById(R.id.LinearInpEngineSqrt);
+            EditText eMainSystem = (EditText) findViewById(R.id.LinearInpMainSystem);
+            EditText eEmergency = (EditText) findViewById(R.id.LinearInpEmergency);
+            EditText eBasic = (EditText) findViewById(R.id.LinearInpBasic);
+            EditText eParking = (EditText) findViewById(R.id.LinearInpParking);
+            EditText eVGenerator = (EditText) findViewById(R.id.LinearInpVGenerator);
+            EditText eKrTank = (EditText) findViewById(R.id.LinearInpKrTank);
+            EditText eGAccum = (EditText) findViewById(R.id.LinearInpGAccum);
+            EditText eGTank = (EditText) findViewById(R.id.LinearInpGTank);
+            spinnerClosingLantern = (Spinner) findViewById(R.id.LinearLabelInpSpinnerClosingLantern);
+            spinnerAirCond = (Spinner) findViewById(R.id.LinearLabelInpSpinnerAirCond);
+            EditText ePCabin = (EditText) findViewById(R.id.LinearInpPCabin);
+            //float num = engineData.getModeSmallGasHPCSpeed();
+            //eInpN1.setText(String.format(Locale.ENGLISH,"%f",num));
+
+            eInpN1.setText(Float.toString(engineData.getModeSmallGasHPCSpeed()));
+            eTRC.setText(Integer.toString(engineData.getModeSmallGasTemp()));
+            ePm.setText(Float.toString(engineData.getModeSmallGasOilPressure()));
+            eTmC.setText(Integer.toString(engineData.getModeSmallGasOilTemp()));
+            ePt.setText(Integer.toString(engineData.getModeSmallGasFuelPressure()));
+            eEngineSqrt.setText(Integer.toString(engineData.getModeSmallGasVibration()));
+            eMainSystem.setText(Integer.toString(engineData.getModeSmallGasHSPressure()));
+            eEmergency.setText(Integer.toString(engineData.getModeSmallGasHSPressureEmergency()));
+            eBasic.setText(Integer.toString(engineData.getModeSmallGasBrakePressure()));
+            eParking.setText(Integer.toString(engineData.getModeSmallGasBrakePressureStop()));
+            eVGenerator.setText(Integer.toString(engineData.getModeSmallGasGenerator()));
+            eKrTank.setText(Float.toString(engineData.getModeSmallGasPressureWing()));
+            eGAccum.setText(Float.toString(engineData.getModeSmallGasPressureHA()));
+            eGTank.setText(Float.toString(engineData.getModeSmallGasPressureHT()));
+            int spinnerPosition = myAdapter.getPosition(engineData.isModeSmallGasLightsClosure() ? "Норма" : "Не норма");
+            spinnerClosingLantern.setSelection(spinnerPosition);
+            spinnerPosition = myAdapter.getPosition(engineData.isModeSmallGasConditioning() ? "Норма" : "Не норма");
+            spinnerAirCond.setSelection(spinnerPosition);
+            ePCabin.setText(Float.toString(engineData.getModeSmallGasCabin()));
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
     }
 }

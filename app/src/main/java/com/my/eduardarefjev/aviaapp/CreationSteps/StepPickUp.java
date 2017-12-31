@@ -16,12 +16,14 @@ import static java.lang.Double.MIN_VALUE;
  * 	Date			Author				Comments
  * 	29.10.2017		Eduard Arefjev 		Created "StepPickUp" screen, one of steps
  * 	31.12.2017      Eduard Arefjev      Added writing data to FireBase and send to next view
+ * 	31.12.2017      Eduard Arefjev      Added UpdateUI function
  */
 
 public class StepPickUp extends AppCompatActivity {
 
     private StepEngineData engineData;
     String id;
+    String parentView;
 
     @Override
     protected void onCreate (Bundle savedInstanceState) {
@@ -31,6 +33,7 @@ public class StepPickUp extends AppCompatActivity {
 
         Intent intent = getIntent();
         id = intent.getStringExtra("recordId");
+        parentView = intent.getStringExtra("parentViewName");
         Bundle extra = getIntent().getBundleExtra("extra");
         engineData  = extra.getParcelable("objects");
 
@@ -39,6 +42,7 @@ public class StepPickUp extends AppCompatActivity {
         EditText eResetMaxMg = (EditText) findViewById(R.id.LinearLabelInpResetMaxMg);
         CreationHelper.checkValue(eResetMaxMg, -MIN_VALUE, 5);
 
+        updateUI();
         nextSecondStep();
     }
 
@@ -51,6 +55,7 @@ public class StepPickUp extends AppCompatActivity {
                 CreationHelper.updateRecord(id, engineData);
                 Intent intent = new Intent(StepPickUp.this, StepSmallGas2.class);
                 intent.putExtra("recordId", id);
+                intent.putExtra("parentViewName", parentView);
                 Bundle extra = new Bundle();
                 extra.putParcelable("objects", engineData);
                 intent.putExtra("extra", extra);
@@ -65,5 +70,19 @@ public class StepPickUp extends AppCompatActivity {
 
         engineData.setModeAccelerationIdleMaxIn(Float.valueOf(eExitMgMax.getText().toString()));
         engineData.setModeAccelerationIdleOut(Float.valueOf(eResetMaxMg.getText().toString()));
+    }
+
+    public void updateUI(){
+        if(parentView.equals("DetailedRecordInformation")) {
+            EditText eExitMgMax = (EditText) findViewById(R.id.LinearLabelInpExitMgMax);
+            EditText eResetMaxMg = (EditText) findViewById(R.id.LinearLabelInpResetMaxMg);
+
+            eExitMgMax.setText(Float.toString(engineData.getModeAccelerationIdleMaxIn()));
+            eResetMaxMg.setText(Float.toString(engineData.getModeAccelerationIdleOut()));
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
     }
 }

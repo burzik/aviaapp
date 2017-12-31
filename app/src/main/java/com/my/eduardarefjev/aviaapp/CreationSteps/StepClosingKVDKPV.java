@@ -14,12 +14,14 @@ import com.my.eduardarefjev.aviaapp.R;
  * 	Date			Author				Comments
  * 	23.10.2017		Eduard Arefjev 		Created "StepClosingKVDKPV" screen, one of steps
  * 	31.12.2017      Eduard Arefjev      Added writing data to FireBase and send to next view
+ * 	31.12.2017      Eduard Arefjev      Added UpdateUI function
  */
 
 public class StepClosingKVDKPV extends AppCompatActivity {
 
     private StepEngineData engineData;
     String id;
+    String parentView;
 
     @Override
     protected void onCreate (Bundle savedInstanceState) {
@@ -29,6 +31,7 @@ public class StepClosingKVDKPV extends AppCompatActivity {
 
         Intent intent = getIntent();
         id = intent.getStringExtra("recordId");
+        parentView = intent.getStringExtra("parentViewName");
         Bundle extra = getIntent().getBundleExtra("extra");
         engineData  = extra.getParcelable("objects");
 
@@ -37,6 +40,7 @@ public class StepClosingKVDKPV extends AppCompatActivity {
         EditText eV = (EditText) findViewById(R.id.LinearLabelInpV);
         CreationHelper.checkValue(eV, 74, 78);
 
+        updateUI();
         nextSecondStep();
     }
 
@@ -49,6 +53,7 @@ public class StepClosingKVDKPV extends AppCompatActivity {
                 CreationHelper.updateRecord(id, engineData);
                 Intent intent = new Intent(StepClosingKVDKPV.this, StepPickUp.class);
                 intent.putExtra("recordId", id);
+                intent.putExtra("parentViewName", parentView);
                 Bundle extra = new Bundle();
                 extra.putParcelable("objects", engineData);
                 intent.putExtra("extra", extra);
@@ -62,5 +67,19 @@ public class StepClosingKVDKPV extends AppCompatActivity {
 
         engineData.setStageN3ModeName(Integer.valueOf(eIII.getText().toString()));
         engineData.setStageN5ModeName(Integer.valueOf(eV.getText().toString()));
+    }
+
+    public void updateUI(){
+        if(parentView.equals("DetailedRecordInformation")) {
+            EditText eIII = (EditText) findViewById(R.id.LinearLabelInpIII);
+            EditText eV = (EditText) findViewById(R.id.LinearLabelInpV);
+
+            eIII.setText(Integer.toString(engineData.getStageN3ModeName()));
+            eV.setText(Integer.toString(engineData.getStageN5ModeName()));
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
     }
 }

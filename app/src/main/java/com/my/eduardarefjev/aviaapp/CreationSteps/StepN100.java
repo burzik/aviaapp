@@ -14,12 +14,14 @@ import com.my.eduardarefjev.aviaapp.R;
  * 	Date			Author				Comments
  * 	29.10.2017		Eduard Arefjev 		Created "StepN100" screen, one of steps
  * 	30.12.2017      Eduard Arefjev      Added writing data to FireBase and send to next view
+ * 	31.12.2017      Eduard Arefjev      Added UpdateUI function
  */
 
 public class StepN100 extends AppCompatActivity {
 
     private StepEngineData engineData;
     String id;
+    String parentView;
 
     @Override
     protected void onCreate (Bundle savedInstanceState) {
@@ -29,9 +31,11 @@ public class StepN100 extends AppCompatActivity {
 
         Intent intent = getIntent();
         id = intent.getStringExtra("recordId");
+        parentView = intent.getStringExtra("parentViewName");
         Bundle extra = getIntent().getBundleExtra("extra");
         engineData  = extra.getParcelable("objects");
 
+        updateUI();
         nextSecondStep();
     }
 
@@ -44,6 +48,7 @@ public class StepN100 extends AppCompatActivity {
                 CreationHelper.updateRecord(id, engineData);
                 Intent intent = new Intent(StepN100.this, StepNom.class);
                 intent.putExtra("recordId", id);
+                intent.putExtra("parentViewName", parentView);
                 Bundle extra = new Bundle();
                 extra.putParcelable("objects", engineData);
                 intent.putExtra("extra", extra);
@@ -56,5 +61,17 @@ public class StepN100 extends AppCompatActivity {
         EditText eEngMeasurement = (EditText) findViewById(R.id.LinearLabelInpEngMeasurement);
 
         engineData.setMode100Vibration(Integer.valueOf(eEngMeasurement.getText().toString()));
+    }
+
+    public void updateUI(){
+        if(parentView.equals("DetailedRecordInformation")) {
+            EditText eEngMeasurement = (EditText) findViewById(R.id.LinearLabelInpEngMeasurement);
+
+            eEngMeasurement.setText(Integer.toString(engineData.getMode100Vibration()));
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
     }
 }

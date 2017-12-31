@@ -16,12 +16,14 @@ import static java.lang.Double.MIN_VALUE;
  * 	Date			Author				Comments
  * 	29.10.2017		Eduard Arefjev 		Created "Step085Nom" screen, one of steps
  * 	30.12.2017      Eduard Arefjev      Added writing data to FireBase and send to next view
+ * 	31.12.2017      Eduard Arefjev      Added UpdateUI function
  */
 
 public class Step085Nom extends AppCompatActivity {
 
     private StepEngineData engineData;
     String id;
+    String parentView;
 
     @Override
     protected void onCreate (Bundle savedInstanceState) {
@@ -31,6 +33,7 @@ public class Step085Nom extends AppCompatActivity {
 
         Intent intent = getIntent();
         id = intent.getStringExtra("recordId");
+        parentView = intent.getStringExtra("parentViewName");
         Bundle extra = getIntent().getBundleExtra("extra");
         engineData  = extra.getParcelable("objects");
 
@@ -47,6 +50,7 @@ public class Step085Nom extends AppCompatActivity {
         EditText ePt = (EditText) findViewById(R.id.LinearLabelInpPt);
         CreationHelper.checkValue(ePt, -MIN_VALUE, 65);
 
+        updateUI();
         nextSecondStep();
     }
 
@@ -59,6 +63,7 @@ public class Step085Nom extends AppCompatActivity {
                 CreationHelper.updateRecord(id, engineData);
                 Intent intent = new Intent(Step085Nom.this, StepN100.class);
                 intent.putExtra("recordId", id);
+                intent.putExtra("parentViewName", parentView);
                 Bundle extra = new Bundle();
                 extra.putParcelable("objects", engineData);
                 intent.putExtra("extra", extra);
@@ -81,5 +86,27 @@ public class Step085Nom extends AppCompatActivity {
         engineData.setMode85NomOilTemp(Integer.valueOf(eTmc.getText().toString()));
         engineData.setMode85NomFuelPressure(Integer.valueOf(eEngineSqrt.getText().toString()));
         engineData.setMode85NomVibration(Integer.valueOf(ePt.getText().toString()));
+    }
+
+    public void updateUI(){
+        if(parentView.equals("DetailedRecordInformation")) {
+            EditText eN1 = (EditText) findViewById(R.id.LinearLabelInpN1);
+            EditText eTrc = (EditText) findViewById(R.id.LinearLabelInpTrc);
+            EditText ePm = (EditText) findViewById(R.id.LinearLabelInpPm);
+            EditText eTmc = (EditText) findViewById(R.id.LinearLabelInpTmc);
+            EditText ePt = (EditText) findViewById(R.id.LinearLabelInpPt);
+            EditText eEngineSqrt = (EditText) findViewById(R.id.LinearLabelInpEngineSqrt);
+
+            eN1.setText(Float.toString(engineData.getMode85NomHPCSpeed()));
+            eTrc.setText(Integer.toString(engineData.getMode85NomTemp()));
+            ePm.setText(Float.toString(engineData.getMode85NomOilPressure()));
+            eTmc.setText(Integer.toString(engineData.getMode85NomOilTemp()));
+            ePt.setText(Integer.toString(engineData.getMode85NomFuelPressure()));
+            eEngineSqrt.setText(Integer.toString(engineData.getMode85NomVibration()));
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
     }
 }

@@ -14,12 +14,14 @@ import com.my.eduardarefjev.aviaapp.R;
  * 	Date			Author				Comments
  * 	22.12.2017		Eduard Arefjev 		Created "StepRunoutOfRotors" screen, one of steps
  * 	31.12.2017      Eduard Arefjev      Added writing data to FireBase and send to next view
+ * 	31.12.2017      Eduard Arefjev      Added UpdateUI function
  */
 
 public class StepTanningBoardDisplayGenerator extends AppCompatActivity {
 
     private StepEngineData engineData;
     String id;
+    String parentView;
 
     @Override
     protected void onCreate (Bundle savedInstanceState) {
@@ -29,9 +31,11 @@ public class StepTanningBoardDisplayGenerator extends AppCompatActivity {
 
         Intent intent = getIntent();
         id = intent.getStringExtra("recordId");
+        parentView = intent.getStringExtra("parentViewName");
         Bundle extra = getIntent().getBundleExtra("extra");
         engineData  = extra.getParcelable("objects");
 
+        updateUI();
         nextSecondStep();
     }
 
@@ -44,6 +48,7 @@ public class StepTanningBoardDisplayGenerator extends AppCompatActivity {
                 CreationHelper.updateRecord(id, engineData);
                 Intent intent = new Intent(StepTanningBoardDisplayGenerator.this, StepFinish.class);
                 intent.putExtra("recordId", id);
+                intent.putExtra("parentViewName", parentView);
                 Bundle extra = new Bundle();
                 extra.putParcelable("objects", engineData);
                 intent.putExtra("extra", extra);
@@ -56,5 +61,17 @@ public class StepTanningBoardDisplayGenerator extends AppCompatActivity {
         EditText eColdEngine = (EditText) findViewById(R.id.LinearLabelInpColdEngine);
 
         engineData.setModeGeneratorTablo(Integer.valueOf(eColdEngine.getText().toString()));
+    }
+
+    public void updateUI(){
+        if(parentView.equals("DetailedRecordInformation")) {
+            EditText eColdEngine = (EditText) findViewById(R.id.LinearLabelInpColdEngine);
+
+            eColdEngine.setText(Integer.toString(engineData.getModeGeneratorTablo()));
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
     }
 }

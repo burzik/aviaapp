@@ -14,12 +14,14 @@ import com.my.eduardarefjev.aviaapp.R;
  * 	Date			Author				Comments
  * 	23.10.2017		Eduard Arefjev 		Created "StepClosingKVD3" screen, one of steps
  * 	30.12.2017      Eduard Arefjev      Added writing data to FireBase and send to next view
+ * 	31.12.2017      Eduard Arefjev      Added UpdateUI function
  */
 
 public class StepClosingKVD3 extends AppCompatActivity {
 
     private StepEngineData engineData;
     String id;
+    String parentView;
 
     @Override
     protected void onCreate (Bundle savedInstanceState) {
@@ -29,9 +31,11 @@ public class StepClosingKVD3 extends AppCompatActivity {
 
         Intent intent = getIntent();
         id = intent.getStringExtra("recordId");
+        parentView = intent.getStringExtra("parentViewName");
         Bundle extra = getIntent().getBundleExtra("extra");
         engineData  = extra.getParcelable("objects");
 
+        updateUI();
         nextSecondStep();
     }
 
@@ -44,6 +48,7 @@ public class StepClosingKVD3 extends AppCompatActivity {
                 CreationHelper.updateRecord(id, engineData);
                 Intent intent = new Intent(StepClosingKVD3.this, Step085Nom.class);
                 intent.putExtra("recordId", id);
+                intent.putExtra("parentViewName", parentView);
                 Bundle extra = new Bundle();
                 extra.putParcelable("objects", engineData);
                 intent.putExtra("extra", extra);
@@ -56,5 +61,18 @@ public class StepClosingKVD3 extends AppCompatActivity {
         EditText eN1StraightRun = (EditText) findViewById(R.id.LinearLabelInpN1StraightRun);
 
         engineData.setStage3ModeName(Integer.valueOf(eN1StraightRun.getText().toString()));
+    }
+
+    public void updateUI(){
+        if(parentView.equals("DetailedRecordInformation")) {
+            EditText eN1StraightRun = (EditText) findViewById(R.id.LinearLabelInpN1StraightRun);
+
+
+            eN1StraightRun.setText(Integer.toString(engineData.getStage3ModeName()));
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
     }
 }

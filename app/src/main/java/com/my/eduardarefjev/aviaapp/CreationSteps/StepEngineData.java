@@ -25,15 +25,15 @@ public class StepEngineData implements Parcelable{
     private int planeBoardId;
     private Date launchDate;
 
-    public float work0Nominal;
-    public float workNominal;
-    public float workMax;
+    private float work0Nominal;
+    private float workNominal;
+    private float workMax;
 
-    public String launchId; //WP no?
-    public int atmPressure; //Pnv
-    public int atmTemp; //Tnv
+    private String launchId; //WP no?
+    private int atmPressure; //Pnv
+    private int atmTemp; //Tnv
     public int limb; //По лимбу
-    public int apuTime; //Tзап ВСУ
+    private int apuTime; //Tзап ВСУ
 
     //launch
     public float launchEngineTemp; //T c двигателя заброс ???
@@ -905,7 +905,7 @@ public class StepEngineData implements Parcelable{
         this.modeSmallGas2SwitchMax = modeSmallGas2SwitchMax;
     }
 
-    public float isModeSmallGas2CondOn() {
+    public float getModeSmallGas2CondOn() {
         return modeSmallGas2CondOn;
     }
 
@@ -913,7 +913,7 @@ public class StepEngineData implements Parcelable{
         this.modeSmallGas2CondOn = modeSmallGas2CondOn;
     }
 
-    public float isModeSmallGas2CondOff() {
+    public float getModeSmallGas2CondOff() {
         return modeSmallGas2CondOff;
     }
 
@@ -921,7 +921,7 @@ public class StepEngineData implements Parcelable{
         this.modeSmallGas2CondOff = modeSmallGas2CondOff;
     }
 
-    public float isModeSmallGas2AntifreezeOn() {
+    public float getModeSmallGas2AntifreezeOn() {
         return modeSmallGas2AntifreezeOn;
     }
 
@@ -929,7 +929,7 @@ public class StepEngineData implements Parcelable{
         this.modeSmallGas2AntifreezeOn = modeSmallGas2AntifreezeOn;
     }
 
-    public float isModeSmallGas2AntifreezeOff() {
+    public float getModeSmallGas2AntifreezeOff() {
         return modeSmallGas2AntifreezeOff;
     }
 

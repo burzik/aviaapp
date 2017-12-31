@@ -23,6 +23,12 @@ import com.my.eduardarefjev.aviaapp.UserInformation.UserCreation;
 
 import static com.my.eduardarefjev.aviaapp.FirebaseManager.mAuth;
 
+/**
+ * HISTORY
+ * 	Date			Author				Comments
+ * 	31.12.2017		Eduard Arefjev 		Added privilege check
+ */
+
 public class MainActivity extends AppCompatActivity {
 
     private Button bCreateRecord;
@@ -30,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     private Button bCreateUser;
     private Button bSetPrivileges;
     private Button bSettings;
+    User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +46,11 @@ public class MainActivity extends AppCompatActivity {
         final TextView hello = (TextView) findViewById(R.id.LinearHello);
         //String name = FirebaseManager.currentUser();
         //hello.append(" name" + name);
-
+        //bSettings = (Button)findViewById(R.id.LinearSettings);
+        bCreateUser = (Button)findViewById(R.id.LinearCreateUser);
+        bSetPrivileges = (Button)findViewById(R.id.LinearSetPrivileges);
+        bCreateUser.setVisibility(View.GONE);
+        bSetPrivileges.setVisibility(View.GONE);
         createNewRecord();
         showRecords();
         createUser();
@@ -63,8 +74,9 @@ public class MainActivity extends AppCompatActivity {
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     if (dataSnapshot.exists()) {
                         for (DataSnapshot issue : dataSnapshot.getChildren()) {
-                            User spacecraft1 = issue.getValue(User.class);
-                            hello.append(" " + spacecraft1.getLastName());
+                            user = issue.getValue(User.class);
+                            hello.append(" " + user.getLastName());
+                            checkUserPrivilege();
                         }
                     }
                 }
@@ -75,6 +87,8 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
         //}
+
+
     }
 
     public void createNewRecord(){
@@ -131,5 +145,12 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    public void checkUserPrivilege(){
+        if(user.getPrivileges().equals("Админ")){
+            bCreateUser.setVisibility(View.VISIBLE);
+            bSetPrivileges.setVisibility(View.VISIBLE);
+        }
     }
 }

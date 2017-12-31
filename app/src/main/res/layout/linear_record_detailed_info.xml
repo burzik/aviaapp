@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
-            android:id="@+id/LinearLabelMain222"
+            android:id="@+id/LinearLabelMain"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/label_main"
@@ -17,7 +17,7 @@
             android:padding="14dp"
             android:textSize="12pt"/>
         <TextView
-            android:id="@+id/LinearDate222"
+            android:id="@+id/LinearDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/label_date"
@@ -25,7 +25,7 @@
             android:textSize="10pt"
             android:gravity="center"/>
         <TextView
-            android:id="@+id/LinearEngineNumber222"
+            android:id="@+id/LinearEngineNumber"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/label_engine_number"
@@ -33,7 +33,7 @@
             android:textSize="10pt"
             android:gravity="center"/>
         <EditText
-            android:id="@+id/LinearInpEngineNumber222"
+            android:id="@+id/LinearInpEngineNumber"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/enter"
@@ -44,14 +44,14 @@
             android:textSize="10pt"
             android:gravity="center" />
         <TextView
-            android:id="@+id/LinearPlaneNumber222"
+            android:id="@+id/LinearPlaneNumber"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/label_plane_number"
             android:textSize="10pt"
             android:gravity="center"/>
         <EditText
-            android:id="@+id/LinearInpPlaneNumber22"
+            android:id="@+id/LinearInpPlaneNumber"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/enter"
@@ -62,19 +62,128 @@
             android:textSize="10pt"
             android:gravity="center"/>
         <TextView
-            android:id="@+id/LinearWP22"
+            android:id="@+id/LinearWP"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/label_wp"
             android:textSize="10pt"
             android:gravity="center"/>
-
+        <EditText
+            android:id="@+id/LinearInpWP"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/enter"
+            android:inputType="text"
+            android:paddingBottom="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:textSize="10pt"
+            android:gravity="center"/>
+        <TextView
+            android:id="@+id/LinearAtmPressure"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/label_atm_pressure"
+            android:textSize="10pt"
+            android:gravity="center"/>
+        <EditText
+            android:id="@+id/LinearInpAtmPressure"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/enter"
+            android:inputType="number"
+            android:paddingBottom="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:textSize="10pt"
+            android:gravity="center"/>
+        <TextView
+            android:id="@+id/LinearAtmTemperature"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/label_atm_temp"
+            android:textSize="10pt"
+            android:gravity="center"/>
+        <EditText
+            android:id="@+id/LinearInpAtmTemperature"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/enter"
+            android:inputType="number"
+            android:paddingBottom="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:textSize="10pt"
+            android:gravity="center"/>
+        <TextView
+            android:id="@+id/LinearSubTextKVD"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/label_KVD"
+            android:paddingTop="8dp"
+            android:paddingBottom="10dp"
+            android:textSize="12pt"
+            android:gravity="center"/>
+        <TextView
+            android:id="@+id/LinearWork0Nominal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/label_work_0nominal"
+            android:textSize="10pt"
+            android:gravity="center"/>
+        <EditText
+            android:id="@+id/LinearInpWork0Nominal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/enter"
+            android:inputType="numberDecimal"
+            android:paddingBottom="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:textSize="10pt"
+            android:gravity="center"/>
+        <TextView
+            android:id="@+id/LinearWorkNominal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/label_work_nominal"
+            android:textSize="10pt"
+            android:gravity="center"/>
+        <EditText
+            android:id="@+id/LinearInpWorkNominal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/enter"
+            android:inputType="numberDecimal"
+            android:paddingBottom="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:textSize="10pt"
+            android:gravity="center"/>
+        <TextView
+            android:id="@+id/LinearWorkMax"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/label_work_max"
+            android:textSize="10pt"
+            android:gravity="center"/>
+        <EditText
+            android:id="@+id/LinearInpWorkMax"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/enter"
+            android:inputType="numberDecimal"
+            android:paddingBottom="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:textSize="10pt"
+            android:gravity="center" />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
             <Button
-                android:id="@+id/LinearButtonNext222"
+                android:id="@+id/LinearButtonNext"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"

@@ -50,6 +50,7 @@ public class StepEngineInfo extends AppCompatActivity {
                 String id = CreationHelper.createRecord(engineData);
                 Intent intent = new Intent(StepEngineInfo.this, StepStartInfo.class);
                 intent.putExtra("recordId", id);
+                intent.putExtra("parentViewName", "StepEngineInfo");
                 Bundle extra = new Bundle();
                 extra.putParcelable("objects", engineData);
                 intent.putExtra("extra", extra);

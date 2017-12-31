@@ -16,12 +16,14 @@ import static java.lang.Double.MAX_VALUE;
  * 	Date			Author				Comments
  * 	29.10.2017		Eduard Arefjev 		Created "StepN85" screen, one of steps
  * 	30.12.2017      Eduard Arefjev      Added writing data to FireBase and send to next view
+ * 	31.12.2017      Eduard Arefjev      Added UpdateUI function
  */
 
 public class StepN85 extends AppCompatActivity {
 
     private StepEngineData engineData;
     String id;
+    String parentView;
 
     @Override
     protected void onCreate (Bundle savedInstanceState) {
@@ -31,6 +33,7 @@ public class StepN85 extends AppCompatActivity {
 
         Intent intent = getIntent();
         id = intent.getStringExtra("recordId");
+        parentView = intent.getStringExtra("parentViewName");
         Bundle extra = getIntent().getBundleExtra("extra");
         engineData  = extra.getParcelable("objects");
 
@@ -53,6 +56,7 @@ public class StepN85 extends AppCompatActivity {
         EditText eVGenerator = (EditText) findViewById(R.id.LinearLabelInpVGenerator);
         CreationHelper.checkValue(eVGenerator, 27, 29);
 
+        updateUI();
         nextSecondStep();
     }
 
@@ -65,6 +69,7 @@ public class StepN85 extends AppCompatActivity {
                 CreationHelper.updateRecord(id, engineData);
                 Intent intent = new Intent(StepN85.this, StepClosingKVD3.class);
                 intent.putExtra("recordId", id);
+                intent.putExtra("parentViewName", parentView);
                 Bundle extra = new Bundle();
                 extra.putParcelable("objects", engineData);
                 intent.putExtra("extra", extra);
@@ -93,5 +98,33 @@ public class StepN85 extends AppCompatActivity {
         engineData.setStage5N1BrakePrc(Integer.valueOf(eLowPrc2.getText().toString()));
         engineData.setStage5N1Tmc(Integer.valueOf(eTmc.getText().toString()));
         engineData.setStage5N1VGenerator(Integer.valueOf(eVGenerator.getText().toString()));
+    }
+
+    public void updateUI(){
+        if(parentView.equals("DetailedRecordInformation")) {
+            EditText eFlightTakeoff = (EditText) findViewById(R.id.LinearLabelInpFlightTakeoff);
+            EditText eTakeoffLanding = (EditText) findViewById(R.id.LinearLabelInpTakeoffLangding);
+            EditText eFlightLanding = (EditText) findViewById(R.id.LinearLabelInpFlightLanding);
+            EditText eLowPrc = (EditText) findViewById(R.id.LinearLabelInpLowPrc);
+            EditText eRelease = (EditText) findViewById(R.id.LinearLabelInpRelease);
+            EditText eCleaning = (EditText) findViewById(R.id.LinearLabelInpCleaning);
+            EditText eLowPrc2 = (EditText) findViewById(R.id.LinearLabelInpLowPrc2);
+            EditText eTmc = (EditText) findViewById(R.id.LinearLabelInpTmc);
+            EditText eVGenerator = (EditText) findViewById(R.id.LinearLabelInpVGenerator);
+
+            eFlightTakeoff.setText(Integer.toString(engineData.getStage5N1FlightTakeoff()));
+            eTakeoffLanding.setText(Integer.toString(engineData.getStage5N1TakeoffLanding()));
+            eFlightLanding.setText(Integer.toString(engineData.getStage5N1FlightLanding()));
+            eLowPrc.setText(Integer.toString(engineData.getStage5N1Prc()));
+            eRelease.setText(Integer.toString(engineData.getStage5N1Release()));
+            eCleaning.setText(Integer.toString(engineData.getStage5N1Cleaning()));
+            eLowPrc2.setText(Integer.toString(engineData.getStage5N1BrakePrc()));
+            eTmc.setText(Integer.toString(engineData.getStage5N1Tmc()));
+            eVGenerator.setText(Integer.toString(engineData.getStage5N1VGenerator()));
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
     }
 }

@@ -14,12 +14,14 @@ import com.my.eduardarefjev.aviaapp.R;
  * 	Date			Author				Comments
  * 	23.10.2017		Eduard Arefjev 		Created "StepClosingKVD5" screen, one of steps
  * 	30.12.2017      Eduard Arefjev      Added writing data to FireBase and send to next view
+ * 	31.12.2017      Eduard Arefjev      Added UpdateUI function
  */
 
 public class StepClosingKVD5 extends AppCompatActivity {
 
     private StepEngineData engineData;
     String id;
+    String parentView;
 
     @Override
     protected void onCreate (Bundle savedInstanceState) {
@@ -29,12 +31,14 @@ public class StepClosingKVD5 extends AppCompatActivity {
 
         Intent intent = getIntent();
         id = intent.getStringExtra("recordId");
+        parentView = intent.getStringExtra("parentViewName");
         Bundle extra = getIntent().getBundleExtra("extra");
         engineData  = extra.getParcelable("objects");
 
         EditText eN1StraightRun = (EditText) findViewById(R.id.LinearLabelInpN1StraightRun);
         CreationHelper.checkValue(eN1StraightRun, 74, 78);
 
+        updateUI();
         nextSecondStep();
     }
 
@@ -47,6 +51,7 @@ public class StepClosingKVD5 extends AppCompatActivity {
                 CreationHelper.updateRecord(id, engineData);
                 Intent intent = new Intent(StepClosingKVD5.this, StepN85.class);
                 intent.putExtra("recordId", id);
+                intent.putExtra("parentViewName", parentView);
                 Bundle extra = new Bundle();
                 extra.putParcelable("objects", engineData);
                 intent.putExtra("extra", extra);
@@ -59,5 +64,17 @@ public class StepClosingKVD5 extends AppCompatActivity {
         EditText eN1StraightRun = (EditText) findViewById(R.id.LinearLabelInpN1StraightRun);
 
         engineData.setStage5ModeName(Float.valueOf(eN1StraightRun.getText().toString()));
+    }
+
+    public void updateUI(){
+        if(parentView.equals("DetailedRecordInformation")) {
+            EditText eN1StraightRun = (EditText) findViewById(R.id.LinearLabelInpN1StraightRun);
+
+            eN1StraightRun.setText(Float.toString(engineData.getStage5ModeName()));
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
     }
 }

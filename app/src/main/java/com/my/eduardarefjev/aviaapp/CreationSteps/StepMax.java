@@ -18,6 +18,7 @@ import static java.lang.Double.MIN_VALUE;
  * 	Date			Author				Comments
  * 	23.10.2017		Eduard Arefjev 		Created "StepMax" screen, one of steps
  * 	30.12.2017      Eduard Arefjev      Added writing data to FireBase and send to next view
+ * 	31.12.2017      Eduard Arefjev      Added UpdateUI function
  */
 
 public class StepMax extends AppCompatActivity{
@@ -25,6 +26,8 @@ public class StepMax extends AppCompatActivity{
     private Spinner spinnerKrTank;
     private StepEngineData engineData;
     String id;
+    String parentView;
+    ArrayAdapter<String> myAdapter;
 
     @Override
     protected void onCreate (Bundle savedInstanceState) {
@@ -34,6 +37,7 @@ public class StepMax extends AppCompatActivity{
 
         Intent intent = getIntent();
         id = intent.getStringExtra("recordId");
+        parentView = intent.getStringExtra("parentViewName");
         Bundle extra = getIntent().getBundleExtra("extra");
         engineData  = extra.getParcelable("objects");
 
@@ -58,10 +62,11 @@ public class StepMax extends AppCompatActivity{
         CreationHelper.checkValue(ePCabin, -MIN_VALUE, 0.05);
 
         spinnerKrTank = (Spinner) findViewById(R.id.RelativeSpinnerInpKrTank);
-        ArrayAdapter<String> myAdapter = new ArrayAdapter<>(StepMax.this, android.R.layout.simple_spinner_dropdown_item, getResources().getStringArray(R.array.good_bad));
+        myAdapter = new ArrayAdapter<>(StepMax.this, android.R.layout.simple_spinner_dropdown_item, getResources().getStringArray(R.array.good_bad));
         myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerKrTank.setAdapter(myAdapter);
 
+        updateUI();
         nextSecondStep();
     }
 
@@ -74,6 +79,7 @@ public class StepMax extends AppCompatActivity{
                 CreationHelper.updateRecord(id, engineData);
                 Intent intent = new Intent(StepMax.this, StepClosingKVDKPV.class);
                 intent.putExtra("recordId", id);
+                intent.putExtra("parentViewName", parentView);
                 Bundle extra = new Bundle();
                 extra.putParcelable("objects", engineData);
                 intent.putExtra("extra", extra);
@@ -108,5 +114,40 @@ public class StepMax extends AppCompatActivity{
         engineData.setModeMaxPressureCabin(Float.valueOf(ePCabin.getText().toString()));
         engineData.setModeMaxPressureWings(Float.valueOf(ePVozdKrTank.getText().toString()));
         engineData.setModeMaxPressureNozzles(Integer.valueOf(ePtPreembossed.getText().toString()));
+    }
+
+    public void updateUI(){
+        if(parentView.equals("DetailedRecordInformation")) {
+            EditText eN1 = (EditText) findViewById(R.id.LinearInpN1);
+            EditText eN2_4 = (EditText) findViewById(R.id.LinearInpN2_4);
+            EditText eTRC = (EditText) findViewById(R.id.LinearInpTRC);
+            EditText ePm = (EditText) findViewById(R.id.LinearInpPm);
+            EditText eTmC = (EditText) findViewById(R.id.LinearInpTmC);
+            EditText ePt = (EditText) findViewById(R.id.LinearInpPt);
+            EditText eEngineSqrt = (EditText) findViewById(R.id.LinearInpEngineSqrt);
+            EditText eVGenerator = (EditText) findViewById(R.id.LinearInpVGenerator);
+            EditText ePCabin = (EditText) findViewById(R.id.LinearInpPCabin);
+            spinnerKrTank = (Spinner) findViewById(R.id.RelativeSpinnerInpKrTank);
+            EditText ePVozdKrTank = (EditText) findViewById(R.id.LinearInpPVozdKrTank);
+            EditText ePtPreembossed = (EditText) findViewById(R.id.LinearInpPtPreembossed);
+
+            eN1.setText(Float.toString(engineData.getModeMaxHPCSpeed()));
+            eN2_4.setText(Float.toString(engineData.getModeMaxHPCSpeedN2()));
+            eTRC.setText(Integer.toString(engineData.getModeMaxTemp()));
+            ePm.setText(Float.toString(engineData.getModeMaxOilPressure()));
+            eTmC.setText(Integer.toString(engineData.getModeMaxOilTemp()));
+            ePt.setText(Integer.toString(engineData.getModeMaxFuelPressure()));
+            eEngineSqrt.setText(Integer.toString(engineData.getModeMaxVibration()));
+            eVGenerator.setText(Integer.toString(engineData.getModeMaxVGenerator()));
+            ePCabin.setText(Float.toString(engineData.getModeMaxPressureCabin()));
+            int spinnerPosition = myAdapter.getPosition(engineData.isModeMaxGeneratorSpeedConst() ? "Норма" : "Не норма");
+            spinnerKrTank.setSelection(spinnerPosition);
+            ePVozdKrTank.setText(Float.toString(engineData.getModeMaxPressureWings()));
+            ePtPreembossed.setText(Integer.toString(engineData.getModeMaxPressureNozzles()));
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
     }
 }

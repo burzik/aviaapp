@@ -16,12 +16,14 @@ import static java.lang.Double.MIN_VALUE;
  * 	Date			Author				Comments
  * 	29.10.2017		Eduard Arefjev 		Created "StepSmallGas2" screen, one of steps
  * 	31.12.2017      Eduard Arefjev      Added writing data to FireBase and send to next view
+ * 	31.12.2017      Eduard Arefjev      Added UpdateUI function
  */
 
 public class StepSmallGas2 extends AppCompatActivity {
 
     private StepEngineData engineData;
     String id;
+    String parentView;
 
     @Override
     protected void onCreate (Bundle savedInstanceState) {
@@ -31,6 +33,7 @@ public class StepSmallGas2 extends AppCompatActivity {
 
         Intent intent = getIntent();
         id = intent.getStringExtra("recordId");
+        parentView = intent.getStringExtra("parentViewName");
         Bundle extra = getIntent().getBundleExtra("extra");
         engineData  = extra.getParcelable("objects");
 
@@ -59,6 +62,7 @@ public class StepSmallGas2 extends AppCompatActivity {
         EditText eTurnOff_2 = (EditText) findViewById(R.id.RelativeInpTurnOff_2);
         CreationHelper.checkValue(eTurnOff_2, -MIN_VALUE, 45);
 
+        updateUI();
         nextSecondStep();
     }
 
@@ -71,6 +75,7 @@ public class StepSmallGas2 extends AppCompatActivity {
                 CreationHelper.updateRecord(id, engineData);
                 Intent intent = new Intent(StepSmallGas2.this, StepControlKND.class);
                 intent.putExtra("recordId", id);
+                intent.putExtra("parentViewName", parentView);
                 Bundle extra = new Bundle();
                 extra.putParcelable("objects", engineData);
                 intent.putExtra("extra", extra);
@@ -104,5 +109,39 @@ public class StepSmallGas2 extends AppCompatActivity {
         engineData.setModeSmallGas2CondOff(Float.valueOf(eTurnOff.getText().toString()));
         engineData.setModeSmallGas2AntifreezeOn(Float.valueOf(eTurnOn_2.getText().toString()));
         engineData.setModeSmallGas2AntifreezeOff(Float.valueOf(eTurnOff_2.getText().toString()));
+    }
+
+    public void updateUI(){
+        if(parentView.equals("DetailedRecordInformation")) {
+            EditText eN1 = (EditText) findViewById(R.id.LinearInpN1);
+            EditText eTRC = (EditText) findViewById(R.id.LinearInpTRC);
+            EditText ePm = (EditText) findViewById(R.id.LinearInpPm);
+            EditText eTmC = (EditText) findViewById(R.id.LinearInpTmC);
+            EditText ePt = (EditText) findViewById(R.id.LinearInpPt);
+            EditText eEngineSqrt = (EditText) findViewById(R.id.LinearInpEngineSqrt);
+            EditText ePPKSwitchMin = (EditText) findViewById(R.id.LinearInpPPKSwitchMin);
+            EditText ePPKSwitchMax = (EditText) findViewById(R.id.LinearInpPPKSwitchMax);
+            EditText eTurnOn = (EditText) findViewById(R.id.RelativeInpTurnOn);
+            EditText eTurnOff = (EditText) findViewById(R.id.RelativeInpTurnOff);
+            EditText eTurnOn_2 = (EditText) findViewById(R.id.RelativeInpTurnOn_2);
+            EditText eTurnOff_2 = (EditText) findViewById(R.id.RelativeInpTurnOff_2);
+
+            eN1.setText(Float.toString(engineData.getModeSmallGas2HPCSpeed()));
+            eTRC.setText(Integer.toString(engineData.getModeSmallGas2Temp()));
+            ePm.setText(Float.toString(engineData.getModeSmallGas2OilPressure()));
+            eTmC.setText(Integer.toString(engineData.getModeSmallGas2OilTemp()));
+            ePt.setText(Integer.toString(engineData.getModeSmallGas2FuelPressure()));
+            eEngineSqrt.setText(Integer.toString(engineData.getModeSmallGas2Vibration()));
+            ePPKSwitchMin.setText(Float.toString(engineData.getModeSmallGas2SwitchMin()));
+            ePPKSwitchMax.setText(Float.toString(engineData.getModeSmallGas2SwitchMax()));
+            eTurnOn.setText(Float.toString(engineData.getModeSmallGas2CondOn()));
+            eTurnOff.setText(Float.toString(engineData.getModeSmallGas2CondOff()));
+            eTurnOn_2.setText(Float.toString(engineData.getModeSmallGas2AntifreezeOn()));
+            eTurnOff_2.setText(Float.toString(engineData.getModeSmallGas2AntifreezeOff()));
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
     }
 }
