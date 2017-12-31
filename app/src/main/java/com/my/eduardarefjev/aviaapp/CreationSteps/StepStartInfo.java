@@ -13,32 +13,24 @@ import com.my.eduardarefjev.aviaapp.R;
  * HISTORY
  * 	Date			Author				Comments
  * 	09.10.2017		Eduard Arefjev 		Created "StepStartInfo" screen, one of steps
+ * 	30.12.2017      Eduard Arefjev      Added writing data to FireBase and send to next view
  */
 
 public class StepStartInfo extends AppCompatActivity {
 
-    private EditText eLimbArg;
-    private EditText eLaunchingTVSU;
-    private EditText eEngineCasting;
-    private EditText eVSUDisconnection;
-    private EditText eTEngine;
     String id;
     public StepEngineData engineData;
-
 
     @Override
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.linear_step_start_info);
-
         this.setTitle("Базовые данные 2");
-        //String name = FirebaseManager.currentUser();
 
         Intent intent = getIntent();
         id = intent.getStringExtra("recordId");
         Bundle extra = getIntent().getBundleExtra("extra");
         engineData  = extra.getParcelable("objects");
-
 
         EditText eLimb = (EditText) findViewById(R.id.LinearLabelInpLimbArg);
         CreationHelper.checkValue(eLimb, 18, 24);
@@ -59,7 +51,7 @@ public class StepStartInfo extends AppCompatActivity {
         bNextStep.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setData();
+                setRecord();
                 CreationHelper.updateRecord(id, engineData);
                 Intent intent = new Intent(StepStartInfo.this, StepSmallGas.class);
                 intent.putExtra("recordId", id);
@@ -72,13 +64,12 @@ public class StepStartInfo extends AppCompatActivity {
         });
     }
 
-    public void setData(){
-
-        eLimbArg = (EditText) findViewById(R.id.LinearLabelInpLimbArg);
-        eLaunchingTVSU = (EditText) findViewById(R.id.LinearLabelInpLaunchingTVSU);
-        eEngineCasting = (EditText) findViewById(R.id.LinearLabelInpEngineCasting);
-        eVSUDisconnection = (EditText) findViewById(R.id.LinearLabelInpVSUDisconnection);
-        eTEngine = (EditText) findViewById(R.id.LinearLabelInpTEngine);
+    public void setRecord(){
+        EditText eLimbArg = (EditText) findViewById(R.id.LinearLabelInpLimbArg);
+        EditText eLaunchingTVSU = (EditText) findViewById(R.id.LinearLabelInpLaunchingTVSU);
+        EditText eEngineCasting = (EditText) findViewById(R.id.LinearLabelInpEngineCasting);
+        EditText eVSUDisconnection = (EditText) findViewById(R.id.LinearLabelInpVSUDisconnection);
+        EditText eTEngine = (EditText) findViewById(R.id.LinearLabelInpTEngine);
 
         engineData.setLimb(Integer.valueOf(eLimbArg.getText().toString()));
         engineData.setApuTime(Integer.valueOf(eLaunchingTVSU.getText().toString()));

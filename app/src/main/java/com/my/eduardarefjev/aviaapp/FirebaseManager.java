@@ -135,4 +135,10 @@ public class FirebaseManager {
         return result[0];
     }
 
+    public static String getCurrentUserId(){
+        mAuth = FirebaseAuth.getInstance();
+        FirebaseUser mUser = mAuth.getCurrentUser();
+        assert mUser != null;
+        return mUser.getUid();
+    }
 }

@@ -10,6 +10,7 @@ import java.util.Date;
  * 	Date			Author				Comments
  * 	25.10.2017		Eduard Arefjev 		Created main information
  * 	30.12.2017      Eduard Arefjev      implemented parcelable
+ *  30.12.2017      Eduard Arefjev      Added new fields
  */
 
 public class StepEngineData implements Parcelable{
@@ -18,11 +19,15 @@ public class StepEngineData implements Parcelable{
 
     }
 
-    public String engineName;
-    public int engineId;
-    public int planeId;
-    public int planeBoardId;
-    public Date launchDate;
+    private String engineName;
+    private int engineId;
+    private int planeId;
+    private int planeBoardId;
+    private Date launchDate;
+
+    public float work0Nominal;
+    public float workNominal;
+    public float workMax;
 
     public String launchId; //WP no?
     public int atmPressure; //Pnv
@@ -130,22 +135,39 @@ public class StepEngineData implements Parcelable{
     public int modeSmallGas2Vibration; //sqrt двигателя
     public float modeSmallGas2SwitchMin;
     public float modeSmallGas2SwitchMax;
-    public boolean modeSmallGas2CondOn;
-    public boolean modeSmallGas2CondOff;
-    public boolean modeSmallGas2AntifreezeOn;
-    public boolean modeSmallGas2AntifreezeOff;
+    public float modeSmallGas2CondOn;
+    public float modeSmallGas2CondOff;
+    public float modeSmallGas2AntifreezeOn;
+    public float modeSmallGas2AntifreezeOff;
 
     //mode KND
-    public float modeKVDHPCSpeed;
-    public float modeKNDHPCSpeed;
-    public float modeKNDHPCSpeedCited;
-    public float modeKNDHPCSpeedInstalled;
+
+    public float modeKNDNKVDPHY97;
+    public float modeKNDNKVDPHY99;
+    public float modeKNDNKVDPHY101;
+    public float modeKNDNKNDPHY97;
+    public float modeKNDNKNDPHY99;
+    public float modeKNDNKNDPHY101;
+    public float modeKNDNKNDPLANE97;
+    public float modeKNDNKNDPLANE99;
+    public float modeKNDNKNDPLANE101;
+
+    //rotors
+    public int modeRotorVD;
+    public int modeRotorND;
+
+    //tablo
+    public int modeGeneratorTablo;
 
     //mode Work
     public float modeWorkSum;
-    public float modeWokrNom;
+    public float modeWorkNom;
     public float modeWorkMax;
     public int modeWorkLaunchCount;
+    public int modeWorkLaunchVSUCount;
+    public int modeWorkN1Count;
+
+    public String currentUserId;
 
     public String getEngineName() {
         return engineName;
@@ -193,6 +215,30 @@ public class StepEngineData implements Parcelable{
 
     public void setLaunchId(String launchId) {
         this.launchId = launchId;
+    }
+
+    public float getWork0Nominal() {
+        return work0Nominal;
+    }
+
+    public void setWork0Nominal(float Work0Nominal) {
+        this.work0Nominal = Work0Nominal;
+    }
+
+    public float getWorkNominal() {
+        return workNominal;
+    }
+
+    public void setWorkNominal(float WorkNominal) {
+        this.workNominal = WorkNominal;
+    }
+
+    public float getWorkMax() {
+        return workMax;
+    }
+
+    public void setWorkMax(float WorkMax) {
+        this.workMax = WorkMax;
     }
 
     public int getAtmPressure() {
@@ -859,38 +905,130 @@ public class StepEngineData implements Parcelable{
         this.modeSmallGas2SwitchMax = modeSmallGas2SwitchMax;
     }
 
-    public boolean isModeSmallGas2CondOn() {
+    public float isModeSmallGas2CondOn() {
         return modeSmallGas2CondOn;
     }
 
-    public void setModeSmallGas2CondOn(boolean modeSmallGas2CondOn) {
+    public void setModeSmallGas2CondOn(float modeSmallGas2CondOn) {
         this.modeSmallGas2CondOn = modeSmallGas2CondOn;
     }
 
-    public boolean isModeSmallGas2CondOff() {
+    public float isModeSmallGas2CondOff() {
         return modeSmallGas2CondOff;
     }
 
-    public void setModeSmallGas2CondOff(boolean modeSmallGas2CondOff) {
+    public void setModeSmallGas2CondOff(float modeSmallGas2CondOff) {
         this.modeSmallGas2CondOff = modeSmallGas2CondOff;
     }
 
-    public boolean isModeSmallGas2AntifreezeOn() {
+    public float isModeSmallGas2AntifreezeOn() {
         return modeSmallGas2AntifreezeOn;
     }
 
-    public void setModeSmallGas2AntifreezeOn(boolean modeSmallGas2AntifreezeOn) {
+    public void setModeSmallGas2AntifreezeOn(float modeSmallGas2AntifreezeOn) {
         this.modeSmallGas2AntifreezeOn = modeSmallGas2AntifreezeOn;
     }
 
-    public boolean isModeSmallGas2AntifreezeOff() {
+    public float isModeSmallGas2AntifreezeOff() {
         return modeSmallGas2AntifreezeOff;
     }
 
-    public void setModeSmallGas2AntifreezeOff(boolean modeSmallGas2AntifreezeOff) {
+    public void setModeSmallGas2AntifreezeOff(float modeSmallGas2AntifreezeOff) {
         this.modeSmallGas2AntifreezeOff = modeSmallGas2AntifreezeOff;
     }
 
+    public float getModeKNDNKVDPHY97() {
+        return modeKNDNKVDPHY97;
+    }
+
+    public void setModeKNDNKVDPHY97(float modeKNDNKVDPHY97) {
+        this.modeKNDNKVDPHY97 = modeKNDNKVDPHY97;
+    }
+
+    public float getModeKNDNKVDPHY99() {
+        return modeKNDNKVDPHY99;
+    }
+
+    public void setModeKNDNKVDPHY99(float modeKNDNKVDPHY99) {
+        this.modeKNDNKVDPHY99 = modeKNDNKVDPHY99;
+    }
+
+    public float getModeKNDNKVDPHY101() {
+        return modeKNDNKVDPHY101;
+    }
+
+    public void setModeKNDNKVDPHY101(float modeKNDNKVDPHY101) {
+        this.modeKNDNKVDPHY101 = modeKNDNKVDPHY101;
+    }
+
+    public float getModeKNDNKNDPHY97() {
+        return modeKNDNKNDPHY97;
+    }
+
+    public void setModeKNDNKNDPHY97(float modeKNDNKNDPHY97) {
+        this.modeKNDNKNDPHY97 = modeKNDNKNDPHY97;
+    }
+
+    public float getModeKNDNKNDPHY99() {
+        return modeKNDNKNDPHY99;
+    }
+
+    public void setModeKNDNKNDPHY99(float modeKNDNKNDPHY99) {
+        this.modeKNDNKNDPHY99 = modeKNDNKNDPHY99;
+    }
+
+    public float getModeKNDNKNDPHY101() {
+        return modeKNDNKNDPHY101;
+    }
+
+    public void setModeKNDNKNDPHY101(float modeKNDNKNDPHY101) {
+        this.modeKNDNKNDPHY101 = modeKNDNKNDPHY101;
+    }
+
+    public float getModeKNDNKNDPLANE97() {
+        return modeKNDNKNDPLANE97;
+    }
+
+    public void setModeKNDNKNDPLANE97(float modeKNDNKNDPLANE97) {
+        this.modeKNDNKNDPLANE97 = modeKNDNKNDPLANE97;
+    }
+
+    public float getModeKNDNKNDPLANE99() {
+        return modeKNDNKNDPLANE99;
+    }
+
+    public void setModeKNDNKNDPLANE99(float modeKNDNKNDPLANE99) {
+        this.modeKNDNKNDPLANE99 = modeKNDNKNDPLANE99;
+    }
+
+    public float getModeKNDNKNDPLANE101() {
+        return modeKNDNKNDPLANE101;
+    }
+
+    public void setModeKNDNKNDPLANE101(float modeKNDNKNDPLANE101) {
+        this.modeKNDNKNDPLANE101 = modeKNDNKNDPLANE101;
+    }
+
+    public  int  getModeRotorVD() {
+        return modeRotorVD;
+    }
+    public void setModeRotorVD(int modeRotorVD) {
+        this.modeRotorVD = modeRotorVD;
+    }
+    public int  getModeRotorND() {
+        return modeRotorND;
+    }
+    public void setModeRotorND(int modeRotorND) {
+        this.modeRotorND = modeRotorND;
+    }
+    public int  getModeGeneratorTablo() {
+        return modeGeneratorTablo;
+    }
+    public void setModeGeneratorTablo(int modeGeneratorTablo) {
+        this.modeGeneratorTablo = modeGeneratorTablo;
+    }
+
+    /*
     public float getModeKVDHPCSpeed() {
         return modeKVDHPCSpeed;
     }
@@ -922,7 +1060,7 @@ public class StepEngineData implements Parcelable{
     public void setModeKNDHPCSpeedInstalled(float modeKNDHPCSpeedInstalled) {
         this.modeKNDHPCSpeedInstalled = modeKNDHPCSpeedInstalled;
     }
-
+*/
     public float getModeWorkSum() {
         return modeWorkSum;
     }
@@ -931,12 +1069,12 @@ public class StepEngineData implements Parcelable{
         this.modeWorkSum = modeWorkSum;
     }
 
-    public float getModeWokrNom() {
-        return modeWokrNom;
+    public float getModeWorkNom() {
+        return modeWorkNom;
     }
 
-    public void setModeWokrNom(float modeWokrNom) {
-        this.modeWokrNom = modeWokrNom;
+    public void setModeWorkNom(float modeWorkNom) {
+        this.modeWorkNom = modeWorkNom;
     }
 
     public float getModeWorkMax() {
@@ -955,13 +1093,33 @@ public class StepEngineData implements Parcelable{
         this.modeWorkLaunchCount = modeWorkLaunchCount;
     }
 
+    public int getModeWorkLaunchVSUCount() {
+        return modeWorkLaunchVSUCount;
+    }
+
+    public void setModeWorkLaunchVSUCount(int modeWorkLaunchVSUCount) {
+        this.modeWorkLaunchVSUCount = modeWorkLaunchVSUCount;
+    }
+
+    public int getModeWorkN1Count() {
+        return modeWorkN1Count;
+    }
+
+    public void setModeWorkN1Count(int modeWorkN1Count) {
+        this.modeWorkN1Count = modeWorkN1Count;
+    }
+
+    public String getCurrentUserId() {
+        return currentUserId;
+    }
+
+    public void setCurrentUserId(String currentUserId) {
+        this.currentUserId = currentUserId;
+    }
+
     private StepEngineData(Parcel in) {
 
         engineName = in.readString();
-        //engineId = in.readInt();
-        //planeId = in.readInt();
-        //planeBoardId = in.readInt();
-
         engineId = in.readInt();
         planeId = in.readInt();
         planeBoardId = in.readInt();
@@ -969,6 +1127,11 @@ public class StepEngineData implements Parcelable{
         launchId = in.readString(); //WP no?
         atmPressure = in.readInt(); //Pnv
         atmTemp = in.readInt(); //Tnv
+
+        work0Nominal = in.readFloat();
+        workNominal = in.readFloat();
+        workMax = in.readFloat();
+
         limb = in.readInt(); //По лимбу
         apuTime = in.readInt(); //Tзап ВСУ
 
@@ -1072,22 +1235,46 @@ public class StepEngineData implements Parcelable{
         modeSmallGas2Vibration = in.readInt(); //sqrt двигателя
         modeSmallGas2SwitchMin = in.readFloat();
         modeSmallGas2SwitchMax = in.readFloat();
-        modeSmallGas2CondOn = in.readByte() != 0;
-        modeSmallGas2CondOff = in.readByte() != 0;
-        modeSmallGas2AntifreezeOn = in.readByte() != 0;
-        modeSmallGas2AntifreezeOff = in.readByte() != 0;
+        modeSmallGas2CondOn = in.readFloat();
+        modeSmallGas2CondOff = in.readFloat();
+        modeSmallGas2AntifreezeOn = in.readFloat();
+        modeSmallGas2AntifreezeOff = in.readFloat();
+        //modeSmallGas2CondOn = in.readByte() != 0;
+        //modeSmallGas2CondOff = in.readByte() != 0;
+        //modeSmallGas2AntifreezeOn = in.readByte() != 0;
+        //modeSmallGas2AntifreezeOff = in.readByte() != 0;
 
         //mode KND
-        modeKVDHPCSpeed = in.readFloat();
-        modeKNDHPCSpeed = in.readFloat();
-        modeKNDHPCSpeedCited = in.readFloat();
-        modeKNDHPCSpeedInstalled = in.readFloat();
+        //modeKVDHPCSpeed = in.readFloat();
+        //modeKNDHPCSpeed = in.readFloat();
+        //modeKNDHPCSpeedCited = in.readFloat();
+        //modeKNDHPCSpeedInstalled = in.readFloat();
+       modeKNDNKVDPHY97 = in.readFloat();
+       modeKNDNKVDPHY99 = in.readFloat();
+       modeKNDNKVDPHY101 = in.readFloat();
+       modeKNDNKNDPHY97 = in.readFloat();
+       modeKNDNKNDPHY99 = in.readFloat();
+       modeKNDNKNDPHY101 = in.readFloat();
+       modeKNDNKNDPLANE97 = in.readFloat();
+       modeKNDNKNDPLANE99 = in.readFloat();
+       modeKNDNKNDPLANE101 = in.readFloat();
+
+        //rotors
+        modeRotorVD = in.readInt();
+        modeRotorND = in.readInt();
+
+        //Generator tablo
+        modeGeneratorTablo = in.readInt();
 
         //mode Work
         modeWorkSum = in.readFloat();
-        modeWokrNom = in.readFloat();
+        modeWorkNom = in.readFloat();
         modeWorkMax = in.readFloat();
         modeWorkLaunchCount = in.readInt();
+        modeWorkLaunchVSUCount = in.readInt();
+        modeWorkN1Count = in.readInt();
+
+        currentUserId = in.readString();
     }
 
     public static final Creator<StepEngineData> CREATOR = new Creator<StepEngineData>() {
@@ -1119,6 +1306,11 @@ public class StepEngineData implements Parcelable{
         dest.writeString(launchId);
         dest.writeInt(atmPressure);
         dest.writeInt(atmTemp);
+
+        dest.writeFloat(work0Nominal);
+        dest.writeFloat(workNominal);
+        dest.writeFloat(workMax);
+
         dest.writeInt(limb);
         dest.writeInt(apuTime);
 
@@ -1222,21 +1414,47 @@ public class StepEngineData implements Parcelable{
         dest.writeInt(modeSmallGas2Vibration);
         dest.writeFloat(modeSmallGas2SwitchMin);
         dest.writeFloat(modeSmallGas2SwitchMax);
-        dest.writeByte((byte) (modeSmallGas2CondOn ? 1 : 0));
-        dest.writeByte((byte) (modeSmallGas2CondOff ? 1 : 0));
-        dest.writeByte((byte) (modeSmallGas2AntifreezeOn ? 1 : 0));
-        dest.writeByte((byte) (modeSmallGas2AntifreezeOff ? 1 : 0));
+        dest.writeFloat(modeSmallGas2CondOn);
+        dest.writeFloat(modeSmallGas2CondOff);
+        dest.writeFloat(modeSmallGas2AntifreezeOn);
+        dest.writeFloat(modeSmallGas2AntifreezeOff);
+
+        //dest.writeByte((byte) (modeSmallGas2CondOn ? 1 : 0));
+        //dest.writeByte((byte) (modeSmallGas2CondOff ? 1 : 0));
+        //dest.writeByte((byte) (modeSmallGas2AntifreezeOn ? 1 : 0));
+        //dest.writeByte((byte) (modeSmallGas2AntifreezeOff ? 1 : 0));
 
         //mode KND
-        dest.writeFloat(modeKVDHPCSpeed);
-        dest.writeFloat(modeKNDHPCSpeed);
-        dest.writeFloat(modeKNDHPCSpeedCited);
-        dest.writeFloat(modeKNDHPCSpeedInstalled);
+        //dest.writeFloat(modeKVDHPCSpeed);
+        //dest.writeFloat(modeKNDHPCSpeed);
+        //dest.writeFloat(modeKNDHPCSpeedCited);
+        //dest.writeFloat(modeKNDHPCSpeedInstalled);
+        dest.writeFloat(modeKNDNKVDPHY97);
+        dest.writeFloat(modeKNDNKVDPHY99);
+        dest.writeFloat(modeKNDNKVDPHY101);
+        dest.writeFloat(modeKNDNKNDPHY97);
+        dest.writeFloat(modeKNDNKNDPHY99);
+        dest.writeFloat(modeKNDNKNDPHY101);
+        dest.writeFloat(modeKNDNKNDPLANE97);
+        dest.writeFloat(modeKNDNKNDPLANE99);
+        dest.writeFloat(modeKNDNKNDPLANE101);
+
+        //rotors
+        dest.writeInt(modeRotorVD);
+        dest.writeInt(modeRotorND);
+
+        //Generator tablo
+        dest.writeInt(modeGeneratorTablo);
 
         //mode Work
         dest.writeFloat(modeWorkSum);
-        dest.writeFloat(modeWokrNom);
+        dest.writeFloat(modeWorkNom);
         dest.writeFloat(modeWorkMax);
         dest.writeInt(modeWorkLaunchCount);
+        dest.writeInt(modeWorkLaunchVSUCount);
+        dest.writeInt(modeWorkN1Count);
+
+        dest.writeString(currentUserId);
+
     }
 }

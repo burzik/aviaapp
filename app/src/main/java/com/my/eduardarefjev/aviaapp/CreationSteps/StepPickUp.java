@@ -12,37 +12,58 @@ import com.my.eduardarefjev.aviaapp.R;
 import static java.lang.Double.MIN_VALUE;
 
 /**
- * Created by EduardArefjev on 29/10/2017.
+ * HISTORY
+ * 	Date			Author				Comments
+ * 	29.10.2017		Eduard Arefjev 		Created "StepPickUp" screen, one of steps
+ * 	31.12.2017      Eduard Arefjev      Added writing data to FireBase and send to next view
  */
 
 public class StepPickUp extends AppCompatActivity {
 
-    private Button bNextStep;
+    private StepEngineData engineData;
+    String id;
 
     @Override
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.linear_step_pick_up);
-
         this.setTitle(R.string.label_pick_up);
 
-        EditText eIII = (EditText) findViewById(R.id.LinearLabelInpExitMgMax);
-        CreationHelper.checkValue(eIII, 9, 12);
-        EditText eV = (EditText) findViewById(R.id.LinearLabelInpResetMaxMg);
-        CreationHelper.checkValue(eV, -MIN_VALUE, 5);
+        Intent intent = getIntent();
+        id = intent.getStringExtra("recordId");
+        Bundle extra = getIntent().getBundleExtra("extra");
+        engineData  = extra.getParcelable("objects");
+
+        EditText eExitMgMax = (EditText) findViewById(R.id.LinearLabelInpExitMgMax);
+        CreationHelper.checkValue(eExitMgMax, 9, 12);
+        EditText eResetMaxMg = (EditText) findViewById(R.id.LinearLabelInpResetMaxMg);
+        CreationHelper.checkValue(eResetMaxMg, -MIN_VALUE, 5);
 
         nextSecondStep();
     }
 
     public void nextSecondStep() {
-        bNextStep = (Button) findViewById(R.id.LinearButtonNextStepPickUp);
+        Button bNextStep = (Button) findViewById(R.id.LinearButtonNextStepPickUp);
         bNextStep.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                setRecord();
+                CreationHelper.updateRecord(id, engineData);
                 Intent intent = new Intent(StepPickUp.this, StepSmallGas2.class);
+                intent.putExtra("recordId", id);
+                Bundle extra = new Bundle();
+                extra.putParcelable("objects", engineData);
+                intent.putExtra("extra", extra);
                 startActivity(intent);
             }
         });
+    }
+
+    public void setRecord(){
+        EditText eExitMgMax = (EditText) findViewById(R.id.LinearLabelInpExitMgMax);
+        EditText eResetMaxMg = (EditText) findViewById(R.id.LinearLabelInpResetMaxMg);
+
+        engineData.setModeAccelerationIdleMaxIn(Float.valueOf(eExitMgMax.getText().toString()));
+        engineData.setModeAccelerationIdleOut(Float.valueOf(eResetMaxMg.getText().toString()));
     }
 }

@@ -12,19 +12,27 @@ import com.my.eduardarefjev.aviaapp.R;
 import static java.lang.Double.MAX_VALUE;
 
 /**
- * Created by EduardArefjev on 22/12/2017.
+ * HISTORY
+ * 	Date			Author				Comments
+ * 	22.12.2017		Eduard Arefjev 		Created "StepRunoutOfRotors" screen, one of steps
+ * 	31.12.2017      Eduard Arefjev      Added writing data to FireBase and send to next view
  */
 
 public class StepRunoutOfRotors extends AppCompatActivity {
 
-    private Button bNextStep;
+    private StepEngineData engineData;
+    String id;
 
     @Override
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.linear_step_runout_of_rotors);
-
         this.setTitle("Выбег роторов");
+
+        Intent intent = getIntent();
+        id = intent.getStringExtra("recordId");
+        Bundle extra = getIntent().getBundleExtra("extra");
+        engineData  = extra.getParcelable("objects");
 
         EditText eRotorVD = (EditText) findViewById(R.id.LinearLabelInpRotorVD);
         CreationHelper.checkValue(eRotorVD, 20, MAX_VALUE);
@@ -35,14 +43,27 @@ public class StepRunoutOfRotors extends AppCompatActivity {
     }
 
     public void nextSecondStep() {
-        bNextStep = (Button) findViewById(R.id.LinearButtonNextRunOutOfRotors);
+        Button bNextStep = (Button) findViewById(R.id.LinearButtonNextRunOutOfRotors);
         bNextStep.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                setRecord();
+                CreationHelper.updateRecord(id, engineData);
                 Intent intent = new Intent(StepRunoutOfRotors.this, StepTanningBoardDisplayGenerator.class);
+                intent.putExtra("recordId", id);
+                Bundle extra = new Bundle();
+                extra.putParcelable("objects", engineData);
+                intent.putExtra("extra", extra);
                 startActivity(intent);
             }
         });
+    }
+
+    public void setRecord(){
+        EditText eRotorND = (EditText) findViewById(R.id.LinearLabelInpRotorND);
+        EditText eRotorVD = (EditText) findViewById(R.id.LinearLabelInpRotorVD);
+
+        engineData.setModeRotorND(Integer.valueOf(eRotorND.getText().toString()));
+        engineData.setModeRotorVD(Integer.valueOf(eRotorVD.getText().toString()));
     }
 }

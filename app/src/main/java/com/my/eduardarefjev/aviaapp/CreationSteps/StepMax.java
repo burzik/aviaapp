@@ -14,20 +14,28 @@ import com.my.eduardarefjev.aviaapp.R;
 import static java.lang.Double.MIN_VALUE;
 
 /**
- * Created by EduardArefjev on 23/10/2017.
+ * HISTORY
+ * 	Date			Author				Comments
+ * 	23.10.2017		Eduard Arefjev 		Created "StepMax" screen, one of steps
+ * 	30.12.2017      Eduard Arefjev      Added writing data to FireBase and send to next view
  */
 
 public class StepMax extends AppCompatActivity{
 
-    private Button bNextStep;
     private Spinner spinnerKrTank;
+    private StepEngineData engineData;
+    String id;
 
     @Override
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.linear_step_max);
-
         this.setTitle("Макс.");
+
+        Intent intent = getIntent();
+        id = intent.getStringExtra("recordId");
+        Bundle extra = getIntent().getBundleExtra("extra");
+        engineData  = extra.getParcelable("objects");
 
         EditText eN1 = (EditText) findViewById(R.id.LinearInpN1);
         CreationHelper.checkValue(eN1, 105, 107);
@@ -58,14 +66,47 @@ public class StepMax extends AppCompatActivity{
     }
 
     public void nextSecondStep() {
-        bNextStep = (Button) findViewById(R.id.LinearButtonNextClosingKVD3Max);
+        Button bNextStep = (Button) findViewById(R.id.LinearButtonNextClosingKVD3Max);
         bNextStep.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                setRecord();
+                CreationHelper.updateRecord(id, engineData);
                 Intent intent = new Intent(StepMax.this, StepClosingKVDKPV.class);
+                intent.putExtra("recordId", id);
+                Bundle extra = new Bundle();
+                extra.putParcelable("objects", engineData);
+                intent.putExtra("extra", extra);
                 startActivity(intent);
             }
         });
+    }
+
+    public void setRecord(){
+        EditText eN1 = (EditText) findViewById(R.id.LinearInpN1);
+        EditText eN2_4 = (EditText) findViewById(R.id.LinearInpN2_4);
+        EditText eTRC = (EditText) findViewById(R.id.LinearInpTRC);
+        EditText ePm = (EditText) findViewById(R.id.LinearInpPm);
+        EditText eTmC = (EditText) findViewById(R.id.LinearInpTmC);
+        EditText ePt = (EditText) findViewById(R.id.LinearInpPt);
+        EditText eEngineSqrt = (EditText) findViewById(R.id.LinearInpEngineSqrt);
+        EditText eVGenerator = (EditText) findViewById(R.id.LinearInpVGenerator);
+        EditText ePCabin = (EditText) findViewById(R.id.LinearInpPCabin);
+        spinnerKrTank = (Spinner) findViewById(R.id.RelativeSpinnerInpKrTank);
+        EditText ePVozdKrTank = (EditText) findViewById(R.id.LinearInpPVozdKrTank);
+        EditText ePtPreembossed = (EditText) findViewById(R.id.LinearInpPtPreembossed);
+
+        engineData.setModeMaxHPCSpeed(Float.valueOf(eN1.getText().toString()));
+        engineData.setModeMaxHPCSpeedN2(Float.valueOf(eN2_4.getText().toString()));
+        engineData.setModeMaxTemp(Integer.valueOf(eTRC.getText().toString()));
+        engineData.setModeMaxOilPressure(Float.valueOf(ePm.getText().toString()));
+        engineData.setModeMaxOilTemp(Integer.valueOf(eTmC.getText().toString()));
+        engineData.setModeMaxFuelPressure(Integer.valueOf(ePt.getText().toString()));
+        engineData.setModeMaxVibration(Integer.valueOf(eEngineSqrt.getText().toString()));
+        engineData.setModeMaxVGenerator(Integer.valueOf(eVGenerator.getText().toString()));
+        engineData.setModeMaxGeneratorSpeedConst(spinnerKrTank.getSelectedItem().toString().equals("Норма"));
+        engineData.setModeMaxPressureCabin(Float.valueOf(ePCabin.getText().toString()));
+        engineData.setModeMaxPressureWings(Float.valueOf(ePVozdKrTank.getText().toString()));
+        engineData.setModeMaxPressureNozzles(Integer.valueOf(ePtPreembossed.getText().toString()));
     }
 }

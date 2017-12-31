@@ -10,19 +10,27 @@ import android.widget.EditText;
 import com.my.eduardarefjev.aviaapp.R;
 
 /**
- * Created by EduardArefjev on 23/10/2017.
+ * HISTORY
+ * 	Date			Author				Comments
+ * 	23.10.2017		Eduard Arefjev 		Created "StepClosingKVD5" screen, one of steps
+ * 	30.12.2017      Eduard Arefjev      Added writing data to FireBase and send to next view
  */
 
 public class StepClosingKVD5 extends AppCompatActivity {
 
-    private Button bNextStep;
+    private StepEngineData engineData;
+    String id;
 
     @Override
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.linear_step_closing_kvd_5);
-
         this.setTitle(R.string.label_turnover_kvd_v);
+
+        Intent intent = getIntent();
+        id = intent.getStringExtra("recordId");
+        Bundle extra = getIntent().getBundleExtra("extra");
+        engineData  = extra.getParcelable("objects");
 
         EditText eN1StraightRun = (EditText) findViewById(R.id.LinearLabelInpN1StraightRun);
         CreationHelper.checkValue(eN1StraightRun, 74, 78);
@@ -31,15 +39,25 @@ public class StepClosingKVD5 extends AppCompatActivity {
     }
 
     public void nextSecondStep() {
-        bNextStep = (Button) findViewById(R.id.LinearButtonNextClosingKVD);
+        Button bNextStep = (Button) findViewById(R.id.LinearButtonNextClosingKVD);
         bNextStep.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                setRecord();
+                CreationHelper.updateRecord(id, engineData);
                 Intent intent = new Intent(StepClosingKVD5.this, StepN85.class);
+                intent.putExtra("recordId", id);
+                Bundle extra = new Bundle();
+                extra.putParcelable("objects", engineData);
+                intent.putExtra("extra", extra);
                 startActivity(intent);
-
             }
         });
+    }
+
+    public void setRecord(){
+        EditText eN1StraightRun = (EditText) findViewById(R.id.LinearLabelInpN1StraightRun);
+
+        engineData.setStage5ModeName(Float.valueOf(eN1StraightRun.getText().toString()));
     }
 }

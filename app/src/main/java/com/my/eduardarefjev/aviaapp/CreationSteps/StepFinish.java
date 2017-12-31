@@ -5,37 +5,68 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 import com.my.eduardarefjev.aviaapp.MainActivity;
 import com.my.eduardarefjev.aviaapp.R;
 
 /**
- * Created by EduardArefjev on 23/10/2017.
+ * HISTORY
+ * 	Date			Author				Comments
+ * 	23.10.2017		Eduard Arefjev 		Created "StepFinish" screen, one of steps
+ * 	31.12.2017      Eduard Arefjev      Added writing data to FireBase and send to next view
  */
 
 public class StepFinish extends AppCompatActivity {
 
-    private Button bNextStep;
+    private StepEngineData engineData;
+    String id;
 
     @Override
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.linear_step_finish);
-
         this.setTitle("Финальные данные");
+
+        Intent intent = getIntent();
+        id = intent.getStringExtra("recordId");
+        Bundle extra = getIntent().getBundleExtra("extra");
+        engineData  = extra.getParcelable("objects");
 
         nextSecondStep();
     }
 
     public void nextSecondStep() {
-        bNextStep = (Button) findViewById(R.id.LinearButtonNextFinish);
+        Button bNextStep = (Button) findViewById(R.id.LinearButtonNextFinish);
         bNextStep.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                setRecord();
+                CreationHelper.updateRecord(id, engineData);
                 Intent intent = new Intent(StepFinish.this, MainActivity.class);
+                //intent.putExtra("recordId", id);
+                //Bundle extra = new Bundle();
+                //extra.putParcelable("objects", engineData);
+                //intent.putExtra("extra", extra);
                 startActivity(intent);
             }
         });
+    }
+
+    public void setRecord(){
+        EditText eCommon = (EditText) findViewById(R.id.LinearLabelInpCommon);
+        EditText eNominal = (EditText) findViewById(R.id.LinearLabelInpNominal);
+        EditText eN1StraightRunV2 = (EditText) findViewById(R.id.LinearLabelInpN1StraightRunV2);
+        EditText eEngineAI = (EditText) findViewById(R.id.LinearLabelInpEngineAI);
+        EditText eVSUSapphire = (EditText) findViewById(R.id.LinearLabelInpVSUSapphire);
+        EditText eEngineA2I = (EditText) findViewById(R.id.LinearLabelInpEngineA2I);
+
+        engineData.setModeWorkSum(Float.valueOf(eCommon.getText().toString()));
+        engineData.setModeWorkNom(Float.valueOf(eNominal.getText().toString()));
+        engineData.setModeWorkMax(Float.valueOf(eN1StraightRunV2.getText().toString()));
+        engineData.setModeWorkLaunchCount(Integer.valueOf(eEngineAI.getText().toString()));
+        engineData.setModeWorkLaunchVSUCount(Integer.valueOf(eVSUSapphire.getText().toString()));
+        engineData.setModeWorkN1Count(Integer.valueOf(eEngineA2I.getText().toString()));
+
     }
 }

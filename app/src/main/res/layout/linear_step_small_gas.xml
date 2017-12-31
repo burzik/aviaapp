@@ -293,7 +293,6 @@
             android:text="@string/label_air_cond"
             android:textSize="10pt"
             android:gravity="center"/>
-        <!--TODO SPINNER-->
         <Spinner
             android:id="@+id/LinearLabelInpSpinnerAirCond"
             android:layout_width="match_parent"
