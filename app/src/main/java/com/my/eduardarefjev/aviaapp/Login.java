@@ -15,19 +15,18 @@ import com.google.firebase.auth.FirebaseUser;
  * HISTORY
  * 	Date			Author				Comments
  * 	04.11.2017		Eduard Arefjev 		Created "Login" screen
+ * 	01.01.2017      Eduard Arefjev      Created new method "isAuthorized"
  */
 
 public class Login extends AppCompatActivity{
 
     private EditText eEmail;
     private EditText ePass;
-
     private FirebaseAuth mAuth;
 
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.linear_login);
-
         this.setTitle("Login");
 
         mAuth = FirebaseAuth.getInstance();
@@ -63,14 +62,18 @@ public class Login extends AppCompatActivity{
         });
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
+    public void isAuthorized(){
         // Check if user is signed in (non-null)
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if (currentUser != null){
             Intent intent = new Intent(Login.this, MainActivity.class);
             startActivity(intent);
         }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        isAuthorized();
     }
 }
