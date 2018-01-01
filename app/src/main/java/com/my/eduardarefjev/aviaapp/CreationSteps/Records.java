@@ -5,8 +5,6 @@ import android.app.ListActivity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.view.View;
-import android.widget.Button;
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -21,11 +19,10 @@ import java.util.ArrayList;
  * HISTORY
  * 	Date			Author				Comments
  * 	29.10.2017		Eduard Arefjev 		Created "Records" screen, to display all records
+ * 	01.01.2017      Eduard Arefjev      Minor Refactoring
  */
 
 public class Records extends ListActivity {
-
-    private Button bNextStep;
 
     private DatabaseReference mDatabase;
     private ArrayList<StepEngineData> m_parts = new ArrayList<>();
@@ -35,11 +32,11 @@ public class Records extends ListActivity {
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         this.setTitle("Записи");
 
-        m_adapter = new RecordsViewHolder(this, R.layout.activity_main, m_parts);
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("EngineLaunches");
 
+        m_adapter = new RecordsViewHolder(this, R.layout.activity_main, m_parts);
         setListAdapter(m_adapter);
         Runnable viewParts = new Runnable() {
             public void run() {
@@ -48,9 +45,6 @@ public class Records extends ListActivity {
         };
         Thread thread =  new Thread(null, viewParts, "ListOfUsersBackground");
         thread.start();
-
-        mDatabase = FirebaseDatabase.getInstance().getReference().child("EngineLaunches");
-        //nextSecondStep();
     }
 
 
@@ -59,7 +53,6 @@ public class Records extends ListActivity {
         mDatabase.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-
                 StepEngineData user = dataSnapshot.getValue(StepEngineData.class);
                 m_adapter.add(user);
                 m_adapter.notifyDataSetChanged();
@@ -102,19 +95,6 @@ public class Records extends ListActivity {
     @Override
     protected void onResume() {
         super.onStart();
-
         updateAdapter();
-    }
-
-    public void nextSecondStep() {
-        bNextStep = (Button) findViewById(R.id.LinearButtonNextFinish);
-        bNextStep.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                //Intent intent = new Intent(StepFinish.this, MainActivity.class);
-                //startActivity(intent);
-            }
-        });
     }
 }
