@@ -9,6 +9,7 @@ import android.os.Parcelable;
  * 	Date			Author				Comments
  * 	03.11.2017		Eduard Arefjev 		Created "User" class, which store main information about users
  * 	28.12.2017      Eduard Arefjev      Some minor refactoring
+ * 	01.01.2017      Eduard Arefjev      Fixed email error
  */
 
 public class User implements Parcelable {
@@ -49,7 +50,7 @@ public class User implements Parcelable {
         this.lastName = lastName;
     }
 
-    String getEmail() {
+    public String getEmail() {
         return email;
     }
 

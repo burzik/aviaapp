@@ -20,6 +20,7 @@ import java.util.ArrayList;
  * HISTORY
  * 	Date			Author				Comments
  * 	23.12.2017		Eduard Arefjev 		Created "DetailedUserInfo" screen to change user information
+ * 	01.01.2017      Eduard Arefjev      Updated layout id, due of duplicate error
  */
 
 public class DetailedUserInfo extends AppCompatActivity {
@@ -39,7 +40,6 @@ public class DetailedUserInfo extends AppCompatActivity {
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.linear_detailed_user_info);
-
         this.setTitle("Users");
 
         //EA get user
@@ -53,7 +53,7 @@ public class DetailedUserInfo extends AppCompatActivity {
         //EA find views
         eFirstName = (EditText) findViewById(R.id.LinearLabelInpFirstName);
         eLastName = (EditText) findViewById(R.id.LinearLabelInpLastName);
-        eEmail = (TextView) findViewById(R.id.LinearLabelInpEmail);
+        eEmail = (TextView) findViewById(R.id.LinearLabelInpEmailDetailed);
         //ePassword = (EditText) findViewById(R.id.LinearLabelInpPassword);
         spinnerPrivileges = (Spinner) findViewById(R.id.LinearLabelInpSpinnerPrivileges);
         ArrayAdapter<String> myAdapter = new ArrayAdapter<>(DetailedUserInfo.this, android.R.layout.simple_spinner_dropdown_item, getResources().getStringArray(R.array.privileges));

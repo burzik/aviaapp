@@ -35,7 +35,6 @@ public class ListOfUsers extends ListActivity {
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         this.setTitle("Users");
 
         m_adapter = new ListOfUsersViewHolder(this, R.layout.activity_main, m_parts);
@@ -57,8 +56,8 @@ public class ListOfUsers extends ListActivity {
         mDatabase.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-
-                User user = dataSnapshot.getValue(User.class);
+                User user;
+                user = dataSnapshot.getValue(User.class);
                 m_adapter.add(user);
                 m_adapter.notifyDataSetChanged();
 
@@ -111,7 +110,6 @@ public class ListOfUsers extends ListActivity {
     @Override
     protected void onResume() {
         super.onStart();
-
         updateAdapter();
         }
 }
