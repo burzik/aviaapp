@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,7 +39,7 @@ public class RecordsViewHolder extends ArrayAdapter<StepEngineData> {
         if (v == null) {
             LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             assert inflater != null;
-            v = inflater.inflate(R.layout.activity_main, null);
+            v = inflater.inflate(R.layout.listview_records, null);
 
             StepEngineData i = objects.get(position);
 
@@ -47,10 +48,10 @@ public class RecordsViewHolder extends ArrayAdapter<StepEngineData> {
                 TextView tt2 = (TextView) v.findViewById(R.id.LastName);
 
                 if (tt != null){
-                    tt.setText("Имя: " + i.getEngineId());
+                    tt.setText("Дата запуска: " + DateFormat.format("dd.MM.yyyy", i.getLaunchDate()).toString() );
                 }
                 if (tt != null){
-                    tt2.setText("Фамилия: " + i.getLaunchDate());
+                    tt2.setText("Номер двигателя: " + i.getEngineId());
                 }
 
             }
