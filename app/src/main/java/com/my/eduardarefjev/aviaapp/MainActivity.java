@@ -27,23 +27,20 @@ import static com.my.eduardarefjev.aviaapp.FirebaseManager.mAuth;
  * HISTORY
  * 	Date			Author				Comments
  * 	31.12.2017		Eduard Arefjev 		Added privilege check
+ * 	01.01.2017      Eduard Arefjev      Added new method "getUserName"
  */
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button bCreateRecord;
-    private Button bShowRecords;
     private Button bCreateUser;
     private Button bSetPrivileges;
-    private Button bSettings;
-    User user;
+    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.linear_main_screen);
 
-        final TextView hello = (TextView) findViewById(R.id.LinearHello);
         //String name = FirebaseManager.currentUser();
         //hello.append(" name" + name);
         //bSettings = (Button)findViewById(R.id.LinearSettings);
@@ -56,8 +53,11 @@ public class MainActivity extends AppCompatActivity {
         createUser();
         setPrivileges();
         settings();
+        getUserName();
+    }
 
-
+    public void getUserName(){
+        final TextView hello = (TextView) findViewById(R.id.LinearHello);
         //////TODO Add to FirebaseManager
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser mUser = mAuth.getCurrentUser();
@@ -65,34 +65,29 @@ public class MainActivity extends AppCompatActivity {
         if (mUser != null) {
             userUid = mUser.getUid();
         }
-            //Query
-            DatabaseReference mDatabase;
-            mDatabase = FirebaseDatabase.getInstance().getReference().child("Users");
-            Query query = mDatabase.orderByChild("uid").equalTo(userUid);
-            query.addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    if (dataSnapshot.exists()) {
-                        for (DataSnapshot issue : dataSnapshot.getChildren()) {
-                            user = issue.getValue(User.class);
-                            hello.append(" " + user.getLastName());
-                            checkUserPrivilege();
-                        }
+        //Query
+        DatabaseReference mDatabase;
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("Users");
+        Query query = mDatabase.orderByChild("uid").equalTo(userUid);
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    for (DataSnapshot issue : dataSnapshot.getChildren()) {
+                        user = issue.getValue(User.class);
+                        hello.append(" " + user.getLastName());
+                        checkUserPrivilege();
                     }
                 }
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-
-                }
-            });
-        //}
-
-
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
     }
 
     public void createNewRecord(){
-        bCreateRecord = (Button)findViewById(R.id.LinearCreateRecord);
+        Button bCreateRecord = (Button) findViewById(R.id.LinearCreateRecord);
         bCreateRecord.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -103,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void showRecords(){
-        bShowRecords = (Button)findViewById(R.id.LinearShowRecords);
+        Button bShowRecords = (Button) findViewById(R.id.LinearShowRecords);
         bShowRecords.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -136,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void settings(){
-        bSettings = (Button)findViewById(R.id.LinearSettings);
+        Button bSettings = (Button) findViewById(R.id.LinearSettings);
         bSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

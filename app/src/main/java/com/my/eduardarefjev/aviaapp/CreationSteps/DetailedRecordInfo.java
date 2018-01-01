@@ -22,11 +22,11 @@ import java.util.Date;
 /**
  * HISTORY
  * 	Date			Author				Comments
- * 	30.12.2017		Eduard Arefjev 		Created "DetailedRecordInformation" screen
+ * 	30.12.2017		Eduard Arefjev 		Created "DetailedRecordInfo" screen
  * 	31.12.2017      Eduard Arefjev      Added updating in FireBase and retrieving data from FireBase
  */
 
-public class DetailedRecordInformation extends AppCompatActivity {
+public class DetailedRecordInfo extends AppCompatActivity {
 
     String id;
     public StepEngineData engineData;
@@ -118,9 +118,9 @@ public class DetailedRecordInformation extends AppCompatActivity {
             public void onClick(View v) {
                 setRecord();
                 CreationHelper.updateRecord(id, engineData);
-                Intent intent = new Intent(DetailedRecordInformation.this, StepStartInfo.class);
+                Intent intent = new Intent(DetailedRecordInfo.this, StepStartInfo.class);
                 intent.putExtra("recordId", id);
-                intent.putExtra("parentViewName", "DetailedRecordInformation");
+                intent.putExtra("parentViewName", "DetailedRecordInfo");
                 Bundle extra = new Bundle();
                 extra.putParcelable("objects", engineData);
                 intent.putExtra("extra", extra);

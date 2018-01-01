@@ -170,7 +170,7 @@
             <category android:name="android.intent.category.EDIT" />
         </intent-filter>
     </activity>
-        <activity android:name=".CreationSteps.DetailedRecordInformation">
+        <activity android:name=".CreationSteps.DetailedRecordInfo">
             <intent-filter>
                 <action android:name="android.intent.action.INFO" />
 

@@ -64,7 +64,7 @@ public class RecordsViewHolder extends ArrayAdapter<StepEngineData> {
                 //activity.startActivity(intent);
                 //mDatabase = FirebaseDatabase.getInstance().getReference().child("EngineLaunches");
 
-                Intent intent = new Intent(getContext(), DetailedRecordInformation.class);
+                Intent intent = new Intent(getContext(), DetailedRecordInfo.class);
                 intent.putExtra("position", position);
                 StepEngineData i = objects.get(position);
                 //intent.putExtra("firstname", i.getFirstName());
