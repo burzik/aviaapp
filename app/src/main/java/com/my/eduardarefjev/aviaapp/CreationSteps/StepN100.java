@@ -64,7 +64,7 @@ public class StepN100 extends AppCompatActivity {
     }
 
     public void updateUI(){
-        if(parentView.equals("DetailedRecordInformation")) {
+        if(parentView.equals("DetailedRecordInfo")) {
             EditText eEngMeasurement = (EditText) findViewById(R.id.LinearLabelInpEngMeasurement);
 
             eEngMeasurement.setText(Integer.toString(engineData.getMode100Vibration()));

@@ -89,7 +89,7 @@ public class Step085Nom extends AppCompatActivity {
     }
 
     public void updateUI(){
-        if(parentView.equals("DetailedRecordInformation")) {
+        if(parentView.equals("DetailedRecordInfo")) {
             EditText eN1 = (EditText) findViewById(R.id.LinearLabelInpN1);
             EditText eTrc = (EditText) findViewById(R.id.LinearLabelInpTrc);
             EditText ePm = (EditText) findViewById(R.id.LinearLabelInpPm);

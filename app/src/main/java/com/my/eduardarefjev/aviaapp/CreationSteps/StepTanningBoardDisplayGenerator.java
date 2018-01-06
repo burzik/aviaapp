@@ -64,7 +64,7 @@ public class StepTanningBoardDisplayGenerator extends AppCompatActivity {
     }
 
     public void updateUI(){
-        if(parentView.equals("DetailedRecordInformation")) {
+        if(parentView.equals("DetailedRecordInfo")) {
             EditText eColdEngine = (EditText) findViewById(R.id.LinearLabelInpColdEngine);
 
             eColdEngine.setText(Integer.toString(engineData.getModeGeneratorTablo()));

@@ -101,7 +101,7 @@ public class StepN85 extends AppCompatActivity {
     }
 
     public void updateUI(){
-        if(parentView.equals("DetailedRecordInformation")) {
+        if(parentView.equals("DetailedRecordInfo")) {
             EditText eFlightTakeoff = (EditText) findViewById(R.id.LinearLabelInpFlightTakeoff);
             EditText eTakeoffLanding = (EditText) findViewById(R.id.LinearLabelInpTakeoffLangding);
             EditText eFlightLanding = (EditText) findViewById(R.id.LinearLabelInpFlightLanding);

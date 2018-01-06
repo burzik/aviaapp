@@ -70,7 +70,7 @@ public class StepClosingKVDKPV extends AppCompatActivity {
     }
 
     public void updateUI(){
-        if(parentView.equals("DetailedRecordInformation")) {
+        if(parentView.equals("DetailedRecordInfo")) {
             EditText eIII = (EditText) findViewById(R.id.LinearLabelInpIII);
             EditText eV = (EditText) findViewById(R.id.LinearLabelInpV);
 

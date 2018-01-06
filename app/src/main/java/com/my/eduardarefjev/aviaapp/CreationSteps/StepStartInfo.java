@@ -84,7 +84,7 @@ public class StepStartInfo extends AppCompatActivity {
     }
 
     public void updateUI(){
-        if(parentView.equals("DetailedRecordInformation")) {
+        if(parentView.equals("DetailedRecordInfo")) {
             EditText eLimbArg = (EditText) findViewById(R.id.LinearLabelInpLimbArg);
             EditText eLaunchingTVSU = (EditText) findViewById(R.id.LinearLabelInpLaunchingTVSU);
             EditText eEngineCasting = (EditText) findViewById(R.id.LinearLabelInpEngineCasting);

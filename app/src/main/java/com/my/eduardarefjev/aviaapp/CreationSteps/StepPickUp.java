@@ -73,7 +73,7 @@ public class StepPickUp extends AppCompatActivity {
     }
 
     public void updateUI(){
-        if(parentView.equals("DetailedRecordInformation")) {
+        if(parentView.equals("DetailedRecordInfo")) {
             EditText eExitMgMax = (EditText) findViewById(R.id.LinearLabelInpExitMgMax);
             EditText eResetMaxMg = (EditText) findViewById(R.id.LinearLabelInpResetMaxMg);
 

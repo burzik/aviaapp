@@ -80,7 +80,7 @@ public class StepControlKND extends AppCompatActivity {
     }
 
     public void updateUI(){
-        if(parentView.equals("DetailedRecordInformation")) {
+        if(parentView.equals("DetailedRecordInfo")) {
             EditText eNKVDPHY97 = (EditText) findViewById(R.id.LinearLabelInpNKVDPHY97);
             EditText eNKVDPHY99 = (EditText) findViewById(R.id.LinearLabelInpNKVDPHY99);
             EditText eNKVDPHY101 = (EditText) findViewById(R.id.LinearLabelInpNKVDPHY101);

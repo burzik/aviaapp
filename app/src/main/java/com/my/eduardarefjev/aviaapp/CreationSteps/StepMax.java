@@ -117,7 +117,7 @@ public class StepMax extends AppCompatActivity{
     }
 
     public void updateUI(){
-        if(parentView.equals("DetailedRecordInformation")) {
+        if(parentView.equals("DetailedRecordInfo")) {
             EditText eN1 = (EditText) findViewById(R.id.LinearInpN1);
             EditText eN2_4 = (EditText) findViewById(R.id.LinearInpN2_4);
             EditText eTRC = (EditText) findViewById(R.id.LinearInpTRC);

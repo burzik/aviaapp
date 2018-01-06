@@ -73,7 +73,7 @@ public class StepRunoutOfRotors extends AppCompatActivity {
     }
 
     public void updateUI(){
-        if(parentView.equals("DetailedRecordInformation")) {
+        if(parentView.equals("DetailedRecordInfo")) {
             EditText eRotorND = (EditText) findViewById(R.id.LinearLabelInpRotorND);
             EditText eRotorVD = (EditText) findViewById(R.id.LinearLabelInpRotorVD);
 

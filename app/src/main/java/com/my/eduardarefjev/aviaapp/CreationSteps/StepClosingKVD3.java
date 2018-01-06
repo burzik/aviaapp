@@ -64,7 +64,7 @@ public class StepClosingKVD3 extends AppCompatActivity {
     }
 
     public void updateUI(){
-        if(parentView.equals("DetailedRecordInformation")) {
+        if(parentView.equals("DetailedRecordInfo")) {
             EditText eN1StraightRun = (EditText) findViewById(R.id.LinearLabelInpN1StraightRun);
 
 

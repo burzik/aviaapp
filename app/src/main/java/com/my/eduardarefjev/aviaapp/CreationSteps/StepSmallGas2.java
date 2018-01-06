@@ -112,7 +112,7 @@ public class StepSmallGas2 extends AppCompatActivity {
     }
 
     public void updateUI(){
-        if(parentView.equals("DetailedRecordInformation")) {
+        if(parentView.equals("DetailedRecordInfo")) {
             EditText eN1 = (EditText) findViewById(R.id.LinearInpN1);
             EditText eTRC = (EditText) findViewById(R.id.LinearInpTRC);
             EditText ePm = (EditText) findViewById(R.id.LinearInpPm);

@@ -74,7 +74,7 @@ public class StepFinish extends AppCompatActivity {
     }
 
     public void updateUI(){
-        if(parentView.equals("DetailedRecordInformation")) {
+        if(parentView.equals("DetailedRecordInfo")) {
             EditText eCommon = (EditText) findViewById(R.id.LinearLabelInpCommon);
             EditText eNominal = (EditText) findViewById(R.id.LinearLabelInpNominal);
             EditText eN1StraightRunV2 = (EditText) findViewById(R.id.LinearLabelInpN1StraightRunV2);
