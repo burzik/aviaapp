@@ -41,7 +41,7 @@ public class DetailedRecordInfo extends AppCompatActivity {
         this.setTitle("Detailed info");
 
         Intent intent = getIntent();
-        int position = intent.getIntExtra("position", -1);
+        position = intent.getIntExtra("position", -1);
         Bundle extra = getIntent().getBundleExtra("extra");
         ArrayList<StepEngineData> objects = (ArrayList<StepEngineData>) extra.getSerializable("objects");
         assert objects != null;

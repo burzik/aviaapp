@@ -11,12 +11,12 @@ android:weightSum="8">
     android:layout_height="fill_parent" />
 
 <TextView
-    android:id="@+id/activityMainId"
+    android:id="@+id/firstListItem"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:textSize="12pt" />
 <TextView
-    android:id="@+id/LastName"
+    android:id="@+id/secondListItem"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:textSize="12pt" />

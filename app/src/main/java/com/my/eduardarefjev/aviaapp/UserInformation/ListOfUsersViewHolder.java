@@ -1,7 +1,6 @@
 package com.my.eduardarefjev.aviaapp.UserInformation;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -11,8 +10,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.my.eduardarefjev.aviaapp.R;
 
 import java.util.ArrayList;
@@ -21,6 +18,7 @@ import java.util.ArrayList;
  * HISTORY
  * 	Date			Author				Comments
  * 	22.12.2017		Eduard Arefjev 		Created viewholder for "ListOfUsers" screen
+ * 	20.01.2017      Eduard Arefjev      Refactored ViewHolder to recycle view holder
  */
 
 
@@ -28,78 +26,53 @@ public class ListOfUsersViewHolder extends ArrayAdapter<User> {
 
     private ArrayList<User> objects;
     private Activity activity;
-    private DatabaseReference mDatabase;
 
     private class ViewHolder{
         TextView firstName;
         TextView lastName;
     }
 
-    //ListOfUsersViewHolder(Activity activity){
-        //super(activity, R.layout.activity_main, ListOfUsers.values());
-        //this.activity = activity;
-    //}
-    public ListOfUsersViewHolder(Context context, int textViewResourceId, ArrayList<User> objects) {
-        super(context, textViewResourceId, objects);
+    ListOfUsersViewHolder(Activity activity, int textViewResourceId, ArrayList<User> objects) {
+        super(activity, textViewResourceId, objects);
+        this.activity = activity;
         this.objects = objects;
     }
 
-    /*ListOfUsersViewHolder(Activity activity) {
-        super(activity, R.layout.activity_main, ListOfUsers.values());
-        this.activity = activity;
-    }*/
-
     @NonNull
     @Override
-    public View getView(final int position, View convertView, ViewGroup parent){
+    public View getView(final int position, View convertView, @NonNull ViewGroup parent){
+        ViewHolder viewHolder;
 
-        View v = convertView;
+        if (convertView == null) {
+            viewHolder = new ViewHolder();
+            LayoutInflater inflater = activity.getLayoutInflater();
+            final ViewGroup nullParent = null;
+            convertView = inflater.inflate(R.layout.activity_main, nullParent);
 
-        if (v == null) {
-            LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            v = inflater.inflate(R.layout.activity_main, null);
+            viewHolder.firstName = (TextView) convertView.findViewById(R.id.activityMainId);
+            viewHolder.lastName = (TextView) convertView.findViewById(R.id.LastName);
 
-            User i = objects.get(position);
-
-            if (i != null) {
-                TextView tt = (TextView) v.findViewById(R.id.activityMainId);
-                TextView tt2 = (TextView) v.findViewById(R.id.LastName);
-
-                if (tt != null){
-                    tt.setText("Имя: " + i.getFirstName());
-                }
-                if (tt != null){
-                    tt2.setText("Фамилия: " + i.getLastName());
-                }
-
-            }
+            convertView.setTag(viewHolder);
+        } else {
+            viewHolder = (ViewHolder) convertView.getTag();
         }
+        User user = objects.get(position);
 
-        v.setOnClickListener(new View.OnClickListener(){
+        viewHolder.firstName.setText(user.getFirstName());
+        viewHolder.lastName.setText(user.getLastName());
+
+        convertView.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                //Intent intent = new Intent(activity, DetailedUserInfo.class);
-                //intent.putExtra("position", position);
-                //activity.startActivity(intent);
-                mDatabase = FirebaseDatabase.getInstance().getReference().child("Users");
-
-                Intent intent = new Intent(getContext(), DetailedUserInfo.class);
-                intent.putExtra("position", position);
-                User i = objects.get(position);
-                intent.putExtra("firstname", i.getFirstName());
-                intent.putExtra("obj", objects);
-
+                Intent intent = new Intent(activity, DetailedUserInfo.class);
                 Bundle extra = new Bundle();
                 extra.putSerializable("objects", objects);
-
-                //Intent intent = new Intent(getBaseContext(), ShowSpread.class);
+                intent.putExtra("position", position);
                 intent.putExtra("extra", extra);
-
-                //intent.putExtra("qwe",objects);
-                getContext().startActivity(intent);
+                activity.startActivity(intent);
             }
         });
 
-        return v;
+        return convertView;
     }
 }
