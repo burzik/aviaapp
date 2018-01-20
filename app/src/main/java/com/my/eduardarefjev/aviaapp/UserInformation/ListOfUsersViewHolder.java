@@ -18,7 +18,7 @@ import java.util.ArrayList;
  * HISTORY
  * 	Date			Author				Comments
  * 	22.12.2017		Eduard Arefjev 		Created viewholder for "ListOfUsers" screen
- * 	20.01.2017      Eduard Arefjev      Refactored ViewHolder to recycle view holder
+ * 	20.01.2017      Eduard Arefjev      Refactored ViewHolder to recycle view holde
  */
 
 
