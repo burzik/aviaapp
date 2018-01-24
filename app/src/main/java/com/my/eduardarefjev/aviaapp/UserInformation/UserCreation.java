@@ -28,6 +28,7 @@ import java.util.List;
  * HISTORY
  * 	Date			Author				Comments
  * 	29.10.2017		Eduard Arefjev 		Created "UserCreation" screen
+ * 	23.01.2018      Eduard Arefjev
  */
 
 public class UserCreation extends AppCompatActivity {
@@ -48,14 +49,14 @@ public class UserCreation extends AppCompatActivity {
         setContentView(R.layout.linear_create_user);
 
         //EA Bind variables
-        Button bCreate = (Button) findViewById(R.id.LinearButtonCreateUser);
-        Button bClear = (Button) findViewById(R.id.LinearButtonClear);
+        Button bCreate = findViewById(R.id.LinearButtonCreateUser);
+        Button bClear = findViewById(R.id.LinearButtonClear);
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Users");
-        eFirstName = (EditText) findViewById(R.id.LinearLabelInpFirstName);
-        eLastName = (EditText) findViewById(R.id.LinearLabelInpLastName);
-        eEmail = (EditText) findViewById(R.id.LinearLabelInpEmail);
-        ePassword = (EditText) findViewById(R.id.LinearLabelInpPassword);
-        spinnerPrivileges = (Spinner) findViewById(R.id.LinearLabelInpSpinnerPrivileges);
+        eFirstName = findViewById(R.id.LinearLabelInpFirstName);
+        eLastName = findViewById(R.id.LinearLabelInpLastName);
+        eEmail = findViewById(R.id.LinearLabelInpEmail);
+        ePassword = findViewById(R.id.LinearLabelInpPassword);
+        spinnerPrivileges = findViewById(R.id.LinearLabelInpSpinnerPrivileges);
 
         //EA Create second copy of db
         FirebaseOptions firebaseOptions = new FirebaseOptions.Builder()
@@ -98,6 +99,8 @@ public class UserCreation extends AppCompatActivity {
                 String sPassword = ePassword.getText().toString().trim();
                 String sPrivileges = spinnerPrivileges.getSelectedItem().toString();
 
+                if (sFirstName.equals(""))
+                {}
                 //EA fill datamap
                 HashMap<String, String> dataMap = new HashMap<>();
                 dataMap.put("firstName", sFirstName);
@@ -141,9 +144,9 @@ public class UserCreation extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if(task.isSuccessful()){
-                                Toast.makeText(UserCreation.this, "NYA", Toast.LENGTH_LONG).show();
+                                Toast.makeText(UserCreation.this, R.string.label_registration_successful, Toast.LENGTH_LONG).show();
                             } else {
-                                Toast.makeText(UserCreation.this, "sad", Toast.LENGTH_LONG).show();
+                                Toast.makeText(UserCreation.this, R.string.label_registration_failed, Toast.LENGTH_LONG).show();
                             }
                         }
                     });

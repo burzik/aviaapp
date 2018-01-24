@@ -1,5 +1,5 @@
 <resources>
-    <!-- Ru Labels -->
+    <!-- Ru Labels Creations Steps-->
     <string name="app_name">Авиа</string>
     <string name="label_menu">Меню</string>
     <string name="label_main">Протокол проверки работы двигателя АИ-25ТП и систем самолета</string>
@@ -154,6 +154,10 @@
     <string name="label_email">Электронный адрес</string>
     <string name="label_default_password">Пароль</string>
     <string name="label_privilege">Привилегии</string>
+
+    <!-- Ru Labels -->
+    <string name="label_registration_successful">Регистрация успешна</string>
+    <string name="label_registration_failed">Регистрация провалена</string>
 
     <!-- Ru Arrays -->
     <string-array name="privileges">
