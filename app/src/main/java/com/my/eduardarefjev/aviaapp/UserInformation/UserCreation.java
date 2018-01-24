@@ -3,6 +3,7 @@ package com.my.eduardarefjev.aviaapp.UserInformation;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -16,6 +17,9 @@ import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -28,7 +32,7 @@ import java.util.List;
  * HISTORY
  * 	Date			Author				Comments
  * 	29.10.2017		Eduard Arefjev 		Created "UserCreation" screen
- * 	23.01.2018      Eduard Arefjev
+ * 	23.01.2018      Eduard Arefjev      Updated validation and error messages
  */
 
 public class UserCreation extends AppCompatActivity {
@@ -58,12 +62,19 @@ public class UserCreation extends AppCompatActivity {
         ePassword = findViewById(R.id.LinearLabelInpPassword);
         spinnerPrivileges = findViewById(R.id.LinearLabelInpSpinnerPrivileges);
 
+        eEmail.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if (!b && !isValidEmail(eEmail.getText().toString().trim()))
+                    eEmail.setError(getResources().getString(R.string.label_bad_email));
+            }
+        });
+
         //EA Create second copy of db
         FirebaseOptions firebaseOptions = new FirebaseOptions.Builder()
                 .setDatabaseUrl("https://aviaapp-c9281.firebaseio.com/")
                 .setApiKey("AIzaSyCJPedkRhA5bdzTnTJLEq4UQnr3KY3iQEU")
                 .setApplicationId("aviaapp-c9281").build();
-
 
         boolean hasBeenInitialized = false;
         List<FirebaseApp> firebaseApps = FirebaseApp.getApps(this);
@@ -87,7 +98,6 @@ public class UserCreation extends AppCompatActivity {
         myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerPrivileges.setAdapter(myAdapter);
 
-
         bCreate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -95,21 +105,27 @@ public class UserCreation extends AppCompatActivity {
                 //EA Get values from inputs
                 String sFirstName = eFirstName.getText().toString().trim();
                 String sLastName = eLastName.getText().toString().trim();
-                String sEmail = eEmail.getText().toString().trim();
+                final String sEmail = eEmail.getText().toString().trim();
                 String sPassword = ePassword.getText().toString().trim();
                 String sPrivileges = spinnerPrivileges.getSelectedItem().toString();
 
-                if (sFirstName.equals(""))
-                {}
-                //EA fill datamap
-                HashMap<String, String> dataMap = new HashMap<>();
-                dataMap.put("firstName", sFirstName);
-                dataMap.put("lastName", sLastName);
-                dataMap.put("email", sEmail);
-                dataMap.put("privileges", sPrivileges);
+                if (isCorrectData(sEmail, sPassword)) {
+                    //EA fill datamap
+                    HashMap<String, String> dataMap = new HashMap<>();
+                    dataMap.put("firstName", sFirstName);
+                    dataMap.put("lastName", sLastName);
+                    dataMap.put("email", sEmail);
+                    dataMap.put("privileges", sPrivileges);
+                    //EA Sign up user
 
-                //EA Sign up user
-                createUser(sEmail, sPassword, dataMap);
+                    createUser(sEmail, sPassword, dataMap);
+                } else {
+                    if (!isValidEmail(sEmail)) {
+                        Toast.makeText(UserCreation.this, R.string.label_bad_email, Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(UserCreation.this, R.string.label_bad_password, Toast.LENGTH_LONG).show();
+                    }
+                }
             }
         });
 
@@ -124,16 +140,36 @@ public class UserCreation extends AppCompatActivity {
         });
     }
 
+    public static boolean isValidEmail(CharSequence target) {
+        return !TextUtils.isEmpty(target) && android.util.Patterns.EMAIL_ADDRESS.matcher(target).matches();
+    }
+
+    private boolean isCorrectData(String sEmail, String sPassword) {
+        return !(!isValidEmail(sEmail) || sPassword.equals(""));
+    }
+
     private void createUser(String email, String password, final HashMap<String, String> dataMap) {
         mAuth2.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (!task.isSuccessful()) {
-
-                    String ex = task.getException().toString();
-                    Toast.makeText(UserCreation.this, "Registration Failed"+ex, Toast.LENGTH_LONG).show();
+                    try {
+                        throw task.getException();
+                    } catch(FirebaseAuthWeakPasswordException e) {
+                        ePassword.setError(getString(R.string.label_bad_password));
+                        ePassword.requestFocus();
+                    } catch(FirebaseAuthInvalidCredentialsException e) {
+                        eEmail.setError(getString(R.string.label_bad_email));
+                        eEmail.requestFocus();
+                    } catch(FirebaseAuthUserCollisionException e) {
+                        eEmail.setError(getString(R.string.error_user_exists));
+                        eEmail.requestFocus();
+                    } catch(Exception e) {
+                        String ex = task.getException().toString();
+                        Toast.makeText(UserCreation.this, "Registration Failed" + ex, Toast.LENGTH_LONG).show();
+                    }
                 } else {
-                    Toast.makeText(UserCreation.this, "Registration successful", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(UserCreation.this, R.string.label_registration_successful, Toast.LENGTH_SHORT).show();
                     mUser2 = mAuth2.getCurrentUser();
                     assert mUser2 != null;
                     String sUID = mUser2.getUid();
