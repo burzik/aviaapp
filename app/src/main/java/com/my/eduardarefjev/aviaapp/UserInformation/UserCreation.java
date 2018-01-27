@@ -1,7 +1,9 @@
 package com.my.eduardarefjev.aviaapp.UserInformation;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
@@ -33,6 +35,7 @@ import java.util.List;
  * 	Date			Author				Comments
  * 	29.10.2017		Eduard Arefjev 		Created "UserCreation" screen
  * 	23.01.2018      Eduard Arefjev      Updated validation and error messages
+ * 	27.01.2018      Eduard Arefjev      Alert message to empty name & surname / Small refactoring
  */
 
 public class UserCreation extends AppCompatActivity {
@@ -53,8 +56,6 @@ public class UserCreation extends AppCompatActivity {
         setContentView(R.layout.linear_create_user);
 
         //EA Bind variables
-        Button bCreate = findViewById(R.id.LinearButtonCreateUser);
-        Button bClear = findViewById(R.id.LinearButtonClear);
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Users");
         eFirstName = findViewById(R.id.LinearLabelInpFirstName);
         eLastName = findViewById(R.id.LinearLabelInpLastName);
@@ -98,37 +99,12 @@ public class UserCreation extends AppCompatActivity {
         myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerPrivileges.setAdapter(myAdapter);
 
-        bCreate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        createUserButton();
+        clearFieldsButton();
+    }
 
-                //EA Get values from inputs
-                String sFirstName = eFirstName.getText().toString().trim();
-                String sLastName = eLastName.getText().toString().trim();
-                final String sEmail = eEmail.getText().toString().trim();
-                String sPassword = ePassword.getText().toString().trim();
-                String sPrivileges = spinnerPrivileges.getSelectedItem().toString();
-
-                if (isCorrectData(sEmail, sPassword)) {
-                    //EA fill datamap
-                    HashMap<String, String> dataMap = new HashMap<>();
-                    dataMap.put("firstName", sFirstName);
-                    dataMap.put("lastName", sLastName);
-                    dataMap.put("email", sEmail);
-                    dataMap.put("privileges", sPrivileges);
-                    //EA Sign up user
-
-                    createUser(sEmail, sPassword, dataMap);
-                } else {
-                    if (!isValidEmail(sEmail)) {
-                        Toast.makeText(UserCreation.this, R.string.label_bad_email, Toast.LENGTH_LONG).show();
-                    } else {
-                        Toast.makeText(UserCreation.this, R.string.label_bad_password, Toast.LENGTH_LONG).show();
-                    }
-                }
-            }
-        });
-
+    public void clearFieldsButton(){
+        Button bClear = findViewById(R.id.LinearButtonClear);
         bClear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -140,12 +116,84 @@ public class UserCreation extends AppCompatActivity {
         });
     }
 
+    public void createUserButton(){
+        Button bCreate = findViewById(R.id.LinearButtonCreateUser);
+        bCreate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //EA Get values from inputs
+                final String sFirstName = eFirstName.getText().toString().trim();
+                final String sLastName = eLastName.getText().toString().trim();
+                final String sEmail = eEmail.getText().toString().trim();
+                final String sPassword = ePassword.getText().toString().trim();
+
+                if (isCorrectData(sEmail, sPassword)) {
+                    if (sFirstName.length() == 0 || sLastName.length() == 0) {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(UserCreation.this);
+                        builder.setTitle(R.string.error_missing_name_surname);
+                        builder.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                //EA Do nothing
+                            }
+                        });
+                        builder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                //EA Sign up user
+                                createUser(sEmail, sPassword, fillUserHashMap());
+                            }
+                        });
+                        AlertDialog dialog = builder.create();
+                        dialog.show();
+                    } else {
+                        //EA Sign up user
+                        createUser(sEmail, sPassword, fillUserHashMap());
+                    }
+                } else {
+                    if (!isValidEmail(sEmail)) {
+                        badEmailMsg();
+                    } else {
+                        badPasswordMsg();
+                    }
+                }
+            }
+        });
+    }
+
+    public void badEmailMsg(){
+        eEmail.setError(getString(R.string.label_bad_email));
+        eEmail.requestFocus();
+    }
+
+    public void badPasswordMsg(){
+        ePassword.setError(getString(R.string.label_bad_password));
+        ePassword.requestFocus();
+    }
+
     public static boolean isValidEmail(CharSequence target) {
         return !TextUtils.isEmpty(target) && android.util.Patterns.EMAIL_ADDRESS.matcher(target).matches();
     }
 
     private boolean isCorrectData(String sEmail, String sPassword) {
         return !(!isValidEmail(sEmail) || sPassword.equals(""));
+    }
+
+    private HashMap<String, String> fillUserHashMap(){
+        //EA Get values from inputs
+        final String sFirstName = eFirstName.getText().toString().trim();
+        final String sLastName = eLastName.getText().toString().trim();
+        final String sEmail = eEmail.getText().toString().trim();
+        final String sPrivileges = spinnerPrivileges.getSelectedItem().toString();
+
+        //EA fill datamap
+        HashMap<String, String> dataMap = new HashMap<>();
+        dataMap.put("firstName", sFirstName);
+        dataMap.put("lastName", sLastName);
+        dataMap.put("email", sEmail);
+        dataMap.put("privileges", sPrivileges);
+
+        return dataMap;
     }
 
     private void createUser(String email, String password, final HashMap<String, String> dataMap) {
@@ -156,17 +204,15 @@ public class UserCreation extends AppCompatActivity {
                     try {
                         throw task.getException();
                     } catch(FirebaseAuthWeakPasswordException e) {
-                        ePassword.setError(getString(R.string.label_bad_password));
-                        ePassword.requestFocus();
+                        badPasswordMsg();
                     } catch(FirebaseAuthInvalidCredentialsException e) {
-                        eEmail.setError(getString(R.string.label_bad_email));
-                        eEmail.requestFocus();
+                        badEmailMsg();
                     } catch(FirebaseAuthUserCollisionException e) {
                         eEmail.setError(getString(R.string.error_user_exists));
                         eEmail.requestFocus();
                     } catch(Exception e) {
                         String ex = task.getException().toString();
-                        Toast.makeText(UserCreation.this, "Registration Failed" + ex, Toast.LENGTH_LONG).show();
+                        Toast.makeText(UserCreation.this, R.string.label_registration_failed + ex, Toast.LENGTH_LONG).show();
                     }
                 } else {
                     Toast.makeText(UserCreation.this, R.string.label_registration_successful, Toast.LENGTH_SHORT).show();
