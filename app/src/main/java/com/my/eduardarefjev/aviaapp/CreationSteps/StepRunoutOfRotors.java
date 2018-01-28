@@ -17,6 +17,7 @@ import static java.lang.Double.MAX_VALUE;
  * 	22.12.2017		Eduard Arefjev 		Created "StepRunoutOfRotors" screen, one of steps
  * 	31.12.2017      Eduard Arefjev      Added writing data to FireBase and send to next view
  * 	31.12.2017      Eduard Arefjev      Added UpdateUI function
+ * 	28.01.2018      Eduard Arefjev      Fixed crash for null numbers
  */
 
 public class StepRunoutOfRotors extends AppCompatActivity {
@@ -37,9 +38,9 @@ public class StepRunoutOfRotors extends AppCompatActivity {
         Bundle extra = getIntent().getBundleExtra("extra");
         engineData  = extra.getParcelable("objects");
 
-        EditText eRotorVD = (EditText) findViewById(R.id.LinearLabelInpRotorVD);
+        EditText eRotorVD = findViewById(R.id.LinearLabelInpRotorVD);
         CreationHelper.checkValue(eRotorVD, 20, MAX_VALUE);
-        EditText eRotorND = (EditText) findViewById(R.id.LinearLabelInpRotorND);
+        EditText eRotorND = findViewById(R.id.LinearLabelInpRotorND);
         CreationHelper.checkValue(eRotorND, 25, MAX_VALUE);
 
         updateUI();
@@ -47,7 +48,7 @@ public class StepRunoutOfRotors extends AppCompatActivity {
     }
 
     public void nextSecondStep() {
-        Button bNextStep = (Button) findViewById(R.id.LinearButtonNextRunOutOfRotors);
+        Button bNextStep = findViewById(R.id.LinearButtonNextRunOutOfRotors);
         bNextStep.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -65,17 +66,19 @@ public class StepRunoutOfRotors extends AppCompatActivity {
     }
 
     public void setRecord(){
-        EditText eRotorND = (EditText) findViewById(R.id.LinearLabelInpRotorND);
-        EditText eRotorVD = (EditText) findViewById(R.id.LinearLabelInpRotorVD);
+        EditText eRotorND = findViewById(R.id.LinearLabelInpRotorND);
+        EditText eRotorVD = findViewById(R.id.LinearLabelInpRotorVD);
 
-        engineData.setModeRotorND(Integer.valueOf(eRotorND.getText().toString()));
-        engineData.setModeRotorVD(Integer.valueOf(eRotorVD.getText().toString()));
+        if (!eRotorND.getText().toString().isEmpty())
+            engineData.setModeRotorND(Integer.valueOf(eRotorND.getText().toString()));
+        if (!eRotorVD.getText().toString().isEmpty())
+            engineData.setModeRotorVD(Integer.valueOf(eRotorVD.getText().toString()));
     }
 
     public void updateUI(){
         if(parentView.equals("DetailedRecordInfo")) {
-            EditText eRotorND = (EditText) findViewById(R.id.LinearLabelInpRotorND);
-            EditText eRotorVD = (EditText) findViewById(R.id.LinearLabelInpRotorVD);
+            EditText eRotorND = findViewById(R.id.LinearLabelInpRotorND);
+            EditText eRotorVD = findViewById(R.id.LinearLabelInpRotorVD);
 
             eRotorND.setText(Integer.toString(engineData.getModeRotorND()));
             eRotorVD.setText(Integer.toString(engineData.getModeRotorVD()));

@@ -15,6 +15,7 @@ import com.my.eduardarefjev.aviaapp.R;
  * 	22.12.2017		Eduard Arefjev 		Created "StepRunoutOfRotors" screen, one of steps
  * 	31.12.2017      Eduard Arefjev      Added writing data to FireBase and send to next view
  * 	31.12.2017      Eduard Arefjev      Added UpdateUI function
+ * 	28.01.2018      Eduard Arefjev      Fixed crash for null numbers
  */
 
 public class StepTanningBoardDisplayGenerator extends AppCompatActivity {
@@ -40,7 +41,7 @@ public class StepTanningBoardDisplayGenerator extends AppCompatActivity {
     }
 
     public void nextSecondStep() {
-        Button bNextStep = (Button) findViewById(R.id.LinearButtonNextTanningBoardDisplayGenerator);
+        Button bNextStep = findViewById(R.id.LinearButtonNextTanningBoardDisplayGenerator);
         bNextStep.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,14 +59,14 @@ public class StepTanningBoardDisplayGenerator extends AppCompatActivity {
     }
 
     public void setRecord(){
-        EditText eColdEngine = (EditText) findViewById(R.id.LinearLabelInpColdEngine);
-
-        engineData.setModeGeneratorTablo(Integer.valueOf(eColdEngine.getText().toString()));
+        EditText eColdEngine = findViewById(R.id.LinearLabelInpColdEngine);
+        if (!eColdEngine.getText().toString().isEmpty())
+            engineData.setModeGeneratorTablo(Integer.valueOf(eColdEngine.getText().toString()));
     }
 
     public void updateUI(){
         if(parentView.equals("DetailedRecordInfo")) {
-            EditText eColdEngine = (EditText) findViewById(R.id.LinearLabelInpColdEngine);
+            EditText eColdEngine = findViewById(R.id.LinearLabelInpColdEngine);
 
             eColdEngine.setText(Integer.toString(engineData.getModeGeneratorTablo()));
         }
