@@ -15,6 +15,7 @@ import com.my.eduardarefjev.aviaapp.R;
  * 	23.10.2017		Eduard Arefjev 		Created "StepClosingKVD3" screen, one of steps
  * 	30.12.2017      Eduard Arefjev      Added writing data to FireBase and send to next view
  * 	31.12.2017      Eduard Arefjev      Added UpdateUI function
+ * 	28.01.2018      Eduard Arefjev      Fixed crash for null numbers
  */
 
 public class StepClosingKVD3 extends AppCompatActivity {
@@ -40,7 +41,7 @@ public class StepClosingKVD3 extends AppCompatActivity {
     }
 
     public void nextSecondStep() {
-        Button bNextStep = (Button) findViewById(R.id.LinearButtonNextClosingKVD3);
+        Button bNextStep = findViewById(R.id.LinearButtonNextClosingKVD3);
         bNextStep.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,14 +59,15 @@ public class StepClosingKVD3 extends AppCompatActivity {
     }
 
     public void setRecord(){
-        EditText eN1StraightRun = (EditText) findViewById(R.id.LinearLabelInpN1StraightRun);
+        EditText eN1StraightRun = findViewById(R.id.LinearLabelInpN1StraightRun);
 
-        engineData.setStage3ModeName(Integer.valueOf(eN1StraightRun.getText().toString()));
+        if (!eN1StraightRun.getText().toString().isEmpty())
+            engineData.setStage3ModeName(Integer.valueOf(eN1StraightRun.getText().toString()));
     }
 
     public void updateUI(){
         if(parentView.equals("DetailedRecordInfo")) {
-            EditText eN1StraightRun = (EditText) findViewById(R.id.LinearLabelInpN1StraightRun);
+            EditText eN1StraightRun = findViewById(R.id.LinearLabelInpN1StraightRun);
 
 
             eN1StraightRun.setText(Integer.toString(engineData.getStage3ModeName()));

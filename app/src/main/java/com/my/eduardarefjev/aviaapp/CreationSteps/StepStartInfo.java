@@ -15,6 +15,7 @@ import com.my.eduardarefjev.aviaapp.R;
  * 	09.10.2017		Eduard Arefjev 		Created "StepStartInfo" screen, one of steps
  * 	30.12.2017      Eduard Arefjev      Added writing data to FireBase and send to next view
  * 	31.12.2017      Eduard Arefjev      Added UpdateUI function
+ * 	28.01.2018       Eduard Arefjev     Fixed crash for null numbers
  */
 
 public class StepStartInfo extends AppCompatActivity {
@@ -35,15 +36,15 @@ public class StepStartInfo extends AppCompatActivity {
         Bundle extra = getIntent().getBundleExtra("extra");
         engineData  = extra.getParcelable("objects");
 
-        EditText eLimb = (EditText) findViewById(R.id.LinearLabelInpLimbArg);
+        EditText eLimb = findViewById(R.id.LinearLabelInpLimbArg);
         CreationHelper.checkValue(eLimb, 18, 24);
-        EditText eLaunchingTVSU = (EditText) findViewById(R.id.LinearLabelInpLaunchingTVSU);
+        EditText eLaunchingTVSU = findViewById(R.id.LinearLabelInpLaunchingTVSU);
         CreationHelper.checkValue(eLaunchingTVSU, 0, 31);
-        EditText eEngineCasting = (EditText) findViewById(R.id.LinearLabelInpEngineCasting);
+        EditText eEngineCasting = findViewById(R.id.LinearLabelInpEngineCasting);
         CreationHelper.checkValue(eEngineCasting, 0, 550);
-        EditText eVSUDisconnection = (EditText) findViewById(R.id.LinearLabelInpVSUDisconnection);
+        EditText eVSUDisconnection = findViewById(R.id.LinearLabelInpVSUDisconnection);
         CreationHelper.checkValue(eVSUDisconnection, 41.5, 44.5);
-        EditText eTEngine = (EditText) findViewById(R.id.LinearLabelInpTEngine);
+        EditText eTEngine = findViewById(R.id.LinearLabelInpTEngine);
         CreationHelper.checkValue(eTEngine, 0, 50);
 
         updateUI();
@@ -51,7 +52,7 @@ public class StepStartInfo extends AppCompatActivity {
     }
 
     public void nextSecondStep() {
-        Button bNextStep = (Button) findViewById(R.id.LinearButtonNextSecondStep);
+        Button bNextStep = findViewById(R.id.LinearButtonNextSecondStep);
         bNextStep.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -70,26 +71,31 @@ public class StepStartInfo extends AppCompatActivity {
     }
 
     public void setRecord(){
-        EditText eLimbArg = (EditText) findViewById(R.id.LinearLabelInpLimbArg);
-        EditText eLaunchingTVSU = (EditText) findViewById(R.id.LinearLabelInpLaunchingTVSU);
-        EditText eEngineCasting = (EditText) findViewById(R.id.LinearLabelInpEngineCasting);
-        EditText eVSUDisconnection = (EditText) findViewById(R.id.LinearLabelInpVSUDisconnection);
-        EditText eTEngine = (EditText) findViewById(R.id.LinearLabelInpTEngine);
+        EditText eLimbArg = findViewById(R.id.LinearLabelInpLimbArg);
+        EditText eLaunchingTVSU = findViewById(R.id.LinearLabelInpLaunchingTVSU);
+        EditText eEngineCasting = findViewById(R.id.LinearLabelInpEngineCasting);
+        EditText eVSUDisconnection = findViewById(R.id.LinearLabelInpVSUDisconnection);
+        EditText eTEngine = findViewById(R.id.LinearLabelInpTEngine);
 
-        engineData.setLimb(Integer.valueOf(eLimbArg.getText().toString()));
-        engineData.setApuTime(Integer.valueOf(eLaunchingTVSU.getText().toString()));
-        engineData.setLaunchEngineTemp(Float.valueOf(eEngineCasting.getText().toString()));
-        engineData.setLaunchAPUOffEngine(Integer.valueOf(eVSUDisconnection.getText().toString()));
-        engineData.setLaunchEngineTime(Integer.valueOf(eTEngine.getText().toString()));
+        if (!eLimbArg.getText().toString().isEmpty())
+            engineData.setLimb(Integer.valueOf(eLimbArg.getText().toString()));
+        if (!eLaunchingTVSU.getText().toString().isEmpty())
+            engineData.setApuTime(Integer.valueOf(eLaunchingTVSU.getText().toString()));
+        if (!eEngineCasting.getText().toString().isEmpty())
+            engineData.setLaunchEngineTemp(Float.valueOf(eEngineCasting.getText().toString()));
+        if (!eVSUDisconnection.getText().toString().isEmpty())
+            engineData.setLaunchAPUOffEngine(Integer.valueOf(eVSUDisconnection.getText().toString()));
+        if (!eTEngine.getText().toString().isEmpty())
+            engineData.setLaunchEngineTime(Integer.valueOf(eTEngine.getText().toString()));
     }
 
     public void updateUI(){
         if(parentView.equals("DetailedRecordInfo")) {
-            EditText eLimbArg = (EditText) findViewById(R.id.LinearLabelInpLimbArg);
-            EditText eLaunchingTVSU = (EditText) findViewById(R.id.LinearLabelInpLaunchingTVSU);
-            EditText eEngineCasting = (EditText) findViewById(R.id.LinearLabelInpEngineCasting);
-            EditText eVSUDisconnection = (EditText) findViewById(R.id.LinearLabelInpVSUDisconnection);
-            EditText eTEngine = (EditText) findViewById(R.id.LinearLabelInpTEngine);
+            EditText eLimbArg = findViewById(R.id.LinearLabelInpLimbArg);
+            EditText eLaunchingTVSU = findViewById(R.id.LinearLabelInpLaunchingTVSU);
+            EditText eEngineCasting = findViewById(R.id.LinearLabelInpEngineCasting);
+            EditText eVSUDisconnection = findViewById(R.id.LinearLabelInpVSUDisconnection);
+            EditText eTEngine = findViewById(R.id.LinearLabelInpTEngine);
 
             eLimbArg.setText(Integer.toString(engineData.getLimb()));
             eLaunchingTVSU.setText(Integer.toString(engineData.getApuTime()));

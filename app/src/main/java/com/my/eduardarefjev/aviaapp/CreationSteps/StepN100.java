@@ -15,6 +15,7 @@ import com.my.eduardarefjev.aviaapp.R;
  * 	29.10.2017		Eduard Arefjev 		Created "StepN100" screen, one of steps
  * 	30.12.2017      Eduard Arefjev      Added writing data to FireBase and send to next view
  * 	31.12.2017      Eduard Arefjev      Added UpdateUI function
+ * 	28.01.2018      Eduard Arefjev      Fixed crash for null numbers
  */
 
 public class StepN100 extends AppCompatActivity {
@@ -40,7 +41,7 @@ public class StepN100 extends AppCompatActivity {
     }
 
     public void nextSecondStep() {
-        Button bNextStep = (Button) findViewById(R.id.LinearButtonNextStepN100);
+        Button bNextStep = findViewById(R.id.LinearButtonNextStepN100);
         bNextStep.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,14 +59,15 @@ public class StepN100 extends AppCompatActivity {
     }
 
     public void setRecord(){
-        EditText eEngMeasurement = (EditText) findViewById(R.id.LinearLabelInpEngMeasurement);
+        EditText eEngMeasurement = findViewById(R.id.LinearLabelInpEngMeasurement);
 
-        engineData.setMode100Vibration(Integer.valueOf(eEngMeasurement.getText().toString()));
+        if (!eEngMeasurement.getText().toString().isEmpty())
+            engineData.setMode100Vibration(Integer.valueOf(eEngMeasurement.getText().toString()));
     }
 
     public void updateUI(){
         if(parentView.equals("DetailedRecordInfo")) {
-            EditText eEngMeasurement = (EditText) findViewById(R.id.LinearLabelInpEngMeasurement);
+            EditText eEngMeasurement = findViewById(R.id.LinearLabelInpEngMeasurement);
 
             eEngMeasurement.setText(Integer.toString(engineData.getMode100Vibration()));
         }

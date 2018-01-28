@@ -17,6 +17,7 @@ import static java.lang.Double.MIN_VALUE;
  * 	29.10.2017		Eduard Arefjev 		Created "Step085Nom" screen, one of steps
  * 	30.12.2017      Eduard Arefjev      Added writing data to FireBase and send to next view
  * 	31.12.2017      Eduard Arefjev      Added UpdateUI function
+ * 	28.01.2018      Eduard Arefjev      Fixed crash for null numbers
  */
 
 public class Step085Nom extends AppCompatActivity {
@@ -37,17 +38,17 @@ public class Step085Nom extends AppCompatActivity {
         Bundle extra = getIntent().getBundleExtra("extra");
         engineData  = extra.getParcelable("objects");
 
-        EditText eN1 = (EditText) findViewById(R.id.LinearLabelInpN1);
+        EditText eN1 = findViewById(R.id.LinearLabelInpN1);
         CreationHelper.checkValue(eN1, 99, 100);
-        EditText eTrc = (EditText) findViewById(R.id.LinearLabelInpTrc);
+        EditText eTrc = findViewById(R.id.LinearLabelInpTrc);
         CreationHelper.checkValue(eTrc, -MIN_VALUE, 590);
-        EditText ePm = (EditText) findViewById(R.id.LinearLabelInpPm);
+        EditText ePm = findViewById(R.id.LinearLabelInpPm);
         CreationHelper.checkValue(ePm, 3, 4.5);
-        EditText eTmc = (EditText) findViewById(R.id.LinearLabelInpTmc);
+        EditText eTmc = findViewById(R.id.LinearLabelInpTmc);
         CreationHelper.checkValue(eTmc, -MIN_VALUE, 90);
-        EditText eEngineSqrt = (EditText) findViewById(R.id.LinearLabelInpEngineSqrt);
+        EditText eEngineSqrt = findViewById(R.id.LinearLabelInpEngineSqrt);
         CreationHelper.checkValue(eEngineSqrt, -MIN_VALUE, 40);
-        EditText ePt = (EditText) findViewById(R.id.LinearLabelInpPt);
+        EditText ePt = findViewById(R.id.LinearLabelInpPt);
         CreationHelper.checkValue(ePt, -MIN_VALUE, 65);
 
         updateUI();
@@ -55,7 +56,7 @@ public class Step085Nom extends AppCompatActivity {
     }
 
     public void nextSecondStep() {
-        Button bNextStep = (Button) findViewById(R.id.LinearButtonNextStep085Nom);
+        Button bNextStep = findViewById(R.id.LinearButtonNextStep085Nom);
         bNextStep.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,29 +74,35 @@ public class Step085Nom extends AppCompatActivity {
     }
 
     public void setRecord(){
-        EditText eN1 = (EditText) findViewById(R.id.LinearLabelInpN1);
-        EditText eTrc = (EditText) findViewById(R.id.LinearLabelInpTrc);
-        EditText ePm = (EditText) findViewById(R.id.LinearLabelInpPm);
-        EditText eTmc = (EditText) findViewById(R.id.LinearLabelInpTmc);
-        EditText ePt = (EditText) findViewById(R.id.LinearLabelInpPt);
-        EditText eEngineSqrt = (EditText) findViewById(R.id.LinearLabelInpEngineSqrt);
+        EditText eN1 = findViewById(R.id.LinearLabelInpN1);
+        EditText eTrc = findViewById(R.id.LinearLabelInpTrc);
+        EditText ePm = findViewById(R.id.LinearLabelInpPm);
+        EditText eTmc = findViewById(R.id.LinearLabelInpTmc);
+        EditText ePt = findViewById(R.id.LinearLabelInpPt);
+        EditText eEngineSqrt = findViewById(R.id.LinearLabelInpEngineSqrt);
 
-        engineData.setMode85NomHPCSpeed(Float.valueOf(eN1.getText().toString()));
-        engineData.setMode85NomTemp(Integer.valueOf(eTrc.getText().toString()));
-        engineData.setMode85NomOilPressure(Float.valueOf(ePm.getText().toString()));
-        engineData.setMode85NomOilTemp(Integer.valueOf(eTmc.getText().toString()));
-        engineData.setMode85NomFuelPressure(Integer.valueOf(eEngineSqrt.getText().toString()));
-        engineData.setMode85NomVibration(Integer.valueOf(ePt.getText().toString()));
+        if (!eN1.getText().toString().isEmpty())
+            engineData.setMode85NomHPCSpeed(Float.valueOf(eN1.getText().toString()));
+        if (!eTrc.getText().toString().isEmpty())
+            engineData.setMode85NomTemp(Integer.valueOf(eTrc.getText().toString()));
+        if (!ePm.getText().toString().isEmpty())
+            engineData.setMode85NomOilPressure(Float.valueOf(ePm.getText().toString()));
+        if (!eTmc.getText().toString().isEmpty())
+            engineData.setMode85NomOilTemp(Integer.valueOf(eTmc.getText().toString()));
+        if (!eEngineSqrt.getText().toString().isEmpty())
+            engineData.setMode85NomFuelPressure(Integer.valueOf(eEngineSqrt.getText().toString()));
+        if (!ePt.getText().toString().isEmpty())
+            engineData.setMode85NomVibration(Integer.valueOf(ePt.getText().toString()));
     }
 
     public void updateUI(){
         if(parentView.equals("DetailedRecordInfo")) {
-            EditText eN1 = (EditText) findViewById(R.id.LinearLabelInpN1);
-            EditText eTrc = (EditText) findViewById(R.id.LinearLabelInpTrc);
-            EditText ePm = (EditText) findViewById(R.id.LinearLabelInpPm);
-            EditText eTmc = (EditText) findViewById(R.id.LinearLabelInpTmc);
-            EditText ePt = (EditText) findViewById(R.id.LinearLabelInpPt);
-            EditText eEngineSqrt = (EditText) findViewById(R.id.LinearLabelInpEngineSqrt);
+            EditText eN1 = findViewById(R.id.LinearLabelInpN1);
+            EditText eTrc = findViewById(R.id.LinearLabelInpTrc);
+            EditText ePm = findViewById(R.id.LinearLabelInpPm);
+            EditText eTmc = findViewById(R.id.LinearLabelInpTmc);
+            EditText ePt = findViewById(R.id.LinearLabelInpPt);
+            EditText eEngineSqrt = findViewById(R.id.LinearLabelInpEngineSqrt);
 
             eN1.setText(Float.toString(engineData.getMode85NomHPCSpeed()));
             eTrc.setText(Integer.toString(engineData.getMode85NomTemp()));
