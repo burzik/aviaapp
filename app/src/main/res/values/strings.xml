@@ -190,6 +190,9 @@
     <string name="button_create">Создать</string>
     <string name="button_clear">Очистить</string>
 
+    <string name="menu_change_password">Изменить пароль</string>
+    <string name="menu_exit">Выход</string>
+
 
 
 </resources>

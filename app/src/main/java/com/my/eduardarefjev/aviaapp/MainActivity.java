@@ -3,6 +3,8 @@ package com.my.eduardarefjev.aviaapp;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -28,6 +30,7 @@ import static com.my.eduardarefjev.aviaapp.FirebaseManager.mAuth;
  * 	Date			Author				Comments
  * 	31.12.2017		Eduard Arefjev 		Added privilege check
  * 	01.01.2017      Eduard Arefjev      Added new method "getUserName"
+ * 	28.01.2017      Eduard Arefjev      New menu button
  */
 
 public class MainActivity extends AppCompatActivity {
@@ -37,6 +40,36 @@ public class MainActivity extends AppCompatActivity {
     private User user;
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        //EA Inflate the menu
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        boolean itemSelected = super.onOptionsItemSelected(item);
+
+        switch(item.getItemId()) {
+            case R.id.ChangePassword: {
+                Intent intent = new Intent(this, ChangePassword.class);
+                this.startActivity(intent);
+                break;
+            }
+            case R.id.Exit: {
+                FirebaseAuth.getInstance().signOut();
+                Intent intent = new Intent(MainActivity.this, Login.class);
+                startActivity(intent);
+                break;
+            }
+            default:
+                return itemSelected;
+        }
+        return true;
+    }
+
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.linear_main_screen);
@@ -44,20 +77,20 @@ public class MainActivity extends AppCompatActivity {
         //String name = FirebaseManager.currentUser();
         //hello.append(" name" + name);
         //bSettings = (Button)findViewById(R.id.LinearSettings);
-        bCreateUser = (Button)findViewById(R.id.LinearCreateUser);
-        bSetPrivileges = (Button)findViewById(R.id.LinearSetPrivileges);
+        bCreateUser = findViewById(R.id.LinearCreateUser);
+        bSetPrivileges = findViewById(R.id.LinearSetPrivileges);
         bCreateUser.setVisibility(View.GONE);
         bSetPrivileges.setVisibility(View.GONE);
         createNewRecord();
         showRecords();
         createUser();
         setPrivileges();
-        settings();
+        //settings();
         getUserName();
     }
 
     public void getUserName(){
-        final TextView hello = (TextView) findViewById(R.id.LinearHello);
+        final TextView hello = findViewById(R.id.LinearHello);
         //////TODO Add to FirebaseManager
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser mUser = mAuth.getCurrentUser();
@@ -87,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void createNewRecord(){
-        Button bCreateRecord = (Button) findViewById(R.id.LinearCreateRecord);
+        Button bCreateRecord = findViewById(R.id.LinearCreateRecord);
         bCreateRecord.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -98,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void showRecords(){
-        Button bShowRecords = (Button) findViewById(R.id.LinearShowRecords);
+        Button bShowRecords = findViewById(R.id.LinearShowRecords);
         bShowRecords.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -109,7 +142,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void createUser(){
-        bCreateUser = (Button)findViewById(R.id.LinearCreateUser);
+        bCreateUser = findViewById(R.id.LinearCreateUser);
         bCreateUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -120,23 +153,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void setPrivileges(){
-        bSetPrivileges = (Button)findViewById(R.id.LinearSetPrivileges);
+        bSetPrivileges = findViewById(R.id.LinearSetPrivileges);
         bSetPrivileges.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, ListOfUsers.class);
-                startActivity(intent);
-            }
-        });
-    }
-
-    public void settings(){
-        Button bSettings = (Button) findViewById(R.id.LinearSettings);
-        bSettings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FirebaseAuth.getInstance().signOut();
-                Intent intent = new Intent(MainActivity.this, Login.class);
                 startActivity(intent);
             }
         });
