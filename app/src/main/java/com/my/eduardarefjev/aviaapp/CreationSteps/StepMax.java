@@ -19,6 +19,7 @@ import static java.lang.Double.MIN_VALUE;
  * 	23.10.2017		Eduard Arefjev 		Created "StepMax" screen, one of steps
  * 	30.12.2017      Eduard Arefjev      Added writing data to FireBase and send to next view
  * 	31.12.2017      Eduard Arefjev      Added UpdateUI function
+ * 	28.01.2018      Eduard Arefjev      Fixed crash for null numbers
  */
 
 public class StepMax extends AppCompatActivity{
@@ -41,27 +42,27 @@ public class StepMax extends AppCompatActivity{
         Bundle extra = getIntent().getBundleExtra("extra");
         engineData  = extra.getParcelable("objects");
 
-        EditText eN1 = (EditText) findViewById(R.id.LinearInpN1);
+        EditText eN1 = findViewById(R.id.LinearInpN1);
         CreationHelper.checkValue(eN1, 105, 107);
         //from graphic?
         //EditText eN2_4 = (EditText) findViewById(R.id.LinearInpN2_4);
         //CreationHelper.checkValue(eN2_4, 102, 104);
-        EditText eTRC = (EditText) findViewById(R.id.LinearInpTRC);
+        EditText eTRC = findViewById(R.id.LinearInpTRC);
         CreationHelper.checkValue(eTRC, -MIN_VALUE, 660);
-        EditText ePm = (EditText) findViewById(R.id.LinearInpPm);
+        EditText ePm = findViewById(R.id.LinearInpPm);
         CreationHelper.checkValue(ePm, 3, 4.5);
-        EditText eTmC = (EditText) findViewById(R.id.LinearInpTmC);
+        EditText eTmC = findViewById(R.id.LinearInpTmC);
         CreationHelper.checkValue(eTmC, -MIN_VALUE, 90);
-        EditText ePt = (EditText) findViewById(R.id.LinearInpPt);
+        EditText ePt = findViewById(R.id.LinearInpPt);
         CreationHelper.checkValue(ePt, -MIN_VALUE, 65);
-        EditText eEngineSqrt = (EditText) findViewById(R.id.LinearInpEngineSqrt);
+        EditText eEngineSqrt = findViewById(R.id.LinearInpEngineSqrt);
         CreationHelper.checkValue(eEngineSqrt, -MIN_VALUE, 40);
-        EditText eVGenerator = (EditText) findViewById(R.id.LinearInpVGenerator);
+        EditText eVGenerator = findViewById(R.id.LinearInpVGenerator);
         CreationHelper.checkValue(eVGenerator, 27, 29);
-        EditText ePCabin = (EditText) findViewById(R.id.LinearInpPCabin);
+        EditText ePCabin = findViewById(R.id.LinearInpPCabin);
         CreationHelper.checkValue(ePCabin, -MIN_VALUE, 0.05);
 
-        spinnerKrTank = (Spinner) findViewById(R.id.RelativeSpinnerInpKrTank);
+        spinnerKrTank = findViewById(R.id.RelativeSpinnerInpKrTank);
         myAdapter = new ArrayAdapter<>(StepMax.this, android.R.layout.simple_spinner_dropdown_item, getResources().getStringArray(R.array.good_bad));
         myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerKrTank.setAdapter(myAdapter);
@@ -71,7 +72,7 @@ public class StepMax extends AppCompatActivity{
     }
 
     public void nextSecondStep() {
-        Button bNextStep = (Button) findViewById(R.id.LinearButtonNextClosingKVD3Max);
+        Button bNextStep = findViewById(R.id.LinearButtonNextClosingKVD3Max);
         bNextStep.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -89,47 +90,58 @@ public class StepMax extends AppCompatActivity{
     }
 
     public void setRecord(){
-        EditText eN1 = (EditText) findViewById(R.id.LinearInpN1);
-        EditText eN2_4 = (EditText) findViewById(R.id.LinearInpN2_4);
-        EditText eTRC = (EditText) findViewById(R.id.LinearInpTRC);
-        EditText ePm = (EditText) findViewById(R.id.LinearInpPm);
-        EditText eTmC = (EditText) findViewById(R.id.LinearInpTmC);
-        EditText ePt = (EditText) findViewById(R.id.LinearInpPt);
-        EditText eEngineSqrt = (EditText) findViewById(R.id.LinearInpEngineSqrt);
-        EditText eVGenerator = (EditText) findViewById(R.id.LinearInpVGenerator);
-        EditText ePCabin = (EditText) findViewById(R.id.LinearInpPCabin);
-        spinnerKrTank = (Spinner) findViewById(R.id.RelativeSpinnerInpKrTank);
-        EditText ePVozdKrTank = (EditText) findViewById(R.id.LinearInpPVozdKrTank);
-        EditText ePtPreembossed = (EditText) findViewById(R.id.LinearInpPtPreembossed);
+        EditText eN1 = findViewById(R.id.LinearInpN1);
+        EditText eN2_4 = findViewById(R.id.LinearInpN2_4);
+        EditText eTRC = findViewById(R.id.LinearInpTRC);
+        EditText ePm = findViewById(R.id.LinearInpPm);
+        EditText eTmC = findViewById(R.id.LinearInpTmC);
+        EditText ePt = findViewById(R.id.LinearInpPt);
+        EditText eEngineSqrt = findViewById(R.id.LinearInpEngineSqrt);
+        EditText eVGenerator = findViewById(R.id.LinearInpVGenerator);
+        EditText ePCabin = findViewById(R.id.LinearInpPCabin);
+        spinnerKrTank = findViewById(R.id.RelativeSpinnerInpKrTank);
+        EditText ePVozdKrTank = findViewById(R.id.LinearInpPVozdKrTank);
+        EditText ePtPreembossed = findViewById(R.id.LinearInpPtPreembossed);
 
-        engineData.setModeMaxHPCSpeed(Float.valueOf(eN1.getText().toString()));
-        engineData.setModeMaxHPCSpeedN2(Float.valueOf(eN2_4.getText().toString()));
-        engineData.setModeMaxTemp(Integer.valueOf(eTRC.getText().toString()));
-        engineData.setModeMaxOilPressure(Float.valueOf(ePm.getText().toString()));
-        engineData.setModeMaxOilTemp(Integer.valueOf(eTmC.getText().toString()));
-        engineData.setModeMaxFuelPressure(Integer.valueOf(ePt.getText().toString()));
-        engineData.setModeMaxVibration(Integer.valueOf(eEngineSqrt.getText().toString()));
-        engineData.setModeMaxVGenerator(Integer.valueOf(eVGenerator.getText().toString()));
-        engineData.setModeMaxGeneratorSpeedConst(spinnerKrTank.getSelectedItem().toString().equals("Норма"));
-        engineData.setModeMaxPressureCabin(Float.valueOf(ePCabin.getText().toString()));
-        engineData.setModeMaxPressureWings(Float.valueOf(ePVozdKrTank.getText().toString()));
-        engineData.setModeMaxPressureNozzles(Integer.valueOf(ePtPreembossed.getText().toString()));
+        if (!eN1.getText().toString().isEmpty())
+            engineData.setModeMaxHPCSpeed(Float.valueOf(eN1.getText().toString()));
+        if (!eN2_4.getText().toString().isEmpty())
+            engineData.setModeMaxHPCSpeedN2(Float.valueOf(eN2_4.getText().toString()));
+        if (!eTRC.getText().toString().isEmpty())
+            engineData.setModeMaxTemp(Integer.valueOf(eTRC.getText().toString()));
+        if (!ePm.getText().toString().isEmpty())
+            engineData.setModeMaxOilPressure(Float.valueOf(ePm.getText().toString()));
+        if (!eTmC.getText().toString().isEmpty())
+            engineData.setModeMaxOilTemp(Integer.valueOf(eTmC.getText().toString()));
+        if (!ePt.getText().toString().isEmpty())
+            engineData.setModeMaxFuelPressure(Integer.valueOf(ePt.getText().toString()));
+        if (!eEngineSqrt.getText().toString().isEmpty())
+            engineData.setModeMaxVibration(Integer.valueOf(eEngineSqrt.getText().toString()));
+        if (!eVGenerator.getText().toString().isEmpty())
+            engineData.setModeMaxVGenerator(Integer.valueOf(eVGenerator.getText().toString()));
+            engineData.setModeMaxGeneratorSpeedConst(spinnerKrTank.getSelectedItem().toString().equals("Норма"));
+        if (!ePCabin.getText().toString().isEmpty())
+            engineData.setModeMaxPressureCabin(Float.valueOf(ePCabin.getText().toString()));
+        if (!ePVozdKrTank.getText().toString().isEmpty())
+            engineData.setModeMaxPressureWings(Float.valueOf(ePVozdKrTank.getText().toString()));
+        if (!ePtPreembossed.getText().toString().isEmpty())
+            engineData.setModeMaxPressureNozzles(Integer.valueOf(ePtPreembossed.getText().toString()));
     }
 
     public void updateUI(){
         if(parentView.equals("DetailedRecordInfo")) {
-            EditText eN1 = (EditText) findViewById(R.id.LinearInpN1);
-            EditText eN2_4 = (EditText) findViewById(R.id.LinearInpN2_4);
-            EditText eTRC = (EditText) findViewById(R.id.LinearInpTRC);
-            EditText ePm = (EditText) findViewById(R.id.LinearInpPm);
-            EditText eTmC = (EditText) findViewById(R.id.LinearInpTmC);
-            EditText ePt = (EditText) findViewById(R.id.LinearInpPt);
-            EditText eEngineSqrt = (EditText) findViewById(R.id.LinearInpEngineSqrt);
-            EditText eVGenerator = (EditText) findViewById(R.id.LinearInpVGenerator);
-            EditText ePCabin = (EditText) findViewById(R.id.LinearInpPCabin);
-            spinnerKrTank = (Spinner) findViewById(R.id.RelativeSpinnerInpKrTank);
-            EditText ePVozdKrTank = (EditText) findViewById(R.id.LinearInpPVozdKrTank);
-            EditText ePtPreembossed = (EditText) findViewById(R.id.LinearInpPtPreembossed);
+            EditText eN1 = findViewById(R.id.LinearInpN1);
+            EditText eN2_4 = findViewById(R.id.LinearInpN2_4);
+            EditText eTRC = findViewById(R.id.LinearInpTRC);
+            EditText ePm = findViewById(R.id.LinearInpPm);
+            EditText eTmC = findViewById(R.id.LinearInpTmC);
+            EditText ePt = findViewById(R.id.LinearInpPt);
+            EditText eEngineSqrt = findViewById(R.id.LinearInpEngineSqrt);
+            EditText eVGenerator = findViewById(R.id.LinearInpVGenerator);
+            EditText ePCabin = findViewById(R.id.LinearInpPCabin);
+            spinnerKrTank = findViewById(R.id.RelativeSpinnerInpKrTank);
+            EditText ePVozdKrTank = findViewById(R.id.LinearInpPVozdKrTank);
+            EditText ePtPreembossed = findViewById(R.id.LinearInpPtPreembossed);
 
             eN1.setText(Float.toString(engineData.getModeMaxHPCSpeed()));
             eN2_4.setText(Float.toString(engineData.getModeMaxHPCSpeedN2()));

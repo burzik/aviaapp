@@ -15,6 +15,7 @@ import com.my.eduardarefjev.aviaapp.R;
  * 	23.10.2017		Eduard Arefjev 		Created "StepClosingKVDKPV" screen, one of steps
  * 	31.12.2017      Eduard Arefjev      Added writing data to FireBase and send to next view
  * 	31.12.2017      Eduard Arefjev      Added UpdateUI function
+ * 	28.01.2018      Eduard Arefjev      Fixed crash for null numbers
  */
 
 public class StepClosingKVDKPV extends AppCompatActivity {
@@ -35,9 +36,9 @@ public class StepClosingKVDKPV extends AppCompatActivity {
         Bundle extra = getIntent().getBundleExtra("extra");
         engineData  = extra.getParcelable("objects");
 
-        EditText eIII = (EditText) findViewById(R.id.LinearLabelInpIII);
+        EditText eIII = findViewById(R.id.LinearLabelInpIII);
         CreationHelper.checkValue(eIII, 86, 90);
-        EditText eV = (EditText) findViewById(R.id.LinearLabelInpV);
+        EditText eV = findViewById(R.id.LinearLabelInpV);
         CreationHelper.checkValue(eV, 74, 78);
 
         updateUI();
@@ -45,7 +46,7 @@ public class StepClosingKVDKPV extends AppCompatActivity {
     }
 
     public void nextSecondStep() {
-        Button bNextStep = (Button) findViewById(R.id.LinearButtonNextBackStroke);
+        Button bNextStep = findViewById(R.id.LinearButtonNextBackStroke);
         bNextStep.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,17 +63,19 @@ public class StepClosingKVDKPV extends AppCompatActivity {
         });
     }
     public void setRecord(){
-        EditText eIII = (EditText) findViewById(R.id.LinearLabelInpIII);
-        EditText eV = (EditText) findViewById(R.id.LinearLabelInpV);
+        EditText eIII = findViewById(R.id.LinearLabelInpIII);
+        EditText eV = findViewById(R.id.LinearLabelInpV);
 
-        engineData.setStageN3ModeName(Integer.valueOf(eIII.getText().toString()));
-        engineData.setStageN5ModeName(Integer.valueOf(eV.getText().toString()));
+        if (!eIII.getText().toString().isEmpty())
+            engineData.setStageN3ModeName(Integer.valueOf(eIII.getText().toString()));
+        if (!eV.getText().toString().isEmpty())
+            engineData.setStageN5ModeName(Integer.valueOf(eV.getText().toString()));
     }
 
     public void updateUI(){
         if(parentView.equals("DetailedRecordInfo")) {
-            EditText eIII = (EditText) findViewById(R.id.LinearLabelInpIII);
-            EditText eV = (EditText) findViewById(R.id.LinearLabelInpV);
+            EditText eIII = findViewById(R.id.LinearLabelInpIII);
+            EditText eV = findViewById(R.id.LinearLabelInpV);
 
             eIII.setText(Integer.toString(engineData.getStageN3ModeName()));
             eV.setText(Integer.toString(engineData.getStageN5ModeName()));

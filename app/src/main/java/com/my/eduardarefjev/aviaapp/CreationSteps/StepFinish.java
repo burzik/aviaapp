@@ -41,7 +41,7 @@ public class StepFinish extends AppCompatActivity {
     }
 
     public void nextSecondStep() {
-        Button bNextStep = (Button) findViewById(R.id.LinearButtonNextFinish);
+        Button bNextStep = findViewById(R.id.LinearButtonNextFinish);
         bNextStep.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,29 +58,35 @@ public class StepFinish extends AppCompatActivity {
     }
 
     public void setRecord(){
-        EditText eCommon = (EditText) findViewById(R.id.LinearLabelInpCommon);
-        EditText eNominal = (EditText) findViewById(R.id.LinearLabelInpNominal);
-        EditText eN1StraightRunV2 = (EditText) findViewById(R.id.LinearLabelInpN1StraightRunV2);
-        EditText eEngineAI = (EditText) findViewById(R.id.LinearLabelInpEngineAI);
-        EditText eVSUSapphire = (EditText) findViewById(R.id.LinearLabelInpVSUSapphire);
-        EditText eEngineA2I = (EditText) findViewById(R.id.LinearLabelInpEngineA2I);
+        EditText eCommon = findViewById(R.id.LinearLabelInpCommon);
+        EditText eNominal = findViewById(R.id.LinearLabelInpNominal);
+        EditText eN1StraightRunV2 = findViewById(R.id.LinearLabelInpN1StraightRunV2);
+        EditText eEngineAI = findViewById(R.id.LinearLabelInpEngineAI);
+        EditText eVSUSapphire = findViewById(R.id.LinearLabelInpVSUSapphire);
+        EditText eEngineA2I = findViewById(R.id.LinearLabelInpEngineA2I);
 
-        engineData.setModeWorkSum(Float.valueOf(eCommon.getText().toString()));
-        engineData.setModeWorkNom(Float.valueOf(eNominal.getText().toString()));
-        engineData.setModeWorkMax(Float.valueOf(eN1StraightRunV2.getText().toString()));
-        engineData.setModeWorkLaunchCount(Integer.valueOf(eEngineAI.getText().toString()));
-        engineData.setModeWorkLaunchVSUCount(Integer.valueOf(eVSUSapphire.getText().toString()));
-        engineData.setModeWorkN1Count(Integer.valueOf(eEngineA2I.getText().toString()));
+        if (!eCommon.getText().toString().isEmpty())
+            engineData.setModeWorkSum(Float.valueOf(eCommon.getText().toString()));
+        if (!eNominal.getText().toString().isEmpty())
+            engineData.setModeWorkNom(Float.valueOf(eNominal.getText().toString()));
+        if (!eN1StraightRunV2.getText().toString().isEmpty())
+            engineData.setModeWorkMax(Float.valueOf(eN1StraightRunV2.getText().toString()));
+        if (!eEngineAI.getText().toString().isEmpty())
+            engineData.setModeWorkLaunchCount(Integer.valueOf(eEngineAI.getText().toString()));
+        if (!eVSUSapphire.getText().toString().isEmpty())
+            engineData.setModeWorkLaunchVSUCount(Integer.valueOf(eVSUSapphire.getText().toString()));
+        if (!eEngineA2I.getText().toString().isEmpty())
+            engineData.setModeWorkN1Count(Integer.valueOf(eEngineA2I.getText().toString()));
     }
 
     public void updateUI(){
         if(parentView.equals("DetailedRecordInfo")) {
-            EditText eCommon = (EditText) findViewById(R.id.LinearLabelInpCommon);
-            EditText eNominal = (EditText) findViewById(R.id.LinearLabelInpNominal);
-            EditText eN1StraightRunV2 = (EditText) findViewById(R.id.LinearLabelInpN1StraightRunV2);
-            EditText eEngineAI = (EditText) findViewById(R.id.LinearLabelInpEngineAI);
-            EditText eVSUSapphire = (EditText) findViewById(R.id.LinearLabelInpVSUSapphire);
-            EditText eEngineA2I = (EditText) findViewById(R.id.LinearLabelInpEngineA2I);
+            EditText eCommon = findViewById(R.id.LinearLabelInpCommon);
+            EditText eNominal = findViewById(R.id.LinearLabelInpNominal);
+            EditText eN1StraightRunV2 = findViewById(R.id.LinearLabelInpN1StraightRunV2);
+            EditText eEngineAI = findViewById(R.id.LinearLabelInpEngineAI);
+            EditText eVSUSapphire = findViewById(R.id.LinearLabelInpVSUSapphire);
+            EditText eEngineA2I = findViewById(R.id.LinearLabelInpEngineA2I);
 
             eCommon.setText(Float.toString(engineData.getModeWorkSum()));
             eNominal.setText(Float.toString(engineData.getModeWorkNom()));

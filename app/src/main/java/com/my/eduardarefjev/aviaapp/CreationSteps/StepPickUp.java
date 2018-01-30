@@ -17,6 +17,7 @@ import static java.lang.Double.MIN_VALUE;
  * 	29.10.2017		Eduard Arefjev 		Created "StepPickUp" screen, one of steps
  * 	31.12.2017      Eduard Arefjev      Added writing data to FireBase and send to next view
  * 	31.12.2017      Eduard Arefjev      Added UpdateUI function
+ * 	28.01.2018      Eduard Arefjev      Fixed crash for null numbers
  */
 
 public class StepPickUp extends AppCompatActivity {
@@ -37,9 +38,9 @@ public class StepPickUp extends AppCompatActivity {
         Bundle extra = getIntent().getBundleExtra("extra");
         engineData  = extra.getParcelable("objects");
 
-        EditText eExitMgMax = (EditText) findViewById(R.id.LinearLabelInpExitMgMax);
+        EditText eExitMgMax = findViewById(R.id.LinearLabelInpExitMgMax);
         CreationHelper.checkValue(eExitMgMax, 9, 12);
-        EditText eResetMaxMg = (EditText) findViewById(R.id.LinearLabelInpResetMaxMg);
+        EditText eResetMaxMg = findViewById(R.id.LinearLabelInpResetMaxMg);
         CreationHelper.checkValue(eResetMaxMg, -MIN_VALUE, 5);
 
         updateUI();
@@ -47,7 +48,7 @@ public class StepPickUp extends AppCompatActivity {
     }
 
     public void nextSecondStep() {
-        Button bNextStep = (Button) findViewById(R.id.LinearButtonNextStepPickUp);
+        Button bNextStep = findViewById(R.id.LinearButtonNextStepPickUp);
         bNextStep.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -65,17 +66,19 @@ public class StepPickUp extends AppCompatActivity {
     }
 
     public void setRecord(){
-        EditText eExitMgMax = (EditText) findViewById(R.id.LinearLabelInpExitMgMax);
-        EditText eResetMaxMg = (EditText) findViewById(R.id.LinearLabelInpResetMaxMg);
+        EditText eExitMgMax = findViewById(R.id.LinearLabelInpExitMgMax);
+        EditText eResetMaxMg = findViewById(R.id.LinearLabelInpResetMaxMg);
 
-        engineData.setModeAccelerationIdleMaxIn(Float.valueOf(eExitMgMax.getText().toString()));
-        engineData.setModeAccelerationIdleOut(Float.valueOf(eResetMaxMg.getText().toString()));
+        if (!eExitMgMax.getText().toString().isEmpty())
+            engineData.setModeAccelerationIdleMaxIn(Float.valueOf(eExitMgMax.getText().toString()));
+        if (!eResetMaxMg.getText().toString().isEmpty())
+            engineData.setModeAccelerationIdleOut(Float.valueOf(eResetMaxMg.getText().toString()));
     }
 
     public void updateUI(){
         if(parentView.equals("DetailedRecordInfo")) {
-            EditText eExitMgMax = (EditText) findViewById(R.id.LinearLabelInpExitMgMax);
-            EditText eResetMaxMg = (EditText) findViewById(R.id.LinearLabelInpResetMaxMg);
+            EditText eExitMgMax = findViewById(R.id.LinearLabelInpExitMgMax);
+            EditText eResetMaxMg = findViewById(R.id.LinearLabelInpResetMaxMg);
 
             eExitMgMax.setText(Float.toString(engineData.getModeAccelerationIdleMaxIn()));
             eResetMaxMg.setText(Float.toString(engineData.getModeAccelerationIdleOut()));

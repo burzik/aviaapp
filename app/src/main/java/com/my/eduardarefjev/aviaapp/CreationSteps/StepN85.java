@@ -17,6 +17,7 @@ import static java.lang.Double.MAX_VALUE;
  * 	29.10.2017		Eduard Arefjev 		Created "StepN85" screen, one of steps
  * 	30.12.2017      Eduard Arefjev      Added writing data to FireBase and send to next view
  * 	31.12.2017      Eduard Arefjev      Added UpdateUI function
+ * 	28.01.2018      Eduard Arefjev      Fixed crash for null numbers
  */
 
 public class StepN85 extends AppCompatActivity {
@@ -37,23 +38,23 @@ public class StepN85 extends AppCompatActivity {
         Bundle extra = getIntent().getBundleExtra("extra");
         engineData  = extra.getParcelable("objects");
 
-        EditText eFlightTakeoff = (EditText) findViewById(R.id.LinearLabelInpFlightTakeoff);
+        EditText eFlightTakeoff = findViewById(R.id.LinearLabelInpFlightTakeoff);
         CreationHelper.checkValue(eFlightTakeoff, 2, 4);
-        EditText eTakeoffLanding = (EditText) findViewById(R.id.LinearLabelInpTakeoffLangding);
+        EditText eTakeoffLanding = findViewById(R.id.LinearLabelInpTakeoffLangding);
         CreationHelper.checkValue(eTakeoffLanding, 2, 3);
-        EditText eFlightLanding = (EditText) findViewById(R.id.LinearLabelInpFlightLanding);
+        EditText eFlightLanding = findViewById(R.id.LinearLabelInpFlightLanding);
         CreationHelper.checkValue(eFlightLanding, 5, 10);
-        EditText eLowPrc = (EditText) findViewById(R.id.LinearLabelInpLowPrc);
+        EditText eLowPrc = findViewById(R.id.LinearLabelInpLowPrc);
         CreationHelper.checkValue(eLowPrc, 70, MAX_VALUE); //>70
-        EditText eRelease = (EditText) findViewById(R.id.LinearLabelInpRelease);
+        EditText eRelease = findViewById(R.id.LinearLabelInpRelease);
         CreationHelper.checkValue(eRelease, 1.5, 2.5);
-        EditText eCleaning = (EditText) findViewById(R.id.LinearLabelInpCleaning);
+        EditText eCleaning = findViewById(R.id.LinearLabelInpCleaning);
         CreationHelper.checkValue(eCleaning, 1.5, 2.5);
-        EditText eLowPrc2 = (EditText) findViewById(R.id.LinearLabelInpLowPrc2);
+        EditText eLowPrc2 = findViewById(R.id.LinearLabelInpLowPrc2);
         CreationHelper.checkValue(eLowPrc2, 60, MAX_VALUE);
-        EditText eTmc = (EditText) findViewById(R.id.LinearLabelInpTmc);
+        EditText eTmc = findViewById(R.id.LinearLabelInpTmc);
         CreationHelper.checkValue(eTmc, -5, MAX_VALUE);
-        EditText eVGenerator = (EditText) findViewById(R.id.LinearLabelInpVGenerator);
+        EditText eVGenerator = findViewById(R.id.LinearLabelInpVGenerator);
         CreationHelper.checkValue(eVGenerator, 27, 29);
 
         updateUI();
@@ -61,7 +62,7 @@ public class StepN85 extends AppCompatActivity {
     }
 
     public void nextSecondStep() {
-        Button bNextStep = (Button) findViewById(R.id.LinearButtonNextN85);
+        Button bNextStep = findViewById(R.id.LinearButtonNextN85);
         bNextStep.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -79,38 +80,47 @@ public class StepN85 extends AppCompatActivity {
     }
 
     public void setRecord(){
-        EditText eFlightTakeoff = (EditText) findViewById(R.id.LinearLabelInpFlightTakeoff);
-        EditText eTakeoffLanding = (EditText) findViewById(R.id.LinearLabelInpTakeoffLangding);
-        EditText eFlightLanding = (EditText) findViewById(R.id.LinearLabelInpFlightLanding);
-        EditText eLowPrc = (EditText) findViewById(R.id.LinearLabelInpLowPrc);
-        EditText eRelease = (EditText) findViewById(R.id.LinearLabelInpRelease);
-        EditText eCleaning = (EditText) findViewById(R.id.LinearLabelInpCleaning);
-        EditText eLowPrc2 = (EditText) findViewById(R.id.LinearLabelInpLowPrc2);
-        EditText eTmc = (EditText) findViewById(R.id.LinearLabelInpTmc);
-        EditText eVGenerator = (EditText) findViewById(R.id.LinearLabelInpVGenerator);
+        EditText eFlightTakeoff = findViewById(R.id.LinearLabelInpFlightTakeoff);
+        EditText eTakeoffLanding = findViewById(R.id.LinearLabelInpTakeoffLangding);
+        EditText eFlightLanding = findViewById(R.id.LinearLabelInpFlightLanding);
+        EditText eLowPrc = findViewById(R.id.LinearLabelInpLowPrc);
+        EditText eRelease = findViewById(R.id.LinearLabelInpRelease);
+        EditText eCleaning = findViewById(R.id.LinearLabelInpCleaning);
+        EditText eLowPrc2 = findViewById(R.id.LinearLabelInpLowPrc2);
+        EditText eTmc = findViewById(R.id.LinearLabelInpTmc);
+        EditText eVGenerator = findViewById(R.id.LinearLabelInpVGenerator);
 
-        engineData.setStage5N1FlightTakeoff(Integer.valueOf(eFlightTakeoff.getText().toString()));
-        engineData.setStage5N1TakeoffLanding(Integer.valueOf(eTakeoffLanding.getText().toString()));
-        engineData.setStage5N1FlightLanding(Integer.valueOf(eFlightLanding.getText().toString()));
-        engineData.setStage5N1Prc(Integer.valueOf(eLowPrc.getText().toString()));
-        engineData.setStage5N1Release(Integer.valueOf(eRelease.getText().toString()));
-        engineData.setStage5N1Cleaning(Integer.valueOf(eCleaning.getText().toString()));
-        engineData.setStage5N1BrakePrc(Integer.valueOf(eLowPrc2.getText().toString()));
-        engineData.setStage5N1Tmc(Integer.valueOf(eTmc.getText().toString()));
-        engineData.setStage5N1VGenerator(Integer.valueOf(eVGenerator.getText().toString()));
+        if (!eFlightTakeoff.getText().toString().isEmpty())
+            engineData.setStage5N1FlightTakeoff(Integer.valueOf(eFlightTakeoff.getText().toString()));
+        if (!eTakeoffLanding.getText().toString().isEmpty())
+            engineData.setStage5N1TakeoffLanding(Integer.valueOf(eTakeoffLanding.getText().toString()));
+        if (!eFlightLanding.getText().toString().isEmpty())
+            engineData.setStage5N1FlightLanding(Integer.valueOf(eFlightLanding.getText().toString()));
+        if (!eLowPrc.getText().toString().isEmpty())
+            engineData.setStage5N1Prc(Integer.valueOf(eLowPrc.getText().toString()));
+        if (!eRelease.getText().toString().isEmpty())
+            engineData.setStage5N1Release(Integer.valueOf(eRelease.getText().toString()));
+        if (!eCleaning.getText().toString().isEmpty())
+            engineData.setStage5N1Cleaning(Integer.valueOf(eCleaning.getText().toString()));
+        if (!eLowPrc2.getText().toString().isEmpty())
+            engineData.setStage5N1BrakePrc(Integer.valueOf(eLowPrc2.getText().toString()));
+        if (!eTmc.getText().toString().isEmpty())
+            engineData.setStage5N1Tmc(Integer.valueOf(eTmc.getText().toString()));
+        if (!eVGenerator.getText().toString().isEmpty())
+            engineData.setStage5N1VGenerator(Integer.valueOf(eVGenerator.getText().toString()));
     }
 
     public void updateUI(){
         if(parentView.equals("DetailedRecordInfo")) {
-            EditText eFlightTakeoff = (EditText) findViewById(R.id.LinearLabelInpFlightTakeoff);
-            EditText eTakeoffLanding = (EditText) findViewById(R.id.LinearLabelInpTakeoffLangding);
-            EditText eFlightLanding = (EditText) findViewById(R.id.LinearLabelInpFlightLanding);
-            EditText eLowPrc = (EditText) findViewById(R.id.LinearLabelInpLowPrc);
-            EditText eRelease = (EditText) findViewById(R.id.LinearLabelInpRelease);
-            EditText eCleaning = (EditText) findViewById(R.id.LinearLabelInpCleaning);
-            EditText eLowPrc2 = (EditText) findViewById(R.id.LinearLabelInpLowPrc2);
-            EditText eTmc = (EditText) findViewById(R.id.LinearLabelInpTmc);
-            EditText eVGenerator = (EditText) findViewById(R.id.LinearLabelInpVGenerator);
+            EditText eFlightTakeoff = findViewById(R.id.LinearLabelInpFlightTakeoff);
+            EditText eTakeoffLanding = findViewById(R.id.LinearLabelInpTakeoffLangding);
+            EditText eFlightLanding = findViewById(R.id.LinearLabelInpFlightLanding);
+            EditText eLowPrc = findViewById(R.id.LinearLabelInpLowPrc);
+            EditText eRelease = findViewById(R.id.LinearLabelInpRelease);
+            EditText eCleaning = findViewById(R.id.LinearLabelInpCleaning);
+            EditText eLowPrc2 = findViewById(R.id.LinearLabelInpLowPrc2);
+            EditText eTmc = findViewById(R.id.LinearLabelInpTmc);
+            EditText eVGenerator = findViewById(R.id.LinearLabelInpVGenerator);
 
             eFlightTakeoff.setText(Integer.toString(engineData.getStage5N1FlightTakeoff()));
             eTakeoffLanding.setText(Integer.toString(engineData.getStage5N1TakeoffLanding()));

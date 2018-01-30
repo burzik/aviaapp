@@ -19,6 +19,7 @@ import static java.lang.Double.MIN_VALUE;
  * 	23.10.2017		Eduard Arefjev 		Created "StepNom" screen, one of steps
  * 	30.12.2017      Eduard Arefjev      Added writing data to FireBase and send to next view
  * 	31.12.2017      Eduard Arefjev      Added UpdateUI function
+ * 	28.01.2018      Eduard Arefjev      Fixed crash for null numbers
  */
 
 public class StepNom extends AppCompatActivity {
@@ -50,31 +51,31 @@ public class StepNom extends AppCompatActivity {
         Bundle extra = getIntent().getBundleExtra("extra");
         engineData  = extra.getParcelable("objects");
 
-        EditText eN1 = (EditText) findViewById(R.id.LinearLabelInpN1_2);
+        EditText eN1 = findViewById(R.id.LinearLabelInpN1_2);
         CreationHelper.checkValue(eN1, 102, 104);
-        EditText eTrc = (EditText) findViewById(R.id.LinearLabelInpTrc_2);
+        EditText eTrc = findViewById(R.id.LinearLabelInpTrc_2);
         CreationHelper.checkValue(eTrc, -MIN_VALUE, 625);
-        EditText ePm = (EditText) findViewById(R.id.LinearLabelInpPm_2);
+        EditText ePm = findViewById(R.id.LinearLabelInpPm_2);
         CreationHelper.checkValue(ePm, 3, 4.5);
-        EditText eTmc = (EditText) findViewById(R.id.LinearLabelInpTmc_2);
+        EditText eTmc = findViewById(R.id.LinearLabelInpTmc_2);
         CreationHelper.checkValue(eTmc, -MIN_VALUE, 90);
-        EditText ePt = (EditText) findViewById(R.id.LinearLabelInpPt_2);
+        EditText ePt = findViewById(R.id.LinearLabelInpPt_2);
         CreationHelper.checkValue(ePt, -MIN_VALUE, 65);
-        EditText eEngineSqrt = (EditText) findViewById(R.id.LinearLabelInpEngineSqrt_2);
+        EditText eEngineSqrt = findViewById(R.id.LinearLabelInpEngineSqrt_2);
         CreationHelper.checkValue(eEngineSqrt, -MIN_VALUE, 40);
-        EditText eVGenerator = (EditText) findViewById(R.id.LinearLabelInpLabelVGenerator);
+        EditText eVGenerator = findViewById(R.id.LinearLabelInpLabelVGenerator);
         CreationHelper.checkValue(eVGenerator, 27, 29);
 
-        spinnerDoNotRunOn = (Spinner) findViewById(R.id.RelativeSpinnerInpDoNotRunOn);
-        spinnerEngineParametersOn = (Spinner) findViewById(R.id.RelativeSpinnerInpEngineParametersOn);
-        spinnerDoNotRunOff = (Spinner) findViewById(R.id.RelativeSpinnerInpDoNotRunOff);
-        spinnerParametersOff = (Spinner) findViewById(R.id.RelativeSpinnerInpEngineParametersOff);
-        spinnerTurnOn = (Spinner) findViewById(R.id.RelativeSpinnerInpTurnOn);
-        spinnerTurnOff = (Spinner) findViewById(R.id.RelativeSpinnerInpTurnOff);
-        spinnerAutomatic = (Spinner) findViewById(R.id.RelativeSpinnerInpAutomatic);
-        spinnerHeat_2 = (Spinner) findViewById(R.id.RelativeSpinnerInpHeat_2);
-        spinnerCold_2 = (Spinner) findViewById(R.id.RelativeSpinnerInpCold_2);
-        spinnerAutomatic_2 = (Spinner) findViewById(R.id.RelativeSpinnerInpAutomatic_2);
+        spinnerDoNotRunOn = findViewById(R.id.RelativeSpinnerInpDoNotRunOn);
+        spinnerEngineParametersOn = findViewById(R.id.RelativeSpinnerInpEngineParametersOn);
+        spinnerDoNotRunOff = findViewById(R.id.RelativeSpinnerInpDoNotRunOff);
+        spinnerParametersOff = findViewById(R.id.RelativeSpinnerInpEngineParametersOff);
+        spinnerTurnOn = findViewById(R.id.RelativeSpinnerInpTurnOn);
+        spinnerTurnOff = findViewById(R.id.RelativeSpinnerInpTurnOff);
+        spinnerAutomatic = findViewById(R.id.RelativeSpinnerInpAutomatic);
+        spinnerHeat_2 = findViewById(R.id.RelativeSpinnerInpHeat_2);
+        spinnerCold_2 = findViewById(R.id.RelativeSpinnerInpCold_2);
+        spinnerAutomatic_2 = findViewById(R.id.RelativeSpinnerInpAutomatic_2);
 
         //EA Create DropDown List
         myAdapter = new ArrayAdapter<>(StepNom.this, android.R.layout.simple_spinner_dropdown_item, getResources().getStringArray(R.array.good_bad));
@@ -95,7 +96,7 @@ public class StepNom extends AppCompatActivity {
     }
 
     public void nextSecondStep() {
-        Button bNextStep = (Button) findViewById(R.id.LinearButtonNextClosingKVD3Nom);
+        Button bNextStep = findViewById(R.id.LinearButtonNextClosingKVD3Nom);
         bNextStep.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -113,62 +114,69 @@ public class StepNom extends AppCompatActivity {
     }
 
     public void setRecord(){
-            EditText eN1 = (EditText) findViewById(R.id.LinearLabelInpN1_2);
-            EditText eTrc = (EditText) findViewById(R.id.LinearLabelInpTrc_2);
-            EditText ePm = (EditText) findViewById(R.id.LinearLabelInpPm_2);
-            EditText eTmc = (EditText) findViewById(R.id.LinearLabelInpTmc_2);
-            EditText ePt = (EditText) findViewById(R.id.LinearLabelInpPt_2);
-            EditText eEngineSqrt = (EditText) findViewById(R.id.LinearLabelInpEngineSqrt_2);
-            EditText eVGenerator = (EditText) findViewById(R.id.LinearLabelInpLabelVGenerator);
-            spinnerDoNotRunOn = (Spinner) findViewById(R.id.RelativeSpinnerInpDoNotRunOn);
-            spinnerEngineParametersOn = (Spinner) findViewById(R.id.RelativeSpinnerInpEngineParametersOn);
-            spinnerDoNotRunOff = (Spinner) findViewById(R.id.RelativeSpinnerInpDoNotRunOff);
-            spinnerParametersOff = (Spinner) findViewById(R.id.RelativeSpinnerInpEngineParametersOff);
-            spinnerTurnOn = (Spinner) findViewById(R.id.RelativeSpinnerInpTurnOn);
-            spinnerTurnOff = (Spinner) findViewById(R.id.RelativeSpinnerInpTurnOff);
-            spinnerAutomatic = (Spinner) findViewById(R.id.RelativeSpinnerInpAutomatic);
-            spinnerHeat_2 = (Spinner) findViewById(R.id.RelativeSpinnerInpHeat_2);
-            spinnerCold_2 = (Spinner) findViewById(R.id.RelativeSpinnerInpCold_2);
-            spinnerAutomatic_2 = (Spinner) findViewById(R.id.RelativeSpinnerInpAutomatic_2);
+        EditText eN1 = findViewById(R.id.LinearLabelInpN1_2);
+        EditText eTrc = findViewById(R.id.LinearLabelInpTrc_2);
+        EditText ePm = findViewById(R.id.LinearLabelInpPm_2);
+        EditText eTmc = findViewById(R.id.LinearLabelInpTmc_2);
+        EditText ePt = findViewById(R.id.LinearLabelInpPt_2);
+        EditText eEngineSqrt = findViewById(R.id.LinearLabelInpEngineSqrt_2);
+        EditText eVGenerator = findViewById(R.id.LinearLabelInpLabelVGenerator);
+        spinnerDoNotRunOn = findViewById(R.id.RelativeSpinnerInpDoNotRunOn);
+        spinnerEngineParametersOn = findViewById(R.id.RelativeSpinnerInpEngineParametersOn);
+        spinnerDoNotRunOff = findViewById(R.id.RelativeSpinnerInpDoNotRunOff);
+        spinnerParametersOff = findViewById(R.id.RelativeSpinnerInpEngineParametersOff);
+        spinnerTurnOn = findViewById(R.id.RelativeSpinnerInpTurnOn);
+        spinnerTurnOff = findViewById(R.id.RelativeSpinnerInpTurnOff);
+        spinnerAutomatic = findViewById(R.id.RelativeSpinnerInpAutomatic);
+        spinnerHeat_2 = findViewById(R.id.RelativeSpinnerInpHeat_2);
+        spinnerCold_2 = findViewById(R.id.RelativeSpinnerInpCold_2);
+        spinnerAutomatic_2 = findViewById(R.id.RelativeSpinnerInpAutomatic_2);
 
+        if (!eN1.getText().toString().isEmpty())
             engineData.setModeNomHPCSpeed(Float.valueOf(eN1.getText().toString()));
+        if (!eTrc.getText().toString().isEmpty())
             engineData.setModeNomTemp(Integer.valueOf(eTrc.getText().toString()));
+        if (!ePm.getText().toString().isEmpty())
             engineData.setModeNomOilPressure(Float.valueOf(ePm.getText().toString()));
+        if (!eTmc.getText().toString().isEmpty())
             engineData.setModeNomOilTemp(Integer.valueOf(eTmc.getText().toString()));
+        if (!ePt.getText().toString().isEmpty())
             engineData.setModeNomFuelPressure(Integer.valueOf(ePt.getText().toString()));
+        if (!eEngineSqrt.getText().toString().isEmpty())
             engineData.setModeNomVibration(Integer.valueOf(eEngineSqrt.getText().toString()));
-            engineData.setModeNom4001OnSignal(spinnerDoNotRunOn.getSelectedItem().toString().equals("Норма"));
-            engineData.setModeNom4001OnEngine(spinnerEngineParametersOn.getSelectedItem().toString().equals("Норма"));
-            engineData.setModeNom4001OffSignal(spinnerDoNotRunOff.getSelectedItem().toString().equals("Норма"));
-            engineData.setModeNom4001OffEngine(spinnerParametersOff.getSelectedItem().toString().equals("Норма"));
-            engineData.setModeNomPTBKHeat(spinnerTurnOn.getSelectedItem().toString().equals("Норма"));
-            engineData.setModeNomPTBKCold(spinnerTurnOff.getSelectedItem().toString().equals("Норма"));
-            engineData.setModeNomPTBKAutomation(spinnerAutomatic.getSelectedItem().toString().equals("Норма"));
-            engineData.setModeNomShowerHeat(spinnerHeat_2.getSelectedItem().toString().equals("Норма"));
-            engineData.setModeNomShowerCold(spinnerCold_2.getSelectedItem().toString().equals("Норма"));
-            engineData.setModeNomShowerAutomation(spinnerAutomatic_2.getSelectedItem().toString().equals("Норма"));
+        engineData.setModeNom4001OnSignal(spinnerDoNotRunOn.getSelectedItem().toString().equals("Норма"));
+        engineData.setModeNom4001OnEngine(spinnerEngineParametersOn.getSelectedItem().toString().equals("Норма"));
+        engineData.setModeNom4001OffSignal(spinnerDoNotRunOff.getSelectedItem().toString().equals("Норма"));
+        engineData.setModeNom4001OffEngine(spinnerParametersOff.getSelectedItem().toString().equals("Норма"));
+        engineData.setModeNomPTBKHeat(spinnerTurnOn.getSelectedItem().toString().equals("Норма"));
+        engineData.setModeNomPTBKCold(spinnerTurnOff.getSelectedItem().toString().equals("Норма"));
+        engineData.setModeNomPTBKAutomation(spinnerAutomatic.getSelectedItem().toString().equals("Норма"));
+        engineData.setModeNomShowerHeat(spinnerHeat_2.getSelectedItem().toString().equals("Норма"));
+        engineData.setModeNomShowerCold(spinnerCold_2.getSelectedItem().toString().equals("Норма"));
+        engineData.setModeNomShowerAutomation(spinnerAutomatic_2.getSelectedItem().toString().equals("Норма"));
+        if (!eVGenerator.getText().toString().isEmpty())
             engineData.setModeNomVGenerator(Integer.valueOf(eVGenerator.getText().toString()));
     }
 
     public void updateUI(){
         if(parentView.equals("DetailedRecordInfo")) {
-            EditText eN1 = (EditText) findViewById(R.id.LinearLabelInpN1_2);
-            EditText eTrc = (EditText) findViewById(R.id.LinearLabelInpTrc_2);
-            EditText ePm = (EditText) findViewById(R.id.LinearLabelInpPm_2);
-            EditText eTmc = (EditText) findViewById(R.id.LinearLabelInpTmc_2);
-            EditText ePt = (EditText) findViewById(R.id.LinearLabelInpPt_2);
-            EditText eEngineSqrt = (EditText) findViewById(R.id.LinearLabelInpEngineSqrt_2);
-            EditText eVGenerator = (EditText) findViewById(R.id.LinearLabelInpLabelVGenerator);
-            spinnerDoNotRunOn = (Spinner) findViewById(R.id.RelativeSpinnerInpDoNotRunOn);
-            spinnerEngineParametersOn = (Spinner) findViewById(R.id.RelativeSpinnerInpEngineParametersOn);
-            spinnerDoNotRunOff = (Spinner) findViewById(R.id.RelativeSpinnerInpDoNotRunOff);
-            spinnerParametersOff = (Spinner) findViewById(R.id.RelativeSpinnerInpEngineParametersOff);
-            spinnerTurnOn = (Spinner) findViewById(R.id.RelativeSpinnerInpTurnOn);
-            spinnerTurnOff = (Spinner) findViewById(R.id.RelativeSpinnerInpTurnOff);
-            spinnerAutomatic = (Spinner) findViewById(R.id.RelativeSpinnerInpAutomatic);
-            spinnerHeat_2 = (Spinner) findViewById(R.id.RelativeSpinnerInpHeat_2);
-            spinnerCold_2 = (Spinner) findViewById(R.id.RelativeSpinnerInpCold_2);
-            spinnerAutomatic_2 = (Spinner) findViewById(R.id.RelativeSpinnerInpAutomatic_2);
+            EditText eN1 = findViewById(R.id.LinearLabelInpN1_2);
+            EditText eTrc = findViewById(R.id.LinearLabelInpTrc_2);
+            EditText ePm = findViewById(R.id.LinearLabelInpPm_2);
+            EditText eTmc = findViewById(R.id.LinearLabelInpTmc_2);
+            EditText ePt = findViewById(R.id.LinearLabelInpPt_2);
+            EditText eEngineSqrt = findViewById(R.id.LinearLabelInpEngineSqrt_2);
+            EditText eVGenerator = findViewById(R.id.LinearLabelInpLabelVGenerator);
+            spinnerDoNotRunOn = findViewById(R.id.RelativeSpinnerInpDoNotRunOn);
+            spinnerEngineParametersOn = findViewById(R.id.RelativeSpinnerInpEngineParametersOn);
+            spinnerDoNotRunOff = findViewById(R.id.RelativeSpinnerInpDoNotRunOff);
+            spinnerParametersOff = findViewById(R.id.RelativeSpinnerInpEngineParametersOff);
+            spinnerTurnOn = findViewById(R.id.RelativeSpinnerInpTurnOn);
+            spinnerTurnOff = findViewById(R.id.RelativeSpinnerInpTurnOff);
+            spinnerAutomatic = findViewById(R.id.RelativeSpinnerInpAutomatic);
+            spinnerHeat_2 = findViewById(R.id.RelativeSpinnerInpHeat_2);
+            spinnerCold_2 = findViewById(R.id.RelativeSpinnerInpCold_2);
+            spinnerAutomatic_2 = findViewById(R.id.RelativeSpinnerInpAutomatic_2);
 
             eN1.setText(Float.toString(engineData.getModeNomHPCSpeed()));
             eTrc.setText(Integer.toString(engineData.getModeNomTemp()));
