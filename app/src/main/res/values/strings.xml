@@ -158,6 +158,13 @@
     <!-- Ru Labels -->
     <string name="label_registration_successful">Регистрация успешна</string>
     <string name="label_registration_failed">Регистрация провалена</string>
+    <string name="label_bad_email">Плохая электронная почта</string>
+    <string name="label_bad_password">Плохой пароль</string>
+    <string name="error_user_exists">Данный пользователь уже зарегистрирован</string>
+    <string name="error_missing_name_surname">Имя/Фамилия не указаны! Продолжить?</string>
+    <string name="yes">Да</string>
+    <string name="no">Нет</string>
+
 
     <!-- Ru Arrays -->
     <string-array name="privileges">
@@ -180,6 +187,11 @@
     <string name="button_create_user">Создать пользователя</string>
     <string name="button_set_privileges">Изменить привелегии</string>
     <string name="button_change">Изменить</string>
+    <string name="button_create">Создать</string>
+    <string name="button_clear">Очистить</string>
+
+    <string name="menu_change_password">Изменить пароль</string>
+    <string name="menu_exit">Выход</string>
 
 
 
