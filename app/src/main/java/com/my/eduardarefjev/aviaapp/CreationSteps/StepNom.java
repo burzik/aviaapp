@@ -3,6 +3,8 @@ package com.my.eduardarefjev.aviaapp.CreationSteps;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -10,6 +12,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.my.eduardarefjev.aviaapp.R;
+
+import java.util.HashMap;
 
 import static java.lang.Double.MIN_VALUE;
 
@@ -20,6 +24,7 @@ import static java.lang.Double.MIN_VALUE;
  * 	30.12.2017      Eduard Arefjev      Added writing data to FireBase and send to next view
  * 	31.12.2017      Eduard Arefjev      Added UpdateUI function
  * 	28.01.2018      Eduard Arefjev      Fixed crash for null numbers
+ * 	30.01.2018      Eduard Arefjev      Added Readonly mode, menu, fast forwarding
  */
 
 public class StepNom extends AppCompatActivity {
@@ -36,20 +41,67 @@ public class StepNom extends AppCompatActivity {
     private Spinner spinnerAutomatic_2;
     private StepEngineData engineData;
     String id;
-    String parentView;
+    //String parentView;
     ArrayAdapter<String> myAdapter;
+    boolean showValues;
+    boolean editableValues;
+    HashMap<String, Boolean> hashMap;
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        //EA Inflate the menu
+        if(!editableValues)
+            getMenuInflater().inflate(R.menu.menu_creation_steps, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        boolean itemSelected = super.onOptionsItemSelected(item);
+
+        switch(item.getItemId()) {
+            case R.id.UpdateRecord: {
+                Intent intent = new Intent(this, UpdateRecordMenu.class);
+                intent.putExtra("recordId", id);
+                Bundle extra = new Bundle();
+                extra.putParcelable("objects", engineData);
+                intent.putExtra("extra", extra);
+                startActivity(intent);
+                break;
+            }
+            default:
+                return itemSelected;
+        }
+        return true;
+    }
 
     @Override
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.linear_step_nom);
-        this.setTitle("Ном.");
+        this.setTitle(R.string.label_nom);
 
         Intent intent = getIntent();
         id = intent.getStringExtra("recordId");
-        parentView = intent.getStringExtra("parentViewName");
+        //parentView = intent.getStringExtra("parentViewName");
         Bundle extra = getIntent().getBundleExtra("extra");
         engineData  = extra.getParcelable("objects");
+        showValues = intent.getBooleanExtra("showValues", false);
+        editableValues = intent.getBooleanExtra("editableValues", false);
+        hashMap = (HashMap<String, Boolean>)intent.getSerializableExtra("map");
+
+        if (hashMap != null && hashMap.size() != 0){
+            if(!hashMap.get("checkbox_nominal")) {
+                intent = new Intent(this, StepMax.class);
+                intent.putExtra("recordId", id);
+                intent.putExtra("showValues", showValues);
+                intent.putExtra("editableValues", editableValues);
+                extra.putParcelable("objects", engineData);
+                intent.putExtra("extra", extra);
+                intent.putExtra("map", hashMap);
+                startActivity(intent);
+            }
+        }
 
         EditText eN1 = findViewById(R.id.LinearLabelInpN1_2);
         CreationHelper.checkValue(eN1, 102, 104);
@@ -104,10 +156,12 @@ public class StepNom extends AppCompatActivity {
                 CreationHelper.updateRecord(id, engineData);
                 Intent intent = new Intent(StepNom.this, StepMax.class);
                 intent.putExtra("recordId", id);
-                intent.putExtra("parentViewName", parentView);
+                intent.putExtra("showValues", showValues);
+                intent.putExtra("editableValues", editableValues);
                 Bundle extra = new Bundle();
                 extra.putParcelable("objects", engineData);
                 intent.putExtra("extra", extra);
+                intent.putExtra("map", hashMap);
                 startActivity(intent);
             }
         });
@@ -159,7 +213,7 @@ public class StepNom extends AppCompatActivity {
     }
 
     public void updateUI(){
-        if(parentView.equals("DetailedRecordInfo")) {
+        if(showValues) {
             EditText eN1 = findViewById(R.id.LinearLabelInpN1_2);
             EditText eTrc = findViewById(R.id.LinearLabelInpTrc_2);
             EditText ePm = findViewById(R.id.LinearLabelInpPm_2);
@@ -177,6 +231,26 @@ public class StepNom extends AppCompatActivity {
             spinnerHeat_2 = findViewById(R.id.RelativeSpinnerInpHeat_2);
             spinnerCold_2 = findViewById(R.id.RelativeSpinnerInpCold_2);
             spinnerAutomatic_2 = findViewById(R.id.RelativeSpinnerInpAutomatic_2);
+
+            if (!editableValues) {
+                CreationHelper.makeEditTextReadOnly(eN1);
+                CreationHelper.makeEditTextReadOnly(eTrc);
+                CreationHelper.makeEditTextReadOnly(ePm);
+                CreationHelper.makeEditTextReadOnly(eTmc);
+                CreationHelper.makeEditTextReadOnly(ePt);
+                CreationHelper.makeEditTextReadOnly(eEngineSqrt);
+                CreationHelper.makeEditTextReadOnly(eVGenerator);
+                CreationHelper.makeSpinnerReadOnly(spinnerDoNotRunOn);
+                CreationHelper.makeSpinnerReadOnly(spinnerEngineParametersOn);
+                CreationHelper.makeSpinnerReadOnly(spinnerDoNotRunOff);
+                CreationHelper.makeSpinnerReadOnly(spinnerParametersOff);
+                CreationHelper.makeSpinnerReadOnly(spinnerTurnOn);
+                CreationHelper.makeSpinnerReadOnly(spinnerTurnOff);
+                CreationHelper.makeSpinnerReadOnly(spinnerAutomatic);
+                CreationHelper.makeSpinnerReadOnly(spinnerHeat_2);
+                CreationHelper.makeSpinnerReadOnly(spinnerCold_2);
+                CreationHelper.makeSpinnerReadOnly(spinnerAutomatic_2);
+            }
 
             eN1.setText(Float.toString(engineData.getModeNomHPCSpeed()));
             eTrc.setText(Integer.toString(engineData.getModeNomTemp()));

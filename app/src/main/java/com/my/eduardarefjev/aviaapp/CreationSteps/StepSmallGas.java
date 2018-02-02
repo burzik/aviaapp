@@ -3,6 +3,8 @@ package com.my.eduardarefjev.aviaapp.CreationSteps;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -11,13 +13,16 @@ import android.widget.Spinner;
 
 import com.my.eduardarefjev.aviaapp.R;
 
+import java.util.HashMap;
+
 /**
  * HISTORY
  * 	Date			Author				Comments
  * 	09.10.2017		Eduard Arefjev 		Created "StepSmallGas" screen, one of steps
  * 	30.12.2017      Eduard Arefjev      Added writing data to FireBase and send to next view
  * 	31.12.2017      Eduard Arefjev      Added UpdateUI function
- * 	28.01.2018      Eduard Arefjev     Fixed crash for null numbers
+ * 	28.01.2018      Eduard Arefjev      Fixed crash for null numbers
+ * 	30.01.2018      Eduard Arefjev      Added Readonly mode, menu, fast forwarding
  */
 
 public class StepSmallGas extends AppCompatActivity {
@@ -26,8 +31,38 @@ public class StepSmallGas extends AppCompatActivity {
     private Spinner spinnerAirCond;
     private StepEngineData engineData;
     String id;
-    String parentView;
+    boolean showValues;
+    boolean editableValues;
+    HashMap<String, Boolean> hashMap;
     ArrayAdapter<String> myAdapter;
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        //EA Inflate the menu
+        if(!editableValues)
+            getMenuInflater().inflate(R.menu.menu_creation_steps, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        boolean itemSelected = super.onOptionsItemSelected(item);
+
+        switch(item.getItemId()) {
+            case R.id.UpdateRecord: {
+                Intent intent = new Intent(this, UpdateRecordMenu.class);
+                intent.putExtra("recordId", id);
+                Bundle extra = new Bundle();
+                extra.putParcelable("objects", engineData);
+                intent.putExtra("extra", extra);
+                startActivity(intent);
+                break;
+            }
+            default:
+                return itemSelected;
+        }
+        return true;
+    }
 
     @Override
     protected void onCreate (Bundle savedInstanceState) {
@@ -37,9 +72,25 @@ public class StepSmallGas extends AppCompatActivity {
 
         Intent intent = getIntent();
         id = intent.getStringExtra("recordId");
-        parentView = intent.getStringExtra("parentViewName");
+        //parentView = intent.getStringExtra("parentViewName");
         Bundle extra = getIntent().getBundleExtra("extra");
         engineData  = extra.getParcelable("objects");
+        showValues = intent.getBooleanExtra("showValues", false);
+        editableValues = intent.getBooleanExtra("editableValues", false);
+        hashMap = (HashMap<String, Boolean>)intent.getSerializableExtra("map");
+
+        if (hashMap != null && hashMap.size() != 0){
+            if(!hashMap.get("checkbox_small_gas")) {
+                intent = new Intent(StepSmallGas.this, StepClosingKVD5.class);
+                intent.putExtra("recordId", id);
+                intent.putExtra("showValues", showValues);
+                intent.putExtra("editableValues", editableValues);
+                extra.putParcelable("objects", engineData);
+                intent.putExtra("extra", extra);
+                intent.putExtra("map", hashMap);
+                startActivity(intent);
+            }
+        }
 
         EditText eInpN1 = findViewById(R.id.LinearInpN1);
         CreationHelper.checkValue(eInpN1, 54.5, 57.5);
@@ -102,10 +153,12 @@ public class StepSmallGas extends AppCompatActivity {
                 CreationHelper.updateRecord(id, engineData);
                 Intent intent = new Intent(StepSmallGas.this, StepClosingKVD5.class);
                 intent.putExtra("recordId", id);
-                intent.putExtra("parentViewName", parentView);
+                intent.putExtra("showValues", showValues);
+                intent.putExtra("editableValues", editableValues);
                 Bundle extra = new Bundle();
                 extra.putParcelable("objects", engineData);
                 intent.putExtra("extra", extra);
+                intent.putExtra("map", hashMap);
                 startActivity(intent);
             }
         });
@@ -173,7 +226,7 @@ public class StepSmallGas extends AppCompatActivity {
     }
 
     public void updateUI(){
-        if(parentView.equals("DetailedRecordInfo")) {
+        if(showValues) {
             EditText eInpN1 = findViewById(R.id.LinearInpN1);
             EditText eTRC = findViewById(R.id.LinearInpTRC);
             EditText ePm = findViewById(R.id.LinearInpPm);
@@ -193,6 +246,26 @@ public class StepSmallGas extends AppCompatActivity {
             EditText ePCabin = findViewById(R.id.LinearInpPCabin);
             //float num = engineData.getModeSmallGasHPCSpeed();
             //eInpN1.setText(String.format(Locale.ENGLISH,"%f",num));
+
+            if (!editableValues) {
+                CreationHelper.makeEditTextReadOnly(eInpN1);
+                CreationHelper.makeEditTextReadOnly(eTRC);
+                CreationHelper.makeEditTextReadOnly(ePm);
+                CreationHelper.makeEditTextReadOnly(eTmC);
+                CreationHelper.makeEditTextReadOnly(ePt);
+                CreationHelper.makeEditTextReadOnly(eEngineSqrt);
+                CreationHelper.makeEditTextReadOnly(eMainSystem);
+                CreationHelper.makeEditTextReadOnly(eEmergency);
+                CreationHelper.makeEditTextReadOnly(eBasic);
+                CreationHelper.makeEditTextReadOnly(eParking);
+                CreationHelper.makeEditTextReadOnly(eVGenerator);
+                CreationHelper.makeEditTextReadOnly(eKrTank);
+                CreationHelper.makeEditTextReadOnly(eGAccum);
+                CreationHelper.makeEditTextReadOnly(eGTank);
+                CreationHelper.makeSpinnerReadOnly(spinnerClosingLantern);
+                CreationHelper.makeSpinnerReadOnly(spinnerAirCond);
+                CreationHelper.makeEditTextReadOnly(ePCabin);
+            }
 
             eInpN1.setText(Float.toString(engineData.getModeSmallGasHPCSpeed()));
             eTRC.setText(Integer.toString(engineData.getModeSmallGasTemp()));

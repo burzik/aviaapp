@@ -147,6 +147,10 @@
     <string name="label_101">101</string>
     <string name="label_azs_agd_gmk">АЗС \"АГД, ГМК\"</string>
     <string name="label_turn_on">ВКЛ</string>
+    <string name="label_base_values">Базовые значения</string>
+    <string name="label_base_values_2">Базовые значения 2</string>
+    <string name="label_n1_equals_85">n1=85%</string>
+    <string name="label_final_data">Финальные данные</string>
 
     <!-- Ru Users -->
     <string name="label_first_name">Имя</string>
@@ -164,7 +168,8 @@
     <string name="error_missing_name_surname">Имя/Фамилия не указаны! Продолжить?</string>
     <string name="yes">Да</string>
     <string name="no">Нет</string>
-
+    <string name="label_show_values">Показать значения?</string>
+    <string name="label_choose_steps">Выберите этапы, которые хотите изменить</string>
 
     <!-- Ru Arrays -->
     <string-array name="privileges">
@@ -192,6 +197,7 @@
 
     <string name="menu_change_password">Изменить пароль</string>
     <string name="menu_exit">Выход</string>
+    <string name="menu_update_record">Обновить запись</string>
 
 
 

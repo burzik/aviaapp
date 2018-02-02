@@ -14,6 +14,7 @@ import com.my.eduardarefjev.aviaapp.R;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 
 /**
  * HISTORY
@@ -22,18 +23,22 @@ import java.util.Date;
  * 	30.12.2017      Eduard Arefjev      Added writing data to FireBase and send to next view
  * 	30.12.2017      Eduard Arefjev      Added new fields
  * 	28.01.2018      Eduard Arefjev      Fixed crash for null numbers
+ * 	30.01.2018      Eduard Arefjev      Changed title from hardcorded value
  */
 
 public class StepEngineInfo extends AppCompatActivity {
 
     Date currentTime;
     public StepEngineData engineData;
+    HashMap<String, Boolean> hashMap = new HashMap<>();
+    boolean showValues = false;
+    boolean editableValues = true;
 
     @Override
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.linear_step_engine_info);
-        this.setTitle("Базовые данные");
+        this.setTitle(R.string.label_base_values);
 
         TextView date = findViewById(R.id.LinearDate);
         currentTime = Calendar.getInstance().getTime();
@@ -51,10 +56,12 @@ public class StepEngineInfo extends AppCompatActivity {
                 String id = CreationHelper.createRecord(engineData);
                 Intent intent = new Intent(StepEngineInfo.this, StepStartInfo.class);
                 intent.putExtra("recordId", id);
-                intent.putExtra("parentViewName", "StepEngineInfo");
+                intent.putExtra("showValues", showValues);
+                intent.putExtra("editableValues", editableValues);
                 Bundle extra = new Bundle();
                 extra.putParcelable("objects", engineData);
                 intent.putExtra("extra", extra);
+                intent.putExtra("map", hashMap);
                 startActivity(intent);
             }
         });

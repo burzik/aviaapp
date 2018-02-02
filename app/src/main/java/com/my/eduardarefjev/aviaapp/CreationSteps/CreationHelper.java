@@ -4,8 +4,10 @@ import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -23,6 +25,7 @@ import java.util.Map;
  * 	29.11.2017		Eduard Arefjev 		Created to store base methods for creation
  * 	30.12.2017      Eduard Arefjev      Implemented new methods "createRecord" and "updateRecord"
  * 	31.12.2017      Eduard Arefjev      Added new functions
+ * 	01.02.2018      Eduard Arefjev      Added new functions makeEditTextReadOnly/makeSpinnerReadOnly
  */
 
 public class CreationHelper {
@@ -143,5 +146,30 @@ public class CreationHelper {
             }
         });
     return idd;
+    }
+
+    public static void makeEditTextReadOnly(EditText editText){
+        editText.setCursorVisible(false);
+        editText.setLongClickable(false);
+        editText.setClickable(false);
+        editText.setFocusable(false);
+        editText.setSelected(false);
+        editText.setKeyListener(null);
+        editText.setBackgroundResource(android.R.color.transparent);
+    }
+
+    public static void makeSpinnerReadOnly(Spinner spinner){
+        spinner.setLongClickable(false);
+        spinner.setClickable(false);
+        spinner.setFocusable(false);
+        spinner.setSelected(false);
+        spinner.setBackgroundResource(android.R.color.transparent);
+        spinner.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                //view.performClick();
+                return true;
+            }
+        });
     }
 }

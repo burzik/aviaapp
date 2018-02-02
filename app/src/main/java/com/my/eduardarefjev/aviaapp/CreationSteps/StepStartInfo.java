@@ -3,11 +3,15 @@ package com.my.eduardarefjev.aviaapp.CreationSteps;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
 import com.my.eduardarefjev.aviaapp.R;
+
+import java.util.HashMap;
 
 /**
  * HISTORY
@@ -15,26 +19,72 @@ import com.my.eduardarefjev.aviaapp.R;
  * 	09.10.2017		Eduard Arefjev 		Created "StepStartInfo" screen, one of steps
  * 	30.12.2017      Eduard Arefjev      Added writing data to FireBase and send to next view
  * 	31.12.2017      Eduard Arefjev      Added UpdateUI function
- * 	28.01.2018       Eduard Arefjev     Fixed crash for null numbers
+ * 	28.01.2018      Eduard Arefjev      Fixed crash for null numbers
+ * 	30.01.2018      Eduard Arefjev      Added Readonly mode, menu, fast forwarding
  */
 
 public class StepStartInfo extends AppCompatActivity {
 
     String id;
-    String parentView;
     public StepEngineData engineData;
+    boolean showValues;
+    boolean editableValues;
+    HashMap<String, Boolean> hashMap;
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        //EA Inflate the menu
+        if(!editableValues)
+            getMenuInflater().inflate(R.menu.menu_creation_steps, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        boolean itemSelected = super.onOptionsItemSelected(item);
+
+        switch(item.getItemId()) {
+            case R.id.UpdateRecord: {
+                Intent intent = new Intent(this, UpdateRecordMenu.class);
+                intent.putExtra("recordId", id);
+                Bundle extra = new Bundle();
+                extra.putParcelable("objects", engineData);
+                intent.putExtra("extra", extra);
+                startActivity(intent);
+                break;
+            }
+            default:
+                return itemSelected;
+        }
+        return true;
+    }
 
     @Override
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.linear_step_start_info);
-        this.setTitle("Базовые данные 2");
+        this.setTitle(R.string.label_base_values_2);
 
         Intent intent = getIntent();
         id = intent.getStringExtra("recordId");
-        parentView = intent.getStringExtra("parentViewName");
         Bundle extra = getIntent().getBundleExtra("extra");
         engineData  = extra.getParcelable("objects");
+        showValues = intent.getBooleanExtra("showValues", false);
+        editableValues = intent.getBooleanExtra("editableValues", true);
+        hashMap = (HashMap<String, Boolean>)intent.getSerializableExtra("map");
+
+        if (hashMap != null && hashMap.size() != 0){
+            if(!hashMap.get("checkbox_base_values_2") ) {
+                intent = new Intent(StepStartInfo.this, StepSmallGas.class);
+                intent.putExtra("recordId", id);
+                intent.putExtra("showValues", showValues);
+                intent.putExtra("editableValues", editableValues);
+                extra.putParcelable("objects", engineData);
+                intent.putExtra("extra", extra);
+                intent.putExtra("map", hashMap);
+                startActivity(intent);
+            }
+        }
 
         EditText eLimb = findViewById(R.id.LinearLabelInpLimbArg);
         CreationHelper.checkValue(eLimb, 18, 24);
@@ -60,12 +110,13 @@ public class StepStartInfo extends AppCompatActivity {
                 CreationHelper.updateRecord(id, engineData);
                 Intent intent = new Intent(StepStartInfo.this, StepSmallGas.class);
                 intent.putExtra("recordId", id);
-                intent.putExtra("parentViewName", parentView);
+                intent.putExtra("showValues", showValues);
+                intent.putExtra("editableValues", editableValues);
                 Bundle extra = new Bundle();
                 extra.putParcelable("objects", engineData);
                 intent.putExtra("extra", extra);
+                intent.putExtra("map", hashMap);
                 startActivity(intent);
-
             }
         });
     }
@@ -90,12 +141,20 @@ public class StepStartInfo extends AppCompatActivity {
     }
 
     public void updateUI(){
-        if(parentView.equals("DetailedRecordInfo")) {
+        if (showValues){
             EditText eLimbArg = findViewById(R.id.LinearLabelInpLimbArg);
             EditText eLaunchingTVSU = findViewById(R.id.LinearLabelInpLaunchingTVSU);
             EditText eEngineCasting = findViewById(R.id.LinearLabelInpEngineCasting);
             EditText eVSUDisconnection = findViewById(R.id.LinearLabelInpVSUDisconnection);
             EditText eTEngine = findViewById(R.id.LinearLabelInpTEngine);
+
+            if (!editableValues) {
+                CreationHelper.makeEditTextReadOnly(eLimbArg);
+                CreationHelper.makeEditTextReadOnly(eLaunchingTVSU);
+                CreationHelper.makeEditTextReadOnly(eEngineCasting);
+                CreationHelper.makeEditTextReadOnly(eVSUDisconnection);
+                CreationHelper.makeEditTextReadOnly(eTEngine);
+            }
 
             eLimbArg.setText(Integer.toString(engineData.getLimb()));
             eLaunchingTVSU.setText(Integer.toString(engineData.getApuTime()));

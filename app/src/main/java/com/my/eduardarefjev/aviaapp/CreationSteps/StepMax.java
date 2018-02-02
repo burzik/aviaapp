@@ -3,6 +3,8 @@ package com.my.eduardarefjev.aviaapp.CreationSteps;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -10,6 +12,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.my.eduardarefjev.aviaapp.R;
+
+import java.util.HashMap;
 
 import static java.lang.Double.MIN_VALUE;
 
@@ -20,6 +24,7 @@ import static java.lang.Double.MIN_VALUE;
  * 	30.12.2017      Eduard Arefjev      Added writing data to FireBase and send to next view
  * 	31.12.2017      Eduard Arefjev      Added UpdateUI function
  * 	28.01.2018      Eduard Arefjev      Fixed crash for null numbers
+ * 	30.01.2018      Eduard Arefjev      Added Readonly mode, menu, fast forwarding
  */
 
 public class StepMax extends AppCompatActivity{
@@ -27,21 +32,67 @@ public class StepMax extends AppCompatActivity{
     private Spinner spinnerKrTank;
     private StepEngineData engineData;
     String id;
-    String parentView;
+    //String parentView;
     ArrayAdapter<String> myAdapter;
+    boolean showValues;
+    boolean editableValues;
+    HashMap<String, Boolean> hashMap;
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        //EA Inflate the menu
+        if(!editableValues)
+            getMenuInflater().inflate(R.menu.menu_creation_steps, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        boolean itemSelected = super.onOptionsItemSelected(item);
+
+        switch(item.getItemId()) {
+            case R.id.UpdateRecord: {
+                Intent intent = new Intent(this, UpdateRecordMenu.class);
+                intent.putExtra("recordId", id);
+                Bundle extra = new Bundle();
+                extra.putParcelable("objects", engineData);
+                intent.putExtra("extra", extra);
+                startActivity(intent);
+                break;
+            }
+            default:
+                return itemSelected;
+        }
+        return true;
+    }
 
     @Override
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.linear_step_max);
-        this.setTitle("Макс.");
+        this.setTitle(R.string.label_max);
 
         Intent intent = getIntent();
         id = intent.getStringExtra("recordId");
-        parentView = intent.getStringExtra("parentViewName");
+        //parentView = intent.getStringExtra("parentViewName");
         Bundle extra = getIntent().getBundleExtra("extra");
         engineData  = extra.getParcelable("objects");
+        showValues = intent.getBooleanExtra("showValues", false);
+        editableValues = intent.getBooleanExtra("editableValues", false);
+        hashMap = (HashMap<String, Boolean>)intent.getSerializableExtra("map");
 
+        if (hashMap != null && hashMap.size() != 0){
+            if(!hashMap.get("checkbox_max")) {
+                intent = new Intent(this, StepClosingKVDKPV.class);
+                intent.putExtra("recordId", id);
+                intent.putExtra("showValues", showValues);
+                intent.putExtra("editableValues", editableValues);
+                extra.putParcelable("objects", engineData);
+                intent.putExtra("extra", extra);
+                intent.putExtra("map", hashMap);
+                startActivity(intent);
+            }
+        }
         EditText eN1 = findViewById(R.id.LinearInpN1);
         CreationHelper.checkValue(eN1, 105, 107);
         //from graphic?
@@ -80,10 +131,12 @@ public class StepMax extends AppCompatActivity{
                 CreationHelper.updateRecord(id, engineData);
                 Intent intent = new Intent(StepMax.this, StepClosingKVDKPV.class);
                 intent.putExtra("recordId", id);
-                intent.putExtra("parentViewName", parentView);
+                intent.putExtra("showValues", showValues);
+                intent.putExtra("editableValues", editableValues);
                 Bundle extra = new Bundle();
                 extra.putParcelable("objects", engineData);
                 intent.putExtra("extra", extra);
+                intent.putExtra("map", hashMap);
                 startActivity(intent);
             }
         });
@@ -129,7 +182,7 @@ public class StepMax extends AppCompatActivity{
     }
 
     public void updateUI(){
-        if(parentView.equals("DetailedRecordInfo")) {
+        if(showValues) {
             EditText eN1 = findViewById(R.id.LinearInpN1);
             EditText eN2_4 = findViewById(R.id.LinearInpN2_4);
             EditText eTRC = findViewById(R.id.LinearInpTRC);
@@ -142,6 +195,21 @@ public class StepMax extends AppCompatActivity{
             spinnerKrTank = findViewById(R.id.RelativeSpinnerInpKrTank);
             EditText ePVozdKrTank = findViewById(R.id.LinearInpPVozdKrTank);
             EditText ePtPreembossed = findViewById(R.id.LinearInpPtPreembossed);
+
+            if (!editableValues) {
+                CreationHelper.makeEditTextReadOnly(eN1);
+                CreationHelper.makeEditTextReadOnly(eN2_4);
+                CreationHelper.makeEditTextReadOnly(eTRC);
+                CreationHelper.makeEditTextReadOnly(ePm);
+                CreationHelper.makeEditTextReadOnly(eTmC);
+                CreationHelper.makeEditTextReadOnly(ePt);
+                CreationHelper.makeEditTextReadOnly(eEngineSqrt);
+                CreationHelper.makeEditTextReadOnly(eVGenerator);
+                CreationHelper.makeEditTextReadOnly(ePCabin);
+                CreationHelper.makeSpinnerReadOnly(spinnerKrTank);
+                CreationHelper.makeEditTextReadOnly(ePVozdKrTank);
+                CreationHelper.makeEditTextReadOnly(ePtPreembossed);
+            }
 
             eN1.setText(Float.toString(engineData.getModeMaxHPCSpeed()));
             eN2_4.setText(Float.toString(engineData.getModeMaxHPCSpeedN2()));

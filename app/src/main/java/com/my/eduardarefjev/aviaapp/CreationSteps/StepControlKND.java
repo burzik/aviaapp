@@ -3,11 +3,15 @@ package com.my.eduardarefjev.aviaapp.CreationSteps;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
 import com.my.eduardarefjev.aviaapp.R;
+
+import java.util.HashMap;
 
 /**
  * HISTORY
@@ -16,13 +20,44 @@ import com.my.eduardarefjev.aviaapp.R;
  * 	31.12.2017      Eduard Arefjev      Added writing data to FireBase and send to next view
  * 	31.12.2017      Eduard Arefjev      Added UpdateUI function
  * 	28.01.2018      Eduard Arefjev      Fixed crash for null numbers
+ * 	30.01.2018      Eduard Arefjev      Added Readonly mode, menu, fast forwarding
  */
 
 public class StepControlKND extends AppCompatActivity {
 
     private StepEngineData engineData;
     String id;
-    String parentView;
+    boolean showValues;
+    boolean editableValues;
+    HashMap<String, Boolean> hashMap;
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        //EA Inflate the menu
+        if(!editableValues)
+            getMenuInflater().inflate(R.menu.menu_creation_steps, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        boolean itemSelected = super.onOptionsItemSelected(item);
+
+        switch(item.getItemId()) {
+            case R.id.UpdateRecord: {
+                Intent intent = new Intent(this, UpdateRecordMenu.class);
+                intent.putExtra("recordId", id);
+                Bundle extra = new Bundle();
+                extra.putParcelable("objects", engineData);
+                intent.putExtra("extra", extra);
+                startActivity(intent);
+                break;
+            }
+            default:
+                return itemSelected;
+        }
+        return true;
+    }
 
     @Override
     protected void onCreate (Bundle savedInstanceState) {
@@ -32,9 +67,25 @@ public class StepControlKND extends AppCompatActivity {
 
         Intent intent = getIntent();
         id = intent.getStringExtra("recordId");
-        parentView = intent.getStringExtra("parentViewName");
+        //parentView = intent.getStringExtra("parentViewName");
         Bundle extra = getIntent().getBundleExtra("extra");
         engineData  = extra.getParcelable("objects");
+        showValues = intent.getBooleanExtra("showValues", false);
+        editableValues = intent.getBooleanExtra("editableValues", false);
+        hashMap = (HashMap<String, Boolean>)intent.getSerializableExtra("map");
+
+        if (hashMap != null && hashMap.size() != 0){
+            if(!hashMap.get("checkbox_control_knd")) {
+                intent = new Intent(this, StepRunoutOfRotors.class);
+                intent.putExtra("recordId", id);
+                intent.putExtra("showValues", showValues);
+                intent.putExtra("editableValues", editableValues);
+                extra.putParcelable("objects", engineData);
+                intent.putExtra("extra", extra);
+                intent.putExtra("map", hashMap);
+                startActivity(intent);
+            }
+        }
 
         updateUI();
         nextSecondStep();
@@ -49,10 +100,12 @@ public class StepControlKND extends AppCompatActivity {
                 CreationHelper.updateRecord(id, engineData);
                 Intent intent = new Intent(StepControlKND.this, StepRunoutOfRotors.class);
                 intent.putExtra("recordId", id);
-                intent.putExtra("parentViewName", parentView);
+                intent.putExtra("showValues", showValues);
+                intent.putExtra("editableValues", editableValues);
                 Bundle extra = new Bundle();
                 extra.putParcelable("objects", engineData);
                 intent.putExtra("extra", extra);
+                intent.putExtra("map", hashMap);
                 startActivity(intent);
             }
         });
@@ -90,7 +143,7 @@ public class StepControlKND extends AppCompatActivity {
     }
 
     public void updateUI(){
-        if(parentView.equals("DetailedRecordInfo")) {
+        if(showValues){
             EditText eNKVDPHY97 = findViewById(R.id.LinearLabelInpNKVDPHY97);
             EditText eNKVDPHY99 = findViewById(R.id.LinearLabelInpNKVDPHY99);
             EditText eNKVDPHY101 = findViewById(R.id.LinearLabelInpNKVDPHY101);
@@ -100,6 +153,18 @@ public class StepControlKND extends AppCompatActivity {
             EditText eNKNDPLANE97 = findViewById(R.id.LinearLabelInpNKNDPLANE97);
             EditText eNKNDPLANE99 = findViewById(R.id.LinearLabelInpNKNDPLANE99);
             EditText eNKNDPLANE101 = findViewById(R.id.LinearLabelInpNKNDPLANE101);
+
+            if (!editableValues) {
+                CreationHelper.makeEditTextReadOnly(eNKVDPHY97);
+                CreationHelper.makeEditTextReadOnly(eNKVDPHY99);
+                CreationHelper.makeEditTextReadOnly(eNKVDPHY101);
+                CreationHelper.makeEditTextReadOnly(eNKNDPHY97);
+                CreationHelper.makeEditTextReadOnly(eNKNDPHY99);
+                CreationHelper.makeEditTextReadOnly(eNKNDPHY101);
+                CreationHelper.makeEditTextReadOnly(eNKNDPLANE97);
+                CreationHelper.makeEditTextReadOnly(eNKNDPLANE99);
+                CreationHelper.makeEditTextReadOnly(eNKNDPLANE101);
+            }
 
             eNKVDPHY97.setText(Float.toString(engineData.getModeKNDNKVDPHY97()));
             eNKVDPHY99.setText(Float.toString(engineData.getModeKNDNKVDPHY99()));
