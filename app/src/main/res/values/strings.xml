@@ -1,79 +1,79 @@
 <resources>
     <!-- Ru Labels Creations Steps-->
-    <string name="app_name">Авиа</string>
-    <string name="label_menu">Меню</string>
-    <string name="label_main">Протокол проверки работы двигателя АИ-25ТП и систем самолета</string>
-    <string name="label_engine_number">Двигатель АИ-25ТЛ, заводской №</string>
-    <string name="label_plane_number">Установлен на самолет Л-39С, бортовой №</string>
-    <string name="label_wp">W/P No</string>
-    <string name="label_date">Дата</string>
-    <string name="label_atm_pressure">Pнв мм.рт.ст</string>
-    <string name="label_atm_temp">Tнв ºС</string>
-    <string name="label_KVD">Значение оборотов ротора КВД, определенных по графику рис.1 ИЭД (если в зоне переменных оборотов)</string>
-    <string name="label_work_0nominal">0,85 Ном</string>
-    <string name="label_work_nominal">Ном</string>
-    <string name="label_work_max">Макс</string>
-    <string name="label_limb">По лимбу</string>
-    <string name="label_vsu_launching">Запуск ВСУ</string>
-    <string name="label_engine_launching">Запуск двигателя</string>
-    <string name="label_limb_arg">Арг. 400, α РУД</string>
-    <string name="label_launching_t_vsu">t зап. ВСУ</string>
-    <string name="label_engine_casting">T ºC двигателя заброс</string>
-    <string name="label_vsu_disconnection">n1 отключения ВСУ</string>
-    <string name="label_t_engine">t зап. двигателя</string>
-    <string name="label_small_gas">Малый газ</string>
-    <string name="label_title_small_gas">Прогрев двигателя и проверка параметров работы систем самолета</string>
-    <string name="label_n1">n1</string>
-    <string name="label_trc">Tr ºC</string>
-    <string name="label_pm">Pm</string>
-    <string name="label_tmc">Tm ºC</string>
-    <string name="label_pt">Pt</string>
-    <string name="label_engine_sqrt">√ двигателя</string>
-    <string name="label_prc">Pr/c</string>
-    <string name="label_main_system">Основная r/система</string>
-    <string name="label_emergency">Аварийная при переключении крана Нп-66</string>
-    <string name="label_ptorm">Pторм</string>
-    <string name="label_basic">Основное</string>
-    <string name="label_parking">Стояночное</string>
-    <string name="label_v_generator">Vгенератора</string>
-    <string name="label_pvozd">Pвозд</string>
-    <string name="label_kr_tank">Крыл. баки</string>
-    <string name="label_g_accum">Г/аккумулятор</string>
-    <string name="label_g_tank">Г/бак</string>
-    <string name="label_closing_lantern">Закрытие замков фонаря</string>
-    <string name="label_air_cond">Включение кондиционирования кабины</string>
-    <string name="label_p_cabin">ΔРкабины</string>
-    <string name="label_turnover_kvd_v">Обороты КВД закрытия КПВ за V ступенью</string>
-    <string name="label_straight_run">Прямой ход</string>
-    <string name="label_n1_straight_run">n1 - Прямой ход</string>
-    <string name="label_n1_85">n1 = 85%</string>
-    <string name="label_flaps">Закрылки</string>
-    <string name="label_brake">Тормоз</string>
-    <string name="label_flight_takeoff">полет - взлет</string>
-    <string name="label_takeoff_landing">взлет - посадка</string>
-    <string name="label_flight_landing">полет - посадка</string>
-    <string name="label_low_prc">↓ Pr/c</string>
-    <string name="label_release">Выпуск</string>
-    <string name="label_cleaning">Уборка</string>
-    <string name="label_turnover_kvd_iii">Обороты КВД закрытия КПВ за III ступенью</string>
-    <string name="label_n1_100">n1 = 100%</string>
-    <string name="label_eng_measurement">Замер вибрации двигателя</string>
-    <string name="label_nom">Ном.</string>
-    <string name="label_working_capacity">Работноспособность агр. 4001</string>
-    <string name="label_working_air_coond">Работоспособность системы кондиционирования</string>
-    <string name="label_azs_pump">АЗС \"НАСОС\"</string>
-    <string name="label_turn_on_dot">ВКЛ.</string>
-    <string name="label_turn_off">ВЫКЛ.</string>
-    <string name="label_switch_position">Положение переключателя</string>
-    <string name="label_rtvk">РТВК +25ºС +10ºС</string>
-    <string name="label_shower">ДУШ +25 ºС +10 ºС</string>
-    <string name="label_max">Макс.</string>
-    <string name="label_n2_4">n2 По графику с допуском ± 4%</string>
-    <string name="label_voltage_regulator">Работоспособность регулятора напряжения</string>
-    <string name="label_pvozd_kr_tank">Рвозд крыльевых баков</string>
-    <string name="label_pt_preembossed">Рт передфорсунками</string>
-    <string name="label_turnover_kvd_n">Обороты n1 КВД закрытия КПВ</string>
-    <string name="label_back_stroke">Обратный ход</string>
+    <string name="app_name" translatable="false">Авиа</string>
+    <string name="label_menu" translatable="false">Меню</string>
+    <string name="label_main" translatable="false">Протокол проверки работы двигателя АИ-25ТП и систем самолета</string>
+    <string name="label_engine_number" translatable="false">Двигатель АИ-25ТЛ, заводской №</string>
+    <string name="label_plane_number" translatable="false">Установлен на самолет Л-39С, бортовой №</string>
+    <string name="label_wp" translatable="false">W/P No</string>
+    <string name="label_date" translatable="false">Дата</string>
+    <string name="label_atm_pressure" translatable="false">Pнв мм.рт.ст</string>
+    <string name="label_atm_temp" translatable="false">Tнв ºС</string>
+    <string name="label_KVD" translatable="false">Значение оборотов ротора КВД, определенных по графику рис.1 ИЭД (если в зоне переменных оборотов)</string>
+    <string name="label_work_0nominal" translatable="false">0,85 Ном</string>
+    <string name="label_work_nominal" translatable="false">Ном</string>
+    <string name="label_work_max" translatable="false">Макс</string>
+    <string name="label_limb" translatable="false">По лимбу</string>
+    <string name="label_vsu_launching" translatable="false">Запуск ВСУ</string>
+    <string name="label_engine_launching" translatable="false">Запуск двигателя</string>
+    <string name="label_limb_arg" translatable="false">Арг. 400, α РУД</string>
+    <string name="label_launching_t_vsu" translatable="false">t зап. ВСУ</string>
+    <string name="label_engine_casting" translatable="false">T ºC двигателя заброс</string>
+    <string name="label_vsu_disconnection" translatable="false">n1 отключения ВСУ</string>
+    <string name="label_t_engine" translatable="false">t зап. двигателя</string>
+    <string name="label_small_gas" translatable="false">Малый газ</string>
+    <string name="label_title_small_gas" translatable="false">Прогрев двигателя и проверка параметров работы систем самолета</string>
+    <string name="label_n1" translatable="false">n1</string>
+    <string name="label_trc" translatable="false">Tr ºC</string>
+    <string name="label_pm" translatable="false">Pm</string>
+    <string name="label_tmc" translatable="false">Tm ºC</string>
+    <string name="label_pt" translatable="false">Pt</string>
+    <string name="label_engine_sqrt" translatable="false">√ двигателя</string>
+    <string name="label_prc" translatable="false">Pr/c</string>
+    <string name="label_main_system" translatable="false">Основная r/система</string>
+    <string name="label_emergency" translatable="false">Аварийная при переключении крана Нп-66</string>
+    <string name="label_ptorm" translatable="false">Pторм</string>
+    <string name="label_basic" translatable="false">Основное</string>
+    <string name="label_parking" translatable="false">Стояночное</string>
+    <string name="label_v_generator" translatable="false">Vгенератора</string>
+    <string name="label_pvozd" translatable="false">Pвозд</string>
+    <string name="label_kr_tank" translatable="false">Крыл. баки</string>
+    <string name="label_g_accum" translatable="false">Г/аккумулятор</string>
+    <string name="label_g_tank" translatable="false">Г/бак</string>
+    <string name="label_closing_lantern" translatable="false">Закрытие замков фонаря</string>
+    <string name="label_air_cond" translatable="false">Включение кондиционирования кабины</string>
+    <string name="label_p_cabin" translatable="false">ΔРкабины</string>
+    <string name="label_turnover_kvd_v" translatable="false">Обороты КВД закрытия КПВ за V ступенью</string>
+    <string name="label_straight_run" translatable="false">Прямой ход</string>
+    <string name="label_n1_straight_run" translatable="false">n1 - Прямой ход</string>
+    <string name="label_n1_85" translatable="false">n1 = 85%</string>
+    <string name="label_flaps" translatable="false">Закрылки</string>
+    <string name="label_brake" translatable="false">Тормоз</string>
+    <string name="label_flight_takeoff" translatable="false">полет - взлет</string>
+    <string name="label_takeoff_landing" translatable="false">взлет - посадка</string>
+    <string name="label_flight_landing" translatable="false">полет - посадка</string>
+    <string name="label_low_prc" translatable="false">↓ Pr/c</string>
+    <string name="label_release" translatable="false">Выпуск</string>
+    <string name="label_cleaning" translatable="false">Уборка</string>
+    <string name="label_turnover_kvd_iii" translatable="false">Обороты КВД закрытия КПВ за III ступенью</string>
+    <string name="label_n1_100" translatable="false">n1 = 100%</string>
+    <string name="label_eng_measurement" translatable="false">Замер вибрации двигателя</string>
+    <string name="label_nom" translatable="false">Ном.</string>
+    <string name="label_working_capacity" translatable="false">Работноспособность агр. 4001</string>
+    <string name="label_working_air_coond" translatable="false">Работоспособность системы кондиционирования</string>
+    <string name="label_azs_pump" translatable="false">АЗС \"НАСОС\"</string>
+    <string name="label_turn_on_dot" translatable="false">ВКЛ.</string>
+    <string name="label_turn_off" translatable="false">ВЫКЛ.</string>
+    <string name="label_switch_position" translatable="false">Положение переключателя</string>
+    <string name="label_rtvk" translatable="false">РТВК +25ºС +10ºС</string>
+    <string name="label_shower" translatable="false">ДУШ +25 ºС +10 ºС</string>
+    <string name="label_max" translatable="false">Макс.</string>
+    <string name="label_n2_4" translatable="false">n2 По графику с допуском ± 4%</string>
+    <string name="label_voltage_regulator" translatable="false">Работоспособность регулятора напряжения</string>
+    <string name="label_pvozd_kr_tank" translatable="false">Рвозд крыльевых баков</string>
+    <string name="label_pt_preembossed" translatable="false">Рт передфорсунками</string>
+    <string name="label_turnover_kvd_n" translatable="false">Обороты n1 КВД закрытия КПВ</string>
+    <string name="label_back_stroke" translatable="false">Обратный ход</string>
     <string name="label_back_stroke_iii">Обратный ход III ст.</string>
     <string name="label_back_stroke_v">Обратный ход V ст.</string>
     <string name="label_iii">III ст.</string>
@@ -123,53 +123,53 @@
     <string name="label_cold_engine">Охлаждение двигателя ≥ 2 мин. и выключить РУДом.</string>
     <string name="label_bigger_equal_20">≥ 20c</string>
     <string name="label_bigger_equal_25">≥ 25c</string>
-    <string name="label_n1_lower54">На n1 &#60; 54,5%</string>
-    <string name="label_working_hours">Время работы</string>
-    <string name="label_number_of_starts">Количиство запусков</string>
-    <string name="label_number_of_pins">Количество выводов двигателя на режим n1 квд > 94%</string>
-    <string name="label_common">Общее</string>
-    <string name="label_engine_AI">Двигатель АИ-25ТЛ - </string>
-    <string name="label_nominal">Номинал:</string>
-    <string name="label_maximum">Максимал:</string>
-    <string name="label_vsu_sapphire">ВСУ "Сапфир 5" -</string>
-    <string name="label_123">Указанная работа (если не оговорена иная работа) выполнена в соответствии с требованиями правил кабинета министров №661 и вследствие этого, самолет рассматривается, как готовый к выпуску в эксплуатацию.</string>
-    <string name="label_working_capacity_4001">Работоспособность агр. 4001 АЗС \"Насос\"</string>
-    <string name="label_do_not_run_on">Сигнальное табло \"НЕ ЗАПУСКАЙ\" НЕ ГОРИТ (вкл)</string>
-    <string name="label_engine_parameters_on">Параметры двигателя (вкл)</string>
-    <string name="label_do_not_run_off">Сигнальное табло \"НЕ ЗАПУСКАЙ\" ГОРИТ (выкл)</string>
-    <string name="label_engine_parameters_off">Параметры двигателя (выкл)</string>
-    <string name="label_air_conditioning_system_performance">Работоспособность системы кондиционирования</string>
-    <string name="label_heat">\"ТЕПЛО\"</string>
-    <string name="label_cold">\"ХОЛОД\"</string>
-    <string name="label_automatic">\"АВТОМАТ\"</string>
-    <string name="label_97">97</string>
-    <string name="label_99">99</string>
-    <string name="label_101">101</string>
-    <string name="label_azs_agd_gmk">АЗС \"АГД, ГМК\"</string>
-    <string name="label_turn_on">ВКЛ</string>
-    <string name="label_base_values">Базовые значения</string>
-    <string name="label_base_values_2">Базовые значения 2</string>
-    <string name="label_n1_equals_85">n1=85%</string>
-    <string name="label_final_data">Финальные данные</string>
+    <string name="label_n1_lower54" translatable="false">На n1 &#60; 54,5%</string>
+    <string name="label_working_hours" translatable="false">Время работы</string>
+    <string name="label_number_of_starts" translatable="false">Количиство запусков</string>
+    <string name="label_number_of_pins" translatable="false">Количество выводов двигателя на режим n1 квд > 94%</string>
+    <string name="label_common" translatable="false">Общее</string>
+    <string name="label_engine_AI" translatable="false">Двигатель АИ-25ТЛ - </string>
+    <string name="label_nominal" translatable="false">Номинал:</string>
+    <string name="label_maximum" translatable="false">Максимал:</string>
+    <string name="label_vsu_sapphire" translatable="false">ВСУ "Сапфир 5" -</string>
+    <string name="label_123" translatable="false">Указанная работа (если не оговорена иная работа) выполнена в соответствии с требованиями правил кабинета министров №661 и вследствие этого, самолет рассматривается, как готовый к выпуску в эксплуатацию.</string>
+    <string name="label_working_capacity_4001" translatable="false">Работоспособность агр. 4001 АЗС \"Насос\"</string>
+    <string name="label_do_not_run_on" translatable="false">Сигнальное табло \"НЕ ЗАПУСКАЙ\" НЕ ГОРИТ (вкл)</string>
+    <string name="label_engine_parameters_on" translatable="false">Параметры двигателя (вкл)</string>
+    <string name="label_do_not_run_off" translatable="false">Сигнальное табло \"НЕ ЗАПУСКАЙ\" ГОРИТ (выкл)</string>
+    <string name="label_engine_parameters_off" translatable="false">Параметры двигателя (выкл)</string>
+    <string name="label_air_conditioning_system_performance" translatable="false">Работоспособность системы кондиционирования</string>
+    <string name="label_heat" translatable="false">\"ТЕПЛО\"</string>
+    <string name="label_cold" translatable="false">\"ХОЛОД\"</string>
+    <string name="label_automatic" translatable="false">\"АВТОМАТ\"</string>
+    <string name="label_97" translatable="false">97</string>
+    <string name="label_99" translatable="false">99</string>
+    <string name="label_101" translatable="false">101</string>
+    <string name="label_azs_agd_gmk" translatable="false">АЗС \"АГД, ГМК\"</string>
+    <string name="label_turn_on" translatable="false">ВКЛ</string>
+    <string name="label_base_values" translatable="false">Базовые значения</string>
+    <string name="label_base_values_2" translatable="false">Базовые значения 2</string>
+    <string name="label_n1_equals_85" translatable="false">n1=85%</string>
+    <string name="label_final_data" translatable="false">Финальные данные</string>
 
     <!-- Ru Users -->
-    <string name="label_first_name">Имя</string>
-    <string name="label_last_name">Фамилия</string>
-    <string name="label_email">Электронный адрес</string>
-    <string name="label_default_password">Пароль</string>
-    <string name="label_privilege">Привилегии</string>
+    <string name="label_first_name" translatable="false">Имя</string>
+    <string name="label_last_name" translatable="false">Фамилия</string>
+    <string name="label_email" translatable="false">Электронный адрес</string>
+    <string name="label_default_password" translatable="false">Пароль</string>
+    <string name="label_privilege" translatable="false">Привилегии</string>
 
     <!-- Ru Labels -->
-    <string name="label_registration_successful">Регистрация успешна</string>
-    <string name="label_registration_failed">Регистрация провалена</string>
-    <string name="label_bad_email">Плохая электронная почта</string>
-    <string name="label_bad_password">Плохой пароль</string>
-    <string name="error_user_exists">Данный пользователь уже зарегистрирован</string>
-    <string name="error_missing_name_surname">Имя/Фамилия не указаны! Продолжить?</string>
-    <string name="yes">Да</string>
-    <string name="no">Нет</string>
-    <string name="label_show_values">Показать значения?</string>
-    <string name="label_choose_steps">Выберите этапы, которые хотите изменить</string>
+    <string name="label_registration_successful" translatable="false">Регистрация успешна</string>
+    <string name="label_registration_failed" translatable="false">Регистрация провалена</string>
+    <string name="label_bad_email" translatable="false">Плохая электронная почта</string>
+    <string name="label_bad_password" translatable="false">Плохой пароль</string>
+    <string name="error_user_exists" translatable="false">Данный пользователь уже зарегистрирован</string>
+    <string name="error_missing_name_surname" translatable="false">Имя/Фамилия не указаны! Продолжить?</string>
+    <string name="yes" translatable="false">Да</string>
+    <string name="no" translatable="false">Нет</string>
+    <string name="label_show_values" translatable="false">Показать значения?</string>
+    <string name="label_choose_steps" translatable="false">Выберите этапы, которые хотите изменить</string>
 
     <!-- Ru Arrays -->
     <string-array name="privileges">
@@ -182,23 +182,24 @@
     </string-array>
 
     <!-- Edit text -->
-    <string name="enter">enter</string>
+    <string name="enter" translatable="false">enter</string>
 
     <!-- Ru Buttons -->
-    <string name="button_next">Далее</string>
-    <string name="button_back">Назад</string>
-    <string name="button_new_record">Новая запись</string>
-    <string name="button_records">Записи</string>
-    <string name="button_create_user">Создать пользователя</string>
-    <string name="button_set_privileges">Изменить привелегии</string>
-    <string name="button_change">Изменить</string>
-    <string name="button_create">Создать</string>
-    <string name="button_clear">Очистить</string>
+    <string name="button_next" translatable="false">Далее</string>
+    <string name="button_back" translatable="false">Назад</string>
+    <string name="button_new_record" translatable="false">Новая запись</string>
+    <string name="button_records" translatable="false">Список записей</string>
+    <string name="button_create_user" translatable="false">Создать пользователя</string>
+    <string name="button_set_privileges" translatable="false">Изменить привелегии</string>
+    <string name="button_change" translatable="false">Изменить</string>
+    <string name="button_create" translatable="false">Создать</string>
+    <string name="button_clear" translatable="false">Очистить</string>
 
-    <string name="menu_change_password">Изменить пароль</string>
-    <string name="menu_exit">Выход</string>
-    <string name="menu_update_record">Обновить запись</string>
-
+    <string name="menu_change_password" translatable="false">Изменить пароль</string>
+    <string name="menu_exit" translatable="false">Выход</string>
+    <string name="menu_update_record" translatable="false">Обновить запись</string>
+    <string name="button_insert_engine">Insert Engine</string>
+    <string name="label_engine_num">Engine number</string>
 
 
 </resources>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Авиа</string>
+    <string name="button_insert_engine">Внести двигатель</string>
+    <string name="label_engine_num">Номер двигателя</string>
+</resources>

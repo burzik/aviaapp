@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
         showRecords();
         createUser();
         setPrivileges();
-        //settings();
+        insertEngine();
         getUserName();
     }
 
@@ -168,5 +168,16 @@ public class MainActivity extends AppCompatActivity {
             bCreateUser.setVisibility(View.VISIBLE);
             bSetPrivileges.setVisibility(View.VISIBLE);
         }
+    }
+
+    public void insertEngine(){
+        Button bInsertEngine = findViewById(R.id.LinearInsertEngine);
+        bInsertEngine.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, CreateEngine.class);
+                startActivity(intent);
+            }
+        });
     }
 }

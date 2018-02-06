@@ -37,7 +37,7 @@ public class DetailedRecordInfo extends AppCompatActivity {
     private static DatabaseReference mDatabase;
     private static int counter = 0;
     int position;
-    String parentView = "";
+    //String parentView = "";
     HashMap<String, Boolean> hashMap = new HashMap<>();
     boolean showValues = true;
     boolean editableValues = false;
