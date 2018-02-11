@@ -74,18 +74,18 @@
     <string name="label_pt_preembossed" translatable="false">Рт передфорсунками</string>
     <string name="label_turnover_kvd_n" translatable="false">Обороты n1 КВД закрытия КПВ</string>
     <string name="label_back_stroke" translatable="false">Обратный ход</string>
-    <string name="label_back_stroke_iii">Обратный ход III ст.</string>
-    <string name="label_back_stroke_v">Обратный ход V ст.</string>
-    <string name="label_iii">III ст.</string>
-    <string name="label_v">V ст.</string>
-    <string name="label_pick_up">Приемистость</string>
-    <string name="label_exit_mg_max">Выход "МГ - МАКС."</string>
-    <string name="label_reset_max_mg">Сброс "МАКС - МГ"</string>
-    <string name="label_system_check">Проверка систем с-та и параметров работы двигателя</string>
-    <string name="label_ppk_switch_min">ППК переключатель АД-6Е (мин.)</string>
-    <string name="label_ppk_switch_max">ППК переключатель АД-6Е (макс.)</string>
-    <string name="label_min">Мин.</string>
-    <string name="label_air_conditioning">Кондиционер</string>
+    <string name="label_back_stroke_iii" translatable="false">Обратный ход III ст.</string>
+    <string name="label_back_stroke_v" translatable="false">Обратный ход V ст.</string>
+    <string name="label_iii" translatable="false">III ст.</string>
+    <string name="label_v" translatable="false">V ст.</string>
+    <string name="label_pick_up" translatable="false">Приемистость</string>
+    <string name="label_exit_mg_max" translatable="false">Выход "МГ - МАКС."</string>
+    <string name="label_reset_max_mg" translatable="false">Сброс "МАКС - МГ"</string>
+    <string name="label_system_check" translatable="false">Проверка систем с-та и параметров работы двигателя</string>
+    <string name="label_ppk_switch_min" translatable="false">ППК переключатель АД-6Е (мин.)</string>
+    <string name="label_ppk_switch_max" translatable="false">ППК переключатель АД-6Е (макс.)</string>
+    <string name="label_min" translatable="false">Мин.</string>
+    <string name="label_air_conditioning" translatable="false">Кондиционер</string>
     <string name="label_anti_icing_agent">Антиоблединитель</string>
     <string name="label_control_knd">Контроль n0 КНД (приведенные)</string>
     <string name="label_pc_engine_install">±2% от установки двигателя на самолет</string>
@@ -116,13 +116,13 @@
     <string name="label_n1_closing">n1 закрытия</string>
     <string name="label_n1_opening">n1 открытия</string>
     <string name="label_adm_graphic_2prc">По графику с допуском ±2%</string>
-    <string name="label_runtime_of_rotors">Выбег роторов</string>
-    <string name="label_board_generator">Загорание табло "ГЕНЕРАТОР"</string>
-    <string name="label_rotor_vd">Ротор ВД</string>
-    <string name="label_rotor_nd">Ротор НД</string>
-    <string name="label_cold_engine">Охлаждение двигателя ≥ 2 мин. и выключить РУДом.</string>
-    <string name="label_bigger_equal_20">≥ 20c</string>
-    <string name="label_bigger_equal_25">≥ 25c</string>
+    <string name="label_runtime_of_rotors" translatable="false">Выбег роторов</string>
+    <string name="label_board_generator" translatable="false">Загорание табло "ГЕНЕРАТОР"</string>
+    <string name="label_rotor_vd" translatable="false">Ротор ВД</string>
+    <string name="label_rotor_nd" translatable="false">Ротор НД</string>
+    <string name="label_cold_engine" translatable="false">Охлаждение двигателя ≥ 2 мин. и выключить РУДом.</string>
+    <string name="label_bigger_equal_20" translatable="false">≥ 20c</string>
+    <string name="label_bigger_equal_25" translatable="false">≥ 25c</string>
     <string name="label_n1_lower54" translatable="false">На n1 &#60; 54,5%</string>
     <string name="label_working_hours" translatable="false">Время работы</string>
     <string name="label_number_of_starts" translatable="false">Количиство запусков</string>
@@ -196,10 +196,14 @@
     <string name="button_clear" translatable="false">Очистить</string>
 
     <string name="menu_change_password" translatable="false">Изменить пароль</string>
-    <string name="menu_exit" translatable="false">Выход</string>
+    <string name="menu_exit">Выход</string>
     <string name="menu_update_record" translatable="false">Обновить запись</string>
     <string name="button_insert_engine">Insert Engine</string>
     <string name="label_engine_num">Engine number</string>
+    <string name="label_total_engine_running_time">Total engine running time</string>
+    <string name="label_engine_running_time_after_repair">Engine running time after repair</string>
+    <string name="label_engine_resource">Engine resource</string>
+    <string name="label_resource_balance">Resource balance</string>
 
 
 </resources>

@@ -32,12 +32,10 @@
             android:padding="5dp"
             android:textSize="10pt"
             android:gravity="center"/>
-        <EditText
-            android:id="@+id/LinearInpEngineNumber"
+        <Spinner
+            android:id="@+id/LinearLabelInpSpinnerEngineNumber"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/enter"
-            android:inputType="number"
             android:paddingBottom="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
@@ -59,6 +57,74 @@
             android:paddingBottom="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
+            android:textSize="10pt"
+            android:gravity="center"/>
+        <TextView
+            android:id="@+id/LinearTotalEngineRunningTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/label_total_engine_running_time"
+            android:textSize="10pt"
+            android:gravity="center"/>
+        <EditText
+            android:id="@+id/LinearInpTotalEngineRunningTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/enter"
+            android:inputType="number"
+            android:paddingBottom="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:textSize="10pt"
+            android:gravity="center"/>
+        <TextView
+            android:id="@+id/LinearEngineRunningTimeAfterRepair"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/label_engine_running_time_after_repair"
+            android:textSize="10pt"
+            android:gravity="center"/>
+        <EditText
+            android:id="@+id/LinearInpEngineRunningTimeAfterRepair"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/enter"
+            android:inputType="number"
+            android:paddingBottom="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:textSize="10pt"
+            android:gravity="center"/>
+        <TextView
+            android:id="@+id/LinearEngineResource"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/label_engine_resource"
+            android:textSize="10pt"
+            android:gravity="center"/>
+        <EditText
+            android:id="@+id/LinearInpEngineResource"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/enter"
+            android:inputType="number"
+            android:paddingBottom="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:textSize="10pt"
+            android:gravity="center"/>
+        <TextView
+            android:id="@+id/LinearResourceBalance"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/label_resource_balance"
+            android:textSize="10pt"
+            android:gravity="center"/>
+        <TextView
+            android:id="@+id/LinearInpResourceBalance"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="0"
             android:textSize="10pt"
             android:gravity="center"/>
         <TextView

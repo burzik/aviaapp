@@ -108,6 +108,12 @@ public class CreationHelper {
         mDatabase = FirebaseDatabase.getInstance().getReference().child("EngineLaunches").child(id);
         mDatabase.setValue(engineData);
     }
+
+    static void updateEngine(final String id, Object object, String root){
+        mDatabase = FirebaseDatabase.getInstance().getReference().child(root).child(id);
+        mDatabase.setValue(object);
+    }
+
     public static String updateData(final String node, final int position, final StepEngineData user) {
         mDatabase = FirebaseDatabase.getInstance().getReference().child(node);
         counter = 0;
