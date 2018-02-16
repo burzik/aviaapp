@@ -21,6 +21,7 @@ import java.util.HashMap;
  * 	31.12.2017      Eduard Arefjev      Added UpdateUI function
  * 	28.01.2018      Eduard Arefjev      Fixed crash for null numbers
  * 	30.01.2018      Eduard Arefjev      Added Readonly mode, menu, fast forwarding
+ * 	16.02.2018      Eduard Arefjev      Added autocalculation
  */
 
 public class StepControlKND extends AppCompatActivity {
@@ -89,6 +90,50 @@ public class StepControlKND extends AppCompatActivity {
 
         updateUI();
         nextSecondStep();
+        calculateValues();
+    }
+
+    public void calculateValues(){
+        EditText eNKVDPHY97 = findViewById(R.id.LinearLabelInpNKVDPHY97);
+        EditText eNKVDPHY99 = findViewById(R.id.LinearLabelInpNKVDPHY99);
+        EditText eNKVDPHY101 = findViewById(R.id.LinearLabelInpNKVDPHY101);
+        final EditText eNKNDPHY97 = findViewById(R.id.LinearLabelInpNKNDPHY97);
+        final EditText eNKNDPHY99 = findViewById(R.id.LinearLabelInpNKNDPHY99);
+        final EditText eNKNDPHY101 = findViewById(R.id.LinearLabelInpNKNDPHY101);
+        final EditText eNKNDPLANE97 = findViewById(R.id.LinearLabelInpNKNDPLANE97);
+        final EditText eNKNDPLANE99 = findViewById(R.id.LinearLabelInpNKNDPLANE99);
+        final EditText eNKNDPLANE101 = findViewById(R.id.LinearLabelInpNKNDPLANE101);
+
+        eNKVDPHY97.setText(String.format("%.2f", CreationHelper.calcControl(engineData.getAtmTemp(), 97.0d)));
+        eNKVDPHY99.setText(String.format("%.2f", CreationHelper.calcControl(engineData.getAtmTemp(), 99.0d)));
+        eNKVDPHY101.setText(String.format("%.2f", CreationHelper.calcControl(engineData.getAtmTemp(), 101.0d)));
+
+        eNKNDPHY97.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if(!b){
+                    eNKNDPLANE97.setText(String.format("%.2f", CreationHelper.calcControl(engineData.getAtmTemp(), Double.valueOf(eNKNDPHY97.getText().toString()))));
+                }
+            }
+        });
+
+        eNKNDPHY99.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if(!b){
+                    eNKNDPLANE99.setText(String.format("%.2f", CreationHelper.calcControl(engineData.getAtmTemp(), Double.valueOf(eNKNDPHY99.getText().toString()))));
+                }
+            }
+        });
+
+        eNKNDPHY101.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if(!b){
+                    eNKNDPLANE101.setText(String.format("%.2f", CreationHelper.calcControl(engineData.getAtmTemp(), Double.valueOf(eNKNDPHY101.getText().toString()))));
+                }
+            }
+        });
     }
 
     public void nextSecondStep() {

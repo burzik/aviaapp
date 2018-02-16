@@ -26,6 +26,7 @@ import java.util.Map;
  * 	30.12.2017      Eduard Arefjev      Implemented new methods "createRecord" and "updateRecord"
  * 	31.12.2017      Eduard Arefjev      Added new functions
  * 	01.02.2018      Eduard Arefjev      Added new functions makeEditTextReadOnly/makeSpinnerReadOnly
+ * 	16.02.2018      Eduard Arefjev      updated calcControl
  */
 
 public class CreationHelper {
@@ -33,7 +34,6 @@ public class CreationHelper {
     private static DatabaseReference mDatabase;
     private static int counter = 0;
     private static String idd;
-
 
     public static void checkValue(final EditText value, final double left, final double right){
         value.setOnFocusChangeListener(new View.OnFocusChangeListener() {
@@ -65,7 +65,6 @@ public class CreationHelper {
                             } else {
                             value.setError("критичное значение (" + leftVal + "-" + right + ")");
                             }
-                        //value.setError("критичное значение (" + left + "-" + right + ")");
                     } else {
                         value.getBackground().setColorFilter(Color.parseColor("#9b9b9b"), PorterDuff.Mode.SRC_ATOP);
                     }
@@ -91,10 +90,8 @@ public class CreationHelper {
         return result;
     }
 
-    public static double calcControl(double temp, double nkvd){
-        double result;
-        result = nkvd*Math.sqrt((273+temp)/288);
-        return result;
+    static double calcControl(int temp, double nkvd){
+        return nkvd*Math.sqrt((273.0d+temp)/288.0d);
     }
 
     static String createRecord(StepEngineData stepEngineData){
