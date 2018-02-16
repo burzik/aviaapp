@@ -86,36 +86,36 @@
     <string name="label_ppk_switch_max" translatable="false">ППК переключатель АД-6Е (макс.)</string>
     <string name="label_min" translatable="false">Мин.</string>
     <string name="label_air_conditioning" translatable="false">Кондиционер</string>
-    <string name="label_anti_icing_agent">Антиоблединитель</string>
-    <string name="label_control_knd">Контроль n0 КНД (приведенные)</string>
-    <string name="label_pc_engine_install">±2% от установки двигателя на самолет</string>
-    <string name="label_n_kvd">n квд %</string>
-    <string name="label_n_kvd_phy">n квд физ %</string>
-    <string name="label_n_knd_phy">n кнд физ %</string>
-    <string name="label_n_knd_prived">n кнд привед %</string>
-    <string name="label_n_knd_plane">n кнд при установке на самолёт %</string>
-    <string name="label_dont_load_pump">Г/насос не загружать.</string>
-    <string name="label_turn_off_generator">Генератор, кондиционер, антиобледенитель выключить.</string>
-    <string name="label_system_check_pt12_9">Проверка системы РТ&#8211;12&#8211;9 2 серии</string>
-    <string name="label_set_n1_80">Установить n1 =70±2%</string>
-    <string name="label_set_mg">Установить МГ (или n1 близкий к МГ при проверке на аварийном топливе, но не ниже 56%), охладить не менее 2 мин.</string>
-    <string name="label_system_check_pt12_9_w">Проверка системы РТ&#8211;12&#8211;9 2 серии (совместно со специалистами АиРЭО)</string>
-    <string name="label_n1_70">n1=70+-2%</string>
-    <string name="label_limitation">"ограничение"</string>
-    <string name="label_n1_56">n1 ≥56%</string>
-    <string name="label_engine_stop">"останов двигателя"</string>
-    <string name="label_switch_position_pt_12_9">Положение переключателя РТ&#8211;12&#8211;9</string>
-    <string name="label_control_1">"контроль 1"</string>
-    <string name="label_control_2">"контроль 2"</string>
-    <string name="label_takeoff_25">ВЗЛЕТ 25º</string>
-    <string name="label_flight_0">ПОЛЕТ 0º</string>
-    <string name="label_landing_44">посадка 44º</string>
-    <string name="label_removed_0">Убраны 0º</string>
-    <string name="label_avar_fuel">Авар. топливо - установить n1=70±2%; - вкл. "Авар.топл" - перевести РУД на Nom, проверить параметры</string>
-    <string name="label_triggering_kpv">Срабатывание КПВ</string>
-    <string name="label_n1_closing">n1 закрытия</string>
-    <string name="label_n1_opening">n1 открытия</string>
-    <string name="label_adm_graphic_2prc">По графику с допуском ±2%</string>
+    <string name="label_anti_icing_agent" translatable="false">Антиоблединитель</string>
+    <string name="label_control_knd" translatable="false">Контроль n0 КНД (приведенные)</string>
+    <string name="label_pc_engine_install" translatable="false">±2% от установки двигателя на самолет</string>
+    <string name="label_n_kvd" translatable="false">n квд %</string>
+    <string name="label_n_kvd_phy" translatable="false">n квд физ %</string>
+    <string name="label_n_knd_phy" translatable="false">n кнд физ %</string>
+    <string name="label_n_knd_prived" translatable="false">n кнд привед %</string>
+    <string name="label_n_knd_plane" translatable="false">n кнд при установке на самолёт %</string>
+    <string name="label_dont_load_pump" translatable="false">Г/насос не загружать.</string>
+    <string name="label_turn_off_generator" translatable="false">Генератор, кондиционер, антиобледенитель выключить.</string>
+    <string name="label_system_check_pt12_9" translatable="false">Проверка системы РТ&#8211;12&#8211;9 2 серии</string>
+    <string name="label_set_n1_80" translatable="false">Установить n1 =70±2%</string>
+    <string name="label_set_mg" translatable="false">Установить МГ (или n1 близкий к МГ при проверке на аварийном топливе, но не ниже 56%), охладить не менее 2 мин.</string>
+    <string name="label_system_check_pt12_9_w" translatable="false">Проверка системы РТ&#8211;12&#8211;9 2 серии (совместно со специалистами АиРЭО)</string>
+    <string name="label_n1_70" translatable="false">n1=70+-2%</string>
+    <string name="label_limitation" translatable="false">"ограничение"</string>
+    <string name="label_n1_56" translatable="false">n1 ≥56%</string>
+    <string name="label_engine_stop" translatable="false">"останов двигателя"</string>
+    <string name="label_switch_position_pt_12_9" translatable="false">Положение переключателя РТ&#8211;12&#8211;9</string>
+    <string name="label_control_1" translatable="false">"контроль 1"</string>
+    <string name="label_control_2" translatable="false">"контроль 2"</string>
+    <string name="label_takeoff_25" translatable="false">ВЗЛЕТ 25º</string>
+    <string name="label_flight_0" translatable="false">ПОЛЕТ 0º</string>
+    <string name="label_landing_44" translatable="false">посадка 44º</string>
+    <string name="label_removed_0" translatable="false">Убраны 0º</string>
+    <string name="label_avar_fuel" translatable="false">Авар. топливо - установить n1=70±2%; - вкл. "Авар.топл" - перевести РУД на Nom, проверить параметры</string>
+    <string name="label_triggering_kpv" translatable="false">Срабатывание КПВ</string>
+    <string name="label_n1_closing" translatable="false">n1 закрытия</string>
+    <string name="label_n1_opening" translatable="false">n1 открытия</string>
+    <string name="label_adm_graphic_2prc" translatable="false">По графику с допуском ±2%</string>
     <string name="label_runtime_of_rotors" translatable="false">Выбег роторов</string>
     <string name="label_board_generator" translatable="false">Загорание табло "ГЕНЕРАТОР"</string>
     <string name="label_rotor_vd" translatable="false">Ротор ВД</string>
@@ -204,6 +204,7 @@
     <string name="label_engine_running_time_after_repair">Engine running time after repair</string>
     <string name="label_engine_resource">Engine resource</string>
     <string name="label_resource_balance">Resource balance</string>
+    <string name="label_all">All</string>
 
 
 </resources>

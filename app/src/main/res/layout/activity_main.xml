@@ -5,6 +5,52 @@
     android:orientation="vertical"
     android:weightSum="8">
 
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/RelativeSearchEngineNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:text="@string/label_engine_num"
+            android:textStyle="bold"
+            android:textSize="18sp" />
+
+        <Spinner
+            android:id="@+id/RelativeSpinnerSearchEngineNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/RelativeSearchEngineNumber"
+            android:layout_toEndOf="@+id/RelativeSearchEngineNumber"
+            android:layout_toRightOf="@+id/RelativeSearchEngineNumber"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/RelativeSearchDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_toLeftOf="@+id/RelativeSearchDateSymbol"
+            android:layout_toStartOf="@+id/RelativeSearchDateSymbol"
+            android:text="@string/label_date"
+            android:textStyle="bold"
+            android:textSize="18sp" />
+        <TextView
+            android:id="@+id/RelativeSearchDateSymbol"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/RelativeSearchDate"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:text="↑"
+            android:textSize="18sp" />
+
+    </RelativeLayout>
+
     <ListView
         android:id="@+id/android:list"
         android:layout_width="fill_parent"

@@ -8,4 +8,5 @@
     <string name="label_engine_running_time_after_repair">Наработка после последнего ремонта</string>
     <string name="label_resource_balance">Остаток ресурса</string>
     <string name="label_engine_resource">Ресурс двигателя</string>
+    <string name="label_all">Все</string>
 </resources>
