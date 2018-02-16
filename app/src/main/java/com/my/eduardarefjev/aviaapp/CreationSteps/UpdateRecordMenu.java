@@ -37,6 +37,7 @@ public class UpdateRecordMenu extends AppCompatActivity {
         hashMap.put("checkbox_n1_equals_85", false);
         hashMap.put("checkbox_turnover_kvd_iii", false);
         hashMap.put("checkbox_work_0nominal", false);
+        hashMap.put("checkbox_n1_100", false);
         hashMap.put("checkbox_nominal", false);
         hashMap.put("checkbox_max", false);
         hashMap.put("checkbox_turnover_kvd_n", false);

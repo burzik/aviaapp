@@ -13,6 +13,7 @@ import android.widget.Spinner;
 
 import com.my.eduardarefjev.aviaapp.R;
 
+import java.util.Date;
 import java.util.HashMap;
 
 import static java.lang.Double.MIN_VALUE;
@@ -25,18 +26,19 @@ import static java.lang.Double.MIN_VALUE;
  * 	31.12.2017      Eduard Arefjev      Added UpdateUI function
  * 	28.01.2018      Eduard Arefjev      Fixed crash for null numbers
  * 	30.01.2018      Eduard Arefjev      Added Readonly mode, menu, fast forwarding
+ * 	17.02.2018      Eduard Arefjev      Added time
  */
 
 public class StepMax extends AppCompatActivity{
 
     private Spinner spinnerKrTank;
     private StepEngineData engineData;
-    String id;
-    //String parentView;
-    ArrayAdapter<String> myAdapter;
-    boolean showValues;
-    boolean editableValues;
-    HashMap<String, Boolean> hashMap;
+    private String id;
+    private ArrayAdapter<String> myAdapter;
+    private boolean showValues;
+    private boolean editableValues;
+    private HashMap<String, Boolean> hashMap;
+    private Date start = new Date();
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -143,6 +145,9 @@ public class StepMax extends AppCompatActivity{
     }
 
     public void setRecord(){
+        Date end = new Date();
+        long diff = (end.getTime() - start.getTime())/1000 ;
+        engineData.setModeWorkMax(diff);
         EditText eN1 = findViewById(R.id.LinearInpN1);
         EditText eN2_4 = findViewById(R.id.LinearInpN2_4);
         EditText eTRC = findViewById(R.id.LinearInpTRC);

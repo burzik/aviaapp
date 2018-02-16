@@ -12,6 +12,7 @@ import android.widget.EditText;
 import com.my.eduardarefjev.aviaapp.MainActivity;
 import com.my.eduardarefjev.aviaapp.R;
 
+import java.util.Date;
 import java.util.HashMap;
 
 /**
@@ -21,15 +22,16 @@ import java.util.HashMap;
  * 	31.12.2017      Eduard Arefjev      Added writing data to FireBase and send to next view
  * 	31.12.2017      Eduard Arefjev      Added UpdateUI function
  * 	30.01.2018      Eduard Arefjev      Added Readonly mode, menu, fast forwarding
+ * 	17.02.2018      Eduard Arefjev      Added time
  */
 
 public class StepFinish extends AppCompatActivity {
 
     private StepEngineData engineData;
-    String id;
-    boolean showValues;
-    boolean editableValues;
-    HashMap<String, Boolean> hashMap;
+    private String id;
+    private boolean showValues;
+    private boolean editableValues;
+    private long diff;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -72,7 +74,7 @@ public class StepFinish extends AppCompatActivity {
         engineData  = extra.getParcelable("objects");
         showValues = intent.getBooleanExtra("showValues", false);
         editableValues = intent.getBooleanExtra("editableValues", false);
-        hashMap = (HashMap<String, Boolean>)intent.getSerializableExtra("map");
+        HashMap<String, Boolean> hashMap = (HashMap<String, Boolean>) intent.getSerializableExtra("map");
 
         if (hashMap != null && hashMap.size() != 0){
             if(!hashMap.get("checkbox_final_data")) {
@@ -86,6 +88,17 @@ public class StepFinish extends AppCompatActivity {
                 startActivity(intent);
             }
         }
+        Date start = engineData.getLaunchDate();
+        Date end = new Date();
+        diff = (end.getTime() - start.getTime() * (60)/1000);
+
+        EditText eCommon = findViewById(R.id.LinearLabelInpCommon);
+        EditText eNominal = findViewById(R.id.LinearLabelInpNominal);
+        EditText eN1StraightRunV2 = findViewById(R.id.LinearLabelInpN1StraightRunV2);
+
+        eCommon.setText(String.valueOf(diff));
+        eNominal.setText(Float.toString(engineData.getModeWorkNom()));
+        eN1StraightRunV2.setText(Float.toString(engineData.getModeWorkMax()));
 
         updateUI();
         nextSecondStep();
@@ -99,16 +112,14 @@ public class StepFinish extends AppCompatActivity {
                 setRecord();
                 CreationHelper.updateRecord(id, engineData);
                 Intent intent = new Intent(StepFinish.this, MainActivity.class);
-                //intent.putExtra("recordId", id);
-                //Bundle extra = new Bundle();
-                //extra.putParcelable("objects", engineData);
-                //intent.putExtra("extra", extra);
                 startActivity(intent);
             }
         });
     }
 
     public void setRecord(){
+        engineData.setModeWorkSum(diff);
+
         EditText eCommon = findViewById(R.id.LinearLabelInpCommon);
         EditText eNominal = findViewById(R.id.LinearLabelInpNominal);
         EditText eN1StraightRunV2 = findViewById(R.id.LinearLabelInpN1StraightRunV2);

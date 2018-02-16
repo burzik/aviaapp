@@ -75,7 +75,7 @@ public class StepN100 extends AppCompatActivity {
         hashMap = (HashMap<String, Boolean>)intent.getSerializableExtra("map");
 
         if (hashMap != null && hashMap.size() != 0){
-            if(!hashMap.get("checkbox_nominal")) {
+            if(!hashMap.get("checkbox_n1_100")) {
                 intent = new Intent(this, StepNom.class);
                 intent.putExtra("recordId", id);
                 intent.putExtra("showValues", showValues);
