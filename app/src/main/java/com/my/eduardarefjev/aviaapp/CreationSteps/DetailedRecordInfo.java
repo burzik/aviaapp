@@ -34,22 +34,19 @@ import java.util.List;
  * 	31.12.2017      Eduard Arefjev      Added updating in FireBase and retrieving data from FireBase
  * 	30.01.2018      Eduard Arefjev      Added Readonly mode, menu, fast forwarding
  * 	08.02.2018      Eduard Arefjev      Engine number as spinner
+ * 	17.02.2018      Eduard Arefjev      Fix with id
  */
 
 public class DetailedRecordInfo extends AppCompatActivity {
 
-    String id;
-    public StepEngineData engineData;
-    DatabaseReference mDatabase;
-    int counter = 0;
-    int position;
-    HashMap<String, Boolean> hashMap = new HashMap<>();
-    boolean showValues = true;
-    boolean editableValues = false;
-    final List<String> list = new ArrayList<>();
-    ArrayAdapter<String> myAdapter;
-    EngineInformation engineInformation = new EngineInformation();
-    ArrayList<EngineInformation> obj = new ArrayList<>();
+    private StepEngineData engineData;
+    private HashMap<String, Boolean> hashMap = new HashMap<>();
+    private boolean showValues = true;
+    private boolean editableValues = false;
+    private final List<String> list = new ArrayList<>();
+    private ArrayAdapter<String> myAdapter;
+    private EngineInformation engineInformation = new EngineInformation();
+    private ArrayList<EngineInformation> obj = new ArrayList<>();
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -66,7 +63,7 @@ public class DetailedRecordInfo extends AppCompatActivity {
         switch(item.getItemId()) {
             case R.id.UpdateRecord: {
                 Intent intent = new Intent(this, UpdateRecordMenu.class);
-                intent.putExtra("recordId", id);
+                intent.putExtra("recordId", engineData.getRowId());
                 Bundle extra = new Bundle();
                 extra.putParcelable("objects", engineData);
                 intent.putExtra("extra", extra);
@@ -86,10 +83,9 @@ public class DetailedRecordInfo extends AppCompatActivity {
         this.setTitle(R.string.label_base_values);
 
         Intent intent = getIntent();
-        position = intent.getIntExtra("position", -1);
-        if (position == -1)
-        {
-            id = intent.getStringExtra("recordId");
+        int position = intent.getIntExtra("position", -1);
+        if (position == -1) {
+            String id = intent.getStringExtra("recordId");
             Bundle extra = getIntent().getBundleExtra("extra");
             engineData  = extra.getParcelable("objects");
             hashMap = (HashMap<String, Boolean>)intent.getSerializableExtra("map");
@@ -114,7 +110,6 @@ public class DetailedRecordInfo extends AppCompatActivity {
             ArrayList<StepEngineData> objects = (ArrayList<StepEngineData>) extra.getSerializable("objects");
             assert objects != null;
             engineData = objects.get(position);
-            getId();
         }
 
         final Spinner engineNumber = findViewById(R.id.LinearLabelInpSpinnerEngineNumber);
@@ -163,8 +158,6 @@ public class DetailedRecordInfo extends AppCompatActivity {
 
             }
         });
-
-
 
         calculateBalance();
         updateSelectedEngine();
@@ -235,47 +228,12 @@ public class DetailedRecordInfo extends AppCompatActivity {
         eEngineResource.setText(Integer.toString(engineInformation.getEngineResource()));
     }
 
-    public void getId(){
-        counter = 0;
-        mDatabase = FirebaseDatabase.getInstance().getReference().child("EngineLaunches");
-        mDatabase.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-
-                if (position == counter) {
-                    id = dataSnapshot.getKey();
-                    mDatabase = FirebaseDatabase.getInstance().getReference().child("EngineLaunches").child(id);
-                }
-                counter++;
-            }
-
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-    }
-
     public void nextSecondStep() {
         Button bNextStep = findViewById(R.id.LinearButtonNext);
         bNextStep.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String id = engineData.getRowId();
                 setRecord();
                 CreationHelper.updateRecord(id, engineData);
                 CreationHelper.updateEngine(String.valueOf(engineInformation.getEngineNumber()), engineInformation,"EngineNumber");

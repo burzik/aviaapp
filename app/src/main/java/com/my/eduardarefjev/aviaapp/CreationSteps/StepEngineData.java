@@ -11,6 +11,7 @@ import java.util.Date;
  * 	25.10.2017		Eduard Arefjev 		Created main information
  * 	30.12.2017      Eduard Arefjev      implemented parcelable
  *  30.12.2017      Eduard Arefjev      Added new fields
+ *  17.02.2018      Eduard Arefjev      Added new field
  */
 
 public class StepEngineData implements Parcelable{
@@ -18,6 +19,8 @@ public class StepEngineData implements Parcelable{
     StepEngineData(){
 
     }
+
+    private String rowId;
 
     private String engineName;
     private int engineId;
@@ -166,6 +169,14 @@ public class StepEngineData implements Parcelable{
     public int modeWorkLaunchCount;
     public int modeWorkLaunchVSUCount;
     public int modeWorkN1Count;
+
+    public String getRowId() {
+        return rowId;
+    }
+
+    public void setRowId(String rowId) {
+        this.rowId = rowId;
+    }
 
     public String currentUserId;
 
@@ -1118,6 +1129,7 @@ public class StepEngineData implements Parcelable{
     }
 
     private StepEngineData(Parcel in) {
+        rowId = in.readString();
 
         engineName = in.readString();
         engineId = in.readInt();
@@ -1296,6 +1308,7 @@ public class StepEngineData implements Parcelable{
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(rowId);
         dest.writeString(engineName);
         dest.writeInt(engineId);
         dest.writeInt(planeId);
