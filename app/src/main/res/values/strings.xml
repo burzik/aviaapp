@@ -1,6 +1,6 @@
 <resources>
     <!-- Ru Labels Creations Steps-->
-    <string name="app_name" translatable="false">Авиа</string>
+    <string name="app_name">Avia</string>
     <string name="label_menu" translatable="false">Меню</string>
     <string name="label_main" translatable="false">Протокол проверки работы двигателя АИ-25ТП и систем самолета</string>
     <string name="label_engine_number" translatable="false">Двигатель АИ-25ТЛ, заводской №</string>
@@ -195,7 +195,7 @@
     <string name="button_create" translatable="false">Создать</string>
     <string name="button_clear" translatable="false">Очистить</string>
 
-    <string name="menu_change_password" translatable="false">Изменить пароль</string>
+    <string name="menu_change_password">Change password</string>
     <string name="menu_exit">Выход</string>
     <string name="menu_update_record" translatable="false">Обновить запись</string>
     <string name="button_insert_engine">Insert Engine</string>
@@ -205,6 +205,11 @@
     <string name="label_engine_resource">Engine resource</string>
     <string name="label_resource_balance">Resource balance</string>
     <string name="label_all">All</string>
+    <string name="hint_current_password">Current password</string>
+    <string name="hint_new_password">New password</string>
+    <string name="hint_repeat_password">Repeat password</string>
+    <string name="hint_old_password">Old password</string>
+    <string name="update">Update</string>
 
 
 </resources>
