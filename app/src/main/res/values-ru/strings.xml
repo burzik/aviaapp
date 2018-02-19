@@ -15,4 +15,6 @@
     <string name="hint_current_password">Текущий пароль</string>
     <string name="hint_repeat_password">Повторите пароль</string>
     <string name="update">Обновить</string>
+    <string name="toast_password_updated">Пароль изменен</string>
+    <string name="toast_password_does_not_match">Пароли не совпадают</string>
 </resources>
