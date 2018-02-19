@@ -42,7 +42,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         //EA Inflate the menu
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if(user != null)
+            getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
@@ -179,5 +181,11 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(user == null)
+            super.onBackPressed();
     }
 }

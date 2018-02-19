@@ -196,7 +196,7 @@
     <string name="button_clear" translatable="false">Очистить</string>
 
     <string name="menu_change_password">Change password</string>
-    <string name="menu_exit">Выход</string>
+    <string name="menu_exit">Exit</string>
     <string name="menu_update_record" translatable="false">Обновить запись</string>
     <string name="button_insert_engine">Insert Engine</string>
     <string name="label_engine_num">Engine number</string>

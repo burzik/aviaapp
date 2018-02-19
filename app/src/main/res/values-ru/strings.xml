@@ -3,7 +3,7 @@
     <string name="app_name">Авиа</string>
     <string name="button_insert_engine">Внести двигатель</string>
     <string name="label_engine_num">Номер двигателя</string>
-    <string name="menu_exit">Exit</string>
+    <string name="menu_exit">Выход</string>
     <string name="label_total_engine_running_time">Общая наработка двигателя</string>
     <string name="label_engine_running_time_after_repair">Наработка после последнего ремонта</string>
     <string name="label_resource_balance">Остаток ресурса</string>
