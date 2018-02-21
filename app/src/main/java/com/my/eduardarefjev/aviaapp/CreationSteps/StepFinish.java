@@ -13,7 +13,6 @@ import com.my.eduardarefjev.aviaapp.MainActivity;
 import com.my.eduardarefjev.aviaapp.R;
 
 import java.util.Date;
-import java.util.HashMap;
 
 /**
  * HISTORY
@@ -74,20 +73,7 @@ public class StepFinish extends AppCompatActivity {
         engineData  = extra.getParcelable("objects");
         showValues = intent.getBooleanExtra("showValues", false);
         editableValues = intent.getBooleanExtra("editableValues", false);
-        HashMap<String, Boolean> hashMap = (HashMap<String, Boolean>) intent.getSerializableExtra("map");
 
-        if (hashMap != null && hashMap.size() != 0){
-            if(!hashMap.get("checkbox_final_data")) {
-                intent = new Intent(this, MainActivity.class);
-                intent.putExtra("recordId", id);
-                intent.putExtra("showValues", showValues);
-                intent.putExtra("editableValues", editableValues);
-                extra.putParcelable("objects", engineData);
-                intent.putExtra("extra", extra);
-                intent.putExtra("map", hashMap);
-                startActivity(intent);
-            }
-        }
         Date start = engineData.getLaunchDate();
         Date end = new Date();
         diff = (end.getTime() - start.getTime() * (60)/1000);

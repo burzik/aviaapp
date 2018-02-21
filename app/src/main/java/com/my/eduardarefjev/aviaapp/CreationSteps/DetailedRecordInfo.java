@@ -47,6 +47,7 @@ public class DetailedRecordInfo extends AppCompatActivity {
     private ArrayAdapter<String> myAdapter;
     private EngineInformation engineInformation = new EngineInformation();
     private ArrayList<EngineInformation> obj = new ArrayList<>();
+    private ArrayList<Class> classArrayList = new ArrayList<>();
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -85,25 +86,12 @@ public class DetailedRecordInfo extends AppCompatActivity {
         Intent intent = getIntent();
         int position = intent.getIntExtra("position", -1);
         if (position == -1) {
-            String id = intent.getStringExtra("recordId");
+            //String id = intent.getStringExtra("recordId");
             Bundle extra = getIntent().getBundleExtra("extra");
             engineData  = extra.getParcelable("objects");
-            hashMap = (HashMap<String, Boolean>)intent.getSerializableExtra("map");
+            classArrayList = (ArrayList<Class>)intent.getSerializableExtra("classMap");
             showValues = intent.getBooleanExtra("showValues", true);
             editableValues = intent.getBooleanExtra("editableValues", false);
-
-            if (hashMap != null){
-                if (!hashMap.get("checkbox_base_values")){
-                    intent = new Intent(DetailedRecordInfo.this, StepStartInfo.class);
-                    intent.putExtra("recordId", id);
-                    intent.putExtra("showValues", showValues);
-                    intent.putExtra("editableValues", editableValues);
-                    extra.putParcelable("objects", engineData);
-                    intent.putExtra("extra", extra);
-                    intent.putExtra("map", hashMap);
-                    startActivity(intent);
-                }
-            }
         }
         else {
             Bundle extra = getIntent().getBundleExtra("extra");
@@ -235,16 +223,21 @@ public class DetailedRecordInfo extends AppCompatActivity {
             public void onClick(View v) {
                 String id = engineData.getRowId();
                 setRecord();
-                CreationHelper.updateRecord(id, engineData);
+                //CreationHelper.updateRecord(id, engineData);
                 CreationHelper.updateEngine(String.valueOf(engineInformation.getEngineNumber()), engineInformation,"EngineNumber");
-                Intent intent = new Intent(DetailedRecordInfo.this, StepStartInfo.class);
+                Intent intent;
+                if (classArrayList.size() <= 0)
+                    intent = new Intent(DetailedRecordInfo.this, StepStartInfo.class);
+                else intent = new Intent(DetailedRecordInfo.this, classArrayList.get(0));
+                classArrayList.remove(0);
                 intent.putExtra("recordId", id);
                 intent.putExtra("showValues", showValues);
                 intent.putExtra("editableValues", editableValues);
                 Bundle extra = new Bundle();
                 extra.putParcelable("objects", engineData);
                 intent.putExtra("extra", extra);
-                intent.putExtra("map", hashMap);
+                intent.putExtra("classMap", classArrayList);
+                //intent.putExtra("map", hashMap);
                 startActivity(intent);
             }
         });

@@ -8,9 +8,12 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.RadioButton;
 
+import com.my.eduardarefjev.aviaapp.MainActivity;
 import com.my.eduardarefjev.aviaapp.R;
 
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 /**
  * HISTORY
@@ -21,7 +24,10 @@ import java.util.HashMap;
 public class UpdateRecordMenu extends AppCompatActivity {
     String id;
     StepEngineData engineData;
-    HashMap<String, Boolean> hashMap = new HashMap<>();
+    ArrayList<Class> classArrayList = new ArrayList<>();
+    LinkedHashMap<Class, Boolean> linkedHashMap = new LinkedHashMap<>();
+
+
     boolean showValues = true;
     boolean editableValues = true;
 
@@ -30,26 +36,27 @@ public class UpdateRecordMenu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.linear_records_menu);
 
-        hashMap.put("checkbox_base_values", false);
-        hashMap.put("checkbox_base_values_2", false);
-        hashMap.put("checkbox_small_gas", false);
-        hashMap.put("checkbox_turnover_kvd_v", false);
-        hashMap.put("checkbox_n1_equals_85", false);
-        hashMap.put("checkbox_turnover_kvd_iii", false);
-        hashMap.put("checkbox_work_0nominal", false);
-        hashMap.put("checkbox_n1_100", false);
-        hashMap.put("checkbox_nominal", false);
-        hashMap.put("checkbox_max", false);
-        hashMap.put("checkbox_turnover_kvd_n", false);
-        hashMap.put("checkbox_pick_up", false);
-        hashMap.put("checkbox_small_gas_2", false);
-        hashMap.put("checkbox_control_knd", false);
-        hashMap.put("checkbox_runtime_of_rotors", false);
-        hashMap.put("checkbox_board_generator", false);
-        hashMap.put("checkbox_final_data", false);
+        linkedHashMap.put(DetailedRecordInfo.class, false);
+        linkedHashMap.put(StepStartInfo.class, false);
+        linkedHashMap.put(StepSmallGas.class, false);
+        linkedHashMap.put(StepClosingKVD5.class, false);
+        linkedHashMap.put(StepN85.class, false);
+        linkedHashMap.put(StepClosingKVD3.class, false);
+        linkedHashMap.put(Step085Nom.class, false);
+        linkedHashMap.put(StepN100.class, false);
+        linkedHashMap.put(StepNom.class, false);
+        linkedHashMap.put(StepMax.class, false);
+        linkedHashMap.put(StepClosingKVDKPV.class, false);
+        linkedHashMap.put(StepPickUp.class, false);
+        linkedHashMap.put(StepSmallGas2.class, false);
+        linkedHashMap.put(StepControlKND.class, false);
+        linkedHashMap.put(StepRunoutOfRotors.class, false);
+        linkedHashMap.put(StepTanningBoardDisplayGenerator.class, false);
+        linkedHashMap.put(StepFinish.class, false);
+        linkedHashMap.put(MainActivity.class, true);
 
-        Intent intent = getIntent();
-        id = intent.getStringExtra("recordId");
+        //Intent intent = getIntent();
+        //id = intent.getStringExtra("recordId");
         Bundle extra = getIntent().getBundleExtra("extra");
         engineData  = extra.getParcelable("objects");
 
@@ -61,15 +68,20 @@ public class UpdateRecordMenu extends AppCompatActivity {
         bNextStep.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CreationHelper.updateRecord(id, engineData);
-                Intent intent = new Intent(UpdateRecordMenu.this, DetailedRecordInfo.class);
+                id = CreationHelper.createRecord(engineData);
+                for (Map.Entry<Class, Boolean> entry : linkedHashMap.entrySet()) {
+                    if (entry.getValue())
+                        classArrayList.add(entry.getKey());
+                }
+                Intent intent = new Intent(UpdateRecordMenu.this, classArrayList.get(0));
+                classArrayList.remove(0);
                 intent.putExtra("recordId", id);
                 intent.putExtra("showValues", showValues);
                 intent.putExtra("editableValues", editableValues);
                 Bundle extra = new Bundle();
                 extra.putParcelable("objects", engineData);
                 intent.putExtra("extra", extra);
-                intent.putExtra("map", hashMap);
+                intent.putExtra("classMap", classArrayList);
                 startActivity(intent);
             }
         });
@@ -80,99 +92,105 @@ public class UpdateRecordMenu extends AppCompatActivity {
         switch(view.getId()) {
             case R.id.checkbox_base_values:
                 if (checked)
-                    hashMap.put("checkbox_base_values", true);
+                    linkedHashMap.put(DetailedRecordInfo.class, true);
                 else
-                    hashMap.put("checkbox_base_values", false);
+                    linkedHashMap.put(DetailedRecordInfo.class, false);
                 break;
             case R.id.checkbox_base_values_2:
                 if (checked)
-                    hashMap.put("checkbox_base_values_2", true);
+                    linkedHashMap.put(StepStartInfo.class, true);
                 else
-                    hashMap.put("checkbox_base_values_2", false);
+                    linkedHashMap.put(StepStartInfo.class, false);
                 break;
             case R.id.checkbox_small_gas:
                 if (checked)
-                    hashMap.put("checkbox_small_gas", true);
+                    linkedHashMap.put(StepSmallGas.class, true);
                 else
-                    hashMap.put("checkbox_small_gas", false);
+                    linkedHashMap.put(StepSmallGas.class, false);
                 break;
             case R.id.checkbox_turnover_kvd_v:
                 if (checked)
-                    hashMap.put("checkbox_turnover_kvd_v", true);
+                    linkedHashMap.put(StepClosingKVD5.class, true);
                 else
-                    hashMap.put("checkbox_turnover_kvd_v", false);
+                    linkedHashMap.put(StepClosingKVD5.class, false);
                 break;
             case R.id.checkbox_n1_equals_85:
                 if (checked)
-                    hashMap.put("checkbox_n1_equals_85", true);
+                    linkedHashMap.put(StepN85.class, true);
                 else
-                    hashMap.put("checkbox_n1_equals_85", false);
+                    linkedHashMap.put(StepN85.class, false);
                 break;
             case R.id.checkbox_turnover_kvd_iii:
                 if (checked)
-                    hashMap.put("checkbox_turnover_kvd_iii", true);
+                    linkedHashMap.put(StepClosingKVD3.class, true);
                 else
-                    hashMap.put("checkbox_turnover_kvd_iii", false);
+                    linkedHashMap.put(StepClosingKVD3.class, false);
                 break;
             case R.id.checkbox_work_0nominal:
                 if (checked)
-                    hashMap.put("checkbox_work_0nominal", true);
+                    linkedHashMap.put(Step085Nom.class, true);
                 else
-                    hashMap.put("checkbox_work_0nominal", false);
+                    linkedHashMap.put(Step085Nom.class, false);
+                break;
+            case R.id.checkbox_n1_100:
+                if (checked)
+                    linkedHashMap.put(StepNom.class, true);
+                else
+                    linkedHashMap.put(StepNom.class, false);
                 break;
             case R.id.checkbox_nominal:
                 if (checked)
-                    hashMap.put("checkbox_nominal", true);
+                    linkedHashMap.put(StepNom.class, true);
                 else
-                    hashMap.put("checkbox_nominal", false);
+                    linkedHashMap.put(StepNom.class, false);
                 break;
             case R.id.checkbox_max:
                 if (checked)
-                    hashMap.put("checkbox_max", true);
+                    linkedHashMap.put(StepMax.class, true);
                 else
-                    hashMap.put("checkbox_max", false);
+                    linkedHashMap.put(StepMax.class, false);
                 break;
             case R.id.checkbox_turnover_kvd_n:
                 if (checked)
-                    hashMap.put("checkbox_turnover_kvd_n", true);
+                    linkedHashMap.put(StepClosingKVDKPV.class, true);
                 else
-                    hashMap.put("checkbox_turnover_kvd_n", false);
+                    linkedHashMap.put(StepClosingKVDKPV.class, false);
                 break;
             case R.id.checkbox_pick_up:
                 if (checked)
-                    hashMap.put("checkbox_pick_up", true);
+                    linkedHashMap.put(StepPickUp.class, true);
                 else
-                    hashMap.put("checkbox_pick_up", false);
+                    linkedHashMap.put(StepPickUp.class, false);
                 break;
             case R.id.checkbox_small_gas_2:
                 if (checked)
-                    hashMap.put("checkbox_small_gas_2", true);
+                    linkedHashMap.put(StepSmallGas2.class, true);
                 else
-                    hashMap.put("checkbox_small_gas_2", false);
+                    linkedHashMap.put(StepSmallGas2.class, false);
                 break;
             case R.id.checkbox_control_knd:
                 if (checked)
-                    hashMap.put("checkbox_control_knd", true);
+                    linkedHashMap.put(StepControlKND.class, true);
                 else
-                    hashMap.put("checkbox_control_knd", false);
+                    linkedHashMap.put(StepControlKND.class, false);
                 break;
             case R.id.checkbox_runtime_of_rotors:
                 if (checked)
-                    hashMap.put("checkbox_runtime_of_rotors", true);
+                    linkedHashMap.put(StepRunoutOfRotors.class, true);
                 else
-                    hashMap.put("checkbox_runtime_of_rotors", false);
+                    linkedHashMap.put(StepRunoutOfRotors.class, false);
                 break;
             case R.id.checkbox_board_generator:
                 if (checked)
-                    hashMap.put("checkbox_board_generator", true);
+                    linkedHashMap.put(StepTanningBoardDisplayGenerator.class, true);
                 else
-                    hashMap.put("checkbox_board_generator", false);
+                    linkedHashMap.put(StepTanningBoardDisplayGenerator.class, false);
                 break;
             case R.id.checkbox_final_data:
                 if (checked)
-                    hashMap.put("checkbox_final_data", true);
+                    linkedHashMap.put(StepFinish.class, true);
                 else
-                    hashMap.put("checkbox_final_data", false);
+                    linkedHashMap.put(StepFinish.class, false);
                 break;
         }
     }
@@ -183,11 +201,11 @@ public class UpdateRecordMenu extends AppCompatActivity {
             case R.id.radio_yes:
                 if (checked)
                     showValues = true;
-                    break;
+                break;
             case R.id.radio_no:
                 if (checked)
                     showValues = false;
-                    break;
+                break;
         }
     }
 }

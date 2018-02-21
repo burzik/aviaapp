@@ -13,8 +13,8 @@ import android.widget.Spinner;
 
 import com.my.eduardarefjev.aviaapp.R;
 
+import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 
 import static java.lang.Double.MIN_VALUE;
 
@@ -37,7 +37,7 @@ public class StepMax extends AppCompatActivity{
     private ArrayAdapter<String> myAdapter;
     private boolean showValues;
     private boolean editableValues;
-    private HashMap<String, Boolean> hashMap;
+    private ArrayList<Class> classArrayList = new ArrayList<>();
     private Date start = new Date();
 
     @Override
@@ -81,20 +81,8 @@ public class StepMax extends AppCompatActivity{
         engineData  = extra.getParcelable("objects");
         showValues = intent.getBooleanExtra("showValues", false);
         editableValues = intent.getBooleanExtra("editableValues", false);
-        hashMap = (HashMap<String, Boolean>)intent.getSerializableExtra("map");
+        classArrayList = (ArrayList<Class>)intent.getSerializableExtra("classMap");
 
-        if (hashMap != null && hashMap.size() != 0){
-            if(!hashMap.get("checkbox_max")) {
-                intent = new Intent(this, StepClosingKVDKPV.class);
-                intent.putExtra("recordId", id);
-                intent.putExtra("showValues", showValues);
-                intent.putExtra("editableValues", editableValues);
-                extra.putParcelable("objects", engineData);
-                intent.putExtra("extra", extra);
-                intent.putExtra("map", hashMap);
-                startActivity(intent);
-            }
-        }
         EditText eN1 = findViewById(R.id.LinearInpN1);
         CreationHelper.checkValue(eN1, 105, 107);
         //from graphic?
@@ -131,14 +119,18 @@ public class StepMax extends AppCompatActivity{
             public void onClick(View v) {
                 setRecord();
                 CreationHelper.updateRecord(id, engineData);
-                Intent intent = new Intent(StepMax.this, StepClosingKVDKPV.class);
+                Intent intent;
+                if (classArrayList.size() <= 0)
+                    intent = new Intent(StepMax.this, StepClosingKVDKPV.class);
+                else intent = new Intent(StepMax.this, classArrayList.get(0));
+                classArrayList.remove(0);
                 intent.putExtra("recordId", id);
                 intent.putExtra("showValues", showValues);
                 intent.putExtra("editableValues", editableValues);
                 Bundle extra = new Bundle();
                 extra.putParcelable("objects", engineData);
                 intent.putExtra("extra", extra);
-                intent.putExtra("map", hashMap);
+                intent.putExtra("classMap", classArrayList);
                 startActivity(intent);
             }
         });

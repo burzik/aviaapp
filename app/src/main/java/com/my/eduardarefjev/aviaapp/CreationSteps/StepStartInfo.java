@@ -11,7 +11,7 @@ import android.widget.EditText;
 
 import com.my.eduardarefjev.aviaapp.R;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 
 /**
  * HISTORY
@@ -25,11 +25,11 @@ import java.util.HashMap;
 
 public class StepStartInfo extends AppCompatActivity {
 
-    String id;
-    public StepEngineData engineData;
-    boolean showValues;
-    boolean editableValues;
-    HashMap<String, Boolean> hashMap;
+    private String id;
+    private StepEngineData engineData;
+    private boolean showValues;
+    private boolean editableValues;
+    private ArrayList<Class> classArrayList = new ArrayList<>();
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -71,20 +71,7 @@ public class StepStartInfo extends AppCompatActivity {
         engineData  = extra.getParcelable("objects");
         showValues = intent.getBooleanExtra("showValues", false);
         editableValues = intent.getBooleanExtra("editableValues", true);
-        hashMap = (HashMap<String, Boolean>)intent.getSerializableExtra("map");
-
-        if (hashMap != null && hashMap.size() != 0){
-            if(!hashMap.get("checkbox_base_values_2") ) {
-                intent = new Intent(StepStartInfo.this, StepSmallGas.class);
-                intent.putExtra("recordId", id);
-                intent.putExtra("showValues", showValues);
-                intent.putExtra("editableValues", editableValues);
-                extra.putParcelable("objects", engineData);
-                intent.putExtra("extra", extra);
-                intent.putExtra("map", hashMap);
-                startActivity(intent);
-            }
-        }
+        classArrayList = (ArrayList<Class>)intent.getSerializableExtra("classMap");
 
         EditText eLimb = findViewById(R.id.LinearLabelInpLimbArg);
         CreationHelper.checkValue(eLimb, 18, 24);
@@ -108,14 +95,18 @@ public class StepStartInfo extends AppCompatActivity {
             public void onClick(View v) {
                 setRecord();
                 CreationHelper.updateRecord(id, engineData);
-                Intent intent = new Intent(StepStartInfo.this, StepSmallGas.class);
+                Intent intent;
+                if (classArrayList.size() <= 0)
+                    intent = new Intent(StepStartInfo.this, StepSmallGas.class);
+                else intent = new Intent(StepStartInfo.this, classArrayList.get(0));
+                classArrayList.remove(0);
                 intent.putExtra("recordId", id);
                 intent.putExtra("showValues", showValues);
                 intent.putExtra("editableValues", editableValues);
                 Bundle extra = new Bundle();
                 extra.putParcelable("objects", engineData);
                 intent.putExtra("extra", extra);
-                intent.putExtra("map", hashMap);
+                intent.putExtra("classMap", classArrayList);
                 startActivity(intent);
             }
         });

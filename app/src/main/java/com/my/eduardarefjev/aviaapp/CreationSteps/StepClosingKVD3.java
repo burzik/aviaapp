@@ -11,7 +11,7 @@ import android.widget.EditText;
 
 import com.my.eduardarefjev.aviaapp.R;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 
 /**
  * HISTORY
@@ -26,10 +26,10 @@ import java.util.HashMap;
 public class StepClosingKVD3 extends AppCompatActivity {
 
     private StepEngineData engineData;
-    String id;
-    boolean showValues;
-    boolean editableValues;
-    HashMap<String, Boolean> hashMap;
+    private String id;
+    private boolean showValues;
+    private boolean editableValues;
+    private ArrayList<Class> classArrayList = new ArrayList<>();
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -72,20 +72,7 @@ public class StepClosingKVD3 extends AppCompatActivity {
         engineData  = extra.getParcelable("objects");
         showValues = intent.getBooleanExtra("showValues", false);
         editableValues = intent.getBooleanExtra("editableValues", false);
-        hashMap = (HashMap<String, Boolean>)intent.getSerializableExtra("map");
-
-        if (hashMap != null && hashMap.size() != 0){
-            if(!hashMap.get("checkbox_turnover_kvd_iii")) {
-                intent = new Intent(this, Step085Nom.class);
-                intent.putExtra("recordId", id);
-                intent.putExtra("showValues", showValues);
-                intent.putExtra("editableValues", editableValues);
-                extra.putParcelable("objects", engineData);
-                intent.putExtra("extra", extra);
-                intent.putExtra("map", hashMap);
-                startActivity(intent);
-            }
-        }
+        classArrayList = (ArrayList<Class>)intent.getSerializableExtra("classMap");
 
         updateUI();
         nextSecondStep();
@@ -98,14 +85,18 @@ public class StepClosingKVD3 extends AppCompatActivity {
             public void onClick(View v) {
                 setRecord();
                 CreationHelper.updateRecord(id, engineData);
-                Intent intent = new Intent(StepClosingKVD3.this, Step085Nom.class);
+                Intent intent;
+                if (classArrayList.size() <= 0)
+                    intent = new Intent(StepClosingKVD3.this, Step085Nom.class);
+                else intent = new Intent(StepClosingKVD3.this, classArrayList.get(0));
+                classArrayList.remove(0);
                 intent.putExtra("recordId", id);
                 intent.putExtra("showValues", showValues);
                 intent.putExtra("editableValues", editableValues);
                 Bundle extra = new Bundle();
                 extra.putParcelable("objects", engineData);
                 intent.putExtra("extra", extra);
-                intent.putExtra("map", hashMap);
+                intent.putExtra("classMap", classArrayList);
                 startActivity(intent);
             }
         });
