@@ -212,6 +212,9 @@
     <string name="update">Update</string>
     <string name="toast_password_updated">Password was changed</string>
     <string name="toast_password_does_not_match">Password does not match</string>
+    <string name="text_hello">Hello</string>
+    <string name="login">Login</string>
+    <string name="signin_offline">Sign in offline</string>
 
 
 </resources>

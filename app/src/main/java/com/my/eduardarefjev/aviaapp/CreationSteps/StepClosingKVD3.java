@@ -88,8 +88,10 @@ public class StepClosingKVD3 extends AppCompatActivity {
                 Intent intent;
                 if (classArrayList.size() <= 0)
                     intent = new Intent(StepClosingKVD3.this, Step085Nom.class);
-                else intent = new Intent(StepClosingKVD3.this, classArrayList.get(0));
-                classArrayList.remove(0);
+                else {
+                    intent = new Intent(StepClosingKVD3.this, classArrayList.get(0));
+                    classArrayList.remove(0);
+                }
                 intent.putExtra("recordId", id);
                 intent.putExtra("showValues", showValues);
                 intent.putExtra("editableValues", editableValues);

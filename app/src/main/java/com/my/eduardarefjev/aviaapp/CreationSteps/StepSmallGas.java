@@ -119,8 +119,8 @@ public class StepSmallGas extends AppCompatActivity {
         spinnerClosingLantern = findViewById(R.id.LinearLabelInpSpinnerClosingLantern);
         spinnerAirCond = findViewById(R.id.LinearLabelInpSpinnerAirCond);
         //EA Create DropDown List
-        myAdapter = new ArrayAdapter<>(StepSmallGas.this, android.R.layout.simple_spinner_dropdown_item, getResources().getStringArray(R.array.good_bad));
-        myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        myAdapter = new ArrayAdapter<>(StepSmallGas.this, R.layout.spinner_item, getResources().getStringArray(R.array.good_bad));
+        myAdapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
         spinnerClosingLantern.setAdapter(myAdapter);
         spinnerAirCond.setAdapter(myAdapter);
 
@@ -141,8 +141,10 @@ public class StepSmallGas extends AppCompatActivity {
                 Intent intent;
                 if (classArrayList.size() <= 0)
                     intent = new Intent(StepSmallGas.this, StepClosingKVD5.class);
-                else intent = new Intent(StepSmallGas.this, classArrayList.get(0));
-                classArrayList.remove(0);
+                else {
+                    intent = new Intent(StepSmallGas.this, classArrayList.get(0));
+                    classArrayList.remove(0);
+                }
                 intent.putExtra("recordId", id);
                 intent.putExtra("showValues", showValues);
                 intent.putExtra("editableValues", editableValues);

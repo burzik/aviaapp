@@ -76,7 +76,6 @@ public class StepMax extends AppCompatActivity{
 
         Intent intent = getIntent();
         id = intent.getStringExtra("recordId");
-        //parentView = intent.getStringExtra("parentViewName");
         Bundle extra = getIntent().getBundleExtra("extra");
         engineData  = extra.getParcelable("objects");
         showValues = intent.getBooleanExtra("showValues", false);
@@ -122,8 +121,10 @@ public class StepMax extends AppCompatActivity{
                 Intent intent;
                 if (classArrayList.size() <= 0)
                     intent = new Intent(StepMax.this, StepClosingKVDKPV.class);
-                else intent = new Intent(StepMax.this, classArrayList.get(0));
-                classArrayList.remove(0);
+                else {
+                    intent = new Intent(StepMax.this, classArrayList.get(0));
+                    classArrayList.remove(0);
+                }
                 intent.putExtra("recordId", id);
                 intent.putExtra("showValues", showValues);
                 intent.putExtra("editableValues", editableValues);

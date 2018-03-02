@@ -2,11 +2,13 @@
 <ScrollView
     android:layout_height="match_parent"
     android:layout_width="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/colorSoftSkyBlue">
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20sp">
         <TextView
             android:id="@+id/LinearLabelFirstName"
             android:layout_width="match_parent"
@@ -95,11 +97,12 @@
             android:gravity="center"/>
        <Spinner
            android:id="@+id/LinearLabelInpSpinnerPrivileges"
-           android:layout_width="match_parent"
+           android:layout_width="wrap_content"
            android:layout_height="wrap_content"
            android:paddingBottom="10dp"
            android:layout_marginLeft="20dp"
            android:layout_marginRight="20dp"
+           android:layout_gravity="center"
            android:textSize="16sp"
            android:gravity="center" />
         <LinearLayout
@@ -111,11 +114,18 @@
                 android:id="@+id/LinearButtonClear"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:gravity="center"
-                android:layout_gravity="start"
+                android:layout_weight="1"
+                android:layout_margin="10sp"
+                android:textAllCaps="false"
+                android:padding="10sp"
+                android:drawablePadding="10sp"
+                android:ems="8"
                 android:text="@string/button_clear"
-                android:layout_weight="1" />
+                android:textColor="#000000"
+                android:fontFamily="@font/verdana"
+                android:textSize="18sp"
+                android:layout_gravity="end"
+                android:background="@drawable/shape_button" />
             <TextView
                 android:id="@+id/LinearTextViewCenterCreateUser"
                 android:layout_width="wrap_content"
@@ -128,11 +138,18 @@
                 android:id="@+id/LinearButtonCreateUser"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:gravity="center"
-                android:layout_gravity="end"
+                android:layout_weight="1"
+                android:layout_margin="10sp"
+                android:textAllCaps="false"
+                android:padding="10sp"
+                android:drawablePadding="10sp"
+                android:ems="8"
                 android:text="@string/button_create"
-                android:layout_weight="1" />
+                android:textColor="#000000"
+                android:fontFamily="@font/verdana"
+                android:textSize="18sp"
+                android:layout_gravity="end"
+                android:background="@drawable/shape_button" />
         </LinearLayout>
     </LinearLayout>
 </ScrollView>

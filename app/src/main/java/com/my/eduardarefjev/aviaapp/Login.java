@@ -27,7 +27,7 @@ public class Login extends AppCompatActivity{
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.linear_login);
-        this.setTitle("Login");
+        this.setTitle(R.string.login);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -36,9 +36,9 @@ public class Login extends AppCompatActivity{
     }
 
     public void singIn(){
-        Button bSingIn = (Button) findViewById(R.id.LinearSignIn);
-        eEmail = (EditText) findViewById(R.id.LinearInpEmail);
-        ePass = (EditText) findViewById(R.id.LinearPassword);
+        Button bSingIn = findViewById(R.id.RelativeButtonSignIn);
+        eEmail = findViewById(R.id.RelativeInpEmail);
+        ePass = findViewById(R.id.RelativeInpPassword);
 
         bSingIn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,7 +51,7 @@ public class Login extends AppCompatActivity{
     }
 
     public void signInOffline(){
-        Button bSignInOffline = (Button) findViewById(R.id.LinearSignInOffline);
+        Button bSignInOffline = findViewById(R.id.RelativeButtonSignInOffline);
 
         bSignInOffline.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -17,4 +17,7 @@
     <string name="update">Обновить</string>
     <string name="toast_password_updated">Пароль изменен</string>
     <string name="toast_password_does_not_match">Пароли не совпадают</string>
+    <string name="text_hello">Добро пожаловать</string>
+    <string name="login">Ввход</string>
+    <string name="signin_offline">Войти без интернета</string>
 </resources>

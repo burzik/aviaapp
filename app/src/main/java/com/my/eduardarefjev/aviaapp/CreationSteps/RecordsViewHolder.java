@@ -47,7 +47,7 @@ public class RecordsViewHolder extends ArrayAdapter<StepEngineData> {
             viewHolder = new ViewHolder();
             LayoutInflater inflater = activity.getLayoutInflater();
             final ViewGroup nullParent = null;
-            convertView = inflater.inflate(R.layout.listview_records, nullParent);
+            convertView = inflater.inflate(R.layout.listview_two_elements, nullParent);
 
             viewHolder.date = (TextView) convertView.findViewById(R.id.firstListItem);
             viewHolder.engineId = (TextView) convertView.findViewById(R.id.secondListItem);

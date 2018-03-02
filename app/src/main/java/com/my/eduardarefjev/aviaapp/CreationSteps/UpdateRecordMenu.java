@@ -12,6 +12,7 @@ import com.my.eduardarefjev.aviaapp.MainActivity;
 import com.my.eduardarefjev.aviaapp.R;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -26,8 +27,6 @@ public class UpdateRecordMenu extends AppCompatActivity {
     StepEngineData engineData;
     ArrayList<Class> classArrayList = new ArrayList<>();
     LinkedHashMap<Class, Boolean> linkedHashMap = new LinkedHashMap<>();
-
-
     boolean showValues = true;
     boolean editableValues = true;
 
@@ -55,19 +54,18 @@ public class UpdateRecordMenu extends AppCompatActivity {
         linkedHashMap.put(StepFinish.class, false);
         linkedHashMap.put(MainActivity.class, true);
 
-        //Intent intent = getIntent();
-        //id = intent.getStringExtra("recordId");
         Bundle extra = getIntent().getBundleExtra("extra");
         engineData  = extra.getParcelable("objects");
 
-        UpdateSteps();
+        executeFastNavigation();
     }
 
-    public void UpdateSteps() {
+    public void executeFastNavigation() {
         Button bNextStep = findViewById(R.id.LinearMenuRecordsNext);
         bNextStep.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                engineData.setLaunchDate(Calendar.getInstance().getTime());
                 id = CreationHelper.createRecord(engineData);
                 for (Map.Entry<Class, Boolean> entry : linkedHashMap.entrySet()) {
                     if (entry.getValue())

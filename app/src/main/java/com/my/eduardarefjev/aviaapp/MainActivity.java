@@ -110,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
                 if (dataSnapshot.exists()) {
                     for (DataSnapshot issue : dataSnapshot.getChildren()) {
                         user = issue.getValue(User.class);
-                        hello.append(" " + user.getLastName());
+                        hello.append(", " + user.getLastName());
                         checkUserPrivilege();
                     }
                 }

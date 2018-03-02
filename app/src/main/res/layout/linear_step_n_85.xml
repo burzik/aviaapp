@@ -2,6 +2,7 @@
 <ScrollView
     android:layout_height="match_parent"
     android:layout_width="match_parent"
+    android:background="@color/colorSoftSkyBlue"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <LinearLayout
         android:orientation="vertical"
@@ -202,11 +203,17 @@
                 android:id="@+id/LinearButtonNextN85"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:gravity="center"
                 android:layout_gravity="end"
+                android:layout_margin="18sp"
+                android:textAllCaps="false"
+                android:padding="10sp"
+                android:drawablePadding="10sp"
+                android:ems="6"
                 android:text="@string/button_next"
-                />
+                android:textColor="#000000"
+                android:fontFamily="@font/verdana"
+                android:textSize="18sp"
+                android:background="@drawable/shape_button" />
         </LinearLayout>
     </LinearLayout>
 </ScrollView>

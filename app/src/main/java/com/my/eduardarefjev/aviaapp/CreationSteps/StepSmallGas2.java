@@ -115,8 +115,10 @@ public class StepSmallGas2 extends AppCompatActivity {
                 Intent intent;
                 if (classArrayList.size() <= 0)
                     intent = new Intent(StepSmallGas2.this, StepControlKND.class);
-                else intent = new Intent(StepSmallGas2.this, classArrayList.get(0));
-                classArrayList.remove(0);
+                else {
+                    intent = new Intent(StepSmallGas2.this, classArrayList.get(0));
+                    classArrayList.remove(0);
+                }
                 intent.putExtra("recordId", id);
                 intent.putExtra("showValues", showValues);
                 intent.putExtra("editableValues", editableValues);

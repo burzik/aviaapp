@@ -2,11 +2,13 @@
 <ScrollView
     android:layout_height="match_parent"
     android:layout_width="match_parent"
+    android:background="@color/colorSoftSkyBlue"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20sp">
         <TextView
             android:id="@+id/LinearLabelFirstName"
             android:layout_width="match_parent"
@@ -73,21 +75,29 @@
             android:gravity="center"/>
         <Spinner
             android:id="@+id/LinearLabelInpSpinnerPrivileges"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingBottom="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
+            android:layout_gravity="center"
             android:textSize="16sp"
             android:gravity="center" />
         <Button
             android:id="@+id/LinearButtonUpdateUser"
             android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_margin="10dp"
-            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:layout_margin="10sp"
+            android:textAllCaps="false"
+            android:padding="10sp"
+            android:drawablePadding="10sp"
+            android:ems="8"
+            android:text="@string/update"
+            android:textColor="#000000"
+            android:fontFamily="@font/verdana"
+            android:textSize="18sp"
             android:layout_gravity="end"
-            android:text="@string/button_change"
-            android:layout_weight="1" />
+            android:background="@drawable/shape_button" />
+
     </LinearLayout>
 </ScrollView>

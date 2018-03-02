@@ -87,8 +87,10 @@ public class StepTanningBoardDisplayGenerator extends AppCompatActivity {
                 Intent intent;
                 if (classArrayList.size() <= 0)
                     intent = new Intent(StepTanningBoardDisplayGenerator.this, StepFinish.class);
-                else intent = new Intent(StepTanningBoardDisplayGenerator.this, classArrayList.get(0));
-                classArrayList.remove(0);
+                else {
+                    intent = new Intent(StepTanningBoardDisplayGenerator.this, classArrayList.get(0));
+                    classArrayList.remove(0);
+                }
                 intent.putExtra("recordId", id);
                 intent.putExtra("showValues", showValues);
                 intent.putExtra("editableValues", editableValues);

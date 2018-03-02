@@ -1,59 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<ScrollView
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/colorSoftSkyBlue">
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/LinearHello"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Hello"
-        android:textSize="16pt"
-        android:gravity="center"
-        android:layout_marginTop="35dp"
-        />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/label_menu"
-        android:textSize="16pt"
-        android:gravity="center"
-        android:layout_marginTop="35dp"
-        />
-    <Button
-        android:id="@+id/LinearCreateRecord"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/button_new_record"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"/>
-    <Button
-        android:id="@+id/LinearShowRecords"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/button_records"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"/>
-    <Button
-        android:id="@+id/LinearCreateUser"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/button_create_user"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"/>
-    <Button
-        android:id="@+id/LinearSetPrivileges"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/button_set_privileges"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"/>
-    <Button
-        android:id="@+id/LinearInsertEngine"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/button_insert_engine"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"/>
-</LinearLayout>
+        <ImageView
+            android:layout_width="96sp"
+            android:layout_height="63sp"
+            android:background="@mipmap/plane"
+            android:layout_gravity="center"
+            android:layout_margin="20sp"
+            android:contentDescription="" />
+        <TextView
+            android:id="@+id/LinearHello"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/text_hello"
+            android:textColor="#000000"
+            android:fontFamily="@font/verdana"
+            android:textSize="16pt"
+            android:gravity="center"
+            android:layout_marginTop="15sp" />
+        <Button
+            android:id="@+id/LinearCreateRecord"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10sp"
+            android:textAllCaps="false"
+            android:padding="10sp"
+            android:drawablePadding="10sp"
+            android:ems="12"
+            android:text="@string/button_new_record"
+            android:textColor="#000000"
+            android:fontFamily="@font/verdana"
+            android:textSize="18sp"
+            android:layout_gravity="center"
+            android:background="@drawable/shape_button" />
+        <Button
+            android:id="@+id/LinearShowRecords"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10sp"
+            android:textAllCaps="false"
+            android:padding="10sp"
+            android:drawablePadding="10sp"
+            android:ems="12"
+            android:text="@string/button_records"
+            android:textColor="#000000"
+            android:fontFamily="@font/verdana"
+            android:textSize="18sp"
+            android:layout_gravity="center"
+            android:background="@drawable/shape_button" />
+        <Button
+            android:id="@+id/LinearInsertEngine"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10sp"
+            android:textAllCaps="false"
+            android:padding="10sp"
+            android:drawablePadding="10sp"
+            android:ems="12"
+            android:text="@string/button_insert_engine"
+            android:textColor="#000000"
+            android:fontFamily="@font/verdana"
+            android:textSize="18sp"
+            android:layout_gravity="center"
+            android:background="@drawable/shape_button" />
+        <Button
+            android:id="@+id/LinearCreateUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10sp"
+            android:textAllCaps="false"
+            android:padding="10sp"
+            android:drawablePadding="10sp"
+            android:ems="12"
+            android:text="@string/button_create_user"
+            android:textColor="#000000"
+            android:fontFamily="@font/verdana"
+            android:textSize="18sp"
+            android:layout_gravity="center"
+            android:background="@drawable/shape_button" />
+        <Button
+            android:id="@+id/LinearSetPrivileges"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10sp"
+            android:textAllCaps="false"
+            android:padding="10sp"
+            android:drawablePadding="10sp"
+            android:ems="12"
+            android:text="@string/button_set_privileges"
+            android:textColor="#000000"
+            android:fontFamily="@font/verdana"
+            android:textSize="18sp"
+            android:layout_gravity="center"
+            android:background="@drawable/shape_button" />
+    </LinearLayout>
+</ScrollView>

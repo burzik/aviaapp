@@ -53,7 +53,7 @@ public class UserCreation extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstance) {
         super.onCreate(savedInstance);
-        setContentView(R.layout.linear_create_user);
+        setContentView(R.layout.linear_user_creation);
 
         //EA Bind variables
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Users");
@@ -95,8 +95,8 @@ public class UserCreation extends AppCompatActivity {
         }
 
         //EA Create DropDown List
-        ArrayAdapter<String> myAdapter = new ArrayAdapter<>(UserCreation.this, android.R.layout.simple_spinner_dropdown_item, getResources().getStringArray(R.array.privileges));
-        myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        ArrayAdapter<String> myAdapter = new ArrayAdapter<>(UserCreation.this, R.layout.spinner_item, getResources().getStringArray(R.array.privileges));
+        myAdapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
         spinnerPrivileges.setAdapter(myAdapter);
 
         createUserButton();

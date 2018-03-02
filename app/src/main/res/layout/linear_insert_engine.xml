@@ -1,34 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:id="@+id/LinearLabelEngineNumber"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/label_engine_num"
-            android:padding="5dp"
-            android:textSize="16sp"
-            android:gravity="center"/>
-        <EditText
-            android:id="@+id/LinearLabelInpEngineNumber"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/enter"
-            android:inputType="number"
-            android:paddingBottom="10dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:textSize="16sp"
-            android:gravity="center" />
-        <Button
-            android:id="@+id/buttonCreateEngineNumber"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorSoftSkyBlue">
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="@string/button_create"/>
-    </LinearLayout>
-</android.support.constraint.ConstraintLayout>
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/button_insert_engine"
+                android:layout_above="@+id/LinearLabelInpEngineNumber"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:textColor="#000000"
+                android:fontFamily="@font/verdana"
+                android:textSize="20sp"
+                android:padding="10sp" />
+
+            <EditText
+                android:id="@+id/LinearLabelInpEngineNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/emptyCenter"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:drawablePadding="12sp"
+                android:ems="15"
+                android:maxLines="1"
+                android:padding="10sp"
+                android:layout_margin="8sp"
+                android:hint="@string/enter"
+                android:inputType="number"
+                android:background="@drawable/shape_for_edittext"
+                android:gravity="center"
+                android:selectAllOnFocus="false"
+                android:singleLine="true"
+                android:fontFamily="@font/verdana"
+                android:textSize="14sp" />
+            <TextView
+                android:id="@+id/emptyCenter"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true" />
+
+            <Button
+                android:id="@+id/buttonCreateEngineNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/emptyCenter"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_margin="18sp"
+                android:textAllCaps="false"
+                android:padding="10sp"
+                android:drawablePadding="10sp"
+                android:ems="12"
+                android:text="@string/button_create"
+                android:textColor="#000000"
+                android:fontFamily="@font/verdana"
+                android:textSize="18sp"
+                android:background="@drawable/shape_button" />
+
+        </RelativeLayout>
+    </android.support.constraint.ConstraintLayout>

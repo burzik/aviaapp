@@ -5,8 +5,6 @@ import android.app.ListActivity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.view.View;
-import android.widget.Button;
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -28,16 +26,16 @@ import java.util.ArrayList;
 public class ListOfUsers extends ListActivity {
 
     private DatabaseReference mDatabase;
-    private ArrayList<User> m_parts = new ArrayList<>();
+    private ArrayList<User> userArrayList = new ArrayList<>();
     private ListOfUsersViewHolder m_adapter;
 
     @Override
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.listview_two_elements);
         this.setTitle("Users");
 
-        m_adapter = new ListOfUsersViewHolder(this, R.layout.activity_main, m_parts);
+        m_adapter = new ListOfUsersViewHolder(this, R.layout.listview_two_elements, userArrayList);
 
         setListAdapter(m_adapter);
         Runnable viewParts = new Runnable() {
@@ -92,20 +90,11 @@ public class ListOfUsers extends ListActivity {
 
         public void handleMessage(Message msg)
         {
-            m_adapter = new ListOfUsersViewHolder(ListOfUsers.this, R.layout.activity_main, m_parts);
+            m_adapter = new ListOfUsersViewHolder(ListOfUsers.this, R.layout.listview_records, userArrayList);
             // display the list.
             setListAdapter(m_adapter);
         }
     };
-
-    public void nextSecondStep() {
-        Button bNextStep = (Button) findViewById(R.id.LinearButtonNextFinish);
-        bNextStep.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-            }
-        });
-    }
 
     @Override
     protected void onResume() {

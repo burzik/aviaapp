@@ -163,7 +163,7 @@
                 <category android:name="android.intent.category.EDIT" />
             </intent-filter>
         </activity>
-        <activity android:name=".UserInformation.DetailedUserInfo">
+        <activity android:name=".UserInformation.UserDetailedInfo">
         <intent-filter>
             <action android:name="android.intent.action.INFO" />
 

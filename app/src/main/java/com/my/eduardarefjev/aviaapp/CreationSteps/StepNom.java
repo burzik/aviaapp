@@ -118,8 +118,8 @@ public class StepNom extends AppCompatActivity {
         spinnerAutomatic_2 = findViewById(R.id.RelativeSpinnerInpAutomatic_2);
 
         //EA Create DropDown List
-        myAdapter = new ArrayAdapter<>(StepNom.this, android.R.layout.simple_spinner_dropdown_item, getResources().getStringArray(R.array.good_bad));
-        myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        myAdapter = new ArrayAdapter<>(StepNom.this, R.layout.spinner_item, getResources().getStringArray(R.array.good_bad));
+        myAdapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
         spinnerDoNotRunOn.setAdapter(myAdapter);
         spinnerEngineParametersOn.setAdapter(myAdapter);
         spinnerDoNotRunOff.setAdapter(myAdapter);
@@ -145,8 +145,10 @@ public class StepNom extends AppCompatActivity {
                 Intent intent;
                 if (classArrayList.size() <= 0)
                     intent = new Intent(StepNom.this, StepMax.class);
-                else intent = new Intent(StepNom.this, classArrayList.get(0));
-                classArrayList.remove(0);
+                else {
+                    intent = new Intent(StepNom.this, classArrayList.get(0));
+                    classArrayList.remove(0);
+                }
                 intent.putExtra("recordId", id);
                 intent.putExtra("showValues", showValues);
                 intent.putExtra("editableValues", editableValues);

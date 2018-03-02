@@ -2,11 +2,13 @@
 <ScrollView
     android:layout_height="match_parent"
     android:layout_width="match_parent"
+    android:background="@color/colorSoftSkyBlue"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20sp">
         <TextView
             android:id="@+id/LinearN1"
             android:layout_width="match_parent"
@@ -179,12 +181,13 @@
             android:gravity="center"/>
         <Spinner
             android:id="@+id/RelativeSpinnerInpKrTank"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingBottom="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:textSize="10pt"
+            android:layout_gravity="center"
+            android:textSize="16sp"
             android:gravity="center" />
         <TextView
             android:id="@+id/LinearLabelSpace"
@@ -251,16 +254,23 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_marginBottom="20sp">
             <Button
                 android:id="@+id/LinearButtonNextClosingKVD3Max"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:gravity="center"
                 android:layout_gravity="end"
+                android:layout_margin="18sp"
+                android:textAllCaps="false"
+                android:padding="10sp"
+                android:drawablePadding="10sp"
+                android:ems="6"
                 android:text="@string/button_next"
-                />
+                android:textColor="#000000"
+                android:fontFamily="@font/verdana"
+                android:textSize="18sp"
+                android:background="@drawable/shape_button" />
         </LinearLayout>
     </LinearLayout>
 </ScrollView>

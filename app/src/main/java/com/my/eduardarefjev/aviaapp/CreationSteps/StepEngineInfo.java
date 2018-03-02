@@ -61,8 +61,8 @@ public class StepEngineInfo extends AppCompatActivity {
         final Spinner engineNumber = findViewById(R.id.LinearLabelInpSpinnerEngineNumber);
         //EA Create DropDown List
         final List<String> list = new ArrayList<>();
-        final ArrayAdapter<String> myAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, list);
-        myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        final ArrayAdapter<String> myAdapter = new ArrayAdapter<>(this, R.layout.spinner_item, list);
+        myAdapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
 
         DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference().child("EngineNumber");
         mDatabase.addChildEventListener(new ChildEventListener() {

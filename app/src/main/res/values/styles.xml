@@ -5,7 +5,19 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorAccent">@color/colorPrimaryDark</item>
+        <item name="android:dropDownListViewStyle">@style/spinnerDropDownItemStyle</item>
+        <item name="android:fontFamily">@font/font_family_verdana</item>
+        <!-- To change the background of options menu-->
+        <item name="android:itemBackground">@color/colorSoftSkyBlue</item>
+    </style>
+
+    <style name="spinnerItemStyle" parent="android:Widget.TextView.SpinnerItem">
+    </style>
+
+    <style name="spinnerDropDownItemStyle" parent="android:TextAppearance.Widget.TextView.SpinnerItem">
+        <item name="android:divider">@color/colorActiveLightGray</item>
+        <item name="android:dividerHeight">1sp</item>
     </style>
 
 </resources>

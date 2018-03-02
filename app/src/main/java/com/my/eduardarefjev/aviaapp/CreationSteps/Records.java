@@ -33,7 +33,7 @@ import java.util.List;
 public class Records extends ListActivity {
 
     private DatabaseReference mDatabase;
-    private ArrayList<StepEngineData> m_parts = new ArrayList<>();
+    private ArrayList<StepEngineData> stepEngineDataArrayList = new ArrayList<>();
     private ArrayList<StepEngineData> enginesNumbers = new ArrayList<>();
     private RecordsViewHolder m_adapter;
     private boolean isSelected = false;
@@ -45,11 +45,11 @@ public class Records extends ListActivity {
     @Override
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.listview_records);
 
         mDatabase = FirebaseDatabase.getInstance().getReference().child("EngineLaunches");
         engineNumber = findViewById(R.id.RelativeSpinnerSearchEngineNumber);
-        m_adapter = new RecordsViewHolder(this, R.layout.activity_main, m_parts);
+        m_adapter = new RecordsViewHolder(this, R.layout.listview_records, stepEngineDataArrayList);
         myAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, list);
         setListAdapter(m_adapter);
 
@@ -131,12 +131,12 @@ public class Records extends ListActivity {
                     enginesNumbers = new ArrayList<>();
                     String value = list.get(position);
                     if(value.equals(getString(R.string.label_all))) value = "0";
-                        for (StepEngineData engData : m_parts) {
+                        for (StepEngineData engData : stepEngineDataArrayList) {
                             if (engData.getEngineId() == Integer.valueOf(value) || Integer.valueOf(value) == 0) {
                                 enginesNumbers.add(engData);
                             }
                         }
-                    m_adapter = new RecordsViewHolder(Records.this, R.layout.activity_main, enginesNumbers);
+                    m_adapter = new RecordsViewHolder(Records.this, R.layout.listview_records, enginesNumbers);
                     setListAdapter(m_adapter);
                 }
                 isSelected = true;
@@ -186,7 +186,7 @@ public class Records extends ListActivity {
     private Handler handler = new Handler() {
         public void handleMessage(Message msg)
         {
-            m_adapter = new RecordsViewHolder(Records.this, R.layout.activity_main, m_parts);
+            m_adapter = new RecordsViewHolder(Records.this, R.layout.listview_records, stepEngineDataArrayList);
             // display the list.
             setListAdapter(m_adapter);
         }

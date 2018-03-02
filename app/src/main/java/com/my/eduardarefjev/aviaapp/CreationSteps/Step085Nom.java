@@ -102,8 +102,10 @@ public class Step085Nom extends AppCompatActivity {
                 Intent intent;
                 if (classArrayList.size() <= 0)
                     intent = new Intent(Step085Nom.this, StepN100.class);
-                else intent = new Intent(Step085Nom.this, classArrayList.get(0));
-                classArrayList.remove(0);
+                else {
+                    intent = new Intent(Step085Nom.this, classArrayList.get(0));
+                    classArrayList.remove(0);
+                }
                 intent.putExtra("recordId", id);
                 intent.putExtra("showValues", showValues);
                 intent.putExtra("editableValues", editableValues);

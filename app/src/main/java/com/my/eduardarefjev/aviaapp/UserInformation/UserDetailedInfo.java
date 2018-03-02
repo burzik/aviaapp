@@ -19,11 +19,11 @@ import java.util.ArrayList;
 /**
  * HISTORY
  * 	Date			Author				Comments
- * 	23.12.2017		Eduard Arefjev 		Created "DetailedUserInfo" screen to change user information
+ * 	23.12.2017		Eduard Arefjev 		Created "UserDetailedInfo" screen to change user information
  * 	01.01.2017      Eduard Arefjev      Updated layout id, due of duplicate error
  */
 
-public class DetailedUserInfo extends AppCompatActivity {
+public class UserDetailedInfo extends AppCompatActivity {
 
     //EA init
     private static ArrayList<User> values;
@@ -51,13 +51,13 @@ public class DetailedUserInfo extends AppCompatActivity {
         final User user = objects.get(position);
 
         //EA find views
-        eFirstName = (EditText) findViewById(R.id.LinearLabelInpFirstName);
-        eLastName = (EditText) findViewById(R.id.LinearLabelInpLastName);
-        eEmail = (TextView) findViewById(R.id.LinearLabelInpEmailDetailed);
+        eFirstName = findViewById(R.id.LinearLabelInpFirstName);
+        eLastName = findViewById(R.id.LinearLabelInpLastName);
+        eEmail = findViewById(R.id.LinearLabelInpEmailDetailed);
         //ePassword = (EditText) findViewById(R.id.LinearLabelInpPassword);
-        spinnerPrivileges = (Spinner) findViewById(R.id.LinearLabelInpSpinnerPrivileges);
-        ArrayAdapter<String> myAdapter = new ArrayAdapter<>(DetailedUserInfo.this, android.R.layout.simple_spinner_dropdown_item, getResources().getStringArray(R.array.privileges));
-        myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerPrivileges = findViewById(R.id.LinearLabelInpSpinnerPrivileges);
+        ArrayAdapter<String> myAdapter = new ArrayAdapter<>(UserDetailedInfo.this, R.layout.spinner_item, getResources().getStringArray(R.array.privileges));
+        myAdapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
         spinnerPrivileges.setAdapter(myAdapter);
         int spinnerPosition = myAdapter.getPosition(user.getPrivileges());
         spinnerPrivileges.setSelection(spinnerPosition);
@@ -70,7 +70,7 @@ public class DetailedUserInfo extends AppCompatActivity {
         //ePassword.setText(user.getPa());
 
 
-        bUpdate = (Button) findViewById(R.id.LinearButtonUpdateUser);
+        bUpdate = findViewById(R.id.LinearButtonUpdateUser);
         bUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

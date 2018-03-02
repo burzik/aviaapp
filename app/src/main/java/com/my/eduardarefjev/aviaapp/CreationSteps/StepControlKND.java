@@ -8,9 +8,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.my.eduardarefjev.aviaapp.R;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 /**
@@ -90,15 +92,15 @@ public class StepControlKND extends AppCompatActivity {
         final EditText eNKNDPLANE99 = findViewById(R.id.LinearLabelInpNKNDPLANE99);
         final EditText eNKNDPLANE101 = findViewById(R.id.LinearLabelInpNKNDPLANE101);
 
-        eNKVDPHY97.setText(String.format("%.2f", CreationHelper.calcControl(engineData.getAtmTemp(), 97.0d)));
-        eNKVDPHY99.setText(String.format("%.2f", CreationHelper.calcControl(engineData.getAtmTemp(), 99.0d)));
-        eNKVDPHY101.setText(String.format("%.2f", CreationHelper.calcControl(engineData.getAtmTemp(), 101.0d)));
+        eNKVDPHY97.setText(String.format("%.2f", CreationHelper.calcControl(engineData.getAtmTemp(), 97.0d)).replace(",","."));
+        eNKVDPHY99.setText(String.format("%.2f", CreationHelper.calcControl(engineData.getAtmTemp(), 99.0d)).replace(",","."));
+        eNKVDPHY101.setText(String.format("%.2f", CreationHelper.calcControl(engineData.getAtmTemp(), 101.0d)).replace(",","."));
 
         eNKNDPHY97.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean b) {
                 if(!b){
-                    eNKNDPLANE97.setText(String.format("%.2f", CreationHelper.calcControl(engineData.getAtmTemp(), Double.valueOf(eNKNDPHY97.getText().toString()))));
+                    eNKNDPLANE97.setText(String.format("%.2f", CreationHelper.calcControl(engineData.getAtmTemp(), Double.valueOf(eNKNDPHY97.getText().toString()))).replace(",","."));
                 }
             }
         });
@@ -107,7 +109,7 @@ public class StepControlKND extends AppCompatActivity {
             @Override
             public void onFocusChange(View view, boolean b) {
                 if(!b){
-                    eNKNDPLANE99.setText(String.format("%.2f", CreationHelper.calcControl(engineData.getAtmTemp(), Double.valueOf(eNKNDPHY99.getText().toString()))));
+                    eNKNDPLANE99.setText(String.format("%.2f", CreationHelper.calcControl(engineData.getAtmTemp(), Double.valueOf(eNKNDPHY99.getText().toString()))).replace(",","."));
                 }
             }
         });
@@ -116,7 +118,7 @@ public class StepControlKND extends AppCompatActivity {
             @Override
             public void onFocusChange(View view, boolean b) {
                 if(!b){
-                    eNKNDPLANE101.setText(String.format("%.2f", CreationHelper.calcControl(engineData.getAtmTemp(), Double.valueOf(eNKNDPHY101.getText().toString()))));
+                    eNKNDPLANE101.setText(String.format("%.2f", CreationHelper.calcControl(engineData.getAtmTemp(), Double.valueOf(eNKNDPHY101.getText().toString()))).replace(",","."));
                 }
             }
         });
@@ -132,8 +134,10 @@ public class StepControlKND extends AppCompatActivity {
                 Intent intent;
                 if (classArrayList.size() <= 0)
                     intent = new Intent(StepControlKND.this, StepRunoutOfRotors.class);
-                else intent = new Intent(StepControlKND.this, classArrayList.get(0));
-                classArrayList.remove(0);
+                else {
+                    intent = new Intent(StepControlKND.this, classArrayList.get(0));
+                    classArrayList.remove(0);
+                }
                 intent.putExtra("recordId", id);
                 intent.putExtra("showValues", showValues);
                 intent.putExtra("editableValues", editableValues);

@@ -47,24 +47,23 @@ public class ListOfUsersViewHolder extends ArrayAdapter<User> {
             viewHolder = new ViewHolder();
             LayoutInflater inflater = activity.getLayoutInflater();
             final ViewGroup nullParent = null;
-            convertView = inflater.inflate(R.layout.activity_main, nullParent);
+            convertView = inflater.inflate(R.layout.listview_two_elements, nullParent);
 
-            viewHolder.firstName = (TextView) convertView.findViewById(R.id.activityMainId);
-            viewHolder.lastName = (TextView) convertView.findViewById(R.id.LastName);
+            viewHolder.firstName = convertView.findViewById(R.id.firstListItem);
+            viewHolder.lastName = convertView.findViewById(R.id.secondListItem);
 
             convertView.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
         User user = objects.get(position);
-
-        viewHolder.firstName.setText(user.getFirstName());
-        viewHolder.lastName.setText(user.getLastName());
+        viewHolder.firstName.setText(activity.getResources().getString(R.string.label_first_name) + ": " + user.getFirstName());
+        viewHolder.lastName.setText(activity.getResources().getString(R.string.label_last_name) + ": " + user.getLastName());
 
         convertView.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(activity, DetailedUserInfo.class);
+                Intent intent = new Intent(activity, UserDetailedInfo.class);
                 Bundle extra = new Bundle();
                 extra.putSerializable("objects", objects);
                 intent.putExtra("position", position);

@@ -1,23 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-android:orientation="vertical"
-android:weightSum="8">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorSoftSkyBlue"
+    android:weightSum="8">
 
-<ListView
-    android:id="@+id/android:list"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent" />
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
-<TextView
-    android:id="@+id/firstListItem"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:textSize="12pt" />
-<TextView
-    android:id="@+id/secondListItem"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:textSize="12pt" />
+        <TextView
+            android:id="@+id/RelativeSearchEngineNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:text="@string/label_engine_num"
+            android:textStyle="bold"
+            android:textSize="18sp" />
+
+        <Spinner
+            android:id="@+id/RelativeSpinnerSearchEngineNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/RelativeSearchEngineNumber"
+            android:layout_toEndOf="@+id/RelativeSearchEngineNumber"
+            android:layout_toRightOf="@+id/RelativeSearchEngineNumber"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/RelativeSearchDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_toLeftOf="@+id/RelativeSearchDateSymbol"
+            android:layout_toStartOf="@+id/RelativeSearchDateSymbol"
+            android:text="@string/label_date"
+            android:textStyle="bold"
+            android:textSize="18sp" />
+        <TextView
+            android:id="@+id/RelativeSearchDateSymbol"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/RelativeSearchDate"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:text="↑"
+            android:textSize="18sp" />
+
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/android:list"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" />
+
+    <TextView
+        android:id="@+id/activityMainId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12pt" />
+    <TextView
+        android:id="@+id/LastName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12pt" />
 </LinearLayout>

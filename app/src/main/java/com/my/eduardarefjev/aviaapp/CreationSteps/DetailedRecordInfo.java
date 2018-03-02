@@ -26,6 +26,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * HISTORY
@@ -40,7 +41,6 @@ import java.util.List;
 public class DetailedRecordInfo extends AppCompatActivity {
 
     private StepEngineData engineData;
-    private HashMap<String, Boolean> hashMap = new HashMap<>();
     private boolean showValues = true;
     private boolean editableValues = false;
     private final List<String> list = new ArrayList<>();
@@ -86,7 +86,6 @@ public class DetailedRecordInfo extends AppCompatActivity {
         Intent intent = getIntent();
         int position = intent.getIntExtra("position", -1);
         if (position == -1) {
-            //String id = intent.getStringExtra("recordId");
             Bundle extra = getIntent().getBundleExtra("extra");
             engineData  = extra.getParcelable("objects");
             classArrayList = (ArrayList<Class>)intent.getSerializableExtra("classMap");
@@ -102,8 +101,8 @@ public class DetailedRecordInfo extends AppCompatActivity {
 
         final Spinner engineNumber = findViewById(R.id.LinearLabelInpSpinnerEngineNumber);
         //EA Create DropDown List
-        myAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, list);
-        myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        myAdapter = new ArrayAdapter<>(this, R.layout.spinner_item, list);
+        myAdapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
 
         final String num = String.valueOf(engineData.getEngineId());
 
@@ -228,8 +227,10 @@ public class DetailedRecordInfo extends AppCompatActivity {
                 Intent intent;
                 if (classArrayList.size() <= 0)
                     intent = new Intent(DetailedRecordInfo.this, StepStartInfo.class);
-                else intent = new Intent(DetailedRecordInfo.this, classArrayList.get(0));
-                classArrayList.remove(0);
+                else {
+                    intent = new Intent(DetailedRecordInfo.this, classArrayList.get(0));
+                    classArrayList.remove(0);
+                }
                 intent.putExtra("recordId", id);
                 intent.putExtra("showValues", showValues);
                 intent.putExtra("editableValues", editableValues);
