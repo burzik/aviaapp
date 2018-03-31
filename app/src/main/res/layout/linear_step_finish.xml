@@ -16,14 +16,14 @@
             android:textStyle="bold"
             android:gravity="center"
             android:padding="14dp"
-            android:textSize="12pt"/>
+            android:textSize="18sp"/>
         <TextView
             android:id="@+id/LinearLabelCommon"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/label_common"
             android:padding="5dp"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center"/>
         <EditText
             android:id="@+id/LinearLabelInpCommon"
@@ -34,7 +34,7 @@
             android:paddingBottom="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center" />
         <TextView
             android:id="@+id/LinearLabelNominal"
@@ -42,7 +42,7 @@
             android:layout_height="wrap_content"
             android:text="@string/label_nominal"
             android:padding="5dp"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center"/>
         <EditText
             android:id="@+id/LinearLabelInpNominal"
@@ -53,7 +53,7 @@
             android:paddingBottom="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center" />
         <TextView
             android:id="@+id/LinearLabelMaximum"
@@ -61,7 +61,7 @@
             android:layout_height="wrap_content"
             android:text="@string/label_maximum"
             android:padding="5dp"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center"/>
         <EditText
             android:id="@+id/LinearLabelInpN1StraightRunV2"
@@ -72,7 +72,7 @@
             android:paddingBottom="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center" />
         <TextView
             android:id="@+id/LinearLabelNumberOfStarts"
@@ -82,14 +82,14 @@
             android:textStyle="bold"
             android:gravity="center"
             android:padding="14dp"
-            android:textSize="12pt"/>
+            android:textSize="18sp"/>
         <TextView
             android:id="@+id/LinearLabelEngineAI"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/label_engine_AI"
             android:padding="5dp"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center"/>
         <EditText
             android:id="@+id/LinearLabelInpEngineAI"
@@ -100,7 +100,7 @@
             android:paddingBottom="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center" />
         <TextView
             android:id="@+id/LinearLabelVSUSapphire"
@@ -108,7 +108,7 @@
             android:layout_height="wrap_content"
             android:text="@string/label_vsu_sapphire"
             android:padding="5dp"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center"/>
         <EditText
             android:id="@+id/LinearLabelInpVSUSapphire"
@@ -119,7 +119,7 @@
             android:paddingBottom="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center" />
         <TextView
             android:id="@+id/LinearLabelNumberOfPins"
@@ -129,14 +129,14 @@
             android:textStyle="bold"
             android:gravity="center"
             android:padding="14dp"
-            android:textSize="12pt"/>
+            android:textSize="18sp"/>
         <TextView
             android:id="@+id/LinearLabelEngineAI2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/label_engine_AI"
             android:padding="5dp"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center"/>
         <EditText
             android:id="@+id/LinearLabelInpEngineA2I"
@@ -147,7 +147,7 @@
             android:paddingBottom="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center" />
         <LinearLayout
             android:layout_width="match_parent"

@@ -16,14 +16,14 @@
             android:textStyle="bold"
             android:gravity="center"
             android:padding="14dp"
-            android:textSize="12pt"/>
+            android:textSize="18sp"/>
         <TextView
             android:id="@+id/LinearN1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/label_n1"
             android:padding="5dp"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center"/>
         <EditText
             android:id="@+id/LinearInpN1"
@@ -34,14 +34,14 @@
             android:paddingBottom="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center" />
         <TextView
             android:id="@+id/LinearTRC"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/label_trc"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center"/>
         <EditText
             android:id="@+id/LinearInpTRC"
@@ -52,7 +52,7 @@
             android:paddingBottom="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center"/>
         <TextView
             android:id="@+id/LinearPm"
@@ -70,14 +70,14 @@
             android:paddingBottom="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center"/>
         <TextView
             android:id="@+id/LinearTmC"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/label_tmc"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center"/>
         <EditText
             android:id="@+id/LinearInpTmC"
@@ -88,14 +88,14 @@
             android:paddingBottom="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center"/>
         <TextView
             android:id="@+id/LinearPt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/label_pt"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center"/>
         <EditText
             android:id="@+id/LinearInpPt"
@@ -106,14 +106,14 @@
             android:paddingBottom="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center"/>
         <TextView
             android:id="@+id/LinearEngineSqrt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/label_engine_sqrt"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center"/>
         <EditText
             android:id="@+id/LinearInpEngineSqrt"
@@ -124,14 +124,14 @@
             android:paddingBottom="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center"/>
         <TextView
             android:id="@+id/LinearPPKSwitchMin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/label_ppk_switch_min"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center"/>
         <EditText
             android:id="@+id/LinearInpPPKSwitchMin"
@@ -142,14 +142,14 @@
             android:paddingBottom="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center"/>
         <TextView
             android:id="@+id/LinearPPKSwitchMax"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/label_ppk_switch_max"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center"/>
         <EditText
             android:id="@+id/LinearInpPPKSwitchMax"
@@ -160,14 +160,14 @@
             android:paddingBottom="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center"/>
         <TextView
             android:id="@+id/LinearLabelSwitchPosition"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/label_switch_position"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:textStyle="italic"
             android:gravity="center"/>
         <TextView
@@ -175,7 +175,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/label_air_conditioning"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center"/>
         <RelativeLayout
             android:layout_width="match_parent"
@@ -192,7 +192,7 @@
                 android:layout_alignParentLeft="true"
                 android:gravity="end"
                 android:padding="5dp"
-                android:textSize="8pt"/>
+                android:textSize="14sp"/>
             <TextView
                 android:id="@+id/RelativeCenterTurnOn"
                 android:layout_width="wrap_content"
@@ -200,7 +200,7 @@
                 android:layout_centerInParent="true"
                 android:text=""
                 android:padding="5dp"
-                android:textSize="8pt"/>
+                android:textSize="14sp"/>
             <EditText
                 android:id="@+id/RelativeInpTurnOn"
                 android:layout_width="wrap_content"
@@ -212,7 +212,7 @@
                 android:hint="@string/enter"
                 android:inputType="number"
                 android:padding="5dp"
-                android:textSize="8pt"/>
+                android:textSize="14sp"/>
             <TextView
                 android:id="@+id/RelativeTurnOff"
                 android:layout_width="wrap_content"
@@ -222,7 +222,7 @@
                 android:layout_toLeftOf="@+id/RelativeCenterTurnOff"
                 android:layout_toStartOf="@+id/RelativeCenterTurnOff"
                 android:padding="5dp"
-                android:textSize="8pt"/>
+                android:textSize="14sp"/>
             <TextView
                 android:id="@+id/RelativeCenterTurnOff"
                 android:layout_width="wrap_content"
@@ -231,7 +231,7 @@
                 android:layout_centerInParent="true"
                 android:text=""
                 android:padding="5dp"
-                android:textSize="8pt"/>
+                android:textSize="14sp"/>
             <EditText
                 android:id="@+id/RelativeInpTurnOff"
                 android:layout_width="wrap_content"
@@ -243,14 +243,14 @@
                 android:hint="@string/enter"
                 android:inputType="number"
                 android:padding="5dp"
-                android:textSize="8pt"/>
+                android:textSize="14sp"/>
         </RelativeLayout>
         <TextView
             android:id="@+id/LinearLabelAntiIcingAgent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/label_anti_icing_agent"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center"/>
         <RelativeLayout
             android:layout_width="match_parent"
@@ -267,7 +267,7 @@
                 android:layout_alignParentLeft="true"
                 android:gravity="end"
                 android:padding="5dp"
-                android:textSize="8pt"/>
+                android:textSize="14sp"/>
             <TextView
                 android:id="@+id/RelativeCenterTurnOn_2"
                 android:layout_width="wrap_content"
@@ -275,7 +275,7 @@
                 android:layout_centerInParent="true"
                 android:text=""
                 android:padding="5dp"
-                android:textSize="8pt"/>
+                android:textSize="14sp"/>
             <EditText
                 android:id="@+id/RelativeInpTurnOn_2"
                 android:layout_width="wrap_content"
@@ -287,7 +287,7 @@
                 android:hint="@string/enter"
                 android:inputType="number"
                 android:padding="5dp"
-                android:textSize="8pt"/>
+                android:textSize="14sp"/>
             <TextView
                 android:id="@+id/RelativeTurnOff_2"
                 android:layout_width="wrap_content"
@@ -297,7 +297,7 @@
                 android:layout_toLeftOf="@+id/RelativeCenterTurnOff_2"
                 android:layout_toStartOf="@+id/RelativeCenterTurnOff_2"
                 android:padding="5dp"
-                android:textSize="8pt"/>
+                android:textSize="14sp"/>
             <TextView
                 android:id="@+id/RelativeCenterTurnOff_2"
                 android:layout_width="wrap_content"
@@ -306,7 +306,7 @@
                 android:layout_centerInParent="true"
                 android:text=""
                 android:padding="5dp"
-                android:textSize="8pt"/>
+                android:textSize="14sp"/>
             <EditText
                 android:id="@+id/RelativeInpTurnOff_2"
                 android:layout_width="wrap_content"
@@ -318,7 +318,7 @@
                 android:hint="@string/enter"
                 android:inputType="number"
                 android:padding="5dp"
-                android:textSize="8pt"/>
+                android:textSize="14sp"/>
         </RelativeLayout>
         <LinearLayout
             android:layout_width="match_parent"

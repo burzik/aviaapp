@@ -14,7 +14,7 @@
             android:layout_height="wrap_content"
             android:text="@string/label_exit_mg_max"
             android:padding="5dp"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center"/>
         <EditText
             android:id="@+id/LinearLabelInpExitMgMax"
@@ -25,7 +25,7 @@
             android:paddingBottom="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center" />
         <TextView
             android:id="@+id/LinearLabelResetMaxMg"
@@ -33,7 +33,7 @@
             android:layout_height="wrap_content"
             android:text="@string/label_reset_max_mg"
             android:padding="5dp"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center"/>
         <EditText
             android:id="@+id/LinearLabelInpResetMaxMg"
@@ -44,7 +44,7 @@
             android:paddingBottom="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center" />
         <LinearLayout
             android:layout_width="match_parent"

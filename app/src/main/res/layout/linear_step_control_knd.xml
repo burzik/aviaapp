@@ -16,13 +16,13 @@
             android:textStyle="bold"
             android:gravity="center"
             android:padding="14dp"
-            android:textSize="12pt"/>
+            android:textSize="18sp"/>
         <TextView
             android:id="@+id/LinearLabelPcEngine"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/label_pc_engine_install"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center"/>
         <LinearLayout
             android:layout_width="match_parent"
@@ -33,7 +33,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/label_n_kvd"
-                android:textSize="10pt"
+                android:textSize="16sp"
                 android:gravity="center"
                 android:layout_weight="1"/>
             <TextView
@@ -41,7 +41,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/label_97"
-                android:textSize="10pt"
+                android:textSize="16sp"
                 android:gravity="center"
                 android:layout_weight="1"/>
             <TextView
@@ -49,7 +49,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/label_99"
-                android:textSize="10pt"
+                android:textSize="16sp"
                 android:gravity="center"
                 android:layout_weight="1"/>
             <TextView
@@ -57,7 +57,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/label_101"
-                android:textSize="10pt"
+                android:textSize="16sp"
                 android:gravity="center"
                 android:layout_weight="1"/>
         </LinearLayout>
@@ -70,7 +70,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="@string/label_n_kvd_phy"
-                android:textSize="10pt"
+                android:textSize="16sp"
                 android:gravity="center"
                 android:layout_weight="1.25"/>
             <EditText
@@ -79,7 +79,7 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/enter"
                 android:inputType="numberDecimal"
-                android:textSize="10pt"
+                android:textSize="16sp"
                 android:gravity="center"
                 android:layout_weight="0.888"/>
             <EditText
@@ -88,7 +88,7 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/enter"
                 android:inputType="numberDecimal"
-                android:textSize="10pt"
+                android:textSize="16sp"
                 android:gravity="center"
                 android:layout_weight="0.888"/>
             <EditText
@@ -97,7 +97,7 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/enter"
                 android:inputType="numberDecimal"
-                android:textSize="10pt"
+                android:textSize="16sp"
                 android:gravity="center"
                 android:layout_weight="0.99"/>
         </LinearLayout>
@@ -110,7 +110,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="@string/label_n_knd_phy"
-                android:textSize="10pt"
+                android:textSize="16sp"
                 android:gravity="center"
                 android:layout_weight="1.25"/>
             <EditText
@@ -119,7 +119,7 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/enter"
                 android:inputType="numberDecimal"
-                android:textSize="10pt"
+                android:textSize="16sp"
                 android:gravity="center"
                 android:layout_weight="0.888"/>
             <EditText
@@ -128,7 +128,7 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/enter"
                 android:inputType="numberDecimal"
-                android:textSize="10pt"
+                android:textSize="16sp"
                 android:gravity="center"
                 android:layout_weight="0.888"/>
             <EditText
@@ -137,7 +137,7 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/enter"
                 android:inputType="numberDecimal"
-                android:textSize="10pt"
+                android:textSize="16sp"
                 android:gravity="center"
                 android:layout_weight="0.99"/>
         </LinearLayout>
@@ -150,7 +150,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="@string/label_n_knd_plane"
-                android:textSize="10pt"
+                android:textSize="16sp"
                 android:gravity="center"
                 android:layout_weight="1.25"/>
             <EditText
@@ -159,7 +159,7 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/enter"
                 android:inputType="numberDecimal"
-                android:textSize="10pt"
+                android:textSize="16sp"
                 android:gravity="center"
                 android:layout_gravity="center"
                 android:layout_weight="0.888"/>
@@ -169,7 +169,7 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/enter"
                 android:inputType="numberDecimal"
-                android:textSize="10pt"
+                android:textSize="16sp"
                 android:gravity="center"
                 android:layout_gravity="center"
                 android:layout_weight="0.888"/>
@@ -179,7 +179,7 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/enter"
                 android:inputType="numberDecimal"
-                android:textSize="10pt"
+                android:textSize="16sp"
                 android:gravity="center"
                 android:layout_gravity="center"
                 android:layout_weight="0.99"/>

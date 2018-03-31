@@ -16,14 +16,14 @@
             android:textStyle="bold"
             android:gravity="center"
             android:padding="14dp"
-            android:textSize="12pt"/>
+            android:textSize="18sp"/>
         <TextView
             android:id="@+id/LinearLabelLimbArg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/label_limb_arg"
             android:padding="5dp"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center"/>
         <EditText
             android:id="@+id/LinearLabelInpLimbArg"
@@ -34,7 +34,7 @@
             android:paddingBottom="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center" />
         <TextView
             android:id="@+id/LinearLabelVSULaunching"
@@ -44,13 +44,13 @@
             android:textStyle="bold"
             android:gravity="center"
             android:padding="14dp"
-            android:textSize="12pt"/>
+            android:textSize="18sp"/>
         <TextView
             android:id="@+id/LinearLabelLaunchingTVSU"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/label_launching_t_vsu"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center"/>
         <EditText
             android:id="@+id/LinearLabelInpLaunchingTVSU"
@@ -61,7 +61,7 @@
             android:paddingBottom="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center"/>
         <TextView
             android:id="@+id/LinearLabelEngineLaunching"
@@ -71,13 +71,13 @@
             android:textStyle="bold"
             android:gravity="center"
             android:padding="14dp"
-            android:textSize="12pt"/>
+            android:textSize="18sp"/>
         <TextView
             android:id="@+id/LinearLabelEngineCasting"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/label_engine_casting"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center"/>
         <EditText
             android:id="@+id/LinearLabelInpEngineCasting"
@@ -88,14 +88,14 @@
             android:paddingBottom="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center"/>
         <TextView
             android:id="@+id/LinearLabelVSUDisconnection"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/label_vsu_disconnection"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center"/>
         <EditText
             android:id="@+id/LinearLabelInpVSUDisconnection"
@@ -106,14 +106,14 @@
             android:paddingBottom="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center"/>
         <TextView
             android:id="@+id/LinearLabelTEngine"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/label_t_engine"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center"/>
         <EditText
             android:id="@+id/LinearLabelInpTEngine"
@@ -124,7 +124,7 @@
             android:paddingBottom="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center"/>
         <LinearLayout
             android:layout_width="match_parent"

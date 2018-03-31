@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:text="@string/label_rotor_vd"
             android:padding="5dp"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center"/>
         <EditText
             android:id="@+id/LinearLabelInpRotorVD"
@@ -27,7 +27,7 @@
             android:paddingBottom="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center" />
         <TextView
             android:id="@+id/LinearLabelRotorND"
@@ -35,7 +35,7 @@
             android:layout_height="wrap_content"
             android:text="@string/label_rotor_nd"
             android:padding="5dp"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center"/>
         <EditText
             android:id="@+id/LinearLabelInpRotorND"
@@ -46,7 +46,7 @@
             android:paddingBottom="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center" />
 
         <LinearLayout

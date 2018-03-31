@@ -16,14 +16,14 @@
             android:textStyle="bold"
             android:gravity="center"
             android:padding="14dp"
-            android:textSize="12pt"/>
+            android:textSize="18sp"/>
         <TextView
             android:id="@+id/LinearDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/label_date"
             android:padding="5dp"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center"/>
         <TextView
             android:id="@+id/LinearEngineNumber"
@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:text="@string/label_engine_number"
             android:padding="5dp"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center"/>
         <Spinner
             android:id="@+id/LinearLabelInpSpinnerEngineNumber"
@@ -48,7 +48,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/label_plane_number"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center"/>
         <EditText
             android:id="@+id/LinearInpPlaneNumber"
@@ -59,14 +59,14 @@
             android:paddingBottom="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center"/>
         <TextView
             android:id="@+id/LinearTotalEngineRunningTime"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/label_total_engine_running_time"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center"/>
         <EditText
             android:id="@+id/LinearInpTotalEngineRunningTime"
@@ -77,14 +77,14 @@
             android:paddingBottom="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center"/>
         <TextView
             android:id="@+id/LinearEngineRunningTimeAfterRepair"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/label_engine_running_time_after_repair"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center"/>
         <EditText
             android:id="@+id/LinearInpEngineRunningTimeAfterRepair"
@@ -95,14 +95,14 @@
             android:paddingBottom="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center"/>
         <TextView
             android:id="@+id/LinearEngineResource"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/label_engine_resource"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center"/>
         <EditText
             android:id="@+id/LinearInpEngineResource"
@@ -113,28 +113,28 @@
             android:paddingBottom="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center"/>
         <TextView
             android:id="@+id/LinearResourceBalance"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/label_resource_balance"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center"/>
         <TextView
             android:id="@+id/LinearInpResourceBalance"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="0"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center"/>
         <TextView
             android:id="@+id/LinearWP"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/label_wp"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center"/>
         <EditText
             android:id="@+id/LinearInpWP"
@@ -145,14 +145,14 @@
             android:paddingBottom="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center"/>
         <TextView
             android:id="@+id/LinearAtmPressure"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/label_atm_pressure"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center"/>
         <EditText
             android:id="@+id/LinearInpAtmPressure"
@@ -163,14 +163,14 @@
             android:paddingBottom="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center"/>
         <TextView
             android:id="@+id/LinearAtmTemperature"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/label_atm_temp"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center"/>
         <EditText
             android:id="@+id/LinearInpAtmTemperature"
@@ -181,7 +181,7 @@
             android:paddingBottom="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center"/>
         <TextView
             android:id="@+id/LinearSubTextKVD"
@@ -190,14 +190,14 @@
             android:text="@string/label_KVD"
             android:paddingTop="8dp"
             android:paddingBottom="10dp"
-            android:textSize="12pt"
+            android:textSize="18sp"
             android:gravity="center"/>
         <TextView
             android:id="@+id/LinearWork0Nominal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/label_work_0nominal"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center"/>
         <EditText
             android:id="@+id/LinearInpWork0Nominal"
@@ -208,14 +208,14 @@
             android:paddingBottom="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center"/>
         <TextView
             android:id="@+id/LinearWorkNominal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/label_work_nominal"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center"/>
         <EditText
             android:id="@+id/LinearInpWorkNominal"
@@ -226,14 +226,14 @@
             android:paddingBottom="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center"/>
         <TextView
             android:id="@+id/LinearWorkMax"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/label_work_max"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center"/>
         <EditText
             android:id="@+id/LinearInpWorkMax"
@@ -244,7 +244,7 @@
             android:paddingBottom="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center" />
         <LinearLayout
             android:layout_width="match_parent"

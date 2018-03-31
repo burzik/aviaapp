@@ -16,14 +16,14 @@
             android:textStyle="bold"
             android:gravity="center"
             android:padding="14dp"
-            android:textSize="12pt"/>
+            android:textSize="18sp"/>
         <TextView
             android:id="@+id/LinearLabelN1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/label_n1"
             android:padding="5dp"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center"/>
         <EditText
             android:id="@+id/LinearInpN1"
@@ -34,14 +34,14 @@
             android:paddingBottom="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center" />
         <TextView
             android:id="@+id/LinearTRC"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/label_trc"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center"/>
         <EditText
             android:id="@+id/LinearInpTRC"
@@ -52,14 +52,14 @@
             android:paddingBottom="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center"/>
         <TextView
             android:id="@+id/LinearPm"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/label_pm"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center"/>
         <EditText
             android:id="@+id/LinearInpPm"
@@ -70,14 +70,14 @@
             android:paddingBottom="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center"/>
         <TextView
             android:id="@+id/LinearTmC"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/label_tmc"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center"/>
         <EditText
             android:id="@+id/LinearInpTmC"
@@ -88,14 +88,14 @@
             android:paddingBottom="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center"/>
         <TextView
             android:id="@+id/LinearPt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/label_pt"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center"/>
         <EditText
             android:id="@+id/LinearInpPt"
@@ -106,14 +106,14 @@
             android:paddingBottom="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center"/>
         <TextView
             android:id="@+id/LinearEngineSqrt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/label_engine_sqrt"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center"/>
         <EditText
             android:id="@+id/LinearInpEngineSqrt"
@@ -124,14 +124,14 @@
             android:paddingBottom="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center"/>
         <TextView
             android:id="@+id/LinearMainSystem"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/label_main_system"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center"/>
         <EditText
             android:id="@+id/LinearInpMainSystem"
@@ -142,14 +142,14 @@
             android:paddingBottom="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center"/>
         <TextView
             android:id="@+id/LinearEmergency"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/label_emergency"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center"/>
         <EditText
             android:id="@+id/LinearInpEmergency"
@@ -160,14 +160,14 @@
             android:paddingBottom="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center"/>
         <TextView
             android:id="@+id/LinearBasic"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/label_basic"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center"/>
         <EditText
             android:id="@+id/LinearInpBasic"
@@ -178,14 +178,14 @@
             android:paddingBottom="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center"/>
         <TextView
             android:id="@+id/LinearParking"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/label_parking"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center"/>
         <EditText
             android:id="@+id/LinearInpParking"
@@ -196,14 +196,14 @@
             android:paddingBottom="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center"/>
         <TextView
             android:id="@+id/LinearVGenerator"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/label_v_generator"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center"/>
         <EditText
             android:id="@+id/LinearInpVGenerator"
@@ -214,14 +214,14 @@
             android:paddingBottom="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center"/>
         <TextView
             android:id="@+id/LinearKrTank"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/label_kr_tank"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center"/>
         <EditText
             android:id="@+id/LinearInpKrTank"
@@ -232,14 +232,14 @@
             android:paddingBottom="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center"/>
         <TextView
             android:id="@+id/LinearGAccum"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/label_g_accum"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center"/>
         <EditText
             android:id="@+id/LinearInpGAccum"
@@ -250,14 +250,14 @@
             android:paddingBottom="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center"/>
         <TextView
             android:id="@+id/LinearGTank"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/label_g_tank"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center"/>
         <EditText
             android:id="@+id/LinearInpGTank"
@@ -268,14 +268,14 @@
             android:paddingBottom="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center"/>
         <TextView
             android:id="@+id/LinearClosingLantern"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/label_closing_lantern"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center"/>
         <Spinner
             android:id="@+id/LinearLabelInpSpinnerClosingLantern"
@@ -292,7 +292,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/label_air_cond"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center"/>
         <Spinner
             android:id="@+id/LinearLabelInpSpinnerAirCond"
@@ -310,7 +310,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/label_p_cabin"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center"/>
         <EditText
             android:id="@+id/LinearInpPCabin"
@@ -321,7 +321,7 @@
             android:paddingBottom="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:textSize="10pt"
+            android:textSize="16sp"
             android:gravity="center"/>
 
         <LinearLayout
