@@ -108,7 +108,7 @@ public class StepN85 extends AppCompatActivity {
                 setRecord();
                 CreationHelper.updateRecord(id, engineData);
                 Intent intent;
-                if (classArrayList.size() <= 0)
+                if (classArrayList == null || classArrayList.size() <= 0)
                     intent = new Intent(StepN85.this, StepClosingKVD3.class);
                 else {
                     intent = new Intent(StepN85.this, classArrayList.get(0));

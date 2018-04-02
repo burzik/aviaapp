@@ -90,7 +90,7 @@ public class StepClosingKVDKPV extends AppCompatActivity {
                 setRecord();
                 CreationHelper.updateRecord(id, engineData);
                 Intent intent;
-                if (classArrayList.size() <= 0)
+                if (classArrayList == null || classArrayList.size() <= 0)
                     intent = new Intent(StepClosingKVDKPV.this, StepPickUp.class);
                 else {
                     intent = new Intent(StepClosingKVDKPV.this, classArrayList.get(0));

@@ -85,7 +85,7 @@ public class StepN100 extends AppCompatActivity {
                 setRecord();
                 CreationHelper.updateRecord(id, engineData);
                 Intent intent;
-                if (classArrayList.size() <= 0)
+                if (classArrayList == null || classArrayList.size() <= 0)
                     intent = new Intent(StepN100.this, StepNom.class);
                 else {
                     intent = new Intent(StepN100.this, classArrayList.get(0));

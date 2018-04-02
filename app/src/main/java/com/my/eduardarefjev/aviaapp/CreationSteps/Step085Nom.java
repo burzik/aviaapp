@@ -100,7 +100,7 @@ public class Step085Nom extends AppCompatActivity {
                 setRecord();
                 CreationHelper.updateRecord(id, engineData);
                 Intent intent;
-                if (classArrayList.size() <= 0)
+                if (classArrayList == null || classArrayList.size() <= 0)
                     intent = new Intent(Step085Nom.this, StepN100.class);
                 else {
                     intent = new Intent(Step085Nom.this, classArrayList.get(0));

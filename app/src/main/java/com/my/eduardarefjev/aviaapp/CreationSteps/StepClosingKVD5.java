@@ -89,7 +89,7 @@ public class StepClosingKVD5 extends AppCompatActivity {
                 setRecord();
                 CreationHelper.updateRecord(id, engineData);
                 Intent intent;
-                if (classArrayList.size() <= 0)
+                if (classArrayList == null || classArrayList.size() <= 0)
                     intent = new Intent(StepClosingKVD5.this, StepN85.class);
                 else {
                     intent = new Intent(StepClosingKVD5.this, classArrayList.get(0));

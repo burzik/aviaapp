@@ -76,7 +76,8 @@ public class StepFinish extends AppCompatActivity {
 
         Date start = engineData.getLaunchDate();
         Date end = new Date();
-        diff = (end.getTime() - start.getTime() * (60)/1000);
+        //wrong value??
+        diff = (((end.getTime() - start.getTime()) / 1000));
 
         EditText eCommon = findViewById(R.id.LinearLabelInpCommon);
         EditText eNominal = findViewById(R.id.LinearLabelInpNominal);

@@ -97,6 +97,7 @@ public class CreationHelper {
     static String createRecord(StepEngineData stepEngineData){
         mDatabase = FirebaseDatabase.getInstance().getReference().child("EngineLaunches");
         DatabaseReference newPostRef = mDatabase.push();
+        stepEngineData.setRowId(newPostRef.getKey());
         newPostRef.setValue(stepEngineData);
         return newPostRef.getKey();
     }

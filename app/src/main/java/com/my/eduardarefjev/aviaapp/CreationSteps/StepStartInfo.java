@@ -96,7 +96,7 @@ public class StepStartInfo extends AppCompatActivity {
                 setRecord();
                 CreationHelper.updateRecord(id, engineData);
                 Intent intent;
-                if (classArrayList.size() <= 0)
+                if (classArrayList == null || classArrayList.size() <= 0)
                     intent = new Intent(StepStartInfo.this, StepSmallGas.class);
                 else {
                     intent = new Intent(StepStartInfo.this, classArrayList.get(0));

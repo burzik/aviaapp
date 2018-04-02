@@ -93,7 +93,7 @@ public class StepRunoutOfRotors extends AppCompatActivity {
                 setRecord();
                 CreationHelper.updateRecord(id, engineData);
                 Intent intent;
-                if (classArrayList.size() <= 0)
+                if (classArrayList == null || classArrayList.size() <= 0)
                     intent = new Intent(StepRunoutOfRotors.this, StepTanningBoardDisplayGenerator.class);
                 else {
                     intent = new Intent(StepRunoutOfRotors.this, classArrayList.get(0));

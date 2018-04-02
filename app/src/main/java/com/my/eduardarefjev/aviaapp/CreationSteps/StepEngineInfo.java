@@ -140,7 +140,8 @@ public class StepEngineInfo extends AppCompatActivity {
         EditText eWorkMax = findViewById(R.id.LinearInpWorkMax);
 
         engineData = new StepEngineData();
-        //if (!eEngineNumber.getText().toString().isEmpty())
+
+        if (engigneNumber.getSelectedItem() != null)
             engineData.setEngineId(Integer.valueOf(engigneNumber.getSelectedItem().toString()));
         if (!ePlaneBoardId.getText().toString().isEmpty())
             engineData.setPlaneBoardId(Integer.valueOf(ePlaneBoardId.getText().toString()));

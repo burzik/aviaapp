@@ -113,7 +113,7 @@ public class StepSmallGas2 extends AppCompatActivity {
                 setRecord();
                 CreationHelper.updateRecord(id, engineData);
                 Intent intent;
-                if (classArrayList.size() <= 0)
+                if (classArrayList == null || classArrayList.size() <= 0)
                     intent = new Intent(StepSmallGas2.this, StepControlKND.class);
                 else {
                     intent = new Intent(StepSmallGas2.this, classArrayList.get(0));
