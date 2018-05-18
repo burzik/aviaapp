@@ -9,7 +9,7 @@
     <string name="label_resource_balance">Остаток ресурса</string>
     <string name="label_engine_resource">Ресурс двигателя</string>
     <string name="label_all">Все</string>
-    <string name="menu_change_password" translatable="false">Изменить пароль</string>
+    <string name="menu_change_password">Изменить пароль</string>
     <string name="hint_old_password">Старый пароль</string>
     <string name="hint_new_password">Новый пароль</string>
     <string name="hint_current_password">Текущий пароль</string>
@@ -20,4 +20,13 @@
     <string name="text_hello">Добро пожаловать</string>
     <string name="login">Вход</string>
     <string name="signin_offline">Войти без интернета</string>
+
+    <string-array name="privileges">
+        <item>Пользователь</item>
+        <item>Админ</item>
+    </string-array>
+    <string-array name="good_bad">
+        <item>Норма</item>
+        <item>Не норма</item>
+    </string-array>
 </resources>
